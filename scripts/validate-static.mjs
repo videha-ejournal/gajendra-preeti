@@ -44,4 +44,12 @@ assert.equal(readings.filter(r=>r.basis==='interface').length,3);
 for(const r of readings){const text=fs.readFileSync(path.join(root,`criticism/${r.id}.html`),'utf8');assert.match(text,/id="evidence"/);assert.match(text,/id="question"/);assert.match(text,/prepared with AI assistance/);}
 for(const id of ['writers','paths','archive','journey','videha','criticism','sources']){assert(idSets.get('index.html').has(id));assert(idSets.get('en/index.html').has(id));}
 assert(fs.existsSync(path.join(root,'.nojekyll')));
+const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
+const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
+assert.equal(sitemapUrls.length,idSets.size,'Every public page belongs in the sitemap');
+assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
+for(const file of idSets.keys()){
+ const route=file.replace(/(^|\/)index\.html$/,'$1');
+ assert(sitemapUrls.includes(`https://videha-ejournal.github.io/gajendra-preeti/${route}`),`Missing sitemap page: ${file}`);
+}
 console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} HTML pages; all local assets and anchors resolve.`);

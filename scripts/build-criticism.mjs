@@ -37,3 +37,6 @@ for(const [i,b] of ordered.entries()){
 }
 fs.writeFileSync(`${destination}/manifest.json`,JSON.stringify(ordered.map(({id,titleEn,title,kind,basis,group})=>({id,titleEn,title,kind,basis,group,url:`${base}/criticism/${id}.html`})),null,2)+'\n');
 console.log(`Built ${ordered.length} source-linked English critical readings and index.`);
+const sitemapUrls=[`${canonical}/`,`${canonical}/en/`,`${canonical}/criticism/`,...ordered.map(b=>`${canonical}/criticism/${b.id}.html`)];
+fs.writeFileSync('public/sitemap.xml',`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url=>`  <url><loc>${e(url)}</loc></url>`).join('\n')}\n</urlset>\n`);
+console.log(`Generated sitemap with ${sitemapUrls.length} canonical page URLs.`);

@@ -16,6 +16,8 @@ An editorial introduction to two bodies of work: illustrated children's literatu
 
 ## Criticism: scope and maintenance
 
+`public/sitemap.xml` is generated with the criticism pages before each build. It lists the Maithili homepage, English homepage, criticism index and all 59 criticism pages. The domain-root repository advertises this sitemap in its sitemap index and robots.txt.
+
 `content/catalogue-snapshot.json` preserves the consulted public catalogue entry titles and links. `content/readings.txt` contains the editorial notes: each blank-line-separated entry has metadata, a critical lens, two paragraphs and a question. `scripts/build-criticism.mjs` validates one-to-one coverage and generates `public/criticism/` before a production build. The stylesheet and reader script in that folder are maintained directly.
 
 The English notes were prepared with AI assistance, a fact stated on every page. They are not presented as reviews by the featured writers or an external reviewer. Direct sampled text and visual readings, whole short-book visual readings, publisher/catalogue-based critical introductions and interface assessments have distinct evidence labels. PDF references count physical PDF pages including front matter. Neither translation fidelity nor historical claims are certified by these notes.
