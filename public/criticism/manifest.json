@@ -1,0 +1,533 @@
+[
+  {
+    "id": "p01",
+    "titleEn": "Gonu Jha and Other Maithili Picture Stories",
+    "title": "गोनू झा आ आन मैथिली चित्रकथा",
+    "kind": "Picture stories",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p01.html"
+  },
+  {
+    "id": "p03",
+    "titleEn": "Folk Deities of Mithila",
+    "title": "मिथिलाक लोकदेवता",
+    "kind": "Folklore & picture narrative",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p03.html"
+  },
+  {
+    "id": "p05",
+    "titleEn": "Original Tirhuta Palm-leaf Panji Archive",
+    "title": "मूल मिथिलाक्षर ताड़पत्र पञ्जी",
+    "kind": "Archive & preservation",
+    "basis": "catalogue",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p05.html"
+  },
+  {
+    "id": "p07",
+    "titleEn": "Little and Big",
+    "title": "छोट आ पैघ",
+    "kind": "Children's translation",
+    "basis": "visual-full",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p07.html"
+  },
+  {
+    "id": "p08",
+    "titleEn": "Look at the Animals",
+    "title": "माल-जाल आ जानवर दिस देखू",
+    "kind": "Children's translation",
+    "basis": "visual-full",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p08.html"
+  },
+  {
+    "id": "p09",
+    "titleEn": "My Family",
+    "title": "हमर परिवार",
+    "kind": "Children's translation",
+    "basis": "visual-full",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p09.html"
+  },
+  {
+    "id": "p10",
+    "titleEn": "Animals",
+    "title": "जानवर",
+    "kind": "Children's translation",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p10.html"
+  },
+  {
+    "id": "p11",
+    "titleEn": "Book 13: 1…2…3…",
+    "title": "पोथी 13: 1. . . 2. . . 3. . .",
+    "kind": "Children's translation & counting",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p11.html"
+  },
+  {
+    "id": "p12",
+    "titleEn": "Instrumental Sounds",
+    "title": "बाजाक अबाज",
+    "kind": "Children's translation",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p12.html"
+  },
+  {
+    "id": "p13",
+    "titleEn": "Race",
+    "title": "रेस",
+    "kind": "Children's translation",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p13.html"
+  },
+  {
+    "id": "p14",
+    "titleEn": "ABCD: A Nature Alphabet Book",
+    "title": "ए बी सी डी- प्रकृति अक्षर पोथी",
+    "kind": "Children's translation & alphabet",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p14.html"
+  },
+  {
+    "id": "p15",
+    "titleEn": "Everyone Eats",
+    "title": "सभ खाइत अछि",
+    "kind": "Children's translation",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p15.html"
+  },
+  {
+    "id": "p16",
+    "titleEn": "Bow Meow Wow",
+    "title": "बो म्याउ बाह",
+    "kind": "Children's translation",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p16.html"
+  },
+  {
+    "id": "p17",
+    "titleEn": "Colours",
+    "title": "रङ सभ",
+    "kind": "Children's translation",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p17.html"
+  },
+  {
+    "id": "p18",
+    "titleEn": "My Heart's Wish",
+    "title": "हमर मोनक इच्छा",
+    "kind": "Children's translation & anthology",
+    "basis": "sample",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p18.html"
+  },
+  {
+    "id": "p19",
+    "titleEn": "Maithili Picture Stories",
+    "title": "मैथिली चित्रकथा",
+    "kind": "Picture stories",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p19.html"
+  },
+  {
+    "id": "p20",
+    "titleEn": "Vidyapati's Purusha Pariksha",
+    "title": "विद्यापतिक पुरुष परीक्षा",
+    "kind": "Adaptation & picture narrative",
+    "basis": "visual",
+    "group": "preeti",
+    "url": "/gajendra-preeti/criticism/p20.html"
+  },
+  {
+    "id": "g01",
+    "titleEn": "Parallel Grammar, Composition and Linguistics of Maithili",
+    "title": "मैथिलीक एकटा समानान्तर व्याकरण, रचना आ भाषा विज्ञान (ठेठी, अंगिका आ बज्जिकाकेँ संग लऽ कऽ)",
+    "kind": "Language & reference",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g01.html"
+  },
+  {
+    "id": "g02",
+    "titleEn": "Prabandh, Nibandh, Samalochana: Theory and Applied Studies",
+    "title": "प्रबन्ध · निबन्ध · समालोचना सिद्धान्त आ अनुप्रयुक्त अध्ययन",
+    "kind": "Criticism",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g02.html"
+  },
+  {
+    "id": "g03",
+    "titleEn": "Collected Translation Volume",
+    "title": "गजेन्द्र ठाकुर समग्र अनुवाद खण्ड",
+    "kind": "Translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g03.html"
+  },
+  {
+    "id": "g04",
+    "titleEn": "Bhamati: Vachaspati Mishra in Maithili",
+    "title": "भामती (वाचस्पति) [मूल संस्कृत सँ मैथिली अनुवाद: गजेन्द्र ठाकुर]",
+    "kind": "Philosophy & translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g04.html"
+  },
+  {
+    "id": "g05",
+    "titleEn": "Atmatattvaviveka: Udayana in Maithili",
+    "title": "आत्मतत्त्वविवेक (उदयन) [मूल संस्कृत सँ मैथिली अनुवाद: गजेन्द्र ठाकुर]",
+    "kind": "Philosophy & translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g05.html"
+  },
+  {
+    "id": "g06",
+    "titleEn": "Nyayakusumanjali: Udayana in Maithili",
+    "title": "न्यायकुसुमाञ्जलि (उदयन) [मूल संस्कृत सँ मैथिली अनुवाद: गजेन्द्र ठाकुर]",
+    "kind": "Philosophy & translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g06.html"
+  },
+  {
+    "id": "g07",
+    "titleEn": "Tattvacintamani: Gangesha in Maithili",
+    "title": "तत्त्वचिन्तामणि (गंगेश) [मूल संस्कृत सँ मैथिली अनुवाद: गजेन्द्र ठाकुर]",
+    "kind": "Philosophy & translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g07.html"
+  },
+  {
+    "id": "g08",
+    "titleEn": "Sanskrit Literature: Thirteen Books Combined",
+    "title": "अभिज्ञानशाकुन्तलम् (महाकवि कालिदास); आगमडम्बरम् -जयन्त भट्ट; भगवदज्जुकम् -बोधायन; कवि भल्लट- भल्लट-शतक (भल्लटक शत अन्योक्ति), महाकवि क्षेमेन्द्र- छल-कौशलक विलास (कलाविलास), कवि नीलकण्ठ- कलियुग-विडम्बना (व्यंग्य); चतुर्भाण- श्री शूद्रक केर मूल संस्कृत- पद्मप्राभृतकम् (कमलक भेंट), ईश्वरदत्तक मूल संस्कृत- धूर्तविटसंवादः (धूर्त आ दलालक विचार-विमर्श), वररुचिक मूल - उभयाभिसारिका (परस्पर प्रेम-पलायन) आ महाकवि श्यामिलक केर मूल संस्कृत- पादताडितकम् (लात); दामक प्रहसनम् (सम्भवतः भास रचित); हास्यक सागर / हास्यार्णवप्रहसनम् (मूल संस्कृत प्रहसन श्री जगदीश्वर भट्टाचार्य्य); कादम्बरी (वाणभट्ट आ भूषणभट्ट); माटिक खेलौना-गाड़ी / मृच्छकटिकम् (शूद्रक रचित संस्कृत नाटक); मत्तविलास प्रहसनम् (पल्लव नरेश श्री महेन्द्रविक्रम वर्मा प्रथम केर मूल संस्कृत प्रहसन); मंत्री राक्षसक राजसी मोहर / मुद्राराक्षसम् (विशाखदत्त रचित संस्कृत नाटक); पालाण्डुमण्डन प्रहसनम् (हरिजीवन मिश्रक संस्कृत प्रहसन); उत्तररामचरितम् (महाकवि भवभूति) - संस्कृतसँ मैथिली अनुवाद गजेन्द्र ठाकुर",
+    "kind": "Translation & anthology",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g08.html"
+  },
+  {
+    "id": "g09",
+    "titleEn": "Nit Naval Subhash Chandra Yadav",
+    "title": "नित नवल सुभाष चन्द्र यादव",
+    "kind": "Criticism",
+    "basis": "visual",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g09.html"
+  },
+  {
+    "id": "g10",
+    "titleEn": "Nit Naval Sushil",
+    "title": "नित नवल सुशील",
+    "kind": "Criticism",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g10.html"
+  },
+  {
+    "id": "g11",
+    "titleEn": "Nit Naval Dinesh Kumar Mishra",
+    "title": "नित नवल दिनेश कुमार मिश्र",
+    "kind": "Criticism & river writing",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g11.html"
+  },
+  {
+    "id": "g12",
+    "titleEn": "Nit Naval Brikhesh Chandra Lal",
+    "title": "नित नवल वृषेश चन्द्र लाल",
+    "kind": "Criticism",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g12.html"
+  },
+  {
+    "id": "g13",
+    "titleEn": "Rang-Sangam: Nine Plays with English Stage Adaptations",
+    "title": "रंग-संगम — नओटा मैथिली नाटक आ तकर अंग्रेजी रंगमंचीय रूपान्तर",
+    "kind": "Drama & translation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g13.html"
+  },
+  {
+    "id": "g14",
+    "titleEn": "Parvat Upar Bhamara Je Sutal",
+    "title": "पर्वत ऊपर भमरा जे सूतल",
+    "kind": "Fiction",
+    "basis": "visual",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g14.html"
+  },
+  {
+    "id": "g15",
+    "titleEn": "Gohi Sabhak Beech Jalsamadhi",
+    "title": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)",
+    "kind": "Novel",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g15.html"
+  },
+  {
+    "id": "g16",
+    "titleEn": "Gohi Sabhak Beech Jalsamadhi: Adolescent Edition",
+    "title": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [किशोर संस्करण]",
+    "kind": "Adaptation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g16.html"
+  },
+  {
+    "id": "g17",
+    "titleEn": "Gohi Sabhak Beech Jalsamadhi: Children's Edition",
+    "title": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]",
+    "kind": "Adaptation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g17.html"
+  },
+  {
+    "id": "g18",
+    "titleEn": "Thirty-seven Maithili Children's Novels: Collected Edition",
+    "title": "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर",
+    "kind": "Collected fiction",
+    "basis": "catalogue",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g18.html"
+  },
+  {
+    "id": "g19",
+    "titleEn": "Water Burial: English Teaching Companion",
+    "title": "Water-Burial Among the Crocodiles [English Teaching Companion]",
+    "kind": "Teaching & interpretation",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g19.html"
+  },
+  {
+    "id": "g20",
+    "titleEn": "Gohi Sabhak Beech Jalsamadhi: Teaching Course",
+    "title": "Gohi Sabhak Beech Jalsamadhi Teaching Course PDF",
+    "kind": "Teaching & interpretation",
+    "basis": "catalogue",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g20.html"
+  },
+  {
+    "id": "g21",
+    "titleEn": "Gohi / Water Burial: Teaching and Documentary Gateway",
+    "title": "“Gohi Sabhak Beech Jalsamadhi” English Teaching Course Documentary",
+    "kind": "Digital companion",
+    "basis": "interface",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g21.html"
+  },
+  {
+    "id": "g22",
+    "titleEn": "Videha Teaching Water Burial: Presentation Player",
+    "title": "“Water-Burial Among the Crocodiles” English Teaching Course PPT Player",
+    "kind": "Digital companion",
+    "basis": "interface",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g22.html"
+  },
+  {
+    "id": "g23",
+    "titleEn": "Water Burial: CSS Documentary and Study Reader",
+    "title": "“Water-Burial Among the Crocodiles” English Teaching Course Documentary",
+    "kind": "Digital companion",
+    "basis": "interface",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g23.html"
+  },
+  {
+    "id": "g24",
+    "titleEn": "Create Videos with AI",
+    "title": "ए.आइ. सँ वीडियो बनाउ",
+    "kind": "Media & learning",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g24.html"
+  },
+  {
+    "id": "g25",
+    "titleEn": "Maithili Radio Drama: Self-learning Guide",
+    "title": "मैथिली रेडियो नाटक: स्वयं सीखू मार्गदर्शिका",
+    "kind": "Drama & learning",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g25.html"
+  },
+  {
+    "id": "g26",
+    "titleEn": "English–Maithili Thesaurus",
+    "title": "English-Maithili Thesaurus — Gajendra Thakur",
+    "kind": "Language & reference",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g26.html"
+  },
+  {
+    "id": "g27",
+    "titleEn": "Maithili–English Thesaurus",
+    "title": "Maithili-English Thesaurus — Gajendra Thakur",
+    "kind": "Language & reference",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g27.html"
+  },
+  {
+    "id": "g28",
+    "titleEn": "Videha Sadeha 1–37: Critical Appreciation",
+    "title": "विदेह सदेह १–३७ — एक समालोचनात्मक आस्वादन",
+    "kind": "Criticism & archive",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g28.html"
+  },
+  {
+    "id": "g29",
+    "titleEn": "Videha Quiz Master: 10,135 Questions",
+    "title": "VIDEHA QUIZ MASTER — विदेह १–४४० विस्तृत अध्ययन — 10,135 प्रश्न",
+    "kind": "Learning & archive",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g29.html"
+  },
+  {
+    "id": "g30",
+    "titleEn": "Videha Sadeha 1–37: 54,192 Questions",
+    "title": "विदेह सदेह १–३७ विस्तृत अध्ययन — 54,192 प्रश्न",
+    "kind": "Learning & archive",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g30.html"
+  },
+  {
+    "id": "g31",
+    "titleEn": "Videha Research Articles: Issues 1–447",
+    "title": "विदेह शोध-लेख (अंक १ सँ ४४७ धरि)",
+    "kind": "Research & archive",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g31.html"
+  },
+  {
+    "id": "g32",
+    "titleEn": "Parallel Philosophy, Volume I",
+    "title": "GAJENDRA THAKUR'S PARALLEL PHILOSOPHY VOLUME I",
+    "kind": "Philosophy",
+    "basis": "sample",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g32.html"
+  },
+  {
+    "id": "g33",
+    "titleEn": "History of Mithila–Vajji–Anga, Volume I",
+    "title": "HISTORY OF MITHILA, VAJJI & ANGA in India & Nepal: From Prehistory to the Contemporary Period VOLUME I",
+    "kind": "History",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g33.html"
+  },
+  {
+    "id": "g34",
+    "titleEn": "Gadya Padya Bharti 1",
+    "title": "GADYA PADYA BHARTI 1 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-१)",
+    "kind": "Edited anthology",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g34.html"
+  },
+  {
+    "id": "g35",
+    "titleEn": "Gadya Padya Bharti 2",
+    "title": "GADYA PADYA BHARTI 2 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-२)",
+    "kind": "Translation anthology",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g35.html"
+  },
+  {
+    "id": "g36",
+    "titleEn": "Water Burial Among the Crocodiles: English Translation",
+    "title": "WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]",
+    "kind": "Novel & author translation",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g36.html"
+  },
+  {
+    "id": "g37",
+    "titleEn": "Swapname Mijjhar Hoit — When Dreams Merge",
+    "title": "स्वप्नमे मिज्झर होइत · WHEN DREAMS MERGE",
+    "kind": "Literature",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g37.html"
+  },
+  {
+    "id": "g38",
+    "titleEn": "Thirty-seven Maithili Children's Novels in English Translation",
+    "title": "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION",
+    "kind": "Collected fiction & translation",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g38.html"
+  },
+  {
+    "id": "g39",
+    "titleEn": "History of Mithila–Vajji–Anga, Volume II",
+    "title": "HISTORY OF MITHILA, VAJJI & ANGA: SOCIO-CULTURAL-ECONOMIC HISTORY OF MITHILA, VAJJI & ANGA IN INDIA & NEPAL FROM PREHISTORY TO THE CONTEMPORARY PERIOD [A PARALLEL HISTORY OF MITHILA & MAITHILI LITERATURE] VOLUME II",
+    "kind": "Social & economic history",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g39.html"
+  },
+  {
+    "id": "g40",
+    "titleEn": "Parallel Philosophy, Volume II",
+    "title": "GAJENDRA THAKUR'S PARALLEL PHILOSOPHY VOLUME II",
+    "kind": "Philosophy",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g40.html"
+  },
+  {
+    "id": "g41",
+    "titleEn": "A Parallel History of Mithila and Maithili Literature",
+    "title": "A Parallel History of Mithila & Maithili Literature",
+    "kind": "Literary history",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g41.html"
+  },
+  {
+    "id": "g42",
+    "titleEn": "Decoding Panji: Mithila",
+    "title": "Decoding the Panji of Mithila",
+    "kind": "Genealogy & research",
+    "basis": "publisher",
+    "group": "gajendra",
+    "url": "/gajendra-preeti/criticism/g42.html"
+  }
+]

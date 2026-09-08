@@ -12,7 +12,8 @@
     "lint": "oxlint",
     "format": "oxfmt",
     "check": "tsc --noEmit",
-    "validate:static": "node scripts/validate-static.mjs"
+    "validate:static": "node scripts/validate-static.mjs",
+    "prebuild": "node scripts/build-criticism.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
