@@ -12,6 +12,7 @@ const selections:ReadingPath[]=[
   {id:'children',label:'बाल साहित्य',en:'For the curious reader',title:'चित्र, कथा आ कल्पना।',text:'प्रीति ठाकुरक चित्रकथा आ अनुवादसँ बाल साहित्यक संसारमे प्रवेश करू।',ids:['p0','p1','p13']},
   {id:'literature',label:'कथा आ पद्य',en:'For the literary explorer',title:'लघु कथासँ उपन्यास धरि।',text:'गजेन्द्र ठाकुरक कथात्मक आ काव्यात्मक लेखनक तीन प्रवेश-द्वार।',ids:['g0','g2','g4']},
   {id:'dreams',label:'स्वप्नमे मिज्झर होइत',en:'WHEN DREAMS MERGE · BOOK GUIDE',title:'स्वप्नसँ भाषा, दर्शन आ न्याय धरि।',text:'सम्पूर्ण 2026 संशोधित अंग्रेजी संस्करणक 447 विषय-सूची प्रविष्टिक स्रोत-आधारित सारांश।',ids:[],href:'/gajendra-preeti/when-dreams-merge/',linkTitle:'WHEN DREAMS MERGE',linkMeta:'819 PDF पृष्ठ · 447 सारांश प्रविष्टि · 8 मुख्य खण्ड'},
+  {id:'water',label:'गोहि सभक बीच जलसमाधि',en:'WATER-BURIAL AMONG THE CROCODILES · BOOK GUIDE',title:'नाम, जल, स्मृति आ न्याय केर 301-अध्याय यात्रा।',text:'सम्पूर्ण 2026 एकल-खंड अंग्रेजी संस्करण: अध्याय -100 सँ 200 धरि स्रोत-आधारित अध्याय-सार, कथा-चक्र आ विषय-पथ।',ids:[],href:'/gajendra-preeti/water-burial-among-the-crocodiles/',linkTitle:'WATER-BURIAL AMONG THE CROCODILES',linkMeta:'301 अध्याय · 3 मुख्य भाग · 19 कथात्मक चक्र'},
   {id:'memory',label:'अभिलेख आ शोध',en:'For the archive explorer',title:'स्मृतिक पन्ना खोलू।',text:'पञ्जी-अभिलेख, साहित्यक इतिहास आ दूनू रचनाकार पर समालोचना पढ़ू।',ids:['p16','g6','j0']}
 ];
 
