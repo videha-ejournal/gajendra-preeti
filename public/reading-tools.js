@@ -7,7 +7,7 @@
  function mount(){
   const host=document.getElementById('videha-reading-tools');if(!host||host.dataset.mounted)return;host.dataset.mounted='true';host.lang='en';
   const isMai=!location.pathname.includes('/en/')&&!location.pathname.includes('/criticism/');
-  const englishURL=base+'en/'+location.hash;
+  const englishURL=base+'en/'+(location.pathname.includes('/criticism/')?'#criticism':location.hash);
   const maiURL=base+(location.pathname.includes('/criticism/')?'#criticism':location.hash);
   host.innerHTML=`<div class="vt-bar" role="group" aria-label="Videha reading tools"><div class="vt-editions"><a href="${escape(maiURL)}" lang="mai" ${isMai?'aria-current="page"':''}>मैथिली</a><a href="${escape(englishURL)}" ${!isMai&&!location.pathname.includes('/criticism/')?'aria-current="page"':''}>English</a></div><button type="button" data-open="listen"><span aria-hidden="true">◖</span> ${isMai?'सुनू · Listen':'Listen'}</button><button type="button" data-open="translate">${isMai?'अनुवाद':'Translate'} <b>41</b></button><button type="button" data-open="access">${isMai?'सहायक तकनीक':'Reading controls'}</button><button type="button" data-open="cite">${isMai?'उद्धरण · Cite':'Cite'}</button></div>
   <dialog class="vt-dialog" id="vt-dialog" aria-labelledby="vt-title"><div class="vt-dialog-heading"><h2 id="vt-title">Reading tools</h2><button type="button" id="vt-close" aria-label="Close reading tools">×</button></div>

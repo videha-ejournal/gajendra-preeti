@@ -1,0 +1,74 @@
+[
+  {
+    "id": "p0",
+    "source": "https://drive.google.com/file/d/12yYQ1LuhNzEJHQFCNKUTjqSm0eU2boTd/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/p0.pdf",
+    "bytes": 8303994,
+    "sha256": "6cedfefd61b45344641c2df8c98666d75c020986a4ea297da703456c3ce13d28",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "g0",
+    "source": "https://drive.google.com/file/d/188o9PaXidJI7JWh0599-ytC9iZPvP4WJ/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/g0.pdf",
+    "bytes": 901730,
+    "sha256": "857e15aa46a8353c9bb89968071def25274f5e62ef9747bf70b50c5dd31b6698",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "p14",
+    "source": "https://drive.google.com/file/d/1iqmo3qvjM_xvn4Ml5Lls_mpoWnUwbytt/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/p14.pdf",
+    "bytes": 12541166,
+    "sha256": "ab0cbaa2c588f9e0f9a7e16ba6f0145ecb57f5a82b02507a14bb7025df1c0c2a",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "g1",
+    "source": "https://drive.google.com/file/d/1k8FFxwT0SVa-OMLKcsO0w82j195xFICD/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/g1.pdf",
+    "bytes": 747301,
+    "sha256": "11eae7dea096b024a9b29f31f6e4cbee8b9f0881275b90e239822297cc9b227e",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "p13",
+    "source": "https://drive.google.com/file/d/1SPKBSZj47sZHmO_8hAN-iQxsDx6F1eyg/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/p13.pdf",
+    "bytes": 6105959,
+    "sha256": "460fdb84f1a2be729adec977fc988ab54096bd2389a4d6d3a132807ca8bd1805",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "p15",
+    "source": "https://drive.google.com/file/d/1eehsXLhaMEnVbE6kplD6cy3g1GhEtKj7/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/p15.pdf",
+    "bytes": 19437910,
+    "sha256": "1fd17c5b490e2bc7f0733709532726005053562b0ffe79590652f2ab24f54240",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "g2",
+    "source": "https://drive.google.com/file/d/1yxRzkN9U1UjbLq6QbW7Sv-33E0YMuNVc/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/g2.pdf",
+    "bytes": 860863,
+    "sha256": "0d95bbcf4b0af88c2f3b3c759af123d36acada32233c2e416df1b30cbd3c79aa",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "g3",
+    "source": "https://drive.google.com/file/d/1Jxk5YsP3nwaWqzGX6hwxvJ5hcG8RtK6L/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/g3.pdf",
+    "bytes": 911964,
+    "sha256": "1b8548accd9c51640a1de3c3bdc458fcba933d0c9e7c688d2187483e0ddaae72",
+    "prepared": "2026-09-09"
+  },
+  {
+    "id": "g4",
+    "source": "https://drive.google.com/file/d/1aumXoUSWDfF3ztzQelQ0h2VNgK0DXFM4/view?usp=sharing",
+    "url": "https://videha-ejournal.github.io/gajendra-preeti/books/g4.pdf",
+    "bytes": 955810,
+    "sha256": "39f3412f1d71faf34aba74d7292f6d749f0ff892163a0c535aebe528dc0e60e2",
+    "prepared": "2026-09-09"
+  }
+]
