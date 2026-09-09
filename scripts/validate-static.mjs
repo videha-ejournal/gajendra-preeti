@@ -53,3 +53,32 @@ for(const file of idSets.keys()){
  assert(sitemapUrls.includes(`https://videha-ejournal.github.io/gajendra-preeti/${route}`),`Missing sitemap page: ${file}`);
 }
 console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} HTML pages; all local assets and anchors resolve.`);
+
+// Reading controls, discoverability and preservation checks.
+for(const [file, ids] of idSets){
+ const source=fs.readFileSync(path.join(root,file),'utf8');
+ assert(ids.has('videha-reading-tools'),`Missing reading controls: ${file}`);
+ const expected='https://videha-ejournal.github.io/gajendra-preeti/'+file.replace(/(^|\/)index\.html$/,'$1');
+ assert(source.includes(`rel="canonical" href="${expected}"`),`Canonical: ${file}`);
+ assert.match(source,/<meta name="description" content="[^"]+"/);
+ if(file.startsWith('criticism/')){
+  assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));
+  assert(source.includes('no named human editorial review is recorded'));
+ }
+}
+for(const file of ['index.html','en/index.html']){
+ const source=fs.readFileSync(path.join(root,file),'utf8');
+ for(const w of works)assert(idSets.get(file).has('work-'+w.id));
+ const graph=JSON.parse(source.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+ assert.equal(graph.filter(x=>x['@type']==='Person').length,2);
+ assert.equal(graph.filter(x=>x['@type']==='CreativeWork').length,26);
+}
+const {createHash}=await import('node:crypto');
+const mirrors=JSON.parse(fs.readFileSync('content/book-mirrors.json','utf8'));
+assert.equal(mirrors.length,9);
+for(const mirror of mirrors){
+ const bytes=fs.readFileSync(path.join(root,'books',mirror.id+'.pdf'));
+ assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.equal(bytes.length,mirror.bytes);
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),mirror.sha256);
+}
+console.log('Extended validation passed: 62 reading tool mounts and canonical descriptions, 26 work anchors and structured records per edition, nine verified PDF mirrors.');

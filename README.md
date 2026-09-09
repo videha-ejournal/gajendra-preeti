@@ -45,3 +45,11 @@ Use Node 22 LTS and npm. Run `npm ci`, then `npm run dev`; open `/gajendra-preet
 GitHub Actions builds on Linux/Node 22 and publishes only `dist/client/gajendra-preeti` to GitHub Pages. The repository base path is configured in `next.config.ts`; change asset URLs and canonical metadata together if renaming the repository. Pushes to `main` automatically build, validate and publish. No runtime server or secret is included in the deployed artifact.
 
 Built with React, Vinext, Tailwind and the scaffold's Base UI/Shadcn primitives. Fonts are loaded from Google Fonts with local system fallbacks. The inherited development toolchain includes Cloudflare packages that are unused by this static deployment; their audit findings do not imply a Cloudflare server is deployed.
+
+## Reading access and preservation
+
+Every page includes browser-based listening, a 41-language Google Translate selector, reading preferences and a citation tool. Voice availability depends on the device; Maithili voice fallback is disclosed. Machine translations are not reviewed editions. Native Maithili and English homepages remain separately accessible.
+
+All 26 works are initially visible, with writer, genre, year and text filters. Stable work and timeline anchors support citation. Reading-room badges distinguish evidence tiers; each essay states its scope and the absence of a recorded named human review. Catalogue identifiers retain their original positions, including gaps in the Preeti sequence.
+
+Nine PDFs are preserved in `public/books/`; `content/book-mirrors.json` records their original URLs, byte sizes, SHA-256 hashes and preparation date. Original links remain available. These are GitHub-hosted copies, not new Archive.org uploads. The existing Archive.org combined Panji PDF is linked separately; it has not been compared in full with every Drive volume. Keep provenance records when replacing files and verify hashes before publication.
