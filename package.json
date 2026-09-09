@@ -13,7 +13,7 @@
     "format": "oxfmt",
     "check": "tsc --noEmit",
     "validate:static": "node scripts/validate-static.mjs",
-    "prebuild": "node scripts/build-criticism.mjs && node scripts/build-water-guide.mjs && node scripts/build-parallel-guide.mjs && node scripts/build-dreams-expansion.mjs"
+    "prebuild": "node scripts/build-criticism.mjs && node scripts/build-water-guide.mjs && node scripts/build-parallel-guide.mjs && node scripts/build-dreams-expansion.mjs && node scripts/build-parallel-history.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

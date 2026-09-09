@@ -51,7 +51,9 @@ const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 const standaloneGuides=[
  {file:'water-burial-among-the-crocodiles/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/water-burial-among-the-crocodiles/',kind:'water'},
  {file:'parallel-philosophy/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/',kind:'parallel'},
- {file:'parallel-philosophy/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/en/',kind:'parallel'}
+ {file:'parallel-philosophy/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/en/',kind:'parallel'},
+ {file:'parallel-history/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-history/',kind:'history'},
+ {file:'parallel-history/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-history/en/',kind:'history'}
 ];
 assert.equal(sitemapUrls.length,idSets.size+standaloneGuides.length,'Every indexed public page and standalone guide belongs in the sitemap');
 assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
@@ -69,6 +71,7 @@ for(const guide of standaloneGuides){
  assert(source.includes('reader.js'),`Missing guide reader: ${guide.file}`);
  if(guide.kind==='water') assert(fs.existsSync(path.join(root,'water-burial-among-the-crocodiles/manifest.json')),'Missing Water-Burial guide manifest');
  if(guide.kind==='parallel') assert(fs.existsSync(path.join(root,'parallel-philosophy/manifest.json')),'Missing Parallel Philosophy guide manifest');
+ if(guide.kind==='history') assert(fs.existsSync(path.join(root,'parallel-history/manifest.json')),'Missing Parallel History guide manifest');
 }
 
 const parallelManifest=JSON.parse(fs.readFileSync(path.join(root,'parallel-philosophy/manifest.json'),'utf8'));
@@ -91,6 +94,35 @@ for(const c of parallelChapters){
   assert(String(c[lang]?.title||'').trim(),`Parallel Philosophy V${c.volume} Ch${c.n} missing ${lang} title`);
   assert(String(c[lang]?.summary||'').trim(),`Parallel Philosophy V${c.volume} Ch${c.n} missing ${lang} summary`);
  }
+}
+
+const historyManifest=JSON.parse(fs.readFileSync(path.join(root,'parallel-history/manifest.json'),'utf8'));
+assert.equal(historyManifest.chapterCount,178,'Parallel History static manifest must expose all 178 chapters.');
+assert.deepEqual(historyManifest.bookCounts,{'1':28,'2':150},'Parallel History static book counts must be 28 and 150.');
+assert.equal(historyManifest.sectionCount,20,'Parallel History static manifest must expose all 20 source sections.');
+assert.equal(historyManifest.sections?.length,20,'Parallel History static manifest must list 20 source sections.');
+const historyChapters=[];
+for(const file of historyManifest.files){
+ const payload=JSON.parse(fs.readFileSync(path.join(root,'parallel-history',file),'utf8'));
+ historyChapters.push(...(payload.chapters||[]));
+}
+historyChapters.sort((a,b)=>a.book-b.book||a.n-b.n);
+assert.equal(historyChapters.length,178,'Parallel History static output must contain 178 chapter records.');
+for(const [book,count] of [[1,28],[2,150]]){
+ const nums=historyChapters.filter(c=>c.book===book).map(c=>c.n);
+ assert.deepEqual(nums,Array.from({length:count},(_,i)=>i+1),`Parallel History Book ${book} chapter sequence incomplete.`);
+}
+for(const c of historyChapters){
+ assert(historyManifest.sections.some(section=>section.id===c.section&&section.book===c.book),`Parallel History Book ${c.book} Ch${c.n} has invalid source section.`);
+ for(const lang of ['mai','en']){
+  assert(String(c[lang]?.title||'').trim(),`Parallel History Book ${c.book} Ch${c.n} missing ${lang} title`);
+  assert(String(c[lang]?.summary||'').trim(),`Parallel History Book ${c.book} Ch${c.n} missing ${lang} summary`);
+ }
+}
+for(const section of historyManifest.sections){
+ const group=historyChapters.filter(c=>c.section===section.id);
+ assert.equal(group.length,section.count,`Parallel History ${section.id} count mismatch.`);
+ assert.deepEqual(group.map(c=>c.n),Array.from({length:section.end-section.start+1},(_,i)=>section.start+i),`Parallel History ${section.id} range incomplete.`);
 }
 
 console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} indexed HTML pages and ${standaloneGuides.length} standalone guide; all local assets and anchors resolve.`);
