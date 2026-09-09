@@ -82,3 +82,14 @@ for(const mirror of mirrors){
  assert.equal(createHash('sha256').update(bytes).digest('hex'),mirror.sha256);
 }
 console.log('Extended validation passed: 62 reading tool mounts and canonical descriptions, 26 work anchors and structured records per edition, nine verified PDF mirrors.');
+for(const file of idSets.keys()){
+ const source=fs.readFileSync(path.join(root,file),'utf8');
+ for(const tag of ['og:title','og:description','og:image','twitter:card'])assert(source.includes('"'+tag+'"'),`${file}: ${tag}`);
+}
+for(const file of ['index.html','en/index.html']){
+ const source=fs.readFileSync(path.join(root,file),'utf8');
+ assert(source.indexOf('id="search-guidance"')<source.indexOf('id="work-search"'));
+ assert.match(source,/class="braille" aria-hidden="true"/);
+}
+assert(fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: https://videha-ejournal.github.io/gajendra-preeti/sitemap.xml'));
+console.log('Social previews, search guidance, decorative Braille and sitemap discovery passed.');
