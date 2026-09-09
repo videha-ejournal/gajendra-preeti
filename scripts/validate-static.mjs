@@ -49,7 +49,9 @@ assert(fs.existsSync(path.join(root,'.nojekyll')));
 const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 const standaloneGuides=[
- {file:'water-burial-among-the-crocodiles/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/water-burial-among-the-crocodiles/'}
+ {file:'water-burial-among-the-crocodiles/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/water-burial-among-the-crocodiles/',kind:'water'},
+ {file:'parallel-philosophy/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/',kind:'parallel'},
+ {file:'parallel-philosophy/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/en/',kind:'parallel'}
 ];
 assert.equal(sitemapUrls.length,idSets.size+standaloneGuides.length,'Every indexed public page and standalone guide belongs in the sitemap');
 assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
@@ -65,8 +67,32 @@ for(const guide of standaloneGuides){
  assert.match(source,/<meta name="description" content="[^"]+"/);
  assert.match(source,/property="og:title"/);
  assert(source.includes('reader.js'),`Missing guide reader: ${guide.file}`);
- assert(fs.existsSync(path.join(root,'water-burial-among-the-crocodiles/manifest.json')),'Missing Water-Burial guide manifest');
+ if(guide.kind==='water') assert(fs.existsSync(path.join(root,'water-burial-among-the-crocodiles/manifest.json')),'Missing Water-Burial guide manifest');
+ if(guide.kind==='parallel') assert(fs.existsSync(path.join(root,'parallel-philosophy/manifest.json')),'Missing Parallel Philosophy guide manifest');
 }
+
+const parallelManifest=JSON.parse(fs.readFileSync(path.join(root,'parallel-philosophy/manifest.json'),'utf8'));
+assert.equal(parallelManifest.chapterCount,172,'Parallel Philosophy static manifest must expose 172 chapters.');
+assert.deepEqual(parallelManifest.volumeCounts,{'1':72,'2':100},'Parallel Philosophy static volume counts must be 72 and 100.');
+assert.equal(parallelManifest.partCount,23,'Parallel Philosophy static manifest must expose 23 thematic parts.');
+const parallelChapters=[];
+for(const file of parallelManifest.files){
+ const payload=JSON.parse(fs.readFileSync(path.join(root,'parallel-philosophy',file),'utf8'));
+ parallelChapters.push(...(payload.chapters||[]));
+}
+parallelChapters.sort((a,b)=>a.volume-b.volume||a.n-b.n);
+assert.equal(parallelChapters.length,172,'Parallel Philosophy static output must contain 172 chapter records.');
+for(const [volume,count] of [[1,72],[2,100]]){
+ const nums=parallelChapters.filter(c=>c.volume===volume).map(c=>c.n);
+ assert.deepEqual(nums,Array.from({length:count},(_,i)=>i+1),`Parallel Philosophy Volume ${volume} chapter sequence incomplete.`);
+}
+for(const c of parallelChapters){
+ for(const lang of ['mai','en']){
+  assert(String(c[lang]?.title||'').trim(),`Parallel Philosophy V${c.volume} Ch${c.n} missing ${lang} title`);
+  assert(String(c[lang]?.summary||'').trim(),`Parallel Philosophy V${c.volume} Ch${c.n} missing ${lang} summary`);
+ }
+}
+
 console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} indexed HTML pages and ${standaloneGuides.length} standalone guide; all local assets and anchors resolve.`);
 
 // Reading controls, discoverability and preservation checks.
