@@ -14,6 +14,7 @@ assert.match(english,/<title>Preeti Thakur &amp; Gajendra Thakur/);
 assert.match(html,/hreflang="en"/i);assert.match(english,/hreflang="mai"/i);
 const files=fs.readdirSync(path.join(root,'criticism')).filter(f=>f.endsWith('.html')).map(f=>'criticism/'+f);
 assert.equal(files.length,JSON.parse(fs.readFileSync('content/catalogue-snapshot.json','utf8')).length+1,'Every catalogue entry plus index');
+files.push(...fs.readdirSync(path.join(root,'criticism/reception')).filter(f=>f.endsWith('.html')).map(f=>'criticism/reception/'+f));
 const idSets=new Map();
 for(const file of ['index.html','en/index.html',...files]){
  const source=fs.readFileSync(path.join(root,file),'utf8');
@@ -82,7 +83,7 @@ for(const mirror of mirrors){
  assert.equal(bytes.subarray(0,5).toString(),'%PDF-');assert.equal(bytes.length,mirror.bytes);
  assert.equal(createHash('sha256').update(bytes).digest('hex'),mirror.sha256);
 }
-console.log('Extended validation passed: 62 reading tool mounts and canonical descriptions, 26 work anchors and structured records per edition, nine verified PDF mirrors.');
+console.log(`Extended validation passed: ${idSets.size} reading tool mounts and canonical descriptions, ${works.length} work anchors and structured records per edition, nine verified PDF mirrors.`);
 for(const file of idSets.keys()){
  const source=fs.readFileSync(path.join(root,file),'utf8');
  for(const tag of ['og:title','og:description','og:image','twitter:card'])assert(source.includes('"'+tag+'"'),`${file}: ${tag}`);
@@ -94,3 +95,11 @@ for(const file of ['index.html','en/index.html']){
 }
 assert(fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: https://videha-ejournal.github.io/gajendra-preeti/sitemap.xml'));
 console.log('Social previews, search guidance, decorative Braille and sitemap discovery passed.');
+const reception=JSON.parse(fs.readFileSync('content/reception-gists.json','utf8'));
+for(const a of reception.articles){
+ const file=`criticism/reception/${a.book}.html`;
+ assert(idSets.get(file).has(a.id),`Missing contribution: ${a.book}/${a.id}`);
+ const source=fs.readFileSync(path.join(root,file),'utf8');
+ assert(source.includes(`pp. ${a.start}–${a.end}`),`Missing page reference: ${a.id}`);
+}
+console.log(`Reception coverage passed: ${reception.articles.length} attributed summaries across both supplied books.`);
