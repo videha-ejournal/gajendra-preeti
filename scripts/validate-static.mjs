@@ -48,13 +48,26 @@ for(const id of ['writers','paths','archive','journey','videha','criticism','sou
 assert(fs.existsSync(path.join(root,'.nojekyll')));
 const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
-assert.equal(sitemapUrls.length,idSets.size,'Every public page belongs in the sitemap');
+const standaloneGuides=[
+ {file:'water-burial-among-the-crocodiles/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/water-burial-among-the-crocodiles/'}
+];
+assert.equal(sitemapUrls.length,idSets.size+standaloneGuides.length,'Every indexed public page and standalone guide belongs in the sitemap');
 assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
 for(const file of idSets.keys()){
  const route=file.replace(/(^|\/)index\.html$/,'$1');
  assert(sitemapUrls.includes(`https://videha-ejournal.github.io/gajendra-preeti/${route}`),`Missing sitemap page: ${file}`);
 }
-console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} HTML pages; all local assets and anchors resolve.`);
+for(const guide of standaloneGuides){
+ assert(fs.existsSync(path.join(root,guide.file)),`Missing standalone guide: ${guide.file}`);
+ assert(sitemapUrls.includes(guide.url),`Missing sitemap guide: ${guide.file}`);
+ const source=fs.readFileSync(path.join(root,guide.file),'utf8');
+ assert(source.includes(`rel="canonical" href="${guide.url}"`),`Canonical: ${guide.file}`);
+ assert.match(source,/<meta name="description" content="[^"]+"/);
+ assert.match(source,/property="og:title"/);
+ assert(source.includes('reader.js'),`Missing guide reader: ${guide.file}`);
+ assert(fs.existsSync(path.join(root,'water-burial-among-the-crocodiles/manifest.json')),'Missing Water-Burial guide manifest');
+}
+console.log(`Static validation passed: bilingual homepages, ${readings.length} source-linked readings, ${idSets.size} indexed HTML pages and ${standaloneGuides.length} standalone guide; all local assets and anchors resolve.`);
 
 // Reading controls, discoverability and preservation checks.
 for(const [file, ids] of idSets){
