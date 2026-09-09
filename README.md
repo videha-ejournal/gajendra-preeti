@@ -6,7 +6,7 @@ An editorial introduction to two bodies of work: illustrated children's literatu
 
 - Paired writer introductions with identified archival photographs.
 - Three themed reading paths; 26 source-linked catalogue entries with author filters and search, including Devanagari year normalization.
-- Eight dated literary milestones from 2002 to 2026.
+- Twelve dated literary milestones from 2002 to 2026.
 - Manuscript preservation and Braille resources; direct paths into Videha's journal, library and complete works.
 - Maithili document language, semantic landmarks, keyboard accessible controls, skip link, mobile breakpoints, browser zoom support and reduced-motion behavior.
 - Sources and image attribution are visible on the site. No analytics, accounts, tracking, invented biographies or server APIs.
@@ -53,3 +53,7 @@ Every page includes browser-based listening, a 41-language Google Translate sele
 All 26 works are initially visible, with writer, genre, year and text filters. Stable work and timeline anchors support citation. Reading-room badges distinguish evidence tiers; each essay states its scope and the absence of a recorded named human review. Catalogue identifiers retain their original positions, including gaps in the Preeti sequence.
 
 Nine PDFs are preserved in `public/books/`; `content/book-mirrors.json` records their original URLs, byte sizes, SHA-256 hashes and preparation date. Original links remain available. These are GitHub-hosted copies, not new Archive.org uploads. The existing Archive.org combined Panji PDF is linked separately; it has not been compared in full with every Drive volume. Keep provenance records when replacing files and verify hashes before publication.
+
+The Maithili and English routes use separate root layouts in `app/(maithili)` and `app/(english)`, sharing `app/site-layout.tsx`. Their exported document languages are validated independently. Homepage work totals derive from `works.json`; reading-room totals and evidence counts derive from the generated manifest.
+
+The present GitHub Pages deployment path remains `/gajendra-preeti`. A move to another path or domain still requires a coordinated migration of canonical URLs, static assets, stored book URLs and navigation; changing only `next.config.ts` is not sufficient.
