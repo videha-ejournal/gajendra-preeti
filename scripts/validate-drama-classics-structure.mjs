@@ -34,6 +34,21 @@ for(const collection of audit.collections||[]){
   }
 }
 
+for(const r of records){
+  for(const key of ['titleMai','titleEn','summaryMai','summaryEn','authorMai','authorEn','kindMai','kindEn','relationMai','relationEn']){
+    assert(String(r[key]||'').trim(),`${r.id}: displayed content exists in only one language or is missing: ${key}`);
+  }
+  assert.equal(Boolean(r.subtitleMai),Boolean(r.subtitleEn),`${r.id}: subtitle exists in only one language.`);
+  for(const u of r.units||[]){
+    for(const key of ['mai','en','gistMai','gistEn']) assert(String(u[key]||'').trim(),`${r.id}: source unit lacks paired ${key}`);
+    for(const x of u.subunits||[]){
+      assert(x&&typeof x==='object'&&!Array.isArray(x),`${r.id}: raw one-language nested heading remains: ${String(x)}`);
+      assert(String(x.mai||'').trim(),`${r.id}: nested heading lacks Maithili counterpart.`);
+      assert(String(x.en||'').trim(),`${r.id}: nested heading lacks English counterpart.`);
+    }
+  }
+}
+
 const mrc=byId.get('mrcchakatikam');
 assert.equal(mrc.units.length,12,'Mrcchakatikam must expose setting + ten acts + Bharata-vakya.');
 assert.equal(mrc.units[0].mai,'दृश्य: उज्जयिनी आ आसपास');
@@ -49,8 +64,17 @@ assert.deepEqual(sank.units.map(u=>u.subunits.length),[3,4,5,3,3],'Sankarshan fi
 assert.equal(sank.units.reduce((sum,u)=>sum+u.subunits.length,0),18,'Sankarshan must expose all 18 acts.');
 for(const u of sank.units) for(const x of u.subunits){assert(String(x.mai||'').trim(),'Sankarshan act missing Maithili title.');assert(String(x.en||'').trim(),'Sankarshan act missing English title.');}
 
+assert(String(data.manifest.sourcePolicyMai||'').trim(),'Manifest source policy lacks Maithili version.');
+assert(String(data.manifest.sourcePolicyEn||'').trim(),'Manifest source policy lacks English version.');
+assert(String(data.manifest.generatedFromMai||'').trim(),'Manifest provenance lacks Maithili version.');
+assert(String(data.manifest.generatedFromEn||'').trim(),'Manifest provenance lacks English version.');
+assert.equal(data.manifest.languageCoverage?.status,'paired','Manifest must declare paired language coverage.');
+
 const reader=fs.readFileSync(path.join(root,'reader.js'),'utf8');
 assert(reader.includes("nested(u,'mai')")&&reader.includes("nested(u,'en')"),'Reader must render nested structures in the selected language.');
 assert(reader.includes("[x.mai,x.en]"),'Reader search must index both languages of nested structures.');
+assert(reader.includes("r.kindEn:r.kindMai"),'Reader must localise the genre/kind badge.');
+assert(reader.includes("r.authorEn:r.authorMai"),'Reader must localise author display.');
+assert(reader.includes("r.relationEn:r.relationMai"),'Reader must localise source/translation relation display.');
 
-console.log('Drama & Sanskrit Classics structural QA passed: all 22 audited works, Mrcchakatikam setting, 100 Bhallata verses, 10 Kalavilasa cantos, 13 Kali sections + epilogue, and all 18 Sankarshan acts are preserved; nested headings are bilingual.');
+console.log('Drama & Sanskrit Classics bilingual structural QA passed: all 22 works and every displayed title, summary, author, genre, source relation, unit, gist and nested division have paired Maithili + English text; source-defined structures remain complete.');
