@@ -21,8 +21,8 @@ function jsonRecords(dir){
 const source=sourceIndex();
 
 const dreams=jsonRecords('content/when-dreams-merge-mai').sort((a,b)=>Number(a.id.slice(4))-Number(b.id.slice(4)));
-assert(dreams.length>0,'No Maithili Dreams summaries found');
-assert.deepEqual(dreams.map(x=>x.id),Array.from({length:dreams.length},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`),'Dreams progress must remain contiguous from wdm-001');
+assert.equal(dreams.length,447,'Dreams Maithili primary layer must contain all 447 records.');
+assert.deepEqual(dreams.map(x=>x.id),Array.from({length:447},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`),'Dreams records must remain contiguous from wdm-001 through wdm-447');
 const dreamSource=new Map(source.dreams.entries.map(x=>[x.id,x]));
 for(const x of dreams){
   const s=dreamSource.get(x.id); assert(s,`${x.id}: source record missing`);
@@ -32,12 +32,12 @@ for(const x of dreams){
 }
 
 const water=jsonRecords('content/water-burial-mai').sort((a,b)=>a.n-b.n);
-assert(water.length>0,'No Maithili Water-Burial summaries found');
-assert.deepEqual(water.map(x=>x.n),Array.from({length:water.length},(_,i)=>i-100),'Water-Burial progress must remain contiguous from Chapter -100');
+assert.equal(water.length,301,'Water-Burial Maithili primary layer must contain all 301 chapters.');
+assert.deepEqual(water.map(x=>x.n),Array.from({length:301},(_,i)=>i-100),'Water-Burial records must remain contiguous from Chapter -100 through 200');
 const waterSource=new Map(source.water.chapters.map(x=>[x.n,x]));
 for(const x of water){
   const s=waterSource.get(x.n); assert(s,`Chapter ${x.n}: source record missing`);
   assert.equal(x.title,s.title,`Chapter ${x.n}: title drift`); assert.equal(x.part,s.part,`Chapter ${x.n}: part drift`); assert.equal(x.sourceHash,s.sourceHash,`Chapter ${x.n}: source fingerprint drift`);
   assert(String(x.summary||'').trim().length>=80,`Chapter ${x.n}: substantive Maithili summary required`);
 }
-console.log(`Maithili summary progress verified: When Dreams Merge ${dreams.length}/447; Water-Burial ${water.length}/301.`);
+console.log('Complete Maithili primary layers verified: When Dreams Merge 447/447; Water-Burial 301/301.');
