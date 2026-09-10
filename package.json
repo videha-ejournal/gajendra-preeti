@@ -13,7 +13,7 @@
     "format": "oxfmt",
     "check": "tsc --noEmit",
     "validate:static": "node scripts/validate-static.mjs",
-    "prebuild": "node scripts/build-criticism.mjs && node scripts/build-water-guide.mjs && node scripts/build-parallel-guide.mjs && node scripts/build-dreams-expansion.mjs && node scripts/build-parallel-history.mjs && node scripts/build-classical-philosophy.mjs"
+    "prebuild": "node scripts/build-criticism.mjs && node scripts/build-water-guide.mjs && node scripts/build-parallel-guide.mjs && node scripts/build-dreams-expansion.mjs && node scripts/build-parallel-history.mjs && node scripts/build-classical-philosophy.mjs && node scripts/build-drama-classics.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
@@ -45,6 +45,7 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.34",
+    "@openai/sites-vite-plugin": "0.2.0",
     "oxfmt": "0.61.0",
     "oxlint": "1.76.0",
     "oxlint-tsgolint": "7.0.2001",
