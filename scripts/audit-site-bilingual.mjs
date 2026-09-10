@@ -55,15 +55,15 @@ for(const family of pairedFamilies){
  assert(text(`${family}/en/index.html`).includes('hreflang="mai"'),`${family}: English route needs Maithili alternate`);
 }
 
-// Generated large-guide integrity and media integration.
+// Generated large-guide integrity and media integration. Count rendered elements, not JS selector strings.
 const dreamsMai=text('when-dreams-merge/index.html');
 const waterMai=text('water-burial-among-the-crocodiles/index.html');
 const waterEn=text('water-burial-among-the-crocodiles/en/index.html');
 const mediaMai=text('media-learning/index.html'),mediaEn=text('media-learning/en/index.html');
-assert.equal(countMatches(dreamsMai,/\bdata-entry\b/g),447,'Generated Maithili Dreams page must expose all 447 records.');
-assert.equal(countMatches(waterMai,/\bdata-chapter\b/g),301,'Generated Maithili Water page must expose all 301 chapters.');
-assert.equal(countMatches(mediaMai,/\bdata-resource\b/g),28,'Maithili media hub must show all 28 resources.');
-assert.equal(countMatches(mediaEn,/\bdata-resource\b/g),28,'English media hub must show all 28 resources.');
+assert.equal(countMatches(dreamsMai,/<article\b[^>]*\bdata-entry\b[^>]*>/g),447,'Generated Maithili Dreams page must expose all 447 records.');
+assert.equal(countMatches(waterMai,/<article\b[^>]*\bdata-chapter\b[^>]*>/g),301,'Generated Maithili Water page must expose all 301 chapters.');
+assert.equal(countMatches(mediaMai,/<a\b[^>]*\bdata-resource\b[^>]*>/g),28,'Maithili media hub must show all 28 resources.');
+assert.equal(countMatches(mediaEn,/<a\b[^>]*\bdata-resource\b[^>]*>/g),28,'English media hub must show all 28 resources.');
 for(const x of teaching.items){assert(waterMai.includes(x.url),`Maithili Water guide missing teaching resource ${x.id}`);assert(waterEn.includes(x.url),`English Water guide missing teaching resource ${x.id}`);}
 assert(dreamsMai.includes('/gajendra-preeti/media-learning/'),'Dreams Maithili guide must link the media hub.');
 assert(waterMai.includes('/gajendra-preeti/media-learning/'),'Water Maithili guide must link the media hub.');
