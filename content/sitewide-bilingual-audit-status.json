@@ -5,7 +5,7 @@
     {"id":"home","mai":"/gajendra-preeti/","en":"/gajendra-preeti/en/","note":"Dedicated Maithili and English application pages."},
     {"id":"catalogue","source":"app/works.json","note":"Visible work metadata is stored as paired title/titleEn, kind/kindEn, name/nameEn and note/noteEn fields; enforced by the site-wide audit."},
     {"id":"parallel-philosophy","mai":"/gajendra-preeti/parallel-philosophy/","en":"/gajendra-preeti/parallel-philosophy/en/","records":172},
-    {"id":"parallel-history","mai":"/gajendra-preeti/parallel-history/","en":"/gajendra-preriti/parallel-history/en/","records":178},
+    {"id":"parallel-history","mai":"/gajendra-preeti/parallel-history/","en":"/gajendra-preeti/parallel-history/en/","records":178},
     {"id":"classical-philosophy","mai":"/gajendra-preeti/classical-philosophy/","en":"/gajendra-preeti/classical-philosophy/en/","records":32},
     {"id":"drama-classics","mai":"/gajendra-preeti/drama-classics/","en":"/gajendra-preeti/drama-classics/en/","records":22},
     {"id":"criticism","mai":"/gajendra-preeti/criticism/","en":"/gajendra-preeti/criticism/en/","records":59,"note":"All Reading Room records and both indices are paired and asserted by scripts/audit-site-bilingual.mjs."},
