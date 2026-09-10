@@ -1,24 +1,33 @@
 {
   "scope":"All site-facing HTML/data families in videha-ejournal/gajendra-preeti, not only Drama & Sanskrit Classics.",
-  "policy":"A counterpart means real Maithili and English display content. The 41-language Google Translate control is assistive only and does not satisfy bilingual completeness.",
+  "policy":"A counterpart means real Maithili and English display content. The 41-language Google Translate control is assistive only and does not satisfy bilingual completeness. Source indexing alone also does not count as a completed counterpart.",
   "paired":[
     {"id":"home","mai":"/gajendra-preeti/","en":"/gajendra-preeti/en/","note":"Dedicated Maithili and English application pages."},
     {"id":"catalogue","source":"app/works.json","note":"Visible work metadata is stored as paired title/titleEn, kind/kindEn, name/nameEn and note/noteEn fields; enforced by the site-wide audit."},
     {"id":"parallel-philosophy","mai":"/gajendra-preeti/parallel-philosophy/","en":"/gajendra-preeti/parallel-philosophy/en/","records":172},
     {"id":"parallel-history","mai":"/gajendra-preeti/parallel-history/","en":"/gajendra-preeti/parallel-history/en/","records":178},
     {"id":"classical-philosophy","mai":"/gajendra-preeti/classical-philosophy/","en":"/gajendra-preeti/classical-philosophy/en/","records":32},
-    {"id":"drama-classics","mai":"/gajendra-preeti/drama-classics/","en":"/gajendra-preeti/drama-classics/en/","records":22,"note":"Additional metadata/nested-heading bilingual completion is preserved on this audit branch."}
+    {"id":"drama-classics","mai":"/gajendra-preeti/drama-classics/","en":"/gajendra-preeti/drama-classics/en/","records":22},
+    {"id":"criticism","mai":"/gajendra-preeti/criticism/","en":"/gajendra-preeti/criticism/en/","records":59,"note":"All Reading Room records and both indices are paired and asserted by scripts/audit-site-bilingual.mjs."},
+    {"id":"criticism-reception","mai":"/gajendra-preeti/criticism/reception/","en":"/gajendra-preeti/criticism/reception/en/","records":63,"note":"All 63 contributor-perspective records and the three route pairs are asserted by scripts/audit-site-bilingual.mjs."}
+  ],
+  "sourceIndexed":[
+    {"id":"when-dreams-merge","source":"User-supplied authoritative Maithili DOCX: स्वप्न_मे_मिज्झर_होइत_8x11_Hardback_FINAL_COMPLETE(1).docx","records":447,"sectionRecords":10,"nonSectionRecords":437,"internalSubsections":8,"mapping":"Exact book order; wdm-001 through wdm-447. All 437 non-section records retain an original-Maithili source fingerprint.","validator":"scripts/validate-large-maithili-source-index.mjs","status":"Source structure validated; full Maithili guide summaries, 11 expanded readings and UI/method parity remain pending."},
+    {"id":"water-burial-among-the-crocodiles","source":"User-supplied authoritative Maithili archive: water burial maithili.zip","records":301,"chapterRange":"-100 through 200","mapping":"Exact chapter number; every chapter retains its Maithili title and original-Maithili source fingerprint.","validator":"scripts/validate-large-maithili-source-index.mjs","status":"Source structure validated; full Maithili chapter-guide, narrative-arc, motif/filter and UI parity remain pending."}
   ],
   "needsCounterpart":[
-    {"id":"when-dreams-merge","currentLanguage":"en","currentRoute":"/gajendra-preeti/when-dreams-merge/","missing":"Maithili guide counterpart","scope":"447 contents-summary entries plus 11 expanded readings and all guide UI/method metadata","source":"The English edition states that the original language is Maithili; the user Library contains स्वप्न_मे_मिज्झर_होइत_8x11_Hardback_Final.docx."},
-    {"id":"water-burial-among-the-crocodiles","currentLanguage":"en","currentRoute":"/gajendra-preeti/water-burial-among-the-crocodiles/","missing":"Maithili guide counterpart","scope":"301 chapter records, narrative-arc metadata, motif/filter labels and all guide UI","source":"The Maithili original गोहि सभक बीच जलसमाधि is listed in Videha/Samagra and an original PDF route exists; the English edition is identified as the author's own English translation."},
-    {"id":"criticism","currentLanguage":"en","currentRoute":"/gajendra-preeti/criticism/","missing":"Maithili Reading Room counterpart","scope":"Reading-room index, every individual P/G critical-reading page, method/basis labels, questions, descriptions and navigation","source":"content/readings.txt + content/catalogue-snapshot.json"},
-    {"id":"criticism-reception","currentLanguage":"en","currentRoute":"/gajendra-preeti/criticism/reception/","missing":"Maithili contributor-perspectives counterpart","scope":"Index, both volume pages, every article gist, notes, citations, disclosures and navigation","source":"content/reception-gists.json"}
+    {"id":"when-dreams-merge","currentLanguage":"en","currentRoute":"/gajendra-preeti/when-dreams-merge/","missing":"Maithili guide counterpart","scope":"447 contents-summary entries plus 11 expanded readings and all guide UI/method metadata","progress":"Authoritative Maithili source index is complete and checksum-validated; this does not yet satisfy display-content parity."},
+    {"id":"water-burial-among-the-crocodiles","currentLanguage":"en","currentRoute":"/gajendra-preeti/water-burial-among-the-crocodiles/","missing":"Maithili guide counterpart","scope":"301 chapter records, narrative-arc metadata, motif/filter labels and all guide UI","progress":"Authoritative Maithili source index is complete and checksum-validated; this does not yet satisfy display-content parity."}
   ],
   "uxIssue":{
     "file":"public/reading-tools.js",
-    "problem":"Language detection currently treats any non-/en/ non-/criticism/ route as Maithili. Therefore the existing English-only When Dreams Merge and Water-Burial guide roots can be labelled as Maithili even though their content is English; criticism sends its Maithili switch to the homepage rather than a real paired page.",
-    "fix":"Replace heuristic routing with explicit per-family edition routes as each real counterpart is added."
+    "problem":"The two large book-guide roots remain English-only while their genuine Maithili display counterparts are unfinished, so their language switch must not pretend that the root is already Maithili.",
+    "fix":"Keep the current English-only large-guide handling until authored/source-grounded Maithili display parity is completed; only then move English to /en/, make root/default Maithili, and activate explicit per-family counterpart links. Reading Room and Reception already have real paired routes."
+  },
+  "sourceIndexIntegrity":{
+    "directory":"content/large-maithili-guides/",
+    "decodedSha256":"9e7232f37e5cf7b12545dae50fa28182f9a0fcd6f83a646abf76a6aacd929479",
+    "prebuildValidation":true
   },
   "completionRule":"Do not mark the repository bilingual-complete until needsCounterpart is empty and the generated route audit passes with root/default lang=mai and /en/ lang=en for every paired site family."
 }
