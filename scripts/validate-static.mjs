@@ -53,15 +53,17 @@ const standalone=[
  ['water-burial-among-the-crocodiles/index.html',BASE+'water-burial-among-the-crocodiles/','water'],
  ['parallel-philosophy/index.html',BASE+'parallel-philosophy/','parallel'],['parallel-philosophy/en/index.html',BASE+'parallel-philosophy/en/','parallel'],
  ['parallel-history/index.html',BASE+'parallel-history/','history'],['parallel-history/en/index.html',BASE+'parallel-history/en/','history'],
- ['classical-philosophy/index.html',BASE+'classical-philosophy/','classical'],['classical-philosophy/en/index.html',BASE+'classical-philosophy/en/','classical']
+ ['classical-philosophy/index.html',BASE+'classical-philosophy/','classical'],['classical-philosophy/en/index.html',BASE+'classical-philosophy/en/','classical'],
+ ['drama-classics/index.html',BASE+'drama-classics/','drama'],['drama-classics/en/index.html',BASE+'drama-classics/en/','drama']
 ];
 assert.equal(sitemapUrls.length,idSets.size+standalone.length,'Every indexed page and standalone guide belongs in sitemap');
 assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
 for(const file of idSets.keys()) assert(sitemapUrls.includes(canonicalForFile(file)),`Missing sitemap page: ${file}`);
+const guideDirs={water:'water-burial-among-the-crocodiles',parallel:'parallel-philosophy',history:'parallel-history',classical:'classical-philosophy',drama:'drama-classics'};
 for(const [file,url,kind] of standalone){
   assert(fs.existsSync(path.join(root,file)),`Missing standalone guide: ${file}`); assert(sitemapUrls.includes(url),`Missing sitemap guide: ${file}`);
   const source=read(file); assert(source.includes(`rel="canonical" href="${url}"`),`Canonical: ${file}`); assert.match(source,/<meta name="description" content="[^"]+"/); assert.match(source,/property="og:title"/); assert(source.includes('reader.js'),`Missing guide reader: ${file}`);
-  const dir=kind==='water'?'water-burial-among-the-crocodiles':kind==='parallel'?'parallel-philosophy':kind==='history'?'parallel-history':'classical-philosophy';
+  const dir=guideDirs[kind]; assert(dir,`Unknown standalone guide kind: ${kind}`);
   assert(fs.existsSync(path.join(root,dir,'manifest.json')),`Missing ${kind} manifest`);
 }
 
@@ -80,9 +82,21 @@ const cm=JSON.parse(read('classical-philosophy/manifest.json')); assert.equal(cm
 const cd=JSON.parse(read('classical-philosophy/data.json')); assert.equal(cd.records.length,32); assert.equal(new Set(cd.records.map(r=>r.id)).size,32); assert.equal(cd.records.filter(r=>r.translationAnnexure===true).length,8);
 for(const [bookId,count] of Object.entries(cm.bookCounts)){const rows=cd.records.filter(r=>r.bookId===bookId);assert.equal(rows.length,count);assert.deepEqual(rows.map(r=>r.order),Array.from({length:count},(_,i)=>i+1));}
 for(const r of cd.records){assert(String(r.titleMai||'').trim());assert(String(r.titleEn||'').trim());assert(String(r.summaryMai||'').trim());assert(String(r.summaryEn||'').trim());}
+
+const dm=JSON.parse(read('drama-classics/manifest.json')); assert.equal(dm.workCount,22); assert.deepEqual(dm.collectionCounts,{'sanskrit-classics':13,'rang-sangam':9});
+const dd=JSON.parse(read('drama-classics/data.json')); assert.equal(dd.records.length,22); assert.equal(new Set(dd.records.map(r=>r.id)).size,22);
+for(const [collectionId,total] of Object.entries(dm.collectionCounts)){const rows=dd.records.filter(r=>r.collectionId===collectionId);assert.equal(rows.length,total);assert.deepEqual(rows.map(r=>r.order),Array.from({length:total},(_,i)=>i+1));}
+for(const r of dd.records){assert(String(r.titleMai||'').trim());assert(String(r.titleEn||'').trim());assert(String(r.summaryMai||'').trim());assert(String(r.summaryEn||'').trim());assert(Array.isArray(r.units)&&r.units.length>0);for(const u of r.units){assert(String(u.mai||'').trim());assert(String(u.en||'').trim());assert(String(u.gistMai||'').trim());assert(String(u.gistEn||'').trim());}}
+const dramaAudit=JSON.parse(fs.readFileSync('content/drama-classics/source-audit.json','utf8'));
+const auditedSanskrit=dramaAudit.collections.find(c=>c.id==='sanskrit-classics'), auditedRang=dramaAudit.collections.find(c=>c.id==='rang-sangam');
+assert.deepEqual(dd.records.filter(r=>r.collectionId==='sanskrit-classics').map(r=>r.id),auditedSanskrit.works.map(w=>w.id));
+assert.deepEqual(dd.records.filter(r=>r.collectionId==='rang-sangam').map(r=>r.id),auditedRang.works.map(w=>w.id));
+
 const atlasSource=fs.readFileSync('app/atlas.tsx','utf8'), englishAtlasSource=fs.readFileSync('app/english-atlas.tsx','utf8');
 assert(atlasSource.includes("href:'/gajendra-preeti/classical-philosophy/'"),'Maithili Reader’s Compass must link to Classical Philosophy.');
 assert(englishAtlasSource.includes("href:'/gajendra-preeti/classical-philosophy/en/'"),'English Reader’s Compass must link to Classical Philosophy.');
+assert(atlasSource.includes("href:'/gajendra-preeti/drama-classics/'"),'Maithili Reader’s Compass must link to Drama & Sanskrit Classics.');
+assert(englishAtlasSource.includes("href:'/gajendra-preeti/drama-classics/en/'"),'English Reader’s Compass must link to Drama & Sanskrit Classics.');
 
 for(const [file,ids] of idSets){const source=read(file);assert(ids.has('videha-reading-tools'),`Missing reading controls: ${file}`);assert(source.includes(`rel="canonical" href="${canonicalForFile(file)}"`),`Canonical: ${file}`);assert.match(source,/<meta name="description" content="[^"]+"/);if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert(source.includes('no named human editorial review is recorded'));}}
 for(const file of ['index.html','en/index.html']){const source=read(file);for(const w of works) assert(idSets.get(file).has('work-'+w.id));const graph=JSON.parse(source.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];assert.equal(graph.filter(x=>x['@type']==='Person').length,2);assert.equal(graph.filter(x=>x['@type']==='CreativeWork').length,works.length);}
@@ -94,4 +108,4 @@ assert(read('robots.txt').includes('Sitemap: '+BASE+'sitemap.xml'));
 const reception=JSON.parse(fs.readFileSync('content/reception-gists.json','utf8'));
 for(const a of reception.articles){const file=`criticism/reception/${a.book}.html`;assert(idSets.get(file).has(a.id),`Missing contribution: ${a.book}/${a.id}`);assert(read(file).includes(`pp. ${a.start}–${a.end}`),`Missing page reference: ${a.id}`);}
 
-console.log(`Static validation passed: ${readings.length} source-linked readings, ${idSets.size} indexed HTML pages, ${standalone.length} standalone guides, 172 philosophy chapters, 178 history chapters, and 32 Classical Philosophy units with 8 translation annexures.`);
+console.log(`Static validation passed: ${readings.length} source-linked readings, ${idSets.size} indexed HTML pages, ${standalone.length} standalone guides, 172 philosophy chapters, 178 history chapters, 32 Classical Philosophy units with 8 translation annexures, and 22 Drama & Sanskrit Classics works (13 + 9).`);
