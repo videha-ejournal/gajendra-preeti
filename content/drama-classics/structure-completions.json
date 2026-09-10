@@ -1,0 +1,102 @@
+{
+  "sourceBasis": {
+    "sanskrit": "Sanskrit_Sahitya_13_Books_Combined_8x11_Hardback.docx",
+    "rangSangam": "Rang_Sangam_8x11_Hardback.docx"
+  },
+  "mrcchakatikam": {
+    "prependUnits": [
+      {
+        "n": 0,
+        "mai": "दृश्य: उज्जयिनी आ आसपास",
+        "en": "Setting: Ujjayini (Avanti) and the surrounding region",
+        "gistMai": "स्रोत नाटकक घटना-क्षेत्र उज्जयिनी—जकरा अवन्ती सेहो कहल जाइत अछि—आ ओकर आसपासक क्षेत्र रूपमे स्पष्ट करैत अछि।",
+        "gistEn": "The source explicitly places the action in Ujjayini, also called Avanti, and the surrounding region."
+      }
+    ]
+  },
+  "bhallata-kshemendra-nilakantha": {
+    "unitOverrides": {
+      "2": {
+        "en": "The Pageant of Deceitful Arts (Kalavilasa)",
+        "subunits": [
+          {"mai":"सर्ग १ — दम्भक वर्णन (दम्भ)","en":"Canto 1 — The Portrayal of Hypocrisy"},
+          {"mai":"सर्ग २ — लोभक वर्णन (लोभ)","en":"Canto 2 — The Portrayal of Greed"},
+          {"mai":"सर्ग ३ — कामक चित्रण","en":"Canto 3 — The Portrayal of Desire"},
+          {"mai":"सर्ग ४ — वेश्यासभक व्यवहार (विश्वासघात)","en":"Canto 4 — The Conduct of Courtesans (Betrayal)"},
+          {"mai":"सर्ग ५ — लेखनिकक पराक्रम","en":"Canto 5 — The Exploits of the Scribe"},
+          {"mai":"सर्ग ६ — मदक वर्णन","en":"Canto 6 — The Portrayal of Intoxication"},
+          {"mai":"सर्ग ७ — गायक-वर्णन (दुर्वृत्ति)","en":"Canto 7 — The Singer Portrayed (Corruption)"},
+          {"mai":"सर्ग ८ — सोनारक उत्पत्ति (छल-कपट)","en":"Canto 8 — The Origin of the Goldsmith (Fraud and Deceit)"},
+          {"mai":"सर्ग ९ — विविध दुष्टक वर्णन (ढोंग आ ठगी)","en":"Canto 9 — Various Villains Portrayed (Pretence and Swindling)"},
+          {"mai":"सर्ग १० — समस्त कलाक वर्णन (सद्गुण)","en":"Canto 10 — The Description of All the Arts (Virtue)"}
+        ]
+      },
+      "3": {
+        "en": "A Satire on the Age of Kali",
+        "subunits": [
+          {"mai":"खण्ड १ — पण्डित","en":"Section 1 — The Scholar"},
+          {"mai":"खण्ड २ — मन्त्र-तान्त्रिक","en":"Section 2 — The Mantra-and-Tantra Practitioner"},
+          {"mai":"खण्ड ३ — ज्योतिषी","en":"Section 3 — The Astrologer"},
+          {"mai":"खण्ड ४ — वैद्य","en":"Section 4 — The Physician"},
+          {"mai":"खण्ड ५ — कवि","en":"Section 5 — The Poet"},
+          {"mai":"खण्ड ६ — सम्बन्धी","en":"Section 6 — Relations"},
+          {"mai":"खण्ड ७ — महाजन","en":"Section 7 — The Moneylender"},
+          {"mai":"खण्ड ८ — दरिद्रता","en":"Section 8 — Poverty"},
+          {"mai":"खण्ड ९ — धनी","en":"Section 9 — The Rich"},
+          {"mai":"खण्ड १० — चुगलखोर","en":"Section 10 — The Slanderer"},
+          {"mai":"खण्ड ११ — कृपण","en":"Section 11 — The Miser"},
+          {"mai":"खण्ड १२ — धर्मध्वजी","en":"Section 12 — The Religious Hypocrite"},
+          {"mai":"खण्ड १३ — दुष्ट","en":"Section 13 — The Wicked"},
+          {"mai":"उपसंहार — कलियुग-प्रणाम","en":"Epilogue — Salutation to the Age of Kali"}
+        ]
+      }
+    }
+  },
+  "sankarshan": {
+    "unitOverrides": {
+      "1": {
+        "en": "First Wave: The Seed of Prestige",
+        "subunits": [
+          {"mai":"कलक्टरक बहन्ना","en":"Act 1: The Collector Excuse"},
+          {"mai":"बंगाली बाबूक सीख आ कलक्टरक चैम्बर","en":"Act 2: The Bengali Gentleman’s Lesson and the Collector’s Chamber"},
+          {"mai":"तीन टा कारी कुकुरक खिस्सा","en":"Act 3: The Tale of the Three Black Dogs"}
+        ]
+      },
+      "2": {
+        "en": "Second Wave: The Lie Takes Root",
+        "subunits": [
+          {"mai":"पसीझक काँटक दंभ","en":"Act 1: The Vanity of the Pasij Thorn"},
+          {"mai":"पंचैतीक दण्ड","en":"Act 2: The Village Council’s Punishment"},
+          {"mai":"कंठी हाथमे, कोदारि हाथमे","en":"Act 3: Sacred Beads at the Neck, a Hoe in the Hand"},
+          {"mai":"टेलीफोन डायरीक भय","en":"Act 4: Fear of the Telephone Diary"}
+        ]
+      },
+      "3": {
+        "en": "Third Wave: The Market of Marriage and Boasting",
+        "subunits": [
+          {"mai":"घटकक चिकनी बात","en":"Act 1: The Matchmaker’s Silken Praise"},
+          {"mai":"सासुरसँ आगमन आ रंगक दंभ","en":"Act 2: Return from the In-Laws and the Vanity of Complexion"},
+          {"mai":"गोबर आ दुलारक प्रश्न","en":"Act 3: The Question of Dung and Indulgence"},
+          {"mai":"गुरक चाह आ जगन्नाथक कुसियार","en":"Act 4: Jaggery Tea and Jagannath’s Sugarcane"},
+          {"mai":"बेटाक पलायन","en":"Act 5: The Son Runs Away"}
+        ]
+      },
+      "4": {
+        "en": "Fourth Wave: The City’s Mirror",
+        "subunits": [
+          {"mai":"ट्रेनमे तीन टा बौआ","en":"Act 1: Three Boys on the Train"},
+          {"mai":"अलीगढ़मे पुलिस-चेकिंग","en":"Act 2: Police Check at Aligarh"},
+          {"mai":"लाल काकाक घर","en":"Act 3: At Lal Kaka’s House"}
+        ]
+      },
+      "5": {
+        "en": "Fifth Wave: The Shoe of Self-Realisation",
+        "subunits": [
+          {"mai":"चोर-बजारक ठकान","en":"Act 1: Cheated in the Thieves’ Market"},
+          {"mai":"सोलक भीतर छिपल सत्य","en":"Act 2: The Truth Hidden Inside the Sole"},
+          {"mai":"सूत्रधारक अन्तिम शब्द","en":"Act 3 (Epilogue): The Narrator’s Final Word"}
+        ]
+      }
+    }
+  }
+}
