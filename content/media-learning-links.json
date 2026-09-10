@@ -1,0 +1,70 @@
+{
+  "source": "User-supplied links(1).docx",
+  "count": 28,
+  "groups": [
+    {
+      "id": "parallel-research",
+      "titleMai": "समानान्तर शोध आ इतिहास",
+      "titleEn": "Parallel Research & History",
+      "deckMai": "मिथिला–मैथिली इतिहास, समानान्तर दर्शन आ भाषा-विज्ञानक श्रव्य-दृश्य प्रवेश-पथ।",
+      "deckEn": "Documentary and playlist routes into Mithila–Maithili history, Parallel Philosophy and language studies.",
+      "items": [
+        {"id":"media-01","titleOriginal":"Videha Parallel History of Mithila & Maithili Literature","url":"https://youtu.be/6h-nDjYHlME?si=snT95dJvKN9xMMLY","titleMai":"विदेह — मिथिला आ मैथिली साहित्यक समानान्तर इतिहास","titleEn":"Videha Parallel History of Mithila & Maithili Literature","kind":"YouTube"},
+        {"id":"media-02","titleOriginal":"A Parallel History of Mithila & Maithili Literature- Teaser","url":"https://youtube.com/playlist?list=PLM5fbK9_8fiI&si=jZOYBrmdxc-REHrU","titleMai":"मिथिला आ मैथिली साहित्यक समानान्तर इतिहास — टीजर","titleEn":"A Parallel History of Mithila & Maithili Literature — Teaser","kind":"YouTube"},
+        {"id":"media-03","titleOriginal":"Parallel Philosophy Volume I","url":"https://youtube.com/playlist?list=PLAzN1jZn-iOU&si=AdzYJuR0r-WQqCcX","titleMai":"समानान्तर दर्शन — खण्ड I","titleEn":"Parallel Philosophy — Volume I","kind":"YouTube"},
+        {"id":"media-04","titleOriginal":"Parallel Philosophy Volume II","url":"https://youtube.com/playlist?list=PLEeNFEaEfYd0&si=_77HM2bFr4iLx6Q-","titleMai":"समानान्तर दर्शन — खण्ड II","titleEn":"Parallel Philosophy — Volume II","kind":"YouTube"},
+        {"id":"media-05","titleOriginal":"Parallel History Volume I","url":"https://youtube.com/playlist?list=PLcQhodF4PphE&si=z88v356IXD-vtLQh","titleMai":"समानान्तर इतिहास — खण्ड I","titleEn":"Parallel History — Volume I","kind":"YouTube"},
+        {"id":"media-06","titleOriginal":"Parallel History Volume II","url":"https://youtube.com/playlist?list=PLGfQDv03IFio&si=bdvzD9Vw30YJlfWU","titleMai":"समानान्तर इतिहास — खण्ड II","titleEn":"Parallel History — Volume II","kind":"YouTube"},
+        {"id":"media-17","titleOriginal":"मैथिलीक एकटा समानान्तर व्याकरण, रचना आ भाषा विज्ञान (ठेठी, अंगिका आ बज्जिकाकेँ संग लऽ कऽ)- गजेन्द्र ठाकुर","url":"https://youtube.com/playlist?list=PLES5nTVPWL4U&si=KmSywsez65R0Q8uM","titleMai":"मैथिलीक समानान्तर व्याकरण, रचना आ भाषा-विज्ञान","titleEn":"A Parallel Maithili Grammar, Composition & Linguistics","kind":"YouTube"}
+      ]
+    },
+    {
+      "id": "documentary-drama",
+      "titleMai": "डॉक्यूमेन्टरी, नाटक आ शास्त्रीय दर्शन",
+      "titleEn": "Documentaries, Drama & Classical Philosophy",
+      "deckMai": "विदेह नाट्य-उत्सव, एनिमेटेड नाटक आ भामती, आत्मतत्त्वविवेक, न्यायकुसुमाञ्जलि तथा तत्त्वचिन्तामणि पर द्विभाषी डॉक्यूमेन्टरी पथ।",
+      "deckEn": "Videha theatre, animated drama and bilingual documentary routes for Bhāmatī, Ātmatattvaviveka, Nyāyakusumāñjali and Tattvacintāmaṇi.",
+      "items": [
+        {"id":"media-07","titleOriginal":"Videha Natya Utsav","url":"https://youtube.com/playlist?list=PLWihOy3I0j1k&si=QOgg9i_WfxJaXHFu","titleMai":"विदेह नाट्य उत्सव","titleEn":"Videha Natya Utsav","kind":"YouTube"},
+        {"id":"media-08","titleOriginal":"Animated Drama","url":"https://youtube.com/playlist?list=PLHsUvziVO3Y8&si=M55MMTwT-PG0RW4X","titleMai":"एनिमेटेड नाटक","titleEn":"Animated Drama","kind":"YouTube"},
+        {"id":"media-09","titleOriginal":"Bhamati Documentary","url":"https://youtube.com/playlist?list=PLc_Z5EJx5T0k&si=5ta_L2h8dh3ORIiv","titleMai":"भामती डॉक्यूमेन्टरी — English","titleEn":"Bhāmatī Documentary — English","kind":"YouTube"},
+        {"id":"media-10","titleOriginal":"भामती डॉक्यूमेन्टरी","url":"https://youtube.com/playlist?list=PLGzdq4a_--Io&si=Tb-0CTnZO6ETE2eb","titleMai":"भामती डॉक्यूमेन्टरी — मैथिली","titleEn":"Bhāmatī Documentary — Maithili","kind":"YouTube"},
+        {"id":"media-11","titleOriginal":"Atmatattvaviveka Documentary","url":"https://youtube.com/playlist?list=PLdOvjwiODwfI&si=LmxIKr8AJA_z_uKb","titleMai":"आत्मतत्त्वविवेक डॉक्यूमेन्टरी — English","titleEn":"Ātmatattvaviveka Documentary — English","kind":"YouTube"},
+        {"id":"media-12","titleOriginal":"आत्मतत्त्वविवेक डॉक्यूमेन्टरी","url":"https://youtube.com/playlist?list=PLJcSoFWlInLM&si=qN7kwQmkgZIbNIqi","titleMai":"आत्मतत्त्वविवेक डॉक्यूमेन्टरी — मैथिली","titleEn":"Ātmatattvaviveka Documentary — Maithili","kind":"YouTube"},
+        {"id":"media-13","titleOriginal":"Nyaya Kusumanjali Documentary","url":"https://youtube.com/playlist?list=PLVRnD_MMF7KE&si=9SvzCZUeHzMYxrWt","titleMai":"न्यायकुसुमाञ्जलि डॉक्यूमेन्टरी — English","titleEn":"Nyāyakusumāñjali Documentary — English","kind":"YouTube"},
+        {"id":"media-14","titleOriginal":"न्यायकुसुमाञ्जलि डॉक्यूमेन्टरी","url":"https://youtube.com/playlist?list=PLJvzsA6r1wQU&si=d6Xj11sJJS7vZEw1","titleMai":"न्यायकुसुमाञ्जलि डॉक्यूमेन्टरी — मैथिली","titleEn":"Nyāyakusumāñjali Documentary — Maithili","kind":"YouTube"},
+        {"id":"media-15","titleOriginal":"Tattvachintamani Documentary","url":"https://youtube.com/playlist?list=PLUlloUsnSQSY&si=VMbuqTyLDvBiqPVH","titleMai":"तत्त्वचिन्तामणि डॉक्यूमेन्टरी — English","titleEn":"Tattvacintāmaṇi Documentary — English","kind":"YouTube"},
+        {"id":"media-16","titleOriginal":"तत्त्वचिन्तामणि डॉक्यूमेन्टरी","url":"https://youtube.com/playlist?list=PLHs32SE0qevU&si=lsFai-xD5xgQv_HX","titleMai":"तत्त्वचिन्तामणि डॉक्यूमेन्टरी — मैथिली","titleEn":"Tattvacintāmaṇi Documentary — Maithili","kind":"YouTube"},
+        {"id":"media-21","titleOriginal":"Videha Documentary/ Drama","url":"https://www.youtube.com/playlist?list=PLXne1kENT3DE","titleMai":"विदेह डॉक्यूमेन्टरी / नाटक","titleEn":"Videha Documentary / Drama","kind":"YouTube"}
+      ]
+    },
+    {
+      "id": "water-teaching",
+      "titleMai": "गोहि सभक बीच जलसमाधि — अध्ययन संसाधन",
+      "titleEn": "Water-Burial — Teaching Resources",
+      "deckMai": "उपन्यासक शिक्षण-कोर्स, PPT आ अंग्रेजी डॉक्यूमेन्टरी पथ।",
+      "deckEn": "Teaching-course, PPT and documentary routes for Gohi Sabhak Beech Jalsamadhi / Water-Burial Among the Crocodiles.",
+      "items": [
+        {"id":"media-18","titleOriginal":"“Gohi Sabhak Beech Jalsamadhi” English Teaching Course Documentary","url":"https://videha-ejournal.github.io/videha-ejournal/index.html","titleMai":"“गोहि सभक बीच जलसमाधि” — English Teaching Course Documentary","titleEn":"“Gohi Sabhak Beech Jalsamadhi” — English Teaching Course Documentary","kind":"Teaching site"},
+        {"id":"media-19","titleOriginal":"Gohi Sabhak Beech JalsamadhiTeaching Course PPT","url":"https://videha-ejournal.github.io/videha-ejournal/Videha_Teaching_Water_Burial.html","titleMai":"गोहि सभक बीच जलसमाधि — Teaching Course PPT","titleEn":"Gohi Sabhak Beech Jalsamadhi — Teaching Course PPT","kind":"Teaching site"},
+        {"id":"media-20","titleOriginal":"“Water-Burial Among the Crocodiles” English Teaching Course Documentary","url":"https://videha-ejournal.github.io/videha-ejournal/water-burial-css-documentary/Videha_CSS_Documentary.html","titleMai":"“Water-Burial Among the Crocodiles” — English Teaching Course Documentary","titleEn":"“Water-Burial Among the Crocodiles” — English Teaching Course Documentary","kind":"Teaching site"}
+      ]
+    },
+    {
+      "id": "videha-media",
+      "titleMai": "विदेह मीडिया, काव्य आ सुगम्यता",
+      "titleEn": "Videha Media, Poetry & Accessibility",
+      "deckMai": "डॉक्यूमेन्टरी/नाटक, गीत-गजल, बालगीत, Read Aloud, Sign Language, eLearning आ विदेहक मीडिया चैनल।",
+      "deckEn": "Documentary/drama, poetry and children’s songs, Read Aloud, Sign Language, eLearning and Videha media channels.",
+      "items": [
+        {"id":"media-22","titleOriginal":"मिथिलाक ध्वज गीत/ प्रयाण गीत","url":"https://youtu.be/rVk1Y7jjrAk?si=iGRzM5upfH1BHtMR","titleMai":"मिथिलाक ध्वज गीत / प्रयाण गीत","titleEn":"Mithila Flag Song / Marching Song","kind":"YouTube"},
+        {"id":"media-23","titleOriginal":"\"धांगि बाट बनेबाक दाम अगूबार पेने छँ\" (गजेन्द्र ठाकुरक १टा रुबाइ, २टा कता आ ४२ टा गजलक संग्रह)","url":"https://youtu.be/Gh2fCzA1pz8?si=WYQbi-plp_yfJ0EW","titleMai":"\"धांगि बाट बनेबाक दाम अगूबार पेने छँ\" — रुबाइ, कता आ गजल","titleEn":"“Dhangi Baat Banebak Daam Agubaar Pene Chhan” — Rubai, Kata & Ghazals","kind":"YouTube"},
+        {"id":"media-24","titleOriginal":"गजेन्द्र ठाकुरक २४ टा बाल गीत आ १ टा बाल गजल","url":"https://youtu.be/FF7q9IWisC8?si=oFwvB2dtTTG1k2cT","titleMai":"गजेन्द्र ठाकुरक २४ बालगीत आ १ बाल गजल","titleEn":"24 Children’s Songs and 1 Children’s Ghazal by Gajendra Thakur","kind":"YouTube"},
+        {"id":"media-25","titleOriginal":"Maithili Read Aloud & Sign Language","url":"https://www.youtube.com/@videha_ejournal/playlists","titleMai":"मैथिली Read Aloud आ Sign Language","titleEn":"Maithili Read Aloud & Sign Language","kind":"YouTube"},
+        {"id":"media-26","titleOriginal":"Videha eLearning","url":"https://www.youtube.com/@videha-elearning/playlists","titleMai":"विदेह eLearning","titleEn":"Videha eLearning","kind":"YouTube"},
+        {"id":"media-27","titleOriginal":"Gajendra Thakur","url":"https://www.youtube.com/user/ggajendra71/playlists","titleMai":"गजेन्द्र ठाकुर — YouTube Playlists","titleEn":"Gajendra Thakur — YouTube Playlists","kind":"YouTube"},
+        {"id":"media-28","titleOriginal":"Accessible Videha","url":"https://www.youtube.com/@accessible_videha/playlists","titleMai":"Accessible Videha","titleEn":"Accessible Videha","kind":"YouTube"}
+      ]
+    }
+  ]
+}
