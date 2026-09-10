@@ -5,7 +5,7 @@ const root='dist/client/gajendra-preeti';
 const mai=fs.readFileSync(`${root}/index.html`,'utf8');
 const en=fs.readFileSync(`${root}/en/index.html`,'utf8');
 const sourceCatalogue=fs.readFileSync('app/catalogue-view.tsx','utf8');
-const sourceCss=fs.readFileSync('app/globals.css','utf8');
+const sourceReferenceCss=fs.readFileSync('app/reference.css','utf8');
 
 const timelineYears=html=>[...html.matchAll(/class="timeline-year">([^<]+)</g)].map(m=>m[1]);
 const expected=['2002','2004','2007','2008','2009','2012','2016','2018','2019','2022','2024','2026'];
@@ -42,7 +42,7 @@ assert(sourceCatalogue.includes("onChange={e=>setGenre(e.target.value)}"),'Genre
 assert(sourceCatalogue.includes("onChange={e=>setYear(e.target.value)}"),'Year filter must remain interactive.');
 assert(!/Show 20 more works/i.test(en),'English home must not collapse the catalogue behind a 20-more toggle.');
 
-const basisRule=sourceCss.match(/\.basis-breakdown\s*\{([^}]*)\}/s)?.[1]||'';
+const basisRule=sourceReferenceCss.match(/\.basis-breakdown\s*\{([^}]*)\}/s)?.[1]||'';
 assert(basisRule.includes('max-width:90ch'),'Criticism summary count block must retain a readable maximum width.');
 assert(basisRule.includes('line-height:1.9'),'Criticism summary count block must retain generous line-height.');
 
