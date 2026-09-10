@@ -19,9 +19,14 @@ assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),'9e7232f37e5c
 const data=JSON.parse(raw.toString('utf8'));
 assert.equal(data.schema,1);
 assert.equal(data.dreams.entryCount,447);
+assert.equal(data.dreams.sectionCount,10);
+assert.equal(data.dreams.subsectionCount,8);
 assert.equal(data.dreams.entries.length,447);
 assert.deepEqual(data.dreams.entries.map(x=>x.id),Array.from({length:447},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`));
+const dreamNonSections=data.dreams.entries.filter(x=>x.kind!=='section');
+assert.equal(dreamNonSections.length,437,'When Dreams Merge must contain 437 non-section entries');
+assert(dreamNonSections.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12),'Every non-section Dreams entry must retain an original-Maithili source fingerprint');
 assert.equal(data.water.chapterCount,301);
 assert.deepEqual(data.water.chapters.map(x=>x.n),Array.from({length:301},(_,i)=>i-100));
-assert(data.water.chapters.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12));
-console.log('Large Maithili source index verified: When Dreams Merge 447/447; Water-Burial 301/301.');
+assert(data.water.chapters.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12),'Every Water-Burial chapter must retain an original-Maithili source fingerprint');
+console.log('Large Maithili source index verified: When Dreams Merge 447/447 (437 source-fingerprinted non-section entries); Water-Burial 301/301.');
