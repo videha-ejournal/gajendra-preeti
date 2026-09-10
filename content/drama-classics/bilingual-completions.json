@@ -1,0 +1,32 @@
+{
+  "kindLabels": {
+    "drama": {"mai":"नाटक","en":"Drama"},
+    "philosophical-drama-satire": {"mai":"दार्शनिक नाट्य-व्यंग्य","en":"Philosophical drama-satire"},
+    "prahasana": {"mai":"प्रहसन","en":"Farce (Prahasana)"},
+    "satirical-poetry-composite": {"mai":"संयुक्त व्यंग्य-काव्य","en":"Composite satirical poetry"},
+    "four-bhana-collection": {"mai":"चारि भाणक संग्रह","en":"Four-bhāṇa collection"},
+    "satirical-prahasana": {"mai":"व्यंग्य-प्रहसन","en":"Satirical farce"},
+    "prose-romance": {"mai":"गद्य आख्यान","en":"Prose romance"},
+    "ten-act-drama": {"mai":"दस-अङ्कक नाटक","en":"Ten-act drama"},
+    "political-drama": {"mai":"राजनीतिक नाटक","en":"Political drama"},
+    "street-play": {"mai":"चौबटिया-सड़क नाटक","en":"Crossroads street play"},
+    "vedic-children-drama": {"mai":"वैदिक बाल-नाटक","en":"Vedic children's drama"},
+    "social-political-drama": {"mai":"सामाजिक-राजनीतिक नाटक","en":"Social-political drama"},
+    "flood-resilience-children-drama": {"mai":"बाढ़ि-सुरक्षा बाल-नाटक","en":"Flood-resilience children's drama"},
+    "comic-children-drama": {"mai":"हास्य-शिक्षाप्रद बाल-नाटक","en":"Comic educational children's drama"},
+    "contemporary-political-drama": {"mai":"समकालीन राजनीतिक नाटक","en":"Contemporary political drama"},
+    "satirical-drama": {"mai":"व्यंग्य नाटक","en":"Satirical drama"},
+    "historical-memory-drama": {"mai":"इतिहास-स्मृति नाटक","en":"Historical-memory drama"}
+  },
+  "collectionRelation": {
+    "sanskrit-classics": {
+      "mai":"संस्कृतसँ मैथिली अनुवाद — गजेन्द्र ठाकुर; English समकक्ष पाठ उपलब्ध",
+      "en":"Sanskrit-to-Maithili translation by Gajendra Thakur; English counterpart supplied"
+    },
+    "rang-sangam": {
+      "mai":"मैथिली मूल — गजेन्द्र ठाकुर; English रंगमंचीय रूपान्तर उपलब्ध",
+      "en":"Maithili original by Gajendra Thakur; English stage adaptation supplied"
+    }
+  },
+  "rangSangamAuthor": {"mai":"गजेन्द्र ठाकुर","en":"Gajendra Thakur"}
+}
