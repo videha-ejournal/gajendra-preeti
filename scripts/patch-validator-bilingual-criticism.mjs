@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const file='scripts/validate-static.mjs';
+let s=fs.readFileSync(file,'utf8');
+const a=`const files=fs.readdirSync(path.join(root,'criticism')).filter(f=>f.endsWith('.html')).map(f=>'criticism/'+f);\nconst catalogue=JSON.parse(fs.readFileSync('content/catalogue-snapshot.json','utf8'));\nassert.equal(files.length,catalogue.length+1,'Every catalogue entry plus index');\nfiles.push(...fs.readdirSync(path.join(root,'criticism/reception')).filter(f=>f.endsWith('.html')).map(f=>'criticism/reception/'+f));`;
+const b=`const catalogue=JSON.parse(fs.readFileSync('content/catalogue-snapshot.json','utf8'));\nconst criticismMaiFiles=fs.readdirSync(path.join(root,'criticism')).filter(f=>f.endsWith('.html')).map(f=>'criticism/'+f);\nconst criticismEnFiles=fs.readdirSync(path.join(root,'criticism/en')).filter(f=>f.endsWith('.html')).map(f=>'criticism/en/'+f);\nassert.equal(criticismMaiFiles.length,catalogue.length+1,'Every catalogue entry plus Maithili criticism index');\nassert.equal(criticismEnFiles.length,catalogue.length+1,'Every catalogue entry plus English criticism index');\nconst files=[...criticismMaiFiles,...criticismEnFiles,...fs.readdirSync(path.join(root,'criticism/reception')).filter(f=>f.endsWith('.html')).map(f=>'criticism/reception/'+f)];`;
+assert(s.includes(a),'Validator criticism file-list patch point changed');s=s.replace(a,b);
+const c=`  if(file.startsWith('criticism/')){assert.match(source,/<html lang=\"en\"/);assert.match(source,/THE VIDEHA LITERARY ATLAS/);}`;
+const d=`  if(file.startsWith('criticism/en/')||file.startsWith('criticism/reception/')){assert.match(source,/<html lang=\"en\"/);assert.match(source,/THE VIDEHA LITERARY ATLAS/);} else if(file.startsWith('criticism/')){assert.match(source,/<html lang=\"mai\"/);assert.match(source,/THE VIDEHA LITERARY ATLAS/);}`;
+assert(s.includes(c),'Validator language patch point changed');s=s.replace(c,d);
+const e=`for(const r of readings){const text=read(\`criticism/\${r.id}.html\`);assert.match(text,/id=\"evidence\"/);assert.match(text,/id=\"question\"/);assert.match(text,/prepared with AI assistance/);}`;
+const f=`for(const r of readings){for(const file of [\`criticism/\${r.id}.html\`,\`criticism/en/\${r.id}.html\`]){const text=read(file);assert.match(text,/id=\"evidence\"/);assert.match(text,/id=\"question\"/);assert.match(text,/AI-(?:सहायता|assistance)|AI assistance/);}}`;
+assert(s.includes(e),'Validator reading-page patch point changed');s=s.replace(e,f);
+const g=`if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert(source.includes('no named human editorial review is recorded'));}`;
+const h=`if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert.match(source,/no named human editorial review is recorded|कोनो नामित मानवीय सम्पादकीय समीक्षा दर्ज नहि अछि/);}`;
+assert(s.includes(g),'Validator review-status patch point changed');s=s.replace(g,h);
+fs.writeFileSync(file,s);
+console.log('Patched static validator for paired Maithili/English Reading Room routes.');
