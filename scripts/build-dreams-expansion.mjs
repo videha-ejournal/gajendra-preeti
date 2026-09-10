@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const data=JSON.parse(fs.readFileSync('content/dreams-expansion.json','utf8'));
 const file='public/when-dreams-merge/index.html';
-const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
+const e=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 assert.equal(data.chapters.length,11);
 // Correct the two annex anchors against the authoritative 447-record Maithili index.
 const youAndI=data.chapters.find(c=>c.title==='You and I: the epic argument inside belonging');
