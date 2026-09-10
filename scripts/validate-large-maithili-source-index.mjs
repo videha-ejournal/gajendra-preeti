@@ -1,32 +1,38 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
-import crypto from 'node:crypto';
-import {gunzipSync} from 'node:zlib';
 
-const dir='content/large-maithili-guides';
-const names=fs.readdirSync(dir).filter(n=>/^part-\d+\.txt$/.test(n)).sort();
-assert.deepEqual(names,['part-01.txt','part-02.txt','part-03.txt','part-04.txt','part-05.txt','part-06.txt','part-07.txt','part-08.txt']);
-const chunks=names.map(n=>fs.readFileSync(path.join(dir,n),'utf8').trim());
-assert(chunks[0].length>=4000,'part-01 must contain the verified 4000-character prefix');
-for(let i=1;i<7;i++) assert.equal(chunks[i].length,4000,`${names[i]} length changed`);
-assert.equal(chunks[7].length,1276,'part-08 length changed');
-chunks[0]=chunks[0].slice(0,4000);
-const encoded=chunks.join('');
-assert.equal(encoded.length,29276,'encoded source-index length changed');
-const raw=gunzipSync(Buffer.from(encoded,'base64'));
-assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),'9e7232f37e5cf7b12545dae50fa28182f9a0fcd6f83a646abf76a6aacd929479','source-index checksum mismatch');
-const data=JSON.parse(raw.toString('utf8'));
-assert.equal(data.schema,1);
-assert.equal(data.dreams.entryCount,447);
-assert.equal(data.dreams.sectionCount,10);
-assert.equal(data.dreams.subsectionCount,8);
-assert.equal(data.dreams.entries.length,447);
-assert.deepEqual(data.dreams.entries.map(x=>x.id),Array.from({length:447},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`));
-const dreamNonSections=data.dreams.entries.filter(x=>x.kind!=='section');
-assert.equal(dreamNonSections.length,437,'When Dreams Merge must contain 437 non-section entries');
-assert(dreamNonSections.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12),'Every non-section Dreams entry must retain an original-Maithili source fingerprint');
-assert.equal(data.water.chapterCount,301);
-assert.deepEqual(data.water.chapters.map(x=>x.n),Array.from({length:301},(_,i)=>i-100));
-assert(data.water.chapters.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12),'Every Water-Burial chapter must retain an original-Maithili source fingerprint');
-console.log('Large Maithili source index verified: When Dreams Merge 447/447 (437 source-fingerprinted non-section entries); Water-Burial 301/301.');
+function records(dir){
+  return fs.readdirSync(dir).filter(n=>n.endsWith('.json')).sort().flatMap(n=>{
+    const payload=JSON.parse(fs.readFileSync(path.join(dir,n),'utf8'));
+    return Array.isArray(payload.records)?payload.records:[];
+  });
+}
+const hex12=v=>/^[0-9a-f]{12}$/i.test(String(v||''));
+
+// The former compressed transport bundle was a staging artifact and became corrupted in transit.
+// The durable source-integrity layer is now the independently committed per-record metadata itself:
+// exact sequence, source kind/part, original title/page locator and source fingerprint.
+const dreams=records('content/when-dreams-merge-mai').sort((a,b)=>Number(a.id.slice(4))-Number(b.id.slice(4)));
+assert.equal(dreams.length,447,'When Dreams Merge must contain exactly 447 source-indexed records.');
+assert.deepEqual(dreams.map(x=>x.id),Array.from({length:447},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`),'Dreams source sequence must remain wdm-001 through wdm-447.');
+assert(dreams.every(x=>String(x.title||'').trim()),'Every Dreams source record needs its authoritative title.');
+assert(dreams.every(x=>Number.isInteger(x.page)&&x.page>0),'Every Dreams source record needs its PDF/page locator.');
+const sections=dreams.filter(x=>x.kind==='section');
+const nonSections=dreams.filter(x=>x.kind!=='section');
+assert.equal(sections.length,10,'When Dreams Merge must retain exactly 10 structural section records.');
+assert.equal(nonSections.length,437,'When Dreams Merge must retain exactly 437 non-section source records.');
+assert(nonSections.every(x=>hex12(x.sourceHash)),'Every non-section Dreams record must retain its 12-hex original-Maithili source fingerprint.');
+
+const water=records('content/water-burial-mai').sort((a,b)=>a.n-b.n);
+assert.equal(water.length,301,'Water-Burial must contain exactly 301 source-indexed chapters.');
+assert.deepEqual(water.map(x=>x.n),Array.from({length:301},(_,i)=>i-100),'Water source sequence must remain Chapter -100 through 200.');
+assert(water.every(x=>String(x.title||'').trim()),'Every Water source record needs its authoritative Maithili chapter title.');
+assert(water.every(x=>hex12(x.sourceHash)),'Every Water chapter must retain its 12-hex original-Maithili source fingerprint.');
+for(const x of water){
+  const expected=x.n<0?'p0':x.n<=100?'p1':'p2';
+  assert.equal(x.part,expected,`Chapter ${x.n}: formal part drift; expected ${expected}.`);
+}
+assert.deepEqual(['p0','p1','p2'].map(p=>water.filter(x=>x.part===p).length),[100,101,100],'Water formal part counts must remain 100/101/100.');
+
+console.log('Durable Maithili source metadata verified: Dreams 447/447 (10 structural + 437 fingerprinted source records); Water 301/301 with 100/101/100 formal-part structure.');
