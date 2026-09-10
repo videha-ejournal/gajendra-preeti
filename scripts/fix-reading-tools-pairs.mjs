@@ -1,0 +1,10 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const file='public/reading-tools.js';
+let s=fs.readFileSync(file,'utf8');
+const old=`  const isMai=!location.pathname.includes('/en/')&&!location.pathname.includes('/criticism/');\n  const englishURL=base+'en/'+(location.pathname.includes('/criticism/')?'#criticism':location.hash);\n  const maiURL=base+(location.pathname.includes('/criticism/')?'#criticism':location.hash);`;
+const newer=`  const pathname=location.pathname,hash=location.hash;\n  let isMai=!pathname.includes('/en/'),englishURL=base+'en/'+hash,maiURL=base+hash;\n  const criticismRoot=base+'criticism/';\n  if(pathname.startsWith(criticismRoot+'en/')){const tail=pathname.slice((criticismRoot+'en/').length);isMai=false;englishURL=pathname+hash;maiURL=criticismRoot+tail+hash;}\n  else if(pathname.startsWith(criticismRoot+'reception/')){isMai=false;englishURL=pathname+hash;maiURL=base+'#criticism';}\n  else if(pathname.startsWith(criticismRoot)){const tail=pathname.slice(criticismRoot.length);isMai=true;maiURL=pathname+hash;englishURL=criticismRoot+'en/'+tail+hash;}\n  else if(pathname.startsWith(base+'when-dreams-merge/')||pathname.startsWith(base+'water-burial-among-the-crocodiles/')){isMai=false;englishURL=pathname+hash;maiURL=base+'#paths';}`;
+assert(s.includes(old),'Reading-tools language routing patch point changed');
+s=s.replace(old,newer);
+fs.writeFileSync(file,s);
+console.log('Patched shared reading tools with explicit criticism edition pairing and no false Maithili label on still-English-only guides.');
