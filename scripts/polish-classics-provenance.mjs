@@ -13,12 +13,21 @@ assert.equal(classical.length,4,'Expected exactly four Sanskrit philosophical wo
 assert.equal(drama.length,13,'Expected exactly thirteen Sanskrit drama/classics works.');
 assert.deepEqual(drama.map(x=>x.order),Array.from({length:13},(_,i)=>i+1),'Sanskrit drama/classics order must remain 1..13.');
 
-const chain={sourceLanguage:'sa',intermediateLanguage:'mai',finalLanguage:'en',display:'Sanskrit → Maithili → English'};
+const translator={name:'Gajendra Thakur',nameMai:'गजेन्द्र ठाकुर'};
+const chain={
+ sourceLanguage:'sa',
+ intermediateLanguage:'mai',
+ finalLanguage:'en',
+ intermediateTranslator:translator,
+ finalTranslator:translator,
+ display:'Sanskrit → Maithili (Gajendra Thakur) → English (Gajendra Thakur)'
+};
 const provenance=(scope,works)=>({scope,count:works.length,translationChain:chain,works:works.map((w,i)=>({position:i+1,id:w.id,titleMai:w.titleMai,titleEn:w.titleEn}))});
 const classicalProv=provenance('Four Sanskrit philosophical works',classical);
 const dramaProv=provenance('Thirteen Sanskrit drama/classics works',drama);
 
 function workGraph(name,works){
+ const gajendra={'@type':'Person','@id':'https://videha-ejournal.github.io/gajendra-preeti/#gajendra',name:'Gajendra Thakur',alternateName:'गजेन्द्र ठाकुर'};
  return {
   '@context':'https://schema.org',
   '@type':'ItemList',
@@ -27,7 +36,7 @@ function workGraph(name,works){
   itemListElement:works.map((w,i)=>({
    '@type':'ListItem',position:i+1,item:{
     '@type':'CreativeWork',name:w.titleEn||w.titleMai,inLanguage:'sa',
-    workTranslation:{'@type':'CreativeWork',name:w.titleMai,inLanguage:'mai',workTranslation:{'@type':'CreativeWork',name:w.titleEn,inLanguage:'en'}}
+    workTranslation:{'@type':'CreativeWork',name:w.titleMai,inLanguage:'mai',translator:gajendra,workTranslation:{'@type':'CreativeWork',name:w.titleEn,inLanguage:'en',translator:gajendra}}
    }
   }))
  };
@@ -37,14 +46,16 @@ function patchRoute(file,{en,count,labelEn,labelMai,works}){
  let html=fs.readFileSync(file,'utf8');
  const marker='data-translation-provenance="sa-mai-en"';
  const note=en
-  ? `<aside class="translation-chain" ${marker}><strong>Translation provenance</strong><span>${count} ${labelEn}: Sanskrit originals → Maithili translations → English translations.</span></aside>`
-  : `<aside class="translation-chain" ${marker}><strong>अनुवाद-परम्परा</strong><span>${count} ${labelMai}: संस्कृत मूल → मैथिली अनुवाद → English अनुवाद।</span></aside>`;
- if(!html.includes(marker)){
+  ? `<aside class="translation-chain" ${marker}><strong>Translation provenance</strong><span>${count} ${labelEn}: Sanskrit originals → Maithili translations by Gajendra Thakur → English translations by Gajendra Thakur.</span></aside>`
+  : `<aside class="translation-chain" ${marker}><strong>अनुवाद-परम्परा</strong><span>${count} ${labelMai}: संस्कृत मूल → गजेन्द्र ठाकुरक मैथिली अनुवाद → गजेन्द्र ठाकुरक English अनुवाद।</span></aside>`;
+ if(html.includes(marker)) html=html.replace(/<aside class="translation-chain" data-translation-provenance="sa-mai-en">[\s\S]*?<\/aside>/,note);
+ else {
   assert(html.includes('</header>'),`${file}: hero/header close not found for provenance note.`);
   html=html.replace('</header>',note+'</header>');
  }
- const json=JSON.stringify(workGraph(en?`${count} works: Sanskrit to Maithili to English translation chain`:`${count} कृति: संस्कृतसँ मैथिली, तकर बाद English अनुवाद-क्रम`,works)).replace(/</g,'\\u003c');
- if(!html.includes('data-provenance-jsonld="sa-mai-en"')){
+ const json=JSON.stringify(workGraph(en?`${count} works: Sanskrit to Maithili to English translations by Gajendra Thakur`:`${count} कृति: गजेन्द्र ठाकुरक संस्कृतसँ मैथिली आ मैथिलीसँ English अनुवाद-क्रम`,works)).replace(/</g,'\\u003c');
+ if(html.includes('data-provenance-jsonld="sa-mai-en"')) html=html.replace(/<script type="application\/ld\+json" data-provenance-jsonld="sa-mai-en">[\s\S]*?<\/script>/,`<script type="application/ld+json" data-provenance-jsonld="sa-mai-en">${json}</script>`);
+ else {
   assert(html.includes('</head>'),`${file}: head close not found for provenance JSON-LD.`);
   html=html.replace('</head>',`<script type="application/ld+json" data-provenance-jsonld="sa-mai-en">${json}</script></head>`);
  }
@@ -70,4 +81,4 @@ for(const [dir,data] of [['public/classical-philosophy',classicalProv],['public/
  fs.writeFileSync(cssFile,css,'utf8');
 }
 
-console.log('Added verified language provenance: 13 Sanskrit drama/classics + 4 Sanskrit philosophical works follow Sanskrit → Maithili → English.');
+console.log('Added verified provenance: 13 Sanskrit drama/classics + 4 Sanskrit philosophical works were translated Sanskrit → Maithili → English, both stages by Gajendra Thakur.');
