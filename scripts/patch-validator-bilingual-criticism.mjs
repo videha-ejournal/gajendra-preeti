@@ -14,5 +14,10 @@ assert(s.includes(e),'Validator reading-page patch point changed');s=s.replace(e
 const g=`if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert(source.includes('no named human editorial review is recorded'));}`;
 const h=`if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert.match(source,/no named human editorial review is recorded|कोनो नामित मानवीय सम्पादकीय समीक्षा दर्ज नहि अछि/);}`;
 assert(s.includes(g),'Validator review-status patch point changed');s=s.replace(g,h);
+
+const sitemapNeedle=`assert.equal(sitemapUrls.length,idSets.size+standalone.length,'Every indexed page and standalone guide belongs in sitemap');`;
+const sitemapPatch=`const pairedExtra=[\n ['when-dreams-merge/index.html',BASE+'when-dreams-merge/','mai'],\n ['when-dreams-merge/en/index.html',BASE+'when-dreams-merge/en/','en'],\n ['water-burial-among-the-crocodiles/en/index.html',BASE+'water-burial-among-the-crocodiles/en/','en'],\n ['media-learning/index.html',BASE+'media-learning/','mai'],\n ['media-learning/en/index.html',BASE+'media-learning/en/','en']\n];\nassert.equal(sitemapUrls.length,idSets.size+standalone.length+pairedExtra.length,'Every indexed page and standalone guide belongs in sitemap');\nfor(const [file,url,lang] of pairedExtra){\n assert(fs.existsSync(path.join(root,file)),\`Missing paired standalone route: \${file}\`);\n assert(sitemapUrls.includes(url),\`Missing sitemap paired route: \${file}\`);\n const source=read(file);\n assert(source.includes(\`rel=\"canonical\" href=\"\${url}\"\`),\`Canonical: \${file}\`);\n assert.match(source,new RegExp(\`<html[^>]*lang=[\"']\${lang}[\"']\`),\`Language: \${file}\`);\n assert(source.includes('hreflang=\"mai\"')&&source.includes('hreflang=\"en\"'),\`Language alternates: \${file}\`);\n}`;
+assert(s.includes(sitemapNeedle),'Validator sitemap patch point changed');s=s.replace(sitemapNeedle,sitemapPatch);
+
 fs.writeFileSync(file,s);
-console.log('Patched static validator for paired Maithili/English Reading Room and Reception routes.');
+console.log('Patched static validator for paired Reading Room, Reception, large-book and Media & Learning routes.');
