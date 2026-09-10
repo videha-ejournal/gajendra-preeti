@@ -1,33 +1,44 @@
 {
-  "scope":"All site-facing HTML/data families in videha-ejournal/gajendra-preeti, not only Drama & Sanskrit Classics.",
-  "policy":"A counterpart means real Maithili and English display content. The 41-language Google Translate control is assistive only and does not satisfy bilingual completeness. Source indexing alone also does not count as a completed counterpart.",
-  "paired":[
+  "scope": "All site-facing HTML/data families in videha-ejournal/gajendra-preeti, not only Drama & Sanskrit Classics.",
+  "policy": "A counterpart means real Maithili and English display content. The 41-language Google Translate control is assistive only and does not satisfy bilingual completeness. Source indexing alone also does not count as a completed counterpart.",
+  "paired": [
     {"id":"home","mai":"/gajendra-preeti/","en":"/gajendra-preeti/en/","note":"Dedicated Maithili and English application pages."},
     {"id":"catalogue","source":"app/works.json","note":"Visible work metadata is stored as paired title/titleEn, kind/kindEn, name/nameEn and note/noteEn fields; enforced by the site-wide audit."},
     {"id":"parallel-philosophy","mai":"/gajendra-preeti/parallel-philosophy/","en":"/gajendra-preeti/parallel-philosophy/en/","records":172},
     {"id":"parallel-history","mai":"/gajendra-preeti/parallel-history/","en":"/gajendra-preeti/parallel-history/en/","records":178},
     {"id":"classical-philosophy","mai":"/gajendra-preeti/classical-philosophy/","en":"/gajendra-preeti/classical-philosophy/en/","records":32},
     {"id":"drama-classics","mai":"/gajendra-preeti/drama-classics/","en":"/gajendra-preeti/drama-classics/en/","records":22},
+    {"id":"when-dreams-merge","mai":"/gajendra-preeti/when-dreams-merge/","en":"/gajendra-preeti/when-dreams-merge/en/","records":447,"expandedReadings":11,"note":"Root/default route is authored/source-grounded Maithili; preserved English guide lives under /en/. Structural title records remain structural rather than being turned into invented poems."},
+    {"id":"water-burial-among-the-crocodiles","mai":"/gajendra-preeti/water-burial-among-the-crocodiles/","en":"/gajendra-preeti/water-burial-among-the-crocodiles/en/","records":301,"parts":3,"arcs":19,"motifs":18,"tracks":3,"additionalRecords":5,"note":"Root/default route is authored/source-grounded Maithili; preserved English guide lives under /en/. Source caveats, numerical tensions, metafictional structure and the open ending remain unreconciled externally."},
+    {"id":"media-learning","mai":"/gajendra-preeti/media-learning/","en":"/gajendra-preeti/media-learning/en/","records":28,"groups":4,"note":"All 28 URLs supplied in links(1).docx are preserved in a bilingual curated hub; the three Water-Burial teaching resources are additionally featured within both Water guide editions."},
     {"id":"criticism","mai":"/gajendra-preeti/criticism/","en":"/gajendra-preeti/criticism/en/","records":59,"note":"All Reading Room records and both indices are paired and asserted by scripts/audit-site-bilingual.mjs."},
     {"id":"criticism-reception","mai":"/gajendra-preeti/criticism/reception/","en":"/gajendra-preeti/criticism/reception/en/","records":63,"note":"All 63 contributor-perspective records and the three route pairs are asserted by scripts/audit-site-bilingual.mjs."}
   ],
-  "sourceIndexed":[
+  "sourceIndexed": [
     {"id":"when-dreams-merge","source":"User-supplied authoritative Maithili DOCX: स्वप्न_मे_मिज्झर_होइत_8x11_Hardback_FINAL_COMPLETE(1).docx","records":447,"sectionRecords":10,"nonSectionRecords":437,"internalSubsections":8,"mapping":"Exact book order; wdm-001 through wdm-447. All 437 non-section records retain an original-Maithili source fingerprint.","validator":"scripts/validate-large-maithili-source-index.mjs"},
     {"id":"water-burial-among-the-crocodiles","source":"User-supplied authoritative Maithili archive: water burial maithili.zip","records":301,"chapterRange":"-100 through 200","mapping":"Exact chapter number; every chapter retains its Maithili title and original-Maithili source fingerprint.","validator":"scripts/validate-large-maithili-source-index.mjs"}
   ],
-  "summaryProgress":[
+  "summaryProgress": [
     {"id":"when-dreams-merge","completed":447,"total":447,"range":"wdm-001 through wdm-447","coverage":"All 447 primary contents-summary records complete, including the structural section records, the Mahabharata/त्वञ्चाहञ्च annex, all 28 असञ्जाति मन sargs, and the translated Second Person Singular preface records.","basis":"Full source passages recovered from the supplied authoritative Maithili DOCX; summaries are written from the Maithili source rather than reverse-translated from the English cards, and structural title records are not treated as invented poems.","validator":"scripts/validate-large-maithili-summary-progress.mjs"},
     {"id":"water-burial-among-the-crocodiles","completed":301,"total":301,"range":"Chapters -100 through 200","coverage":"All 301 chapter summaries complete, from the -100…-1 prehistory through Chapter 200 नामक पहरुआ; the ending preserves the source's explicit open continuation into the unfinished second form of विदेह नाट्य उत्सव rather than imposing a sealed closure.","basis":"Full chapter passages recovered from the supplied Maithili trilogy DOCX; summaries preserve source caveats, unresolved experiences, metafictional structure, numerical tensions, and source-internal legends instead of reconciling them externally.","validator":"scripts/validate-large-maithili-summary-progress.mjs"}
   ],
-  "needsCounterpart":[
-    {"id":"when-dreams-merge","currentLanguage":"en","currentRoute":"/gajendra-preeti/when-dreams-merge/","missing":"Maithili guide-frame counterpart after primary-summary completion","scope":"11 expanded readings plus all guide UI/method metadata; all 447 primary contents-summary records are complete","progress":"447 of 447 source-grounded Maithili primary records completed; expanded readings and guide-frame metadata remain, so the route stays English-only until genuine display parity is complete."},
-    {"id":"water-burial-among-the-crocodiles","currentLanguage":"en","currentRoute":"/gajendra-preeti/water-burial-among-the-crocodiles/","missing":"Maithili guide-frame counterpart after chapter-summary completion","scope":"Narrative-arc metadata, motif/filter labels and all guide UI; all 301 chapter summaries are complete","progress":"301 of 301 source-grounded Maithili chapter summaries completed; arc/filter/UI metadata remains, so the route stays English-only until genuine display parity is complete."}
-  ],
-  "uxIssue":{
-    "file":"public/reading-tools.js",
-    "problem":"The two large book-guide roots remain English-only while their genuine Maithili display counterparts are unfinished, so their language switch must not pretend that the root is already Maithili.",
-    "fix":"Keep the current English-only large-guide handling until authored/source-grounded Maithili display parity is completed; only then move English to /en/, make root/default Maithili, and activate explicit per-family counterpart links. Reading Room and Reception already have real paired routes."
+  "needsCounterpart": [],
+  "uxIssue": {
+    "status": "resolved",
+    "file": "public/reading-tools.js",
+    "fix": "The shared language switch now pairs Reading Room, Reception, When Dreams Merge, Water-Burial and Media & Learning explicitly. Root/default routes are Maithili and /en/ routes are English for the completed paired families."
   },
-  "sourceIndexIntegrity":{"directory":"content/large-maithili-guides/","decodedSha256":"9e7232f37e5cf7b12545dae50fa28182f9a0fcd6f83a646abf76a6aacd929479","prebuildValidation":true},
-  "completionRule":"Do not mark the repository bilingual-complete until needsCounterpart is empty and the generated route audit passes with root/default lang=mai and /en/ lang=en for every paired site family."
+  "sourceIndexIntegrity": {
+    "method": "Durable validation from the committed primary record files rather than the earlier compressed staging transport.",
+    "dreams": "Exact wdm-001 through wdm-447 sequence, 10 structural records, 437 source-fingerprinted non-section records.",
+    "water": "Exact Chapter -100 through 200 sequence, 301 source-fingerprinted records with the 100/101/100 formal-part structure.",
+    "validators": ["scripts/validate-large-maithili-source-index.mjs","scripts/validate-large-maithili-summary-progress.mjs","scripts/validate-large-maithili-guide-frame.mjs"],
+    "prebuildValidation": true
+  },
+  "generatedAudit": {
+    "validator": "scripts/audit-site-bilingual.mjs",
+    "expected": "10/10 route families paired; Dreams 447/447; Water 301/301; media links 28/28; Reading Room 59/59; Reception 63/63."
+  },
+  "completionRule": "Repository-wide bilingual counterpart completion requires needsCounterpart to be empty and the generated route audit to pass with root/default lang=mai and /en/ lang=en for every paired site family.",
+  "completionState": "complete-pending-merge-to-main"
 }
