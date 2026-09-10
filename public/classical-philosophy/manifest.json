@@ -1,0 +1,17 @@
+{
+  "titleMai":"चारि शास्त्रीय दर्शन-ग्रन्थ — सम्पूर्ण द्विभाषी अध्ययन-सहचर",
+  "titleEn":"Four Classical Philosophy Books — Complete Dense Bilingual Guide",
+  "recordCount":32,
+  "bookCount":4,
+  "translationAnnexureCount":8,
+  "bookCounts":{"atmatattvaviveka":4,"bhamati":4,"nyayakusumanjali":12,"tattvacintamani":12},
+  "books":[
+    {"id":"atmatattvaviveka","name":{"mai":"आत्मतत्त्वविवेक","en":"Ātmatattvaviveka"},"author":"Udayanācārya","translator":"Gajendra Thakur","count":4},
+    {"id":"bhamati","name":{"mai":"भामती (चतुःसूत्री)","en":"Bhamati (Chatussutri)"},"author":"Vācaspati Miśra","translator":"Gajendra Thakur","count":4},
+    {"id":"nyayakusumanjali","name":{"mai":"न्यायकुसुमाञ्जलि","en":"Nyāyakusumāñjali"},"author":"Udayanācārya","translator":"Gajendra Thakur","count":12},
+    {"id":"tattvacintamani","name":{"mai":"तत्त्वचिन्तामणि","en":"Tattvacintāmaṇi"},"author":"Gaṅgeśa Upādhyāya","translator":"Gajendra Thakur","count":12}
+  ],
+  "files":["books/atmatattvaviveka.json","books/bhamati.json","books/nyayakusumanjali.json","books/tattvacintamani.json"],
+  "methodMai":"चारू स्रोत DOCX केर मैथिली पहिल अर्ध आ अंग्रेजी दोसर अर्धकेँ स्रोत-क्रमानुसार जोड़ल गेल अछि। प्रत्येक शीर्ष-स्तरीय अध्याय/परिशिष्ट सुरक्षित अछि; संस्कृत मूलक अनुवादवला परिशिष्टक आन्तरिक तर्क-क्रम अलग सँ नक्साबद्ध अछि।",
+  "methodEn":"The Maithili first half and English second half of each source DOCX are paired by source order. Every top-level chapter/appendix is retained; annexures translating Sanskrit texts preserve their internal argumentative sequence as detailed structural maps."
+}
