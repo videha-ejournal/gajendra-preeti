@@ -40,5 +40,5 @@
     "expected": "10/10 route families paired; Dreams 447/447; Water 301/301; media links 28/28; Reading Room 59/59; Reception 63/63."
   },
   "completionRule": "Repository-wide bilingual counterpart completion requires needsCounterpart to be empty and the generated route audit to pass with root/default lang=mai and /en/ lang=en for every paired site family.",
-  "completionState": "complete-pending-merge-to-main"
+  "completionState": "complete"
 }
