@@ -1,0 +1,27 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
+
+const dir='content/large-maithili-guides';
+const names=fs.readdirSync(dir).filter(n=>/^part-\d+\.txt$/.test(n)).sort();
+assert.deepEqual(names,['part-01.txt','part-02.txt','part-03.txt','part-04.txt','part-05.txt','part-06.txt','part-07.txt','part-08.txt']);
+const chunks=names.map(n=>fs.readFileSync(path.join(dir,n),'utf8').trim());
+assert(chunks[0].length>=4000,'part-01 must contain the verified 4000-character prefix');
+for(let i=1;i<7;i++) assert.equal(chunks[i].length,4000,`${names[i]} length changed`);
+assert.equal(chunks[7].length,1276,'part-08 length changed');
+chunks[0]=chunks[0].slice(0,4000);
+const encoded=chunks.join('');
+assert.equal(encoded.length,29276,'encoded source-index length changed');
+const raw=gunzipSync(Buffer.from(encoded,'base64'));
+assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),'9e7232f37e5cf7b12545dae50fa28182f9a0fcd6f83a646abf76a6aacd929479','source-index checksum mismatch');
+const data=JSON.parse(raw.toString('utf8'));
+assert.equal(data.schema,1);
+assert.equal(data.dreams.entryCount,447);
+assert.equal(data.dreams.entries.length,447);
+assert.deepEqual(data.dreams.entries.map(x=>x.id),Array.from({length:447},(_,i)=>`wdm-${String(i+1).padStart(3,'0')}`));
+assert.equal(data.water.chapterCount,301);
+assert.deepEqual(data.water.chapters.map(x=>x.n),Array.from({length:301},(_,i)=>i-100));
+assert(data.water.chapters.every(x=>String(x.title||'').trim()&&String(x.sourceHash||'').length===12));
+console.log('Large Maithili source index verified: When Dreams Merge 447/447; Water-Burial 301/301.');
