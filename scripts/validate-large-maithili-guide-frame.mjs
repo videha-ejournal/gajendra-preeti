@@ -21,7 +21,7 @@ const water=JSON.parse(fs.readFileSync('content/water-burial-mai/guide-frame.jso
 assert.equal(water.language,'mai');
 assert.equal(water.parts.length,3,'Water guide must retain three principal parts.');
 assert.deepEqual(water.parts.map(p=>p.count),[100,101,100]);
-assert.equal(water.arcs.length,18,'Water guide must retain the 18 reader-facing narrative arcs in the current manifest.');
+assert.equal(water.arcs.length,19,'Water guide must retain the 19 reader-facing narrative arcs in the current manifest.');
 assert.equal(water.motifs.length,18,'Water guide must have 18 localized motif filters.');
 assert.equal(water.additional.length,5,'Water guide must have five post-chapter guide records.');
 const nums=[];
@@ -37,4 +37,4 @@ assert.equal(new Set(water.motifs.map(m=>m.id)).size,18,'Water motif ids must be
 assert(water.motifs.every(m=>String(m.label||'').trim().length>=4),'Every Water motif needs a Maithili label.');
 assert(water.additional.every(a=>String(a.summary||'').trim().length>=90),'Every Water additional record needs a substantive Maithili summary.');
 
-console.log('Large-guide Maithili guide-frame parity verified: Dreams 11 expanded readings; Water 3 parts / 18 arcs / 18 motifs / 5 additional records.');
+console.log('Large-guide Maithili guide-frame parity verified: Dreams 11 expanded readings; Water 3 parts / 19 arcs / 18 motifs / 5 additional records.');
