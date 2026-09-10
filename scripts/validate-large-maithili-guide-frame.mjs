@@ -1,6 +1,15 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
+const dreamsFrame=JSON.parse(fs.readFileSync('content/when-dreams-merge-mai/guide-frame.json','utf8'));
+assert.equal(dreamsFrame.language,'mai');
+assert.equal(dreamsFrame.sections.length,10,'Dreams must have 10 localized top-level section overviews.');
+assert.deepEqual(dreamsFrame.sections.map(s=>s.id),['wdm-001','wdm-005','wdm-022','wdm-106','wdm-131','wdm-211','wdm-243','wdm-278','wdm-376','wdm-396']);
+assert(String(dreamsFrame.summary||'').trim().length>=180,'Dreams hero summary must be substantive Maithili.');
+assert(String(dreamsFrame.method||'').trim().length>=180,'Dreams method must be substantive Maithili.');
+assert(dreamsFrame.sections.every(s=>String(s.summary||'').trim().length>=100),'Every Dreams section needs a substantive Maithili overview.');
+for(const key of ['searchLabel','searchPlaceholder','sectionLabel','allSections','reset','loading','noResults','expandedHeading','carryQuestion','sourceLabel','englishEdition']) assert(String(dreamsFrame.ui?.[key]||'').trim(),`Dreams UI label ${key} required`);
+
 const dreams=JSON.parse(fs.readFileSync('content/when-dreams-merge-mai/expanded-readings.json','utf8'));
 assert.equal(dreams.language,'mai');
 assert.equal(dreams.discussions.length,11,'Dreams must have 11 Maithili expanded readings.');
@@ -37,4 +46,11 @@ assert.equal(new Set(water.motifs.map(m=>m.id)).size,18,'Water motif ids must be
 assert(water.motifs.every(m=>String(m.label||'').trim().length>=4),'Every Water motif needs a Maithili label.');
 assert(water.additional.every(a=>String(a.summary||'').trim().length>=90),'Every Water additional record needs a substantive Maithili summary.');
 
-console.log('Large-guide Maithili guide-frame parity verified: Dreams 11 expanded readings; Water 3 parts / 19 arcs / 18 motifs / 5 additional records.');
+const waterUi=JSON.parse(fs.readFileSync('content/water-burial-mai/ui.json','utf8'));
+assert.equal(waterUi.language,'mai');
+assert.equal(waterUi.tracks.length,3,'Water must retain three localized story-atlas tracks.');
+assert(Array.isArray(waterUi.overview)&&waterUi.overview.length===2&&waterUi.overview.every(p=>p.length>=120),'Water overview requires two substantive Maithili paragraphs.');
+assert(Array.isArray(waterUi.labels?.methodParagraphs)&&waterUi.labels.methodParagraphs.length===2,'Water method requires two Maithili paragraphs.');
+for(const key of ['completeGuide','explore','partsHeading','arcsHeading','tracksHeading','chapterGuideHeading','search','part','arc','theme','reset','loading','after200','methodHeading','chapter','englishEdition']) assert(String(waterUi.labels?.[key]||'').trim(),`Water UI label ${key} required`);
+
+console.log('Large-guide Maithili guide-frame parity verified: Dreams 10 section overviews + 11 expanded readings; Water 3 parts / 19 arcs / 18 motifs / 3 tracks / 5 additional records + localized UI.');
