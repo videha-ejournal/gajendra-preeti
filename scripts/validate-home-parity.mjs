@@ -61,7 +61,9 @@ assert(sourceCatalogue.includes("const filtered=works.filter"),'Shared catalogue
 assert(sourceCatalogue.includes("onChange={e=>setGenre(e.target.value)}"),'Genre filter must remain interactive.');
 assert(sourceCatalogue.includes("onChange={e=>setYear(e.target.value)}"),'Year filter must remain interactive.');
 assert(!/Show 20 more works/i.test(en),'English home must not collapse the catalogue behind a 20-more toggle.');
-assert(sourceCatalogue.includes('source language not recorded in the current Videha listing'),'Translation source language must not be inferred when the source catalogue does not state it.');
+assert(sourceCatalogue.includes('Translated from English into Maithili'),'Children translation cards must state English → Maithili provenance.');
+assert(sourceCatalogue.includes('अंग्रेजीसँ मैथिलीमे अनूदित'),'Maithili cards must state English → Maithili provenance.');
+assert(!sourceCatalogue.includes('source language not recorded'),'Confirmed source-language provenance must not be replaced by an uncertainty disclaimer.');
 assert(sourceCatalogue.includes("Cite':'उद्धरण'"),'Per-work cite anchors must remain visible in both editions.');
 assert(readingTools.includes('Cite this page')&&readingTools.includes('Suggested citation'),'Shared Reading Tools must retain the actual citation generator.');
 
@@ -72,7 +74,7 @@ assert(sourceReferenceCss.includes('.timeline .timeline-platform'),'Platform mil
 assert(sourceReferenceCss.includes('.catalogue-verification'),'Global verification note must have deliberate styling.');
 
 assert(sourceStructured.includes("isBook?'Book':'CreativeWork'"),'Book-like catalogue records must emit schema.org Book JSON-LD.');
-assert(sourceStructured.includes("w.kindEn==='Translation'?{inLanguage:'mai'}:{}"),'Translation JSON-LD must identify Maithili target language without inventing a source language.');
+assert(sourceStructured.includes("translationOfWork:{'@type':'Book',name:w.titleEn,inLanguage:'en'}"),'Children translation JSON-LD must identify an English source work and Maithili translation.');
 for(const html of [mai,en]){
   assert(html.includes('application/ld+json'),'Both home editions must expose JSON-LD.');
   assert(html.includes('"@type":"Person"'),'JSON-LD must contain Person entities.');
@@ -84,4 +86,4 @@ assert.equal((maiFooter.match(/https:\/\/github\.com\/videha-ejournal\/gajendra-
 assert(/Site updated: 10 September 2026 · Sources checked: 8 September 2026/.test(en),'English footer must carry both maintenance and source-check dates.');
 assert(/साइट अद्यतन: 10 सितम्बर 2026 · स्रोत-जाँच: 8 सितम्बर 2026/.test(mai),'Maithili footer must carry both maintenance and source-check dates.');
 
-console.log('Scholarly home consistency PASS: aligned dates/accessibility, 26 uniform edition records, single verification note, Panji access disclosure, platform milestone, RSS, citations and Person/Book JSON-LD.');
+console.log('Scholarly home consistency PASS: aligned dates/accessibility, 26 uniform edition records, single verification note, English→Maithili children translations, Panji access disclosure, platform milestone, RSS, citations and Person/Book JSON-LD.');
