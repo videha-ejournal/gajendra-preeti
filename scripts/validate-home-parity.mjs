@@ -42,7 +42,9 @@ assert(sourceCatalogue.includes("onChange={e=>setGenre(e.target.value)}"),'Genre
 assert(sourceCatalogue.includes("onChange={e=>setYear(e.target.value)}"),'Year filter must remain interactive.');
 assert(!/Show 20 more works/i.test(en),'English home must not collapse the catalogue behind a 20-more toggle.');
 
-assert(/\.basis-breakdown\s*\{[^}]*max-width:\s*90ch[^}]*line-height:\s*1\.9/s.test(sourceCss),'Criticism summary count block must retain readable width and line-height.');
+const basisRule=sourceCss.match(/\.basis-breakdown\s*\{([^}]*)\}/s)?.[1]||'';
+assert(basisRule.includes('max-width:90ch'),'Criticism summary count block must retain a readable maximum width.');
+assert(basisRule.includes('line-height:1.9'),'Criticism summary count block must retain generous line-height.');
 
 const maiFooter=mai.match(/<footer>[\s\S]*?<\/footer>/)?.[0]||'';
 assert.equal((maiFooter.match(/https:\/\/github\.com\/videha-ejournal\/gajendra-preeti/g)||[]).length,1,'Maithili footer must show the repository link once.');
