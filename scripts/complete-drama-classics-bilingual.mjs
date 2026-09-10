@@ -58,8 +58,8 @@ const newMeta="<span>'+esc(lang0==='en'?r.kindEn:r.kindMai)+'</span>";
 assert(js.includes(oldMeta),'Reader kind badge expression changed; could not install bilingual kind label safely.');
 js=js.replace(oldMeta,newMeta);
 
-const oldHead="+'</div><div class=\"'+(mode==='both'?'bilingual':'')+'\">'";
-const newHead="+'</div><p class=\"byline\">'+esc(lang0==='en'?r.authorEn:r.authorMai)+' · '+esc(lang0==='en'?r.relationEn:r.relationMai)+'</p><div class=\"'+(mode==='both'?'bilingual':'')+'\">'";
+const oldHead="+'</span></div><div class=\"'+(mode==='both'?'bilingual':'')+'\">'";
+const newHead="+'</span></div><p class=\"byline\">'+esc(lang0==='en'?r.authorEn:r.authorMai)+' · '+esc(lang0==='en'?r.relationEn:r.relationMai)+'</p><div class=\"'+(mode==='both'?'bilingual':'')+'\">'";
 assert(js.includes(oldHead),'Reader card header changed; could not add bilingual author/relation safely.');
 js=js.replace(oldHead,newHead);
 
