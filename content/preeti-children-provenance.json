@@ -1,0 +1,26 @@
+{
+  "person": {
+    "name": "Preeti Thakur",
+    "nameMai": "प्रीति ठाकुर"
+  },
+  "originalMaithili": [
+    {"id":"p0","titleMai":"गोनू झा आ आन मैथिली चित्रकथा","year":2008,"role":"author","originalLanguage":"mai","url":"https://drive.google.com/file/d/12yYQ1LuhNzEJHQFCNKUTjqSm0eU2boTd/view?usp=sharing"},
+    {"id":"p13","titleMai":"मैथिली चित्रकथा","year":2009,"role":"author","originalLanguage":"mai","url":"https://drive.google.com/file/d/1SPKBSZj47sZHmO_8hAN-iQxsDx6F1eyg/view?usp=sharing"},
+    {"id":"p14","titleMai":"मिथिलाक लोकदेवता","year":2010,"role":"author","originalLanguage":"mai","url":"https://drive.google.com/file/d/1iqmo3qvjM_xvn4Ml5Lls_mpoWnUwbytt/view?usp=sharing"},
+    {"id":"p15","titleMai":"विद्यापतिक पुरुष परीक्षा","year":2012,"role":"author","originalLanguage":"mai","url":"https://drive.google.com/file/d/1eehsXLhaMEnVbE6kplD6cy3g1GhEtKj7/view?usp=sharing"}
+  ],
+  "englishToMaithiliTranslations": [
+    {"id":"p1","titleMai":"छोट आ पैघ","year":2002,"firstEdition":2002,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/06_Little_and_Big_Maithili.pdf"},
+    {"id":"p2","titleMai":"माल-जाल आ जानवर दिस देखू","year":2003,"firstEdition":2003,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/07_Look_at_the_Animals_Maithili.pdf"},
+    {"id":"p3","titleMai":"हमर परिवार","year":2007,"firstEdition":2007,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/17_My_Family_Maithili.pdf"},
+    {"id":"p4","titleMai":"जानवर","year":2016,"firstEdition":2016,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/Animals_Maithili.pdf"},
+    {"id":"p5","titleMai":"पोथी 13: 1. . . 2. . . 3. . .","year":2018,"firstEdition":2018,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/Book_13_1_2_3_Maithili.pdf"},
+    {"id":"p6","titleMai":"बाजाक अबाज","year":2019,"firstEdition":2019,"revisedEdition":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/Instrumental_Sounds_Maithili.pdf"},
+    {"id":"p7","titleMai":"रेस","year":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/473887-race.pdf"},
+    {"id":"p8","titleMai":"ए बी सी डी- प्रकृति अक्षर पोथी","year":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/473892-abcd-prakriti-akshar-pothi.pdf"},
+    {"id":"p9","titleMai":"सभ खाइत अछि","year":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/473899-sabh-khait-achhi.pdf"},
+    {"id":"p10","titleMai":"बो म्याउ बाह","year":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/473900-bo-myau-baah.pdf"},
+    {"id":"p11","titleMai":"रङ सभ","year":2022,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/473904-rang-sabh.pdf"},
+    {"id":"p12","titleMai":"हमर मोनक इच्छा","year":2024,"role":"translator","sourceLanguage":"en","translationLanguage":"mai","url":"https://archive.org/download/449221-kani-hansiyau-ne/hamar%20monak%20ichchha.pdf"}
+  ]
+}
