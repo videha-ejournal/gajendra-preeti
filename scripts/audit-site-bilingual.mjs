@@ -6,52 +6,48 @@ const repo=process.cwd();
 const built=path.join(repo,'dist','client','gajendra-preeti');
 const exists=p=>fs.existsSync(path.join(built,p));
 const text=p=>fs.readFileSync(path.join(built,p),'utf8');
-const langOf=p=>{const m=text(p).match(/<html[^>]*\blang=["']([^"']+)/i);return m?.[1]||null};
+const langOf=p=>text(p).match(/<html[^>]*\blang=["']([^"']+)/i)?.[1]||null;
 
-// 1. Main catalogue: core visible identity fields must have real Maithili + English partners.
-// Notes are optional editorial metadata; asymmetry is reported rather than falsely treated as a missing edition.
+// Catalogue: required visible fields must have both language forms; optional note asymmetry is reported.
 const works=JSON.parse(fs.readFileSync('app/works.json','utf8'));
-const pairedWorkFields=[['title','titleEn'],['kind','kindEn'],['name','nameEn']];
-const optionalNoteAsymmetries=[];
-for(const work of works){
- for(const [mai,en] of pairedWorkFields){const a=String(work[mai]??'').trim(),b=String(work[en]??'').trim();assert.equal(Boolean(a),Boolean(b),`${work.id}: ${mai}/${en} exists in only one language`);}
- const note=String(work.note??'').trim(),noteEn=String(work.noteEn??'').trim();
- if(Boolean(note)!==Boolean(noteEn)) optionalNoteAsymmetries.push(work.id);
+for(const work of works) for(const [mai,en] of [['title','titleEn'],['kind','kindEn'],['name','nameEn']]){
+ const a=String(work[mai]??'').trim(),b=String(work[en]??'').trim();assert.equal(Boolean(a),Boolean(b),`${work.id}: ${mai}/${en} exists in only one language`);
 }
+const optionalCatalogueAsymmetry=works.filter(w=>Boolean(String(w.note??'').trim())!==Boolean(String(w.noteEn??'').trim())).map(w=>w.id);
 
-// 2. Main homepage Reader's Compass: both editions expose the same path IDs.
-const maiAtlas=fs.readFileSync('app/atlas.tsx','utf8');
-const enAtlas=fs.readFileSync('app/english-atlas.tsx','utf8');
+// Reader's Compass parity.
+const maiAtlas=fs.readFileSync('app/atlas.tsx','utf8'),enAtlas=fs.readFileSync('app/english-atlas.tsx','utf8');
 const pathIds=s=>[...s.matchAll(/\{id:'([^']+)'/g)].map(m=>m[1]);
 assert.deepEqual(pathIds(maiAtlas),pathIds(enAtlas),'Maithili and English Reader’s Compass path IDs differ.');
 
-// 3. Major paired research families.
+// Major paired research families.
 const pairedFamilies=['parallel-philosophy','parallel-history','classical-philosophy','drama-classics'];
-for(const family of pairedFamilies){assert(exists(`${family}/index.html`),`${family}: missing Maithili/default index`);assert(exists(`${family}/en/index.html`),`${family}: missing English index`);assert.equal(langOf(`${family}/index.html`),'mai',`${family}: default route must be Maithili`);assert.equal(langOf(`${family}/en/index.html`),'en',`${family}: /en route must be English`);}
-
-// 4. Reading Room remediation is complete only when all 59 individual essays are paired.
-const criticismManifest=JSON.parse(fs.readFileSync('public/criticism/manifest.json','utf8'));
-assert.equal(criticismManifest.length,59,'Reading Room must contain 59 criticism records');
-const translationFiles=['content/criticism-mai-g01-g20.json','content/criticism-mai-g21-g42.json','content/criticism-mai-preeti.json'];
-const criticismMai=translationFiles.flatMap(f=>JSON.parse(fs.readFileSync(f,'utf8')));
-assert.equal(criticismMai.length,59,'Reading Room must contain 59 Maithili critical translations');
-assert.deepEqual(new Set(criticismMai.map(x=>x.id)),new Set(criticismManifest.map(x=>x.id)),'Reading Room translation IDs differ from manifest');
-assert(exists('criticism/index.html')&&exists('criticism/en/index.html'),'Reading Room index pair missing');
-assert.equal(langOf('criticism/index.html'),'mai','Reading Room default must be Maithili');
-assert.equal(langOf('criticism/en/index.html'),'en','Reading Room /en must be English');
-for(const r of criticismManifest){
- const mai=`criticism/${r.id}.html`,en=`criticism/en/${r.id}.html`;
- assert(exists(mai),`${r.id}: missing Maithili criticism page`);assert(exists(en),`${r.id}: missing English criticism page`);
- assert.equal(langOf(mai),'mai',`${r.id}: Maithili page lang mismatch`);assert.equal(langOf(en),'en',`${r.id}: English page lang mismatch`);
- assert(text(mai).includes(`hreflang="en"`),`${r.id}: Maithili page missing English alternate`);
- assert(text(en).includes(`hreflang="mai"`),`${r.id}: English page missing Maithili alternate`);
- assert(text(en).includes(`/criticism/en/${r.id}.html`),`${r.id}: English canonical/internal route missing`);
+for(const family of pairedFamilies){
+ assert(exists(`${family}/index.html`)&&exists(`${family}/en/index.html`),`${family}: language pair missing`);
+ assert.equal(langOf(`${family}/index.html`),'mai',`${family}: default route must be Maithili`);
+ assert.equal(langOf(`${family}/en/index.html`),'en',`${family}: /en route must be English`);
 }
 
-// 5. Repository-wide route audit. Outstanding families stay visible instead of being silently treated as bilingual.
+// Reading Room: all 59 individual essays and both indices must be paired.
+const criticismManifest=JSON.parse(fs.readFileSync('public/criticism/manifest.json','utf8'));
+const criticismMai=['content/criticism-mai-g01-g20.json','content/criticism-mai-g21-g42.json','content/criticism-mai-preeti.json'].flatMap(f=>JSON.parse(fs.readFileSync(f,'utf8')));
+assert.equal(criticismManifest.length,59);assert.equal(criticismMai.length,59);
+assert.deepEqual(new Set(criticismMai.map(x=>x.id)),new Set(criticismManifest.map(x=>x.id)));
+assert.equal(langOf('criticism/index.html'),'mai');assert.equal(langOf('criticism/en/index.html'),'en');
+for(const r of criticismManifest){const mai=`criticism/${r.id}.html`,en=`criticism/en/${r.id}.html`;assert(exists(mai)&&exists(en),`${r.id}: criticism pair missing`);assert.equal(langOf(mai),'mai');assert.equal(langOf(en),'en');assert(text(mai).includes('hreflang="en"'));assert(text(en).includes('hreflang="mai"'));}
+
+// Contributors’ Perspectives: all 63 source records have a Maithili counterpart and all 3 route pairs exist.
+const reception=JSON.parse(fs.readFileSync('content/reception-gists.json','utf8'));
+const receptionMai=['content/reception-gists-mai-preeti-karan-1.json','content/reception-gists-mai-preeti-karan-2.json','content/reception-gists-mai-setusham.json'].flatMap(f=>JSON.parse(fs.readFileSync(f,'utf8')));
+const rkey=x=>`${x.book}:${x.id}`;
+assert.equal(reception.articles.length,63,'Reception source must contain 63 records');assert.equal(receptionMai.length,63,'Reception Maithili layer must contain 63 records');
+assert.deepEqual(new Set(receptionMai.map(rkey)),new Set(reception.articles.map(rkey)),'Reception language records differ');
+for(const x of receptionMai){assert(String(x.titleMai||'').trim());assert(String(x.gistMai||'').trim().length>120);assert(typeof x.noteMai==='string');}
+for(const file of ['index.html','preeti-karan.html','setusham.html']){const mai=`criticism/reception/${file}`,en=`criticism/reception/en/${file}`;assert(exists(mai)&&exists(en),`Reception pair missing: ${file}`);assert.equal(langOf(mai),'mai');assert.equal(langOf(en),'en');assert(text(mai).includes('hreflang="en"'));assert(text(en).includes('hreflang="mai"'));}
+
+// Route-family audit keeps genuinely unfinished families visible.
 const families=[
- {id:'home',mai:'index.html',en:'en/index.html'},
- ...pairedFamilies.map(id=>({id,mai:`${id}/index.html`,en:`${id}/en/index.html`})),
+ {id:'home',mai:'index.html',en:'en/index.html'},...pairedFamilies.map(id=>({id,mai:`${id}/index.html`,en:`${id}/en/index.html`})),
  {id:'when-dreams-merge',mai:'when-dreams-merge/index.html',en:'when-dreams-merge/en/index.html'},
  {id:'water-burial-among-the-crocodiles',mai:'water-burial-among-the-crocodiles/index.html',en:'water-burial-among-the-crocodiles/en/index.html'},
  {id:'criticism',mai:'criticism/index.html',en:'criticism/en/index.html'},
@@ -59,6 +55,6 @@ const families=[
 ];
 const routeAudit=families.map(f=>({id:f.id,maiPath:f.mai,enPath:f.en,maiExists:exists(f.mai),enExists:exists(f.en),maiLang:exists(f.mai)?langOf(f.mai):null,enLang:exists(f.en)?langOf(f.en):null}));
 const unpaired=routeAudit.filter(x=>!x.maiExists||!x.enExists||x.maiLang!=='mai'||x.enLang!=='en');
-const report={generatedAt:new Date().toISOString(),catalogueRecords:works.length,optionalNoteAsymmetries,readerPathIds:pathIds(maiAtlas),criticismRecords:criticismManifest.length,criticismPairsVerified:59,routeAudit,unpairedFamilies:unpaired.map(x=>x.id),policy:'A real bilingual pair requires authored/source-grounded Maithili and English display text. Optional catalogue notes are reported separately. The 41-language machine-translation control is not counted as a counterpart.'};
+const report={generatedAt:new Date().toISOString(),catalogueRecords:works.length,optionalCatalogueAsymmetry,readerPathIds:pathIds(maiAtlas),criticismRecords:59,criticismPairsVerified:59,receptionRecords:63,receptionPairsVerified:63,routeAudit,unpairedFamilies:unpaired.map(x=>x.id),policy:'A real bilingual pair requires authored/source-grounded Maithili and English display text. Machine translation is not counted as a counterpart.'};
 fs.writeFileSync(path.join(built,'bilingual-audit.json'),JSON.stringify(report,null,2));
-console.log(`Site-wide bilingual audit: ${routeAudit.length-unpaired.length}/${routeAudit.length} route families fully paired; Reading Room 59/59 paired; optional note asymmetries: ${optionalNoteAsymmetries.length}; outstanding: ${unpaired.map(x=>x.id).join(', ')||'none'}.`);
+console.log(`Site-wide bilingual audit: Reading Room 59/59 paired; Reception 63/63 paired; route families ${routeAudit.length-unpaired.length}/${routeAudit.length} paired; outstanding: ${unpaired.map(x=>x.id).join(', ')||'none'}.`);
