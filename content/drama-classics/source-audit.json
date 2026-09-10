@@ -1,0 +1,59 @@
+{
+  "titleMai": "नाटक आ संस्कृत साहित्य · द्विभाषी शोध-रीडर",
+  "titleEn": "Drama & Sanskrit Classics · Bilingual Research Reader",
+  "status": "source-audited",
+  "sourcePolicy": "Preserve the supplied Maithili-first / English-second architecture. Do not infer missing divisions. All listed internal divisions come from the supplied DOCX sources; continuous texts are marked as such rather than assigned invented chapter headings.",
+  "intendedRoutes": {
+    "mai": "/gajendra-preeti/drama-classics/",
+    "en": "/gajendra-preeti/drama-classics/en/"
+  },
+  "collections": [
+    {
+      "id": "sanskrit-classics",
+      "titleMai": "संस्कृत साहित्य-संग्रह — १३ पुस्तक",
+      "titleEn": "Sanskrit Literature Collection — 13 Books",
+      "sourceFile": "Sanskrit_Sahitya_13_Books_Combined_8x11_Hardback.docx",
+      "workCount": 13,
+      "works": [
+        {"id":"abhijnanasakuntalam","order":1,"titleMai":"अभिज्ञानशाकुन्तलम्","titleEn":"Abhijñānaśākuntalam","author":"महाकवि कालिदास / Kālidāsa","kind":"drama","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना","प्रथम अङ्क — मृगया","द्वितीय अङ्क — रहस्य","तृतीय अङ्क — प्रेम-दाह","चतुर्थ अङ्क — विदाई","पञ्चम अङ्क — दुर्घटना","षष्ठ अङ्क — विरह","सप्तम अङ्क — शाप-मुक्ति"]},
+        {"id":"agamadamabara","order":2,"titleMai":"आगमडम्बरम्","titleEn":"Āgamāḍambara","author":"जयन्त भट्ट / Jayanta Bhaṭṭa","kind":"drama-philosophical-satire","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना — वैराग्य","प्रथम अङ्कक प्रस्तावना — बुद्धक उपदेश","प्रथम अङ्क — बौद्धसभ पराजित","द्वितीय अङ्कक प्रस्तावना — कामासक्त तपस्वी","द्वितीय अङ्क — वैराग्यक भोज","तृतीय अङ्कक प्रस्तावना — निर्भयसभमे भय","तृतीय अङ्क — धर्मक निषेध आ समर्थन","चतुर्थ अङ्कक प्रस्तावना — रूढ़िवादी पाखण्ड","चतुर्थ अङ्क — मर्यादित सहिष्णुता"]},
+        {"id":"bhagavadajjukam","order":3,"titleMai":"भगवदज्जुकम् · साधु आ वेश्या","titleEn":"The Ascetic and the Courtesan · Bhagavadajjukam","author":"बोधायन / Bodhāyana","kind":"prahasana","translation":"Sanskrit→Maithili; explicit English theatre version supplied","unitsMai":["प्रस्तावना","मुख्य नाटक"],"unitsEn":["Prologue","The Play"]},
+        {"id":"bhallata-kshemendra-nilakantha","order":4,"titleMai":"भल्लट · क्षेमेन्द्र · नीलकण्ठ","titleEn":"Bhallata · Kṣemendra · Nīlakaṇṭha","author":"भल्लट · क्षेमेन्द्र · नीलकण्ठ","kind":"poetry-satire-composite","translation":"Sanskrit→Maithili; English counterpart supplied","subworks":[{"titleMai":"भल्लट-शतक (भल्लटक शत अन्योक्ति)","structure":"100-verse work; no invented chapter split"},{"titleMai":"छल-कौशलक विलास (कलाविलास)","unitsMai":["सर्ग १ — दम्भक वर्णन (दम्भ)","सर्ग २ — लोभक वर्णन (लोभ)","सर्ग ३ — कामक चित्रण","सर्ग ४ — वेश्यासभक व्यवहार (विश्वासघात)","सर्ग ५ — लेखनिकक पराक्रम","सर्ग ६ — मदक वर्णन","सर्ग ७ — गायक-वर्णन (दुर्वृत्ति)","सर्ग ८ — सोनारक उत्पत्ति (छल-कपट)","सर्ग ९ — विविध दुष्टक वर्णन (ढोंग आ ठगी)","सर्ग १० — समस्त कलाक वर्णन (सद्गुण)"]},{"titleMai":"कलियुग-विडम्बना","unitsMai":["खण्ड १ — पण्डित","खण्ड २ — मन्त्र-तान्त्रिक","खण्ड ३ — ज्योतिषी","खण्ड ४ — वैद्य","खण्ड ५ — कवि","खण्ड ६ — सम्बन्धी","खण्ड ७ — महाजन","खण्ड ८ — दरिद्रता","खण्ड ९ — धनी","खण्ड १० — चुगलखोर","खण्ड ११ — कृपण","खण्ड १२ — धर्मध्वजी","खण्ड १३ — दुष्ट","उपसंहार — कलियुग-प्रणाम"]}]},
+        {"id":"chaturbhani","order":5,"titleMai":"चतुर्भाणी","titleEn":"Caturbhāṇī","author":"शूद्रक · ईश्वरदत्त · वररुचि · श्यामिलक","kind":"four-monologue-dramas","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["कमलक भेंट — पद्मप्राभृतकम् (शूद्रक)","धूर्त आ दलालक विचार-विमर्श — धूर्तविटसंवादः (ईश्वरदत्त)","परस्पर प्रेम-पलायन — उभयाभिसारिका (वररुचि)","लात — पादताडितकम् (श्यामिलक)"]},
+        {"id":"damaka-prahasanam","order":6,"titleMai":"दामक प्रहसनम्","titleEn":"Dāmaka Prahasanam","author":"सम्भवतः भास / attributed in source as possibly Bhāsa","kind":"prahasana","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना","दामकक प्रवेश","परशुराम आ कर्ण","दुर्बुद्धि आ दुर्मुख","भरतवाक्य"]},
+        {"id":"hasyarnava","order":7,"titleMai":"हास्यक सागर / हास्यार्णवप्रहसनम्","titleEn":"Hāsyārṇava Prahasanam","author":"श्री जगदीश्वर भट्टाचार्य्य / Jagadīśvara Bhaṭṭācārya","kind":"prahasana","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रथम अंक","द्वितीय अंक"]},
+        {"id":"kadambari","order":8,"titleMai":"कादम्बरी","titleEn":"KADAMBARI","author":"बाणभट्ट (पूर्व भाग); भूषणभट्ट (उत्तर भाग)","kind":"prose-romance","translation":"Sanskrit→Maithili; complete English version supplied","unitsMai":["पूर्व भाग — वाणभट्ट","उत्तर भाग — भूषणभट्ट"],"unitsEn":["First Part — Banabhatta","Part II — Bhushanabhatta"]},
+        {"id":"mrcchakatikam","order":9,"titleMai":"माटिक खेलौना-गाड़ी / मृच्छकटिकम्","titleEn":"Mṛcchakaṭikam · The Little Clay Cart","author":"शूद्रक / Śūdraka","kind":"drama","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["दृश्य: उज्जयिनी आ आसपास","प्रथम अङ्क","द्वितीय अङ्क: द्यूतकर संवाहक","तृतीय अङ्क: सन्धि-च्छेद","चतुर्थ अङ्क: मदनिका आ शर्विलक","पञ्चम अङ्क: दुर्दिन","षष्ठ अङ्क: प्रवहण-विपर्यय","सप्तम अङ्क: आर्यक-अपहरण","अष्टम अङ्क: वसन्तसेना-मोटन","नवम अङ्क: व्यवहार","दशम अङ्क: संहार","भरतवाक्य"]},
+        {"id":"mattavilasa","order":10,"titleMai":"मत्तविलास प्रहसनम्","titleEn":"Mattavilāsa Prahasanam","author":"पल्लव नरेश श्री महेन्द्रविक्रम वर्मा प्रथम / Mahendravikrama Varman I","kind":"prahasana","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना","मुख्य नाटक"]},
+        {"id":"mudrarakshasam","order":11,"titleMai":"मंत्री राक्षसक राजसी मोहर / मुद्राराक्षसम्","titleEn":"The Signet Ring of Minister Rakshasa · Mudrārākṣasam","author":"विशाखदत्त / Viśākhadatta","kind":"political-drama","translation":"Sanskrit→Maithili; explicit English stage version supplied","unitsMai":["पहिल अंक","द्वितीय अंक","तेसर अंक","चारिम अंक","पाँचम अंक","छअम अंक","सातम अंक"]},
+        {"id":"palandumandana","order":12,"titleMai":"पालाण्डुमण्डन प्रहसनम्","titleEn":"Pālāṇḍumaṇḍana Prahasanam","author":"हरिजीवन मिश्र / Harijīvana Miśra","kind":"prahasana","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना","मुख्य प्रहसन — स्रोतमे निरन्तर पाठ; कृत्रिम अंक-विभाजन नहि"]},
+        {"id":"uttararamacaritam","order":13,"titleMai":"उत्तररामचरितम्","titleEn":"Uttararāmacaritam","author":"महाकवि भवभूति / Bhavabhūti","kind":"drama","translation":"Sanskrit→Maithili; English counterpart supplied","unitsMai":["प्रस्तावना","प्रथम अङ्क — चित्रशाला-दर्शन","द्वितीय अङ्कक प्रवेशक","द्वितीय अङ्क — पञ्चवटीमे प्रवेश","तृतीय अङ्कक प्रवेशक","तृतीय अङ्क — छाया","चतुर्थ अङ्कक प्रवेशक","चतुर्थ अङ्क — कौसल्या आ जनकक भेट","पञ्चम अङ्क — कुमारक पराक्रम","षष्ठ अङ्कक प्रवेशक","षष्ठ अङ्क — कुमारसभक अभिज्ञान","सप्तम अङ्क — पुनर्मिलन"]}
+      ]
+    },
+    {
+      "id": "rang-sangam",
+      "titleMai": "रंग-संगम — नओटा मैथिली नाटक आ अंग्रेजी रंगमंचीय रूपान्तर",
+      "titleEn": "Rang-Sangam — Nine Maithili Plays and Their English Stage Adaptations",
+      "sourceFile": "Rang_Sangam_8x11_Hardback.docx",
+      "workCount": 9,
+      "works": [
+        {"id":"apala-atreyii","order":1,"titleMai":"अपाला आत्रेयी","titleEn":"APALA ATREYI","subtitleMai":"ऋग्वैदिक ब्रह्मवादिनीक आत्मसम्मान आ विद्याक गाथा","subtitleEn":"A Tale of the Self-Respect and Learning of a Rigvedic Brahmavadini","unitsMai":["दृश्य एक","दृश्य दू","दृश्य तीन","दृश्य चारि","दृश्य पाँच","दृश्य छ","दृश्य सात"],"unitsEn":["SCENE ONE","SCENE TWO","SCENE THREE","SCENE FOUR","SCENE FIVE","SCENE SIX","SCENE SEVEN"]},
+        {"id":"bho-jayeb-chhu","order":2,"titleMai":"भऽ जाएब छू","titleEn":"WE SHALL TURN TO ASH","subtitleMai":"मैथिलीक पहिल जलवायु-चेतना बाल चौबटिया-सड़क नाटक","subtitleEn":"Maithili's First Climate-Awareness Children's Crossroads Street Play","unitsMai":["भाग १ : सृष्टिक पात्र सभ","भाग २ : विज्ञान आ कल्पना","भाग ३ : प्रतिज्ञा"],"unitsEn":["PART 1: THE CHARACTERS OF CREATION","PART 2: SCIENCE AND IMAGINATION","PART 3: THE PLEDGE"]},
+        {"id":"danavir-dadhichi","order":3,"titleMai":"दानवीर दधीची","titleEn":"DADHICHI, THE GREAT GIVER","subtitleMai":"ज्ञान, प्रतिज्ञा आ सत्यक रक्षाक वैदिक नाट्य-गाथा","subtitleEn":"A Vedic Dramatic Tale of Safeguarding Knowledge, a Vow, and Truth","unitsMai":["दृश्य १","दृश्य दू","दृश्य तीन"],"unitCount":3},
+        {"id":"ganga-bridge","order":4,"titleMai":"गंगा ब्रिज","titleEn":"GANGA BRIDGE","subtitleMai":"विकास, भ्रष्टाचार आ बलिदानपर एकटा मार्मिक नाटक","subtitleEn":"A poignant play about development, corruption and sacrifice","unitsMai":["भाग १ : सपना आ शुरुआत","भाग २ : निर्माणक कठिनाइ","भाग ३ : स्वार्थ आ समझौता","भाग ४ : बलिदान आ पतन","भाग ५ : स्मृति आ प्रश्न"]},
+        {"id":"jalodeep","order":5,"titleMai":"जलोदीप","titleEn":"JALODEEP: THE WATER-LAMP","subtitleMai":"बाढ़ि-सुरक्षा आ जल-निकासीक सामाजिक बाल-नाटक","subtitleEn":"A Social Play for Children on Flood Safety and Drainage","unitsMai":["पूर्वदृश्य","अंक १ : बाढ़िक अन्हार — दृश्य १, दृश्य २","अंक २ : पहाड़क खेल — दृश्य १, दृश्य २","अंक ३ : लोकक खेल — दृश्य १, दृश्य २","अंक ४ : जलोदीप — दृश्य १, दृश्य २","अंक ५ : नबका बिहान — दृश्य १, दृश्य २"]},
+        {"id":"kamalak-bhagata","order":6,"titleMai":"कमलाक भगता","titleEn":"A Devotee of the Kamala","subtitleMai":"अन्धानुकरणपर एकटा चोटगर हास्य-शिक्षाप्रद बाल-नाटक","subtitleEn":"A Sharp, Humorous and Instructive Children's Play on Blind Imitation","unitsMai":["सूत्रधारक भूमिका","दृश्य १","दृश्य २"]},
+        {"id":"machanda","order":7,"titleMai":"मचण्ड","titleEn":"MACHANDA","subtitleMai":"भाषा, न्याय आ आतंकक बीचक एकटा तीक्ष्ण समकालीन नाटक","subtitleEn":"A piercing contemporary play at the intersection of language, justice, and terror","unitsMai":["अंक १","अंक २","अंक ३","अंक ४"]},
+        {"id":"sankarshan","order":8,"titleMai":"संकर्षण","titleEn":"SANKARSHAN","subtitleMai":"दंभ, झूठ-सत्कार आ आत्मबोधक पाँच-कल्लोलक मैथिली नाटक","subtitleEn":"A Five-Wave Maithili Play of Vanity, False Honour, and Self-Realisation","waves":[{"titleMai":"पहिल कल्लोल : प्रतिष्ठाक बीआ","actsMai":["अंक १ : कलक्टरक बहन्ना","अंक २ : बंगाली बाबूक सीख आ कलक्टरक चैम्बर","अंक ३ : तीन टा कारी कुकुरक खिस्सा"]},{"titleMai":"दोसर कल्लोल : झूठ जड़ि पकड़ैत अछि","actsMai":["अंक १ : पसीझक काँटक दंभ","अंक २ : पंचैतीक दण्ड","अंक ३ : कंठी हाथमे, कोदारि हाथमे","अंक ४ : टेलीफोन डायरीक भय"]},{"titleMai":"तेसर कल्लोल : बियाह आ बड़ाइक बजार","actsMai":["अंक १ : घटकक चिकनी बात","अंक २ : सासुरसँ आगमन आ रंगक दंभ","अंक ३ : गोबर आ दुलारक प्रश्न","अंक ४ : गुरक चाह आ जगन्नाथक कुसियार","अंक ५ : बेटाक पलायन"]},{"titleMai":"चारिम कल्लोल : शहरक आइना","actsMai":["अंक १ : ट्रेनमे तीन टा बौआ","अंक २ : अलीगढ़मे पुलिस-चेकिंग","अंक ३ : लाल काकाक घर"]},{"titleMai":"पाँचम कल्लोल : आत्मबोधक जुत्ता","actsMai":["अंक १ : चोर-बजारक ठकान","अंक २ : सोलक भीतर छिपल सत्य","अंक ३ (उपसंहार) : सूत्रधारक अन्तिम शब्द"]}]},
+        {"id":"ulkamukh","order":9,"titleMai":"उल्कामुख","titleEn":"ULKAMUKH","subtitleMai":"गंगेश आ वल्लभाक प्रेम, स्मृति आ विस्मृतिक संघर्ष — छह कल्लोलक नाट्य-गाथा","subtitleEn":"The Love of Gangesha and Vallabha: A Struggle Between Memory and Oblivion — A Dramatic Saga in Six Acts","unitsMai":["पहिल कल्लोल","दोसर कल्लोल","तेसर कल्लोल","चारिम कल्लोल","पाँचम कल्लोल","छठम कल्लोल"]}
+      ]
+    }
+  ],
+  "integrity": {
+    "collectionCount": 2,
+    "workCount": 22,
+    "sanskritClassicCount": 13,
+    "rangSangamDramaCount": 9,
+    "rule": "Every source-defined act, scene, sarga, khanda, wave, part, prologue/interlude, bharatavakya and continuous main text must remain represented in the final reader."
+  }
+}
