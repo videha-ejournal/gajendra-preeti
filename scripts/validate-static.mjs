@@ -3,6 +3,13 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 
 const root='dist/client/gajendra-preeti';
+const BASE='https://videha-ejournal.github.io/gajendra-preeti/';
+const canonicalForFile=file=>{
+  if(file==='index.html') return BASE;
+  if(file.endsWith('/index.html')) return BASE+file.slice(0,-'index.html'.length);
+  return BASE+file;
+};
+
 const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
 const english=fs.readFileSync(path.join(root,'en/index.html'),'utf8');
 const manifest=JSON.parse(fs.readFileSync('dist/server/vinext-prerender.json','utf8'));
@@ -57,19 +64,18 @@ assert(fs.existsSync(path.join(root,'.nojekyll')));
 const sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 const sitemapUrls=[...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]);
 const standaloneGuides=[
-  {file:'water-burial-among-the-crocodiles/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/water-burial-among-the-crocodiles/',kind:'water'},
-  {file:'parallel-philosophy/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/',kind:'parallel'},
-  {file:'parallel-philosophy/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preeti/parallel-philosophy/en/',kind:'parallel'},
-  {file:'parallel-history/index.html',url:'https://videha-ejournal.github.io/gajendra-preiti/parallel-history/',kind:'history'},
-  {file:'parallel-history/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preiti/parallel-history/en/',kind:'history'},
-  {file:'classical-philosophy/index.html',url:'https://videha-ejournal.github.io/gajendra-preiti/classical-philosophy/',kind:'classical'},
-  {file:'classical-philosophy/en/index.html',url:'https://videha-ejournal.github.io/gajendra-preiti/classical-philosophy/en/',kind:'classical'}
+  {file:'water-burial-among-the-crocodiles/index.html',url:BASE+'water-burial-among-the-crocodiles/',kind:'water'},
+  {file:'parallel-philosophy/index.html',url:BASE+'parallel-philosophy/',kind:'parallel'},
+  {file:'parallel-philosophy/en/index.html',url:BASE+'parallel-philosophy/en/',kind:'parallel'},
+  {file:'parallel-history/index.html',url:BASE+'parallel-history/',kind:'history'},
+  {file:'parallel-history/en/index.html',url:BASE+'parallel-history/en/',kind:'history'},
+  {file:'classical-philosophy/index.html',url:BASE+'classical-philosophy/',kind:'classical'},
+  {file:'classical-philosophy/en/index.html',url:BASE+'classical-philosophy/en/',kind:'classical'}
 ];
 assert.equal(sitemapUrls.length,idSets.size+standaloneGuides.length,'Every indexed public page and standalone guide belongs in the sitemap');
 assert.equal(new Set(sitemapUrls).size,sitemapUrls.length,'No duplicate sitemap URLs');
 for(const file of idSets.keys()){
-  const route=file.replace(/(^|\/)index\.html$/,'$1');
-  assert(sitemapUrls.includes(`https://videha-ejournal.github.io/gajendra-preiti/${route}`),`Missing sitemap page: ${file}`);
+  assert(sitemapUrls.includes(canonicalForFile(file)),`Missing sitemap page: ${file}`);
 }
 for(const guide of standaloneGuides){
   assert(fs.existsSync(path.join(root,guide.file)),`Missing standalone guide: ${guide.file}`);
@@ -132,7 +138,7 @@ console.log(`Static validation passed: bilingual homepages, ${readings.length} s
 for(const [file,ids] of idSets){
   const source=fs.readFileSync(path.join(root,file),'utf8');
   assert(ids.has('videha-reading-tools'),`Missing reading controls: ${file}`);
-  const expected='https://videha-ejournal.github.io/gajendra-preiti/'+file.replace(/(^|\/)index\.html$/,'$1');
+  const expected=canonicalForFile(file);
   assert(source.includes(`rel="canonical" href="${expected}"`),`Canonical: ${file}`);
   assert.match(source,/<meta name="description" content="[^"]+"/);
   if(file.startsWith('criticism/')){assert(source.includes('reading-tools.js'));assert(source.includes('reading-tools.css'));assert(source.includes('no named human editorial review is recorded'));}
@@ -151,7 +157,7 @@ for(const mirror of mirrors){const bytes=fs.readFileSync(path.join(root,'books',
 console.log(`Extended validation passed: ${idSets.size} reading tool mounts and canonical descriptions, ${works.length} work anchors and structured records per edition, nine verified PDF mirrors.`);
 for(const file of idSets.keys()){const source=fs.readFileSync(path.join(root,file),'utf8');for(const tag of ['og:title','og:description','og:image','twitter:card']) assert(source.includes('"'+tag+'"'),`${file}: ${tag}`);}
 for(const file of ['index.html','en/index.html']){const source=fs.readFileSync(path.join(root,file),'utf8');assert(source.indexOf('id="search-guidance"')<source.indexOf('id="work-search"'));assert.match(source,/class="braille" aria-hidden="true"/);}
-assert(fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: https://videha-ejournal.github.io/gajendra-preiti/sitemap.xml'));
+assert(fs.readFileSync(path.join(root,'robots.txt'),'utf8').includes('Sitemap: '+BASE+'sitemap.xml'));
 console.log('Social previews, search guidance, decorative Braille and sitemap discovery passed.');
 const reception=JSON.parse(fs.readFileSync('content/reception-gists.json','utf8'));
 for(const a of reception.articles){const file=`criticism/reception/${a.book}.html`;assert(idSets.get(file).has(a.id),`Missing contribution: ${a.book}/${a.id}`);const source=fs.readFileSync(path.join(root,file),'utf8');assert(source.includes(`pp. ${a.start}–${a.end}`),`Missing page reference: ${a.id}`);}
