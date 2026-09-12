@@ -1,4 +1,506 @@
 [
-{"id":1,"titleEn":"Chapter 1 — Seventeen minutes past four in the rain","en":["Vasudha Karn is found dead inside the locked records room where she was examining discrepancies in the Seven Tola land case. A stopped clock, an unfinished sentence and Dulari’s disappearance encourage a premature story of suicide or flight. Madhavi’s knowledge of Vasudha’s routines makes the displaced betel box, missing cup and sugar residue newly significant. Retired investigator Jaynarayan Mandal asks that observations be recorded without forcing them into an immediate conclusion.","The chapter gives grief a place within inquiry without making emotional certainty evidence. Madhavi learns to distinguish clear recollection from a gap that distress might fill. Dulari must first be sought as a missing person rather than treated as a convenient suspect. The locked room becomes a contest between an apparently self-explanatory scene and the patient recovery of ordinary habits."],"mai":["सात टोला जमीनक अभिलेखमे अन्तर खोजैत वसुधा कर्ण भीतरसँ बन्द कोठरीमे मृत भेटैत छथि। रुकल घड़ी, अधलिखल वाक्य आ दुलारीक गायब होएब आत्महत्या वा पलाएनक जल्दबाजीवला कथा उपजबैत अछि। माधवीक दैनिक परिचयसँ बेठाम सुपारी-डिबिया, हरायल कप आ चीनीक अवशेष महत्त्वपूर्ण बनैत अछि। अवकाशप्राप्त जयनारायण मंडल अवलोकन लिखबाक आग्रह करैत छथि, तुरन्त निष्कर्ष ठेलबाक नहि।","शोक जाँचक भीतर जगह पबैत अछि, मुदा भावनात्मक निश्चय प्रमाण नहि बनैत। माधवी साफ स्मृति आ दुःखसँ भरि सकएवला खाली स्थानक अन्तर सीखैत अछि। दुलारीकेँ सुविधाजनक दोषीक बदला पहिने हरायल मनुष्य मानि खोजब चाही। बन्द कोठरीक स्पष्ट बुझाइत दृश्य आ साधारण आदतिक धैर्यपूर्ण पुनर्प्राप्तिक बीच संघर्ष शुरू होइत अछि।"]},
-{"id":2,"titleEn":"Chapter 2 — The betel box","en":["Separate accounts of Vasudha’s routines establish why the location of her betel box and the two different tea cups matter. The missing blue-rimmed cup is recovered from a drain, and Dulari’s mother describes threats connected with the land dispute. Jaynarayan treats Madhavi’s sketch as a basis for testing, not certainty, and warns that witnesses can acquire the same memory by hearing the same story. Abhiram arrives with the Sutra system’s digital records and confidence in a computable timeline.","The chapter makes corroboration a practice rather than a headcount of agreeing voices. It also distinguishes a telephone number from the person holding a shared device. The exchange between Jaynarayan and Abhiram sets up mutual correction: habits reveal what logs omit, while records may challenge selective human recollection. Both agree that a first answer must remain revisable."],"mai":["वसुधाक आदतिक अलग-अलग बयानसँ सुपारी-डिबियाक स्थान आ दू भिन्न चायक कपक महत्त्व खुलैत अछि। नील किनारीक हरायल कप नालीमे भेटैत अछि; दुलारीक माय जमीनक विवादसँ जुड़ल धमकी कहैत छथि। जयनारायण माधवीक नक्शाकेँ परीक्षणक आधार मानैत छथि, निश्चय नहि। एक्के कथा सुनि साक्षीक स्मृति एकरूप भऽ सकैत अछि, ओ चेतबैत छथि। अभिराम सूत्र-प्रणालीक डिजिटल अभिलेख आ गणनायोग्य समयरेखाक विश्वास लऽ अबैत अछि।","समर्थन केवल सहमत आवाजक गिनती नहि, जाँचक विधि बनैत अछि। साझा दूरभाषक नम्बर आ ओकर उपयोगकर्ता अलग अछि। जयनारायण आ अभिरामक संवाद परस्पर सुधारक सम्भावना खोलैत अछि: आदति अभिलेखक छूटल बात देखबैत अछि; अभिलेख चुनिन्दा स्मृतिकेँ चुनौती दऽ सकैत अछि। दुनू पहिल उत्तरकेँ बदलए योग्य रखबाक बात मानैत छथि।"]}
+  {
+    "id": 1,
+    "titleEn": "Chapter 1 — Seventeen minutes past four in the rain",
+    "en": [
+      "Vasudha Karn is found dead inside the locked records room where she was examining discrepancies in the Seven Tola land case. A stopped clock, an unfinished sentence and Dulari’s disappearance encourage a premature story of suicide or flight. Madhavi’s knowledge of Vasudha’s routines makes the displaced betel box, missing cup and sugar residue newly significant. Retired investigator Jaynarayan Mandal asks that observations be recorded without forcing them into an immediate conclusion.",
+      "The chapter gives grief a place within inquiry without making emotional certainty evidence. Madhavi learns to distinguish clear recollection from a gap that distress might fill. Dulari must first be sought as a missing person rather than treated as a convenient suspect. The locked room becomes a contest between an apparently self-explanatory scene and the patient recovery of ordinary habits."
+    ],
+    "mai": [
+      "सात टोला जमीनक अभिलेखमे अन्तर खोजैत वसुधा कर्ण भीतरसँ बन्द कोठरीमे मृत भेटैत छथि। रुकल घड़ी, अधलिखल वाक्य आ दुलारीक गायब होएब आत्महत्या वा पलाएनक जल्दबाजीवला कथा उपजबैत अछि। माधवीक दैनिक परिचयसँ बेठाम सुपारी-डिबिया, हरायल कप आ चीनीक अवशेष महत्त्वपूर्ण बनैत अछि। अवकाशप्राप्त जयनारायण मंडल अवलोकन लिखबाक आग्रह करैत छथि, तुरन्त निष्कर्ष ठेलबाक नहि।",
+      "शोक जाँचक भीतर जगह पबैत अछि, मुदा भावनात्मक निश्चय प्रमाण नहि बनैत। माधवी साफ स्मृति आ दुःखसँ भरि सकएवला खाली स्थानक अन्तर सीखैत अछि। दुलारीकेँ सुविधाजनक दोषीक बदला पहिने हरायल मनुष्य मानि खोजब चाही। बन्द कोठरीक स्पष्ट बुझाइत दृश्य आ साधारण आदतिक धैर्यपूर्ण पुनर्प्राप्तिक बीच संघर्ष शुरू होइत अछि।"
+    ]
+  },
+  {
+    "id": 2,
+    "titleEn": "Chapter 2 — The betel box",
+    "en": [
+      "Separate accounts of Vasudha’s routines establish why the location of her betel box and the two different tea cups matter. The missing blue-rimmed cup is recovered from a drain, and Dulari’s mother describes threats connected with the land dispute. Jaynarayan treats Madhavi’s sketch as a basis for testing, not certainty, and warns that witnesses can acquire the same memory by hearing the same story. Abhiram arrives with the Sutra system’s digital records and confidence in a computable timeline.",
+      "The chapter makes corroboration a practice rather than a headcount of agreeing voices. It also distinguishes a telephone number from the person holding a shared device. The exchange between Jaynarayan and Abhiram sets up mutual correction: habits reveal what logs omit, while records may challenge selective human recollection. Both agree that a first answer must remain revisable."
+    ],
+    "mai": [
+      "वसुधाक आदतिक अलग-अलग बयानसँ सुपारी-डिबियाक स्थान आ दू भिन्न चायक कपक महत्त्व खुलैत अछि। नील किनारीक हरायल कप नालीमे भेटैत अछि; दुलारीक माय जमीनक विवादसँ जुड़ल धमकी कहैत छथि। जयनारायण माधवीक नक्शाकेँ परीक्षणक आधार मानैत छथि, निश्चय नहि। एक्के कथा सुनि साक्षीक स्मृति एकरूप भऽ सकैत अछि, ओ चेतबैत छथि। अभिराम सूत्र-प्रणालीक डिजिटल अभिलेख आ गणनायोग्य समयरेखाक विश्वास लऽ अबैत अछि।",
+      "समर्थन केवल सहमत आवाजक गिनती नहि, जाँचक विधि बनैत अछि। साझा दूरभाषक नम्बर आ ओकर उपयोगकर्ता अलग अछि। जयनारायण आ अभिरामक संवाद परस्पर सुधारक सम्भावना खोलैत अछि: आदति अभिलेखक छूटल बात देखबैत अछि; अभिलेख चुनिन्दा स्मृतिकेँ चुनौती दऽ सकैत अछि। दुनू पहिल उत्तरकेँ बदलए योग्य रखबाक बात मानैत छथि।"
+    ]
+  },
+  {
+    "id": 3,
+    "titleEn": "Chapter 3 — Sutra’s first answer",
+    "en": [
+      "Abhiram assembles digital logs into a timeline, and Sutra initially assigns the largest probability to self-inflicted death or accidental poisoning. Missing physical findings, shared telephones and the distinction between a recorded lock and an unrecorded bolt complicate that answer. A mechanically possible alternative changes the figures; the missing seventh document and a threat concerning Dulari widen the inquiry.",
+      "Madhavi insists that the warning about incomplete data be displayed as prominently as the percentage. The scene makes presentation part of responsibility: a provisional score can acquire the force of a verdict through typography and repetition. The fictional percentages dramatise dependence on inputs; they are not validated measures of real investigative accuracy."
+    ],
+    "mai": [
+      "अभिराम डिजिटल अभिलेखसँ समयरेखा बनबैत अछि। सूत्र पहिने आत्मप्रेरित मृत्यु वा आकस्मिक विषप्रभावकेँ बेसी सम्भावना दैत अछि। भौतिक जाँचक अभाव, साझा दूरभाष आ ताला-संवेदकसँ साँकलक स्थिति नहि जनाएब ओहि उत्तरकेँ जटिल बनबैत अछि। वैकल्पिक यान्त्रिक सम्भावना जोड़ला पर अंक बदलैत अछि; सातम दस्तावेजक अभाव आ दुलारीक धमकी जाँच बढ़बैत अछि।",
+      "माधवी अपूर्ण आँकड़ाक चेतावनी प्रतिशत जतेक प्रमुख देखएबाक आग्रह करैत अछि। अक्षरक आकार आ दोहराव अस्थायी अंककेँ फैसले जकाँ बना सकैत अछि। उपन्यासक प्रतिशत उपलब्ध सूचनापर निर्भरता देखबैत अछि; वास्तविक जाँचक प्रमाणित शुद्धता-माप नहि।"
+    ]
+  },
+  {
+    "id": 4,
+    "titleEn": "Chapter 4 — Dulari is missing",
+    "en": [
+      "The threatening message sends the investigators to Dulari’s home, where exercise books, ordinary possessions and her mother’s account complicate rumours that she has run away with money or papers. Her learning has made her capable of reading documents for others. The shared household telephone requires particular care: its movement cannot simply be written as Dulari’s movement.",
+      "The visit gives material context to gaps in the digital record. A life lived through shared devices and informal arrangements is not inherently suspicious. Dulari’s written resolve to read what her ancestors could not read challenges the neighbourhood’s story of flight, while leaving the investigation responsible for finding what actually happened."
+    ],
+    "mai": [
+      "धमकीक सन्देशक बाद जाँचकर्ता दुलारीक घर जाइत छथि। कापी, दैनिक वस्तु आ मायक बयान धन वा कागज लऽ भागबाक अफवाहकेँ जटिल बनबैत अछि। पढ़ाइ ओकरा दोसरक दस्तावेज बुझबाक सामर्थ्य देने अछि। घरक साझा दूरभाषक स्थान बदलनाइकेँ सीधे दुलारीक स्थान बदलनाइ नहि लिखल जा सकैत अछि।",
+      "भेट डिजिटल अभिलेखक खाली स्थानक सामाजिक कारण देखबैत अछि। साझा यन्त्र आ अनौपचारिक व्यवस्थामे जीबनाइ अपने-आप सन्देह नहि। पुरखाक अपढ़ल कागज स्वयं पढ़बाक दुलारीक लिखित संकल्प पलाएनक अफवाहकेँ चुनौती दैत अछि, मुदा वास्तविक घटना खोजबाक उत्तरदायित्व बनले रहैत अछि।"
+    ]
+  },
+  {
+    "id": 5,
+    "titleEn": "Chapter 5 — Madhavi’s first dream",
+    "en": [
+      "At home, her mother’s sewing and Abhiram’s apology briefly restore ordinary care around Madhavi’s grief. Her dream brings together a pond, seven steps, a red covering, a blue thread and anklet sounds behind a wall. On waking she notices pale dust on her hand, preserves it and records the time rather than immediately assigning it a supernatural cause.",
+      "The chapter allows an unsettling experience to remain meaningful without treating it as proof. Emotional repair between Madhavi and Abhiram changes the manner in which uncertainty is received: he can ask for causes without ridiculing her. The separation of a remembered dream from a preserved material sample becomes a practical discipline."
+    ],
+    "mai": [
+      "घरमे मायक सिलाइ आ अभिरामक क्षमा-याचना माधवीक शोकक बीच दैनिक स्नेह लौटबैत अछि। सपनामे पोखरि, सात सीढ़ी, लाल ओढ़नी, नील धागा आ देवालक पाछाँ पायलक ध्वनि जुड़ैत अछि। जागलापर हथेलीपर उज्जर धूरि देखि ओ तुरन्त अलौकिक कारण नहि मानैत; कण जोगाकऽ समय लिखैत अछि।",
+      "अध्याय विचित्र अनुभवक अर्थ बचबैत अछि, मुदा ओकरा प्रमाण नहि बनबैत। माधवी आ अभिरामक सम्बन्धमे सुधार अनिश्चितता सुनबाक ढंग बदलैत अछि: कारण पूछब उपहास होएब आवश्यक नहि। सपनाक स्मृति आ सुरक्षित भौतिक नमूनाकेँ अलग राखब व्यवहारिक अनुशासन बनैत अछि।"
+    ]
+  },
+  {
+    "id": 6,
+    "titleEn": "Chapter 6 — The locked room’s second breath",
+    "en": [
+      "Dulari’s repaired umbrella is handled as evidence while a substitute is used for experiment. Air movement and old maintenance knowledge expose the inadequacy of treating the room as completely sealed. Ramcharit recalls aspects of the building that newer plans omit; the team seeks older records before damaging the wall. The two drops of water no longer automatically establish a visitor’s entry.",
+      "Testing removes an attractive inference as well as generating possibilities. The chapter gives maintenance workers an essential place in knowledge of an institution. A draft, a passage for an implement and an opening large enough for a person remain different claims, preventing architectural discovery from becoming instant explanation."
+    ],
+    "mai": [
+      "दुलारीक मरम्मत कएल छाता प्रमाणक रूपमे सुरक्षित रहैत अछि; प्रयोग दोसर छातासँ होइत अछि। हावाक गति आ पुरान रखरखावक ज्ञान कोठरी पूर्णतः बन्द मानबाक कठिनाइ खोलैत अछि। रामचरित नव नक्शामे छूटल भवनक बात मोन पाड़ैत छथि; देवाल तोड़बासँ पहिने पुरान अभिलेख खोजल जाइत अछि। दू बूँद आब अपने-आप आगन्तुकक प्रवेश सिद्ध नहि करैत अछि।",
+      "परीक्षण नव सम्भावना देबाक संग आकर्षक अनुमान हटा सेहो सकैत अछि। रखरखाव करनिहारक ज्ञान संस्थाक आवश्यक स्मृति बनैत अछि। हवा जाएब, औजार जाएब आ मनुष्य प्रवेश करब अलग दाबी अछि; वास्तुक खोज तुरन्त सम्पूर्ण समाधान नहि बनैत।"
+    ]
+  },
+  {
+    "id": 7,
+    "titleEn": "Chapter 7 — Vasudha’s household",
+    "en": [
+      "The visit to Vasudha’s home encounters several competing accounts of the same woman, shaped by mourning, family expectations and guarded answers. Madhavi resists the description of Dulari as merely a servant. Questions about sugar, betel and folded papers connect domestic familiarity to the material scene, but do not immediately identify a perpetrator.",
+      "Jaynarayan’s description of four living stories around one dead woman captures the chapter’s pressure. Kinship provides valuable knowledge without guaranteeing an impartial account. The household’s wish to protect its own image must be examined alongside grief, and Vasudha’s public commitments should not disappear into a single family explanation of her death."
+    ],
+    "mai": [
+      "वसुधाक घरक भेटमे शोक, पारिवारिक अपेक्षा आ सतर्क उत्तरसँ बनल एक्के स्त्रीक अनेक कथा सामने अबैत अछि। दुलारीकेँ केवल नौकर कहब माधवी रोकैत अछि। चीनी, सुपारी आ मोड़ल कागजक प्रश्न घरेलू परिचयकेँ घटनास्थलसँ जोड़ैत अछि, मुदा तुरन्त अपराधीक नाम नहि दैत अछि।",
+      "एक मृत स्त्रीक चारि जीवित कथा—जयनारायणक टिप्पणी अध्यायक तनाव पकड़ैत अछि। नातेदारी उपयोगी ज्ञान दैत अछि, निष्पक्षताक गारंटी नहि। घरक छवि बचएबाक इच्छा शोकक संग जाँचल जाए; वसुधाक सार्वजनिक प्रतिबद्धता हुनक मृत्युक केवल पारिवारिक व्याख्यामे नहि हेरा जाए।"
+    ]
+  },
+  {
+    "id": 8,
+    "titleEn": "Chapter 8 — Everyday habits",
+    "en": [
+      "The investigation revisits tea, the betel box, folded-paper signals and the recovered blue-rimmed cup. Vasudha’s students know the paper-folding code too, so what first looked like private household knowledge proves more widely shared. Abhiram’s maintenance records also distinguish a proposal to close a ventilation route from proof that it was actually closed.",
+      "The chapter’s pressure now lies in movement rather than contradiction: if the blue cup was recovered from the drain, someone or some sequence carried it away from the room. Everyday objects become evidence because they keep the shape of use, displacement and imitation. The point is not to name a culprit from a cup, but to keep asking how a staged ordinary scene was made."
+    ],
+    "mai": [
+      "जाँच चाय, सुपारी-डिबिया, कागज मोड़बाक संकेत आ नालीसँ बरामद नील किनारीक कपपर घुरैत अछि। वसुधाक विद्यार्थी सेहो कागजक संकेत जनैत अछि; तेँ जे बात घरक निजी ज्ञान बुझाइत छल, से बेसी लोक लग पहुँचले अछि। अभिरामक रखरखाव-अभिलेख वात-मार्ग बन्द करबाक प्रस्ताव आ वास्तवमे बन्द भेने होएबाक प्रमाणक अन्तर सेहो देखबैत अछि।",
+      "एहि संशोधित पाठमे तनाव विरोधाभासमे नहि, वस्तुक यात्रामे अछि: नील कप जँ नालीमे भेटल, तँ ओ कोठरीसँ ओतय कोना पहुँचल? दैनिक वस्तु उपयोग, हटाएब आ नकलक आकार सँभारि प्रमाण बनैत अछि। कपसँ तुरन्त दोषी ठहराएब बात नहि; staged साधारण दृश्य कोना बनल, ई प्रश्न बचाएब मुख्य अछि।"
+    ]
+  },
+  {
+    "id": 9,
+    "titleEn": "Chapter 9 — Madhavi and Abhiram",
+    "en": [
+      "Working late over the records brings Madhavi and Abhiram’s growing attachment into the same room as their disagreements about evidence. Searches for the seventh mark produce partial matches rather than a perfectly indexed answer. Family calls, fatigue, another visitor and a shared umbrella interrupt the inquiry with ordinary social life.",
+      "The relationship gives the investigation an emotional rhythm without making affection a substitute for scrutiny. Madhavi discovers that Abhiram’s family life is less transparent than a searchable screen. Their closeness is therefore also an encounter with limits: another person cannot be understood simply by collecting more visible information."
+    ],
+    "mai": [
+      "देर राति अभिलेखपर काज करैत माधवी आ अभिरामक बढ़ैत नेह प्रमाणक बहसक संग एक्के कोठरीमे रहैत अछि। सातम चिन्हक खोज पूर्ण अनुक्रमित उत्तरक बदला आंशिक मेल दैत अछि। घरक फोन, थकान, आगन्तुक आ साझा छाता जाँचमे दैनिक जीवन अनैत अछि।",
+      "सम्बन्ध जाँचकेँ भावनात्मक लय दैत अछि, मुदा नेह परीक्षणक विकल्प नहि। माधवी बुझैत अछि जे अभिरामक पारिवारिक जीवन खोजयोग्य स्क्रीन जतेक खुलल नहि। नजदीकी सीमाक अनुभव सेहो अछि: बेसी दृश्य सूचना जमा कऽ मात्र दोसर मनुष्य पूर्णतः बुझल नहि जा सकैत।"
+    ]
+  },
+  {
+    "id": 10,
+    "titleEn": "Chapter 10 — The constellation ledger",
+    "en": [
+      "Vasudha’s sealed bag yields the old ledger, examined with Ambika’s help and documented before threads are removed. Damaged names, a missing leaf and the seven-part table resist premature completion. The blue thread and a note about the bridal room lead towards the household archive, while an old relief-camp receipt connects locations across the narrative’s two periods.",
+      "The ledger’s significance exceeds an astrological label: incomplete knowledge need not erase the existence of the person recorded. Ambika’s refusal to turn an uncertain name into a certain identification parallels her advice about dreams. Both human interpretation and digital transcription must preserve what the source cannot yet support."
+    ],
+    "mai": [
+      "वसुधाक मोहरबन्द झोरासँ पुरान पोथी भेटैत अछि। अंबिकाक सहयोगसँ जाँच आ धागा हटएबासँ पहिने छवि बनैत अछि। क्षतिग्रस्त नाम, फाटल पन्ना आ सात भागक तालिका तुरन्त पूरा कऽ देबाक विरुद्ध ठाढ़ अछि। नील धागा आ कनियाँक कोठरीक पर्ची घरेलू अभिलेख दिस लऽ जाइत अछि; राहत-शिविरक रसीद दुनू समयक स्थान जोड़ैत अछि।",
+      "पोथीक महत्त्व ज्योतिषक नामसँ पैघ अछि: अपूर्ण जानकारीक अर्थ दर्ज मनुष्यक अस्तित्व मिटाएब नहि। अंबिका अनिश्चित नामकेँ निश्चित पहिचान नहि बनबैत छथि; सपनापर हुनक सावधानी सेहो एही अनुशासनसँ जुड़ैत अछि। मानवीय पाठ आ डिजिटल प्रतिलिपि दुनूकेँ असमर्थित बातक खाली स्थान बचाबय पड़ैत अछि।"
+    ]
+  },
+  {
+    "id": 11,
+    "titleEn": "Chapter 11 — A household lie",
+    "en": [
+      "Vehicle records contradict Arun’s claim that he stayed home. His explanation leads to Rupa and a visit to a women’s health centre that he had concealed, rather than immediately establishing a connection with the death. The inquiry tests the account while following new information towards the locked bridal room. A mismatch on a screen has opened a question, not answered every part of it.",
+      "The chapter distinguishes privacy, shame and protective concealment from the specific wrongdoing under investigation. It also scrutinises the red colouring of a risk display: visual emphasis can turn an inconsistency into an accusation. Understanding a reason for lying neither excuses every consequence nor establishes homicide."
+    ],
+    "mai": [
+      "गाड़ीक अभिलेख अरुणक घरमे रहबाक बयानसँ मेल नहि खाइत अछि। हुनक उत्तर रूपा आ नुकाओल स्त्री-आरोग्य केन्द्रक यात्राक बात खोलैत अछि; ई अपने-आप मृत्युसँ सम्बन्ध सिद्ध नहि करैत। जाँच ओहि बयानकेँ परखैत बन्द कनियाँक कोठरी दिस बढ़ैत अछि। स्क्रीनक असंगति प्रश्न खोलने अछि, सभ उत्तर नहि देने।",
+      "निजता, लाज आ बचएबाक उद्देश्यसँ नुकाएबकेँ अध्याय जाँचल जा रहल खास अपराधसँ अलग करैत अछि। जोखिमक लाल रंग सेहो प्रश्नाधीन अछि: दृश्य जोर असंगतिकेँ आरोप बना सकैत अछि। झूठक कारण बुझनाइ ओकर सभ परिणाम क्षम्य वा हत्या सिद्ध भेनाइ नहि।"
+    ]
+  },
+  {
+    "id": 12,
+    "titleEn": "Chapter 12 — The bridal room",
+    "en": [
+      "A documented search of the locked room uncovers photographs, letters and fragile papers. Kusuma’s name begins to give a woman in the image an identity beyond a suppressed family anecdote. A blue thread, the old building and the phrase about the wall’s belly bring the household material into contact with the wider inquiry. The family receives a record of the objects taken into safekeeping.",
+      "Madhavi recognises images resembling her dream, but Jaynarayan insists that the dream and the photograph remain distinct kinds of material. The room exposes the cost of protecting a house by suppressing its past. Naming Kusuma restores attention without yet resolving the circumstances of her life."
+    ],
+    "mai": [
+      "बन्द कोठरीक विधिवत सूचीसहित खोजमे फोटो, पत्र आ नाजुक कागज भेटैत अछि। कुसुमाक नाम चित्रक स्त्रीकेँ दबायल पारिवारिक गपसँ अलग पहिचान देबए लगैत अछि। नील धागा, पुरान भवन आ देवालक पेट-वाला पद घरेलू सामग्रीकेँ जाँचसँ जोड़ैत अछि। सुरक्षित कएल वस्तुक पर्ची परिवारकेँ भेटैत अछि।",
+      "माधवीकेँ चित्र सपनासँ मिलैत बुझाइत अछि; जयनारायण सपना आ फोटोकेँ अलग प्रकारक सामग्री रखबाक आग्रह करैत छथि। घर बचएबाक नामपर अतीत दबएबाक मूल्य कोठरी खोलैत अछि। कुसुमाक नाम ध्यान लौटबैत अछि, हुनक जीवनक परिस्थिति एखन पूर्णतः हल नहि करैत।"
+    ]
+  },
+  {
+    "id": 13,
+    "titleEn": "Chapter 13 — The earthquake year",
+    "en": [
+      "The narrative moves into the earlier relief camp, where Kusuma and Rasbihari meet while recording displaced people. A woman’s local hamlet name does not fit neatly into the register, and Kusuma asks that both forms be recorded. Seven settlements seek higher ground, but ownership claims and incomplete copies threaten their right to remain.",
+      "The camp reveals unequal recovery from a shared disaster: people without property also risk losing evidence of their place. Kusuma’s attraction to Rasbihari develops through this work of listening and inscription. The historical setting belongs here to the novel’s account; the discussion does not present its invented individual events as independent historical documentation."
+    ],
+    "mai": [
+      "कथा पुरान राहत-शिविरमे जाइत अछि, जतय विस्थापित लोकक नाम लिखैत कुसुमा आ रासबिहारी भेटैत छथि। स्त्रीक स्थानीय टोल-नाम पंजीमे सहज नहि अँटैत; कुसुमा दुनू नाम लिखएबाक आग्रह करैत छथि। सात बस्ती ऊँच जमीन चाहैत अछि, मुदा स्वामित्वक दावा आ अपूर्ण नकल रहबाक अधिकार कठिन करैत अछि।",
+      "साझा आपदाक बाद उठबाक सामर्थ्य समान नहि: सम्पत्तिविहीन लोक अपन ठामक प्रमाण सेहो गमा सकैत अछि। सुनब आ लिखबाक एहि काजमे कुसुमाक नेह विकसित होइत अछि। इतिहासक परिवेश एतय उपन्यासक कथन अछि; गढ़ल व्यक्तिगत घटनाकेँ स्वतंत्र ऐतिहासिक दस्तावेज मानि प्रस्तुत नहि कएल गेल अछि।"
+    ]
+  },
+  {
+    "id": 14,
+    "titleEn": "Chapter 14 — Forbidden affection",
+    "en": [
+      "As emergency relief recedes, Kusuma’s family renews restrictions on her visits. She and Rasbihari use constellation names as a private language, while the land papers implicate her own household. Their affection must face differences of caste, wealth and family standing, as well as the uncomfortable question of whether their meetings serve love or the search for documents.",
+      "The narrative binds intimacy to public responsibility without making either effortless. Kusuma’s insistence on attending first to the displaced families refuses to use romance as an escape from the dispute. The private code creates a fragile space for choice inside structures that decide in advance who may be considered an equal."
+    ],
+    "mai": [
+      "आपत्कालीन राहत घटिते कुसुमाक घर फेर हुनक जाएबपर रोक बढ़बैत अछि। ओ आ रासबिहारी नछत्तरक नाम निजी संकेत बनबैत छथि; जमीनक कागज हुनके घरक दावा सामने अनैत अछि। नेहकेँ जाति, धन आ घरानाक अन्तरक संग ई प्रश्नो सहय पड़ैत अछि जे भेट प्रेम लेल अछि कि दस्तावेज लेल।",
+      "कथा निजी सम्बन्ध आ सार्वजनिक उत्तरदायित्व जोड़ैत अछि, मुदा दुनूमे कोनो सहज नहि बनबैत। विस्थापित परिवारक घरक प्रश्न पहिने देखबाक कुसुमाक आग्रह प्रेमकेँ विवादसँ भागबाक बाट नहि होमय दैत अछि। निजी संकेत ओहि संरचनाक भीतर चुनावक छोट जगह बनबैत अछि जे बराबरी पहिनहिसँ निर्धारित करैत अछि।"
+    ]
+  },
+  {
+    "id": 15,
+    "titleEn": "Chapter 15 — Seven settlements",
+    "en": [
+      "Representatives of the seven settlements assemble maps, receipts, remembered use and witness marks into a claim against renewed displacement. Kusuma’s grandmother supplies an older family paper, but Rasbihari insists that its handwriting and authority still require checking. Copies and a separate evidence list are prepared. Kusuma’s signature brings the dispute directly into her own household.",
+      "The document is a collective construction rather than a miraculous single proof. Its multiple marks anticipate loss, substitution and hostile copying. Kusuma’s public act also changes the meaning of her attachment to Rasbihari: trust is expressed through accepting the consequences of testimony, while her family responds by restricting her movement."
+    ],
+    "mai": [
+      "सात बस्तीक प्रतिनिधि नक्शा, रसीद, पुरान उपयोगक स्मृति आ साक्षीक चिन्ह जोड़ि फेर उजड़बासँ बचबाक दावा बनबैत छथि। कुसुमाक दादी पुरान पारिवारिक कागज दैत छथि; रासबिहारी लिखावट आ प्रामाणिकता जाँचबाक आग्रह रखैत छथि। प्रतिलिपि आ अलग प्रमाण-सूची बनैत अछि। कुसुमाक हस्ताक्षर विवाद हुनके घरमे लऽ अबैत अछि।",
+      "दस्तावेज सामूहिक निर्माण अछि, एक चमत्कारी प्रमाण नहि। अनेक चिन्ह गुम भेनाइ, फेरबदल आ विरोधी नकलक सम्भावना ध्यानमे रखैत अछि। कुसुमाक सार्वजनिक काज नेहक अर्थ सेहो बदलैत अछि: गवाहीक परिणाम स्वीकारब विश्वासक रूप बनैत अछि; परिवार हुनक आवागमन रोकैत अछि।"
+    ]
+  },
+  {
+    "id": 16,
+    "titleEn": "Chapter 16 — The vanished document",
+    "en": [
+      "Kusuma is confined at home while the red file disappears from the apparently secured cupboard. The loss reverses the position of those who prepared the claim: Rasbihari faces suspicion of stealing or destroying records. Numbered copies, remembered witness names and the seventh mark survive as possible routes back to the missing material. Kusuma refuses pressure to withdraw her statement.",
+      "Disappearance is an exercise of power over who can make an account credible. The accusation seeks to turn the act of preserving a claim into evidence against its maker. Kusuma’s refusal also separates her guilt at Rasbihari’s suffering from responsibility for the hostile action that caused it."
+    ],
+    "mai": [
+      "कुसुमा घरमे बन्द छथि; सुरक्षित बुझाइत आलमारीसँ लाल बस्ता गायब होइत अछि। दावा तैयार केनिहार रासबिहारीपर उलटे अभिलेख चोरएबाक वा नष्ट करबाक सन्देह अबैत अछि। क्रमांकित प्रतिलिपि, साक्षीक नामक स्मृति आ सातम चिन्ह हरायल सामग्री धरि घुरबाक सम्भावना बचबैत अछि। कुसुमा बयान बदलबाक दबाव नहि मानैत छथि।",
+      "गायब करब एहन शक्ति अछि जे तय करए चाहैत अछि ककर कथा विश्वसनीय बनत। दावा जोगएबाक काजकेँ ओकर निर्माता विरुद्ध मोड़ल जाइत अछि। रासबिहारीक दुःख देखिकऽ कुसुमाक अपराध-बोध आ दुःख उपजएवला शत्रुतापूर्ण काजक वास्तविक उत्तरदायित्व अलग अछि।"
+    ]
+  },
+  {
+    "id": 17,
+    "titleEn": "Chapter 17 — The night of the red covering",
+    "en": [
+      "Family surveillance tightens, and Kusuma must consider survival as well as resistance. Her grandmother gives her a possible way out while leaving the choice to her. After she leaves, conflicting stories attach themselves to a red covering, the pond, the missing copy and the abandoned mansion. The official record establishes her departure and subsequent absence; the narrative does not settle the competing accounts of her fate.",
+      "The chapter exposes how rumour makes an uncertain disappearance appear fully narrated. Even the colour said to identify her is unstable: the covering was reportedly bundled rather than worn. The reader must preserve this uncertainty instead of converting a haunting story or a romantic explanation into a confirmed event."
+    ],
+    "mai": [
+      "पारिवारिक निगरानी बढ़ैत अछि; कुसुमाकेँ प्रतिरोधक संग प्राणरक्षाक प्रश्न सोचय पड़ैत अछि। दादी बाहरक सम्भावित बाट दैत छथि, मुदा निर्णय हुनके छोड़ैत छथि। निकललाक बाद लाल ओढ़नी, पोखरि, गायब नकल आ पुरान हवेलीपर विरोधी कथा चढ़ैत अछि। आधिकारिक अभिलेख प्रस्थान आ बादक अनुपस्थिति कहैत अछि; कथा भाग्यक अलग विवरणमे निश्चित फैसला नहि दैत।",
+      "अफवाह अनिश्चित गायब होएबकेँ पूर्ण कथा जकाँ बना दैत अछि। पहिचानक लाल रंगो अस्थिर अछि: ओढ़नी पहिरल नहि, गठरीमे राखल कहाओल अछि। पाठककेँ ई अनिश्चितता बचाबय पड़ैत अछि; भूतक कथा वा प्रेमक व्याख्या पुष्ट घटना नहि बनि जाए।"
+    ]
+  },
+  {
+    "id": 18,
+    "titleEn": "Chapter 18 — The wall’s belly",
+    "en": [
+      "Madhavi’s renewed dream accompanies a return to the mansion, but the inspection proceeds through permission, photographs and measurements. A difference between internal and external dimensions suggests a cavity. The wall yields a blue thread and part of a letter, whose surviving sentence about the first six marks stops before its crucial continuation.",
+      "The material discovery gives the inquiry something testable without proving the dream’s cause. Jaynarayan refuses to fill the missing half of the letter with an ingenious completion. The scene makes the blank consequential: preserving a fragment means preserving its boundary as well as the words that remain."
+    ],
+    "mai": [
+      "माधवीक फेर अएल सपनाक संग हवेलीमे वापसी होइत अछि, मुदा निरीक्षण अनुमति, छवि आ मापसँ चलैत अछि। भीतर-बाहरक मापमे अन्तर खोखरक सम्भावना दैत अछि। देवालसँ नील धागा आ आधा पत्र भेटैत अछि; पहिल छह चिन्हक वाक्य आवश्यक अगिला अंशसँ पहिने कटैत अछि।",
+      "भौतिक खोज जाँचयोग्य सामग्री दैत अछि, सपनाक कारण सिद्ध नहि करैत। जयनारायण बुद्धिसँ पत्रक हरायल आधा पूरा करब रोकैत छथि। खाली स्थान अर्थपूर्ण अछि: खण्ड बचएबाक अर्थ केवल बचल शब्द नहि, ओकर सीमा सेहो बचाएब।"
+    ]
+  },
+  {
+    "id": 19,
+    "titleEn": "Chapter 19 — Two lines on a palm",
+    "en": [
+      "A visit to Ambika turns palm-reading into a discussion of attention, experience and the questions people reveal through their behaviour. She challenges Abhiram’s readiness to dismiss accumulated observation while venerating formal data. The lightness of the exchange ends abruptly when Sutra displays Dulari as the primary suspect.",
+      "The chapter does not validate palmistry as an investigative instrument. Its interest lies in the social encounter: listening may disclose concerns that a stated question conceals. The sudden return to the accusation tests whether the investigators can extend that same contextual attention to someone whose life is represented by a threatening label."
+    ],
+    "mai": [
+      "अंबिका लग हथेली देखबाक भेट ध्यान, अनुभव आ व्यवहारसँ प्रकट प्रश्नक चर्चा बनैत अछि। ओ अभिरामक संचित अवलोकन तुच्छ मानब आ औपचारिक आँकड़ा पूजबाक प्रवृत्तिकेँ चुनौती दैत छथि। हलुक संवाद तुरन्त बदलैत अछि जखन सूत्र दुलारीकेँ प्राथमिक संदिग्ध देखबैत अछि।",
+      "अध्याय हस्तरेखाकेँ प्रमाणित जाँच-यन्त्र नहि बनबैत। ओकर बल सामाजिक भेटमे अछि: सुनबासँ कहल प्रश्नक पाछाँक चिन्ता खुलि सकैत अछि। आरोपक अचानक वापसी जाँचकर्ता परखैत अछि—की ओहि व्यक्तिक परिस्थिति सेहो सुनल जाएत जकर जीवन डरावन लेबलमे समेटल गेल अछि? उपन्यास एहि प्रश्नकेँ अगिला जाँच धरि लऽ जाइत अछि।"
+    ]
+  },
+  {
+    "id": 20,
+    "titleEn": "Chapter 20 — Sutra’s first mistake",
+    "en": [
+      "Cash withdrawals, an incoming payment, a telephone trail and disappearance combine to make Dulari look suspicious. Checking the transactions and speaking to the household exposes ordinary family uses; the linked phone was carried by Shamsher. Abhiram records why the earlier score must change. A note by Vasudha that contact was unsafe had not been incorporated into the initial account.",
+      "The error arises from treating one account and one telephone as one stable individual life. Repair requires visiting people as well as revising the display. Keeping the correction history matters because the first accusation may continue circulating after the score changes. The chapter ends with a brief voice message asserting that its speaker has not fled."
+    ],
+    "mai": [
+      "नगद निकासी, आयल रकम, दूरभाषक बाट आ गायब होएब जोड़ि दुलारी संदिग्ध बुझाइत अछि। लेनदेन आ घरक लोकसँ जाँचलापर साधारण पारिवारिक उपयोग खुलैत अछि; जुड़ल फोन शमशेर लऽ गेल छल। अभिराम पुरान अंक बदलबाक कारण दर्ज करैत अछि। सम्पर्क सुरक्षित नहि होएबाक वसुधाक टिप्पणी पहिल विवरणमे जुड़ले नहि छल।",
+      "एक खाता आ एक फोनकेँ स्थिर एकल जीवन मानबासँ गलती उपजल अछि। सुधार लेल स्क्रीनक संग लोक लग जाएब आवश्यक अछि। संशोधनक इतिहास बचब महत्त्वपूर्ण अछि, कारण अंक बदललाक बादो पहिल आरोप घूमि सकैत अछि। अन्तमे छोट आवाजक सन्देश अबैत अछि—वक्ता भागल नहि अछि।"
+    ]
+  },
+  {
+    "id": 21,
+    "titleEn": "Chapter 21 — Dulari’s voice",
+    "en": [
+      "The seven-second recording suggests a voice, water and breath, but the team resists treating familiarity or weak audio matching as certainty. Local knowledge supplies a more useful lead: Kamli recalls an old connection across the river, and Dulari’s mother identifies Phulmati in Baraila Diara. The search combines that recollection with signals and current river information.",
+      "Recognition gives direction without eliminating the need for verification. The scene also shows why a missing person’s relationships may matter more than a technically impressive interpretation of background noise. The river journey begins through the contribution of people whose knowledge would not automatically appear in the system."
+    ],
+    "mai": [
+      "सात सेकण्डक ध्वनिमे आवाज, पानि आ साँसक संकेत अछि; परिचित बुझाएब वा कमजोर ध्वनि-मेलकेँ निश्चित पहिचान नहि मानल जाइत। कमली नदीपारक पुरान सम्बन्ध मोन पाड़ैत छथि; दुलारीक माय बरैला दियाराक फुलमतिक पहिचान दैत छथि। खोज एहि स्मृतिकेँ संकेत आ वर्तमान नदीक सूचनासँ जोड़ैत अछि।",
+      "पहिचानक आभास दिशा दैत अछि, सत्यापनक आवश्यकता नहि हटबैत। हरायल व्यक्तिक सम्बन्ध पृष्ठभूमिक ध्वनिक चमत्कारी तकनीकी व्याख्यासँ बेसी उपयोगी भऽ सकैत अछि। नदी-यात्रा ओहि लोकक योगदानसँ शुरू होइत अछि जिनक ज्ञान अपने-आप प्रणालीमे नहि पहुँचैत।"
+    ]
+  },
+  {
+    "id": 22,
+    "titleEn": "Chapter 22 — A night on the boat",
+    "en": [
+      "Weather and shifting river conditions interrupt the search. Bhola’s reading of the water takes precedence over an older map, and the party shelters rather than treating urgency as permission for reckless movement. A possible sighting narrows the search towards the northern sandbank, but the team must return without Dulari.",
+      "The delay is an exercise of responsibility towards both rescuers and the missing woman. In shelter, Madhavi and Abhiram negotiate a way to disagree about dreams without contempt. Their distinction between an experience’s meaning and its cause connects the private conversation to the investigation’s wider refusal of premature certainty."
+    ],
+    "mai": [
+      "मौसम आ बदलैत नदी खोज रोकैत अछि। भोलाक धार पढ़बाक कौशल पुरान नक्शासँ बेसी उपयोगी होइत अछि; दल उतावलपनकेँ जोखिमक अनुमति नहि मानि आश्रय लैत अछि। सम्भावित देखाइ पड़बाक खबर उत्तर चर दिस क्षेत्र छोट करैत अछि, मुदा दुलारी बिना घुरय पड़ैत अछि।",
+      "ई विलम्ब खोजकर्ता आ हरायल स्त्री दुनूक प्रति उत्तरदायित्व अछि। आश्रयमे माधवी आ अभिराम बिना तिरस्कार सपनापर असहमत रहबाक ढंग खोजैत अछि। अनुभवक अर्थ आ कारणक अन्तर निजी संवादकेँ जाँचक व्यापक सावधानीसँ जोड़ैत अछि।"
+    ]
+  },
+  {
+    "id": 23,
+    "titleEn": "Chapter 23 — A keeper of memory",
+    "en": [
+      "Ambika opens a family ledger maintained across generations and explains its marks for direct observation, multiple reports, documentary support and unconfirmed hearsay. Entries about settlement, marriage and debt connect families whose histories are scattered elsewhere. A report about Kusuma’s name on the mansion wall supplies a lead, with its chain of transmission explicitly identified.",
+      "This is a chapter about provenance, not merely a contrast between modern science and tradition. Ambika’s marks retain differences in the quality of knowledge instead of flattening every entry into fact. Her ledger can guide a present inquiry while still requiring current verification of an older report."
+    ],
+    "mai": [
+      "अंबिका पीढ़ी-दर-पीढ़ी चलल बही खोलि प्रत्यक्ष देखल, अनेक लोकसँ सुनल, कागजसँ समर्थित आ अपुष्ट कथनक अलग चिन्ह बुझबैत छथि। बसोबास, विवाह आ कर्जक प्रविष्टि बिखरल पारिवारिक इतिहास जोड़ैत अछि। हवेलीक देवालपर कुसुमाक नामक खबरक संग ओ केकरासँ केकरा सुनल गेल, ई क्रम सेहो स्पष्ट करैत छथि।",
+      "अध्याय केवल विज्ञान आ परम्पराक तुलना नहि, जानकारीक स्रोतक चर्चा अछि। अंबिकाक चिन्ह ज्ञानक गुणवत्ताक भेद बचबैत अछि; सभ प्रविष्टि एक्के दर्जाक तथ्य नहि बनैत। बही वर्तमान जाँचकेँ बाट देखा सकैत अछि, मुदा पुरान कथनक आजुक सत्यापन एखनो चाही।"
+    ]
+  },
+  {
+    "id": 24,
+    "titleEn": "Chapter 24 — Anklets at midnight",
+    "en": [
+      "Photographic comparison and controlled lighting direct attention to a plaster strip overlooked during the earlier inspection. Kusuma’s name and a declaration of having been there become legible. The discovery does not establish when the words were scratched or by whom. Anklet-like sounds remain disturbing to Madhavi and are also discussed by Abhiram.",
+      "The chapter carefully limits what an inscription can resolve. A name supports the existence of a trace, not the entire legend attached to it. Madhavi can preserve the sound as an experience without entering it as proof; the reader is likewise asked to distinguish an evocative correspondence from a demonstrated history."
+    ],
+    "mai": [
+      "फोटोक तुलना आ नियन्त्रित प्रकाश पहिल निरीक्षणमे छूटल चूनक पट्टीपर ध्यान अनैत अछि। कुसुमाक नाम आ एतय रहबाक कथन पढ़ाइत अछि। मुदा शब्द कहिया आ के खरौंचलक, ई सिद्ध नहि। पायल-जकाँ ध्वनि माधवीकेँ विचलित करैत अछि; अभिराम सेहो ओकर चर्चा करैत अछि।",
+      "अध्याय लेखसँ की हल होइत अछि, तकर सीमा रखैत अछि। नाम निशानक उपस्थिति समर्थित करैत अछि, ओहिसँ जुड़ल सम्पूर्ण लोककथा नहि। माधवी ध्वनिकेँ अनुभवक रूपमे बचा सकैत अछि, प्रमाणक रूपमे दर्ज केने बिना। पाठककेँ भावोत्पादक मेल आ सिद्ध इतिहासक अन्तर राखय पड़ैत अछि।"
+    ]
+  },
+  {
+    "id": 25,
+    "titleEn": "Chapter 25 — Dulari is found",
+    "en": [
+      "Located on the northern sandbank, Dulari asks for Madhavi before speaking. She describes a partly seen person burning papers, but refuses to supply a name she cannot establish. Her account of sheltering across the river is shaped by an earlier experience of wrongful police suspicion. When handing over the protected paper, she asks that the record say she presented it herself.",
+      "Her literacy now operates directly on the official description of her actions. Being found does not remove the unequal conditions under which she must speak. The insistence on voluntary presentation and qualified identification gives her agency, while the officer’s description of her as a witness ‘for now’ keeps that security unsettled."
+    ],
+    "mai": [
+      "उत्तर चरपर भेटल दुलारी बोलबासँ पहिने माधवीकेँ चाहैत अछि। ओ कागज जरबैत आधा देखल व्यक्तिक बात कहैत अछि, मुदा अपुष्ट नाम देबासँ मना करैत अछि। नदीपार आश्रयक ओकर निर्णयपर पहिल अन्यायपूर्ण पुलिस-सन्देहक अनुभव असर देने अछि। सुरक्षित कागज देलापर ओ लिखबबैत अछि जे स्वयं प्रस्तुत केलक।",
+      "ओकर साक्षरता आब आधिकारिक वर्णनपर सीधे काज करैत अछि। भेटि गेलासँ बोलबाक असमान परिस्थिति समाप्त नहि। स्वेच्छासँ प्रस्तुत करब आ सीमित पहिचानक आग्रह ओकर निर्णयाधिकार बचबैत अछि; अधिकारीक एखन साक्षी-वाला शब्द सुरक्षा अस्थिर रखैत अछि।"
+    ]
+  },
+  {
+    "id": 26,
+    "titleEn": "Chapter 26 — Arrest",
+    "en": [
+      "Dulari corrects the written statement’s language of flight and insists that her uncertain recognition remain uncertain. A senior officer nevertheless reads her possession of the copy and her absence against her. The old digital suspicion, despite its recorded correction, remains available in the file. She is arrested, and Rachna Mandal stresses the need to bring the complete revision history before the court.",
+      "The chapter shows how an institution can preserve an error while losing the force of its correction. Testimony intended to protect evidence becomes material for accusation. The shift from witness to accused makes the wording Dulari challenged earlier consequential, and moves the struggle towards the court’s examination of each link."
+    ],
+    "mai": [
+      "दुलारी लिखित बयानसँ भागबाक शब्द हटबबैत अछि आ अनिश्चित पहिचान अनिश्चिते रखबैत अछि। वरिष्ठ अधिकारी तइयो ओकर लग नकल होएब आ अनुपस्थितिकेँ ओकर विरुद्ध पढ़ैत छथि। सुधार दर्ज भेलोपर पुरान डिजिटल सन्देह फाइलमे उपलब्ध अछि। गिरफ्तारी होइत अछि; रचना मंडल अदालतमे सम्पूर्ण संशोधन-इतिहास अनबाक आवश्यकता कहैत छथि।",
+      "संस्था गलती बचाकऽ ओकर सुधारक बल गमा सकैत अछि। प्रमाण बचएबाक गवाही आरोपक सामग्री बनैत अछि। साक्षीसँ अभियुक्तक परिवर्तन पहिने दुलारी द्वारा रोकल शब्दक महत्त्व देखबैत अछि; संघर्ष आब अदालतमे एक-एक कड़ी परखबाक दिस जाइत अछि।"
+    ]
+  },
+  {
+    "id": 27,
+    "titleEn": "Chapter 27 — The bail hearing",
+    "en": [
+      "Rachna assembles the voluntary handover, verified shared-phone use, explanations of the payments and Sutra’s revision history. The hearing tests whether the accusation’s links justify continuing custody. Abhiram must explain the weakness of the earlier result in public, and Dulari’s reasons for distrusting the police receive a hearing. Bail restores her freedom while leaving the case open.",
+      "The chapter distinguishes relief from confinement from a final resolution of guilt. Its pressure falls on the complete record: the corrected result cannot be detached from the misleading one already used. Dulari’s insistence on saying only what she knows continues to matter within a setting that can give official force to an overstated account."
+    ],
+    "mai": [
+      "रचना स्वेच्छासँ कागज देल गेल होएब, साझा फोनक सत्यापन, रकमक कारण आ सूत्रक संशोधन-इतिहास जोड़ैत छथि। सुनवाई परखैत अछि जे आरोपक कड़ी हिरासत जारी रखबाक आधार बनैत अछि कि नहि। अभिराम सार्वजनिक रूपसँ पुरान परिणामक कमजोरी बुझबैत अछि; दुलारीक पुलिसपर अविश्वासक कारण सुनल जाइत अछि। जमानत स्वतन्त्रता लौटबैत अछि, मामिला खुजले अछि।",
+      "हिरासतसँ राहत आ दोषक अन्तिम निर्णय अलग अछि। सम्पूर्ण अभिलेख आवश्यक अछि: सुधारल परिणामकेँ पहिने उपयोग भेल भ्रामक परिणामसँ काटल नहि जा सकैत। केवल जनल बात कहबाक दुलारीक आग्रह ओहि ठामो महत्त्वपूर्ण अछि जतय बढ़ाओल कथन आधिकारिक शक्ति पाबि सकैत अछि।"
+    ]
+  },
+  {
+    "id": 28,
+    "titleEn": "Chapter 28 — Who answers for the evidence?",
+    "en": [
+      "The court turns from Dulari’s immediate position to the status of Sutra’s report. Abhiram explains that people choose the questions, sources and rules through which the system finds relationships. The hearing demands preserved source material, revision records and an accountable human explanation if the analysis is to be used against someone.",
+      "Responsibility cannot be transferred to the phrase ‘the machine said’. Nor does the chapter simply dismiss computation: its usefulness depends on a method that others can examine. Kamli’s renewed recollection of an early-morning customer then returns the inquiry from the abstract problem of accountability to a specific, testable claim about time."
+    ],
+    "mai": [
+      "अदालत दुलारीक तत्काल स्थितिसँ सूत्रक प्रतिवेदनक दर्जा दिस मुड़ैत अछि। अभिराम बुझबैत अछि जे प्रश्न, स्रोत आ नियम मनुष्य चुनैत अछि; प्रणाली ओहिमे सम्बन्ध खोजैत अछि। ककरो विरुद्ध विश्लेषण उपयोग लेल मूल सामग्री, संशोधन-इतिहास आ उत्तरदायी मानवीय व्याख्या सुरक्षित रखबाक माँग होइत अछि।",
+      "यन्त्र कहलक कहि जिम्मेदारी हटाओल नहि जा सकैत। अध्याय गणनाकेँ तुच्छ सेहो नहि करैत: उपयोगिता एहन विधिपर निर्भर अछि जकरा दोसर परखि सकय। कमलीक भोरक ग्राहकक स्मृति फेर जिम्मेदारीक सामान्य प्रश्नसँ समयक खास जाँचयोग्य दाबी दिस लऽ जाइत अछि।"
+    ]
+  },
+  {
+    "id": 29,
+    "titleEn": "Chapter 29 — Kamli’s early-morning tea",
+    "en": [
+      "Kamli locates the early tea service through the sequence of her working morning rather than a casual glance at a clock. Medical findings, the cup residue and traces on the betel box are reconsidered alongside her account. The investigators resist manufacturing a seventh clue merely to complete a pattern, and keep the apparent connection between 4:10 and 4:17 open to testing.",
+      "Temporal closeness does not by itself establish a causal link. The chapter makes ordinary work a source of precise questions while preserving the need to check memory and identification. It also warns that a striking stopped clock can attract every other observation into a story before that story has been established."
+    ],
+    "mai": [
+      "कमली भोरक चाय समय घड़ीक एक नजरसँ नहि, अपन काजक क्रमसँ जोड़ैत छथि। चिकित्सकीय मत, कपक अवशेष आ सुपारी-डिबियाक निशान हुनक बयानक संग फेर देखल जाइत अछि। सातक संख्या पूरा करबाक लेल सातम सूत्र गढ़ल नहि जाइत; 4:10 आ 4:17क सम्बन्ध परीक्षण लेल खुलल रहैत अछि।",
+      "समयक नजदीकी अपने-आप कारणक सम्बन्ध नहि। दैनिक श्रम सटीक प्रश्नक स्रोत बनैत अछि, मुदा स्मृति आ पहिचान जाँचबाक आवश्यकता रहैत अछि। रुकल घड़ी जकाँ आकर्षक वस्तु कथा सिद्ध होएबासँ पहिनहिए सभ अवलोकन अपन चारूकात खींचि सकैत अछि।"
+    ]
+  },
+  {
+    "id": 30,
+    "titleEn": "Chapter 30 — A staged suicide scene",
+    "en": [
+      "The police ask to reconsider the original account of a possible suicide in a locked room. Medical, material and testimonial strands now suggest deliberate alteration of the scene. Sutra is used to display separate events rather than a decisive percentage. A familiar person’s identification produces another lead, but the team continues to distinguish a lie about whereabouts from proof of causing death.",
+      "The important change is in the question being asked: the room may have been arranged to invite a ready-made explanation. The title names that emerging interpretation, not a licence to treat every detail as staged. Later evidence, especially about the clock, will require parts of this reconstruction to change."
+    ],
+    "mai": [
+      "पुलिस बन्द कोठरीक सम्भावित आत्महत्या-वाला पहिल विवरण फेर देखबाक आवेदन दैत अछि। चिकित्सकीय, भौतिक आ गवाहीक कड़ी दृश्य जानि-बुझि बदलल होएबाक संकेत दैत अछि। सूत्र निर्णायक प्रतिशतक बदला अलग घटना देखबैत अछि। परिचित व्यक्तिक पहिचान नव सूत्र दैत अछि, मुदा ठेकानाक झूठ आ मृत्यु कारित करबाक प्रमाण अलग रहैत अछि।",
+      "मुख्य परिवर्तन प्रश्नमे अछि: कोठरी सहज कथा मनबाबय लेल सजाओल भऽ सकैत अछि। शीर्षक उभरैत व्याख्या कहैत अछि, प्रत्येक वस्तु बनाओल मानबाक अनुमति नहि। बादक प्रमाण, विशेषतः घड़ीक बारेमे, एहि पुनर्निर्माणक अंश बदलए माँगत।"
+    ]
+  },
+  {
+    "id": 31,
+    "titleEn": "Chapter 31 — Jaynarayan’s bias",
+    "en": [
+      "Kamli’s initial identification points towards Arun, but call records and the practical timing of travel challenge that possibility. Jaynarayan recognises that a previous case involving Chandrakala has shaped the way he reads a husband’s concealment. He asks that his own confirmation bias be recorded, just as the system’s mistake was recorded.",
+      "The novel refuses to reserve fallibility for the machine. Experience can supply a powerful analogy that becomes misleading when it substitutes for the present facts. Accepting correction preserves Jaynarayan’s usefulness without granting him infallibility. The chapter closes as a new archival connection unsettles Abhiram in turn."
+    ],
+    "mai": [
+      "कमलीक पहिल पहिचान अरुण दिस जाइत अछि, मुदा फोन-अभिलेख आ यात्राक समय ओहि सम्भावनाकेँ चुनौती दैत अछि। जयनारायण बुझैत छथि जे चन्द्रकलाक पुरान मामिला पतिक नुकाएबकेँ पढ़बाक हुनक ढंग प्रभावित केने अछि। ओ अपन पुष्टि-पक्षपात सेहो प्रणालीक गलती जकाँ दर्ज करबबैत छथि।",
+      "उपन्यास भूल केवल यन्त्र लेल सुरक्षित नहि रखैत। अनुभवक प्रभावशाली समानता वर्तमान तथ्यक स्थान लऽ भ्रामक भऽ सकैत अछि। सुधार स्वीकारब जयनारायणक उपयोगिता बचबैत अछि, अचूकता नहि दैत। अन्तमे नव अभिलेखीय सम्बन्ध अभिरामकेँ सेहो अस्थिर करए लगैत अछि।"
+    ]
+  },
+  {
+    "id": 32,
+    "titleEn": "Chapter 32 — Papers in Abhiram’s house",
+    "en": [
+      "A connection in the records sends Abhiram to a family chest containing old copies and a note signed by his great-grandfather Madhaveshwar Jha. He handles and photographs the material carefully but postpones telling the others, describing the delay to himself as a need for verification. His mother’s questions make that guardedness increasingly uncomfortable.",
+      "The chapter turns an apparently sound principle into a test of motive. Verification is necessary, but it can also provide respectable language for fear of a family implication. Careful physical handling does not automatically make control over disclosure fair. The narration allows the reader to see the self-protective part of his reasoning before he openly acknowledges it."
+    ],
+    "mai": [
+      "अभिलेखक सम्बन्ध अभिरामकेँ पारिवारिक संदूक धरि लऽ जाइत अछि। पुरान नकल आ परदादा माधवेश्वर झाक हस्ताक्षरक टिप्पणी भेटैत अछि। ओ सामग्री सावधानीसँ सम्हारि छवि बनबैत अछि, मुदा दोसराकेँ कहब टारैत अपनाकेँ सत्यापन चाही बुझबैत अछि। मायक प्रश्न ओकर सतर्क चुप्पी असहज बनबैत अछि।",
+      "उचित बुझाइत सिद्धान्त प्रेरणाक परीक्षा बनैत अछि। सत्यापन आवश्यक अछि, मुदा पारिवारिक सम्बन्धक डर नुकएबाक सम्मानजनक भाषा सेहो भऽ सकैत अछि। कागज सावधानीसँ छूबनाइ जानकारी रोकबाक अधिकार अपने-आप नहि दैत। अभिराम स्वीकारबासँ पहिने पाठक ओकर तर्कक आत्मरक्षात्मक अंश देखैत अछि।"
+    ]
+  },
+  {
+    "id": 33,
+    "titleEn": "Chapter 33 — A breach of trust",
+    "en": [
+      "Abhiram’s mother innocently mentions the papers during a visit, exposing his delayed disclosure. Madhavi refuses the defence that not speaking was technically different from lying. The original material and the circumstances of its custody are then formally recorded. Abhiram begins correcting the procedure, but that does not immediately restore the personal trust he has damaged.",
+      "The chapter separates an evidentiary repair from an emotional one. His family connection does not automatically establish inherited wrongdoing; concealing the connection nevertheless affects the fairness of the shared inquiry. The new line between the two companions cannot be erased by the same mapping tool that is beginning to reveal shifted land boundaries."
+    ],
+    "mai": [
+      "अभिरामक माय सहज गपमे कागजक उल्लेख करैत छथि आ टारल सूचना खुलि पड़ैत अछि। नहि कहब तकनीकी रूपसँ झूठ नहि—ई बचाव माधवी नहि मानैत अछि। मूल सामग्री आ ओकर रखबाक परिस्थिति औपचारिक रूपसँ दर्ज होइत अछि। अभिराम प्रक्रिया सुधारए लगैत अछि, मुदा व्यक्तिगत विश्वास तुरन्त नहि घुरैत।",
+      "प्रमाणक व्यवस्था सुधारब आ भावनात्मक चोट सुधरब अलग अछि। पारिवारिक सम्बन्ध अपने-आप पुरखाक दोष सिद्ध नहि करैत; सम्बन्ध नुकाएब साझा जाँचक निष्पक्षता प्रभावित करैत अछि। दुनूक बीच खिंचल रेखा ओहि नक्शा-यन्त्रसँ नहि मेटत जे जमीनक सरकल सीमा देखबए लगल अछि।"
+    ]
+  },
+  {
+    "id": 34,
+    "titleEn": "Chapter 34 — Sutra’s revised map",
+    "en": [
+      "The map comparison records its human choices of reference points and avoids using a later road as if it were an older fixed feature. Boundaries are displayed as bands where precision is uncertain. The seven areas appear to have shifted in a similar direction, and an older complaint shows how absence of the original once allowed a later survey to prevail.",
+      "Visual clarity is treated as a claim that needs justification. A thin line can conceal uncertainty just as a large percentage can conceal missing context. The comparison makes an organised alteration worth investigating without itself naming the responsible hand. Source work also becomes the first tentative practice through which Madhavi and Abhiram cooperate after the breach."
+    ],
+    "mai": [
+      "नक्शाक तुलनामे सन्दर्भ-बिन्दु चुनबाक मानवीय निर्णय दर्ज होइत अछि; बादक सड़ककेँ पुरान स्थिर वस्तु नहि मानल जाइत। अनिश्चित सीमाकेँ पातर निश्चित रेखाक बदला पट्टीमे देखाओल जाइत अछि। सात क्षेत्र एक्के दिशामे सरकल बुझाइत अछि; पुरान शिकायत मूलक अभावसँ बादक सर्वेक्षण मान्य भेने होएबाक बात खोलैत अछि।",
+      "दृश्यक सफाइ सेहो आधार माँगएवला दावा अछि। पातर रेखा अनिश्चितता नुका सकैत अछि, जेना पैघ प्रतिशत सन्दर्भक अभाव। तुलना संगठित फेरबदल जाँचबाक कारण दैत अछि, जिम्मेदार हाथक नाम नहि। स्रोतक साझा काज नेहक दरारक बाद सहयोगक पहिल सावधान अभ्यास सेहो बनैत अछि।"
+    ]
+  },
+  {
+    "id": 35,
+    "titleEn": "Chapter 35 — Rahmat’s knot",
+    "en": [
+      "Rahmat distinguishes a marking knot from the ordinary structure of a binding. His workshop ledger records the instruction not to remove a blue thread and identifies it as a girl’s private mark. The repair record points towards a numbered 1935 volume that may preserve another fragment, to be opened through a documented conservation process.",
+      "The binder’s work supplies both a material distinction and a history of handling. Colour alone is not a universal code, and a private mark should not become a general rule in Sutra. The chapter makes preservation productive of knowledge: a craft that keeps an apparently minor fragment can later make a larger interpretation possible."
+    ],
+    "mai": [
+      "रहमत साधारण जिल्दक गाँठिसँ चिन्ह करबाक गाँठि अलग करैत छथि। हुनक दोकानक बही नील धागा नहि हटएबाक निर्देश आ कन्याक निजी चिन्ह दर्ज करैत अछि। मरम्मतक अभिलेख 1935क क्रमांकित जिल्द दिस लऽ जाइत अछि, जाहिमे दोसर टुकड़ा बचल भऽ सकैत अछि; ओकरा दस्तावेजीकृत संरक्षण-प्रक्रियासँ खोलल जाएत।",
+      "बँधनिहारक काज भौतिक भेद आ सम्हारबाक इतिहास दुनू दैत अछि। केवल रंग सार्वत्रिक संकेत नहि; निजी चिन्ह सूत्रक सामान्य नियम नहि बनय। संरक्षण ज्ञान उपजबैत अछि: छोट बुझाइत टुकड़ा बचएवला कौशल बादमे पैघ व्याख्या सम्भव कऽ सकैत अछि।"
+    ]
+  },
+  {
+    "id": 36,
+    "titleEn": "Chapter 36 — What ‘the seventh witness’ means",
+    "en": [
+      "A fragment preserved inside the old binding is compared with the mansion letter through its torn edges, script and material features. The recovered wording explains that the seventh witness is, in this document, Kusuma’s playful name for the seventh authentication mark associated with the household paper. The blue thread is her private sign, not an official archival convention.",
+      "The discovery corrects both a computational classification and the human desire for a mysterious person. Meaning depends on the local wording, not merely neighbouring terms such as witness and name. The remaining question about an unnamed observer still has literary force, but it must not undo the specific documentary explanation just established."
+    ],
+    "mai": [
+      "पुरान जिल्दमे बचल टुकड़ा हवेलीक पत्रसँ फाटल किनार, लिखावट आ भौतिक गुणक आधारपर मिलाओल जाइत अछि। बचल पाठ बुझबैत अछि जे एहि दस्तावेजमे सातम साक्षी घराना-पत्रक सातम प्रामाणिकता-चिन्हक कुसुमा द्वारा ठट्ठामे देल नाम अछि। नील धागा हुनक निजी संकेत अछि, सरकारी अभिलेखक रीति नहि।",
+      "खोज गणकीय वर्गीकरण आ रहस्यमय व्यक्ति चाहएवला मानवीय कथा दुनू सुधारैत अछि। अर्थ स्थानीय वाक्यसँ अबैत अछि, केवल साक्षी आ नामक पड़ोसी शब्दसँ नहि। अनाम देखनिहारक बचल प्रश्न साहित्यिक बल रखैत अछि, मुदा स्थापित खास दस्तावेजी अर्थकेँ फेर मिटाबय नहि।"
+    ]
+  },
+  {
+    "id": 37,
+    "titleEn": "Chapter 37 — The family’s broken circle",
+    "en": [
+      "Debt records, communications and separate family statements focus attention on Prakhar. A business note links relief from his private debt to stopping the Seven Tola case. Relatives’ earlier accounts prove partly dependent on what others said rather than what they saw. Prakhar asks for a lawyer, and the questioning pauses. Dulari’s remembered gait, key ring and cough raise a further question about an archive employee.",
+      "The family’s protective account unravels through distinctions between observation and repetition. The chapter also refuses to make three familiar traits an automatic identification. Its next step is a reconstruction with a source beneath each part, preserving rights and evidentiary limits even as suspicion becomes more focused."
+    ],
+    "mai": [
+      "कर्जक कागज, सम्पर्क आ अलग पारिवारिक बयान प्रखरपर ध्यान केन्द्रित करैत अछि। कारोबारी टिप्पणी सात टोला मामिला रुकला पर निजी कर्जक राहत जोड़ैत अछि। परिजनक पहिल बात किछु अंशमे देखल नहि, दोसरसँ सुनलपर आधारित छल। प्रखर वकील माँगैत अछि; प्रश्न रुकैत अछि। दुलारीक चालि, चाभीक छल्ला आ खाँसीक स्मृति अभिलेख-कर्मीपर नव प्रश्न खोलैत अछि।",
+      "रक्षक पारिवारिक कथा प्रत्यक्ष देखब आ दोहरएबाक अन्तरसँ टूटैत अछि। तीन परिचित गुण अपने-आप पहिचान नहि बनैत। अगिला काज प्रत्येक टुकड़ाक नीचाँ स्रोतसहित पुनर्निर्माण अछि; सन्देह केन्द्रित भेलोपर अधिकार आ प्रमाणक सीमा बचल रहैत अछि।"
+    ]
+  },
+  {
+    "id": 38,
+    "titleEn": "Chapter 38 — Seventeen minutes past four",
+    "en": [
+      "Prakhar’s account describes a dispute over the papers, his violent push and Vasudha’s head striking the cabinet. Material findings support parts of that reconstruction. He calls Navalkishor instead of seeking medical help; Navalkishor describes destroying papers and rearranging the room to encourage a suicide explanation. The clock may have stopped from the impact rather than being deliberately set, correcting an earlier theory.",
+      "The chapter separates the injury, failure to seek help and subsequent concealment instead of compressing them into one act. It does not claim that prompt treatment would certainly have saved Vasudha. Dulari witnessed burning papers, not the fatal confrontation; the reconstruction must not borrow more certainty from her than her testimony contains."
+    ],
+    "mai": [
+      "प्रखरक कथन कागजक विवाद, हिंसक धक्का आ अलमारीसँ वसुधाक माथ टकरएबाक बात कहैत अछि। भौतिक निष्कर्ष किछु कड़ी समर्थित करैत अछि। चिकित्सकीय सहायता बजएबाक बदला ओ नवलकिशोरकेँ बजबैत अछि; नवलकिशोर कागज नष्ट करब आ आत्महत्याक कथा मनबाबय लेल कोठरी सजएबाक बात कहैत अछि। घड़ी जानि-बुझि रोकल नहि, धक्कासँ रुकल भऽ सकैत अछि—पुरान अनुमान सुधरैत अछि।",
+      "चोट, सहायता नहि बजाएब आ बादक नुकाएब अलग चरण अछि। तुरन्त उपचारसँ वसुधा निश्चित बचितथि, ई दावा नहि। दुलारी कागजक आगि देखने छल, घातक भिड़न्त नहि; पुनर्निर्माण ओकर बयानसँ बेसी निश्चय उधार नहि लऽ सकैत अछि।"
+    ]
+  },
+  {
+    "id": 39,
+    "titleEn": "Chapter 39 — Dulari’s eyes",
+    "en": [
+      "Dulari participates in a separate identification procedure while resisting prompts that could later contaminate her account. She retains uncertainty about the face and key ring rather than converting resemblance into certainty. At home she resumes a school composition about an ordinary village day and refuses to let the case occupy every page of her life.",
+      "Her credibility lies in controlling the boundary of what she says, not in becoming the heroic witness who solves everything. The chapter restores a life beyond evidence: school, family and self-description continue. Its account of testimony is therefore also an account of a person’s right not to be reduced to an institutional role."
+    ],
+    "mai": [
+      "दुलारी अलग पहिचान-प्रक्रियामे भाग लैत अछि, मुदा बयान प्रभावित करएवला संकेत रोकैत अछि। चेहरा आ चाभीक छल्लाक अनिश्चितता बचबैत अछि; समानता निश्चितता नहि बनैत। घरमे ओ गामक साधारण दिनपर विद्यालयक निबन्ध लिखैत अछि आ मामिलाकेँ जीवनक प्रत्येक पन्ना घेरय नहि दैत अछि।",
+      "विश्वसनीयता सभ हल करएवली वीर साक्षी बनबामे नहि, कथनक सीमा रखबामे अछि। प्रमाणसँ बाहरक जीवन लौटैत अछि—पढ़ाइ, परिवार आ अपन वर्णन जारी अछि। गवाहीक चर्चा एहन अधिकारक चर्चा सेहो अछि जाहिसँ मनुष्य केवल संस्थाक देल भूमिका बनि नहि रहि जाए।"
+    ]
+  },
+  {
+    "id": 40,
+    "titleEn": "Chapter 40 — The final arguments",
+    "en": [
+      "Eight months later, the final hearing distinguishes the supported sequence from claims that remain unproved. The judgment finds Prakhar responsible for the fatal violence and participation in concealment, while not finding a preplanned killing sufficiently established. Navalkishor’s responsibility concerns alteration, destruction and obstruction, without proof that he inflicted the original injury. Dulari’s earlier suspicion is explicitly cleared from the record.",
+      "The differentiation is the point of the ending: a satisfying narrative must not exceed what each strand supports. Correcting Dulari’s record protects her future as well as resolving the present case. The court’s treatment of Sutra returns responsibility to sources, examination and answerable people; the land claim remains a separate unfinished task."
+    ],
+    "mai": [
+      "आठ महीना बाद अन्तिम सुनवाई समर्थित घटना-क्रम आ असिद्ध दाबी अलग करैत अछि। निर्णय प्रखरकेँ मृत्युकारक हिंसा आ नुकएबामे सहभागिताक जिम्मेदार मानैत अछि, मुदा पूर्वनियोजित हत्या पर्याप्त सिद्ध नहि मानैत। नवलकिशोरक जिम्मेदारी फेरबदल, विनाश आ जाँच भटकेबामे अछि; मूल चोट देबाक प्रमाण नहि। दुलारीक पुरान सन्देह अभिलेखसँ स्पष्ट हटाओल जाइत अछि।",
+      "अन्तक बल एही भेदमे अछि: सन्तोषजनक कथा प्रत्येक कड़ीक समर्थनसँ आगाँ नहि बढ़य। दुलारीक अभिलेख सुधारब वर्तमानक संग भविष्य बचबैत अछि। सूत्रक सम्बन्धमे अदालत जिम्मेदारी स्रोत, परीक्षण आ उत्तरदायी लोक लग लौटबैत अछि; जमीनक दावा अलग अधूरा काज अछि।"
+    ]
+  },
+  {
+    "id": 41,
+    "titleEn": "Chapter 41 — The land regains its name",
+    "en": [
+      "The criminal judgment does not automatically restore land rights. Families assemble their individual records for a separate proceeding, which temporarily prevents demolition, forced displacement and new third-party interests while further survey and hearings continue. The old thread is examined without unnecessary destruction. Dulari’s note-taking helps people bring names and claims back into the record.",
+      "The chapter resists an instant restitution ending. An interim protection matters because it preserves the place from which people can continue their claim. Vasudha’s unfinished work becomes shared daily labour, while the tentative repair of Madhavi and Abhiram’s trust echoes the need to re-examine inherited and newly drawn boundaries."
+    ],
+    "mai": [
+      "आपराधिक निर्णयसँ जमीनक अधिकार अपने-आप नहि घुरैत। परिवार अलग कार्यवाही लेल व्यक्तिगत कागज जोड़ैत अछि। फेर सर्वेक्षण आ सुनवाई चलैत रहैत अछि; एखन ध्वस्तीकरण, बलपूर्वक विस्थापन आ नव तेसर-पक्षक हितपर रोक भेटैत अछि। पुरान धागा अनावश्यक नष्ट केने बिना जाँचल जाइत अछि। दुलारीक लिखनाइ नाम आ दावा अभिलेखमे लौटबैत अछि।",
+      "अध्याय तुरन्त सम्पूर्ण वापसीक अन्त नहि दैत। अन्तरिम सुरक्षा महत्त्वपूर्ण अछि, कारण लोक अपन ठामसँ दावा जारी राखि सकैत अछि। वसुधाक अधूरा काज साझा दैनिक श्रम बनैत अछि; माधवी आ अभिरामक विश्वासक सावधान मरम्मत पुरान आ नव सीमाक पुनर्परीक्षणसँ जुड़ैत अछि।"
+    ]
+  },
+  {
+    "id": 42,
+    "titleEn": "Chapter 42 — Where reasoning pauses",
+    "en": [
+      "During an authorised inspection, an intact sheet bearing the letter’s full text appears in the protected room, although its two known fragments remain separately sealed elsewhere. The team documents the object and proposes checks of paper, ink, access and camera coverage. It records the origin as unknown and the historical authenticity as unproved, rather than declaring a supernatural intervention.",
+      "The unresolved object does not cancel the criminal findings or complete the continuing land case. It tests whether the characters can live with an unanswered question after learning the costs of premature answers. Madhavi and Abhiram’s shared admission of not knowing gives both inquiry and affection room to continue without a false promise of certainty."
+    ],
+    "mai": [
+      "अनुमत निरीक्षणमे संरक्षित कोठरीमे पत्रक पूर्ण पाठवला अखण्ड पन्ना भेटैत अछि, जखनकि ज्ञात दू टुकड़ा दोसर ठाम अलग-अलग मोहरबन्द अछि। दल वस्तु दर्ज करैत आ कागज, स्याही, प्रवेश आ कैमरा-क्षेत्र जाँचबाक बात कहैत अछि। उत्पत्ति अज्ञात आ ऐतिहासिक प्रामाणिकता असिद्ध लिखल जाइत अछि; अलौकिक हस्तक्षेप घोषित नहि।",
+      "अनसुलझल वस्तु आपराधिक निष्कर्ष मेटबैत वा चलैत जमीनक मामिला पूरा नहि करैत। जल्दबाजीवला उत्तरक क्षति सीखल पात्र की अनुत्तरित प्रश्नक संग जी सकैत अछि, ई परीक्षा अछि। माधवी आ अभिरामक नहि जनबाक साझा स्वीकार जाँच आ नेह दुनूकेँ झूठ निश्चयक वचन बिना आगाँ बढ़बाक जगह दैत अछि।"
+    ]
+  }
 ]

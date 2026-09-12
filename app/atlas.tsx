@@ -7,7 +7,7 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
-  {id:'six-books',label:"छह नव पोथी",en:'GAJENDRA THAKUR · SIX BOOKS',title:"कविता, कथा आ किशोर साहित्य।",text:"छह स्रोत-संस्करणक परिचय; नव पाँखिक सभ 20 कथा आ कूट नामक सभ 13 अध्यायक द्विभाषिक चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'छह पोथी',linkMeta:'6 पोथी · मैथिली + English'},
+  {id:'six-books',label:"छह नव पोथी",en:'GAJENDRA THAKUR · SIX BOOKS',title:"कविता, कथा आ किशोर साहित्य।",text:"छह स्रोत-संस्करणक परिचय; नव पाँखिक 20 कथा, कूट नामक 13 अध्याय आ सातम साक्षीक 42 अध्यायक द्विभाषिक चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'छह पोथी',linkMeta:'6 पोथी · मैथिली + English'},
 
   {id:'children',label:'बाल साहित्य',en:'For the curious reader',title:'चित्र, कथा आ कल्पना।',text:'प्रीति ठाकुरक चित्रकथा आ अनुवादसँ बाल साहित्यक संसारमे प्रवेश करू।',ids:['p0','p1','p13']},
   {id:'literature',label:'कथा आ पद्य',en:'For the literary explorer',title:'लघु कथासँ उपन्यास धरि।',text:'गजेन्द्र ठाकुरक कथात्मक आ काव्यात्मक लेखनक तीन प्रवेश-द्वार।',ids:['g0','g2','g4']},

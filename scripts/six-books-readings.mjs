@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 const index=JSON.parse(fs.readFileSync('content/six-books-unit-index.json','utf8'));
 const readings={};
-for(const [id,key] of Object.entries({'nav-pankhi':'nav','kut-naam':'kut'})) readings[id]=JSON.parse(fs.readFileSync(`content/six-books-${key}-readings.json`,'utf8'));
+for(const [id,key] of Object.entries({'nav-pankhi':'nav','kut-naam':'kut','saatam-sakshi':'saatam'})) readings[id]=JSON.parse(fs.readFileSync(`content/six-books-${key}-readings.json`,'utf8'));
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function readingCount(id){return readings[id]?.length||0;}
 export function chapterReadings(book,lang){
