@@ -1,0 +1,90 @@
+{
+  "title": "शास्त्रीय दर्शन / Classical Philosophy",
+  "unitCount": 32,
+  "bookCount": 4,
+  "translationAnnexureCount": 8,
+  "bookCounts": {
+    "atmatattvaviveka": 4,
+    "bhamati": 4,
+    "nyayakusumanjali": 12,
+    "tattvacintamani": 12
+  },
+  "books": [
+    {
+      "id": "atmatattvaviveka",
+      "titleMai": "आत्मतत्त्वविवेक",
+      "titleEn": "Ātmatattvaviveka",
+      "author": "उदयनाचार्य / Udayanācārya",
+      "unitCount": 4,
+      "translationAnnexures": 1
+    },
+    {
+      "id": "bhamati",
+      "titleMai": "भामती (चतुःसूत्री)",
+      "titleEn": "Bhāmatī (Catuḥsūtrī)",
+      "author": "वाचस्पति मिश्र / Vācaspati Miśra",
+      "unitCount": 4,
+      "translationAnnexures": 1
+    },
+    {
+      "id": "nyayakusumanjali",
+      "titleMai": "न्यायकुसुमाञ्जलि",
+      "titleEn": "Nyāyakusumāñjali",
+      "author": "उदयनाचार्य / Udayanācārya",
+      "unitCount": 12,
+      "translationAnnexures": 1
+    },
+    {
+      "id": "tattvacintamani",
+      "titleMai": "तत्त्वचिन्तामणि",
+      "titleEn": "Tattvacintāmaṇi",
+      "author": "गङ्गेशोपाध्याय / Gaṅgeśopādhyāya",
+      "unitCount": 12,
+      "translationAnnexures": 5
+    }
+  ],
+  "translationProvenance": {
+    "scope": "Four Sanskrit philosophical works",
+    "count": 4,
+    "translationChain": {
+      "sourceLanguage": "sa",
+      "intermediateLanguage": "mai",
+      "finalLanguage": "en",
+      "intermediateTranslator": {
+        "name": "Gajendra Thakur",
+        "nameMai": "गजेन्द्र ठाकुर"
+      },
+      "finalTranslator": {
+        "name": "Gajendra Thakur",
+        "nameMai": "गजेन्द्र ठाकुर"
+      },
+      "display": "Sanskrit → Maithili (Gajendra Thakur) → English (Gajendra Thakur)"
+    },
+    "works": [
+      {
+        "position": 1,
+        "id": "atmatattvaviveka",
+        "titleMai": "आत्मतत्त्वविवेक",
+        "titleEn": "Ātmatattvaviveka"
+      },
+      {
+        "position": 2,
+        "id": "bhamati",
+        "titleMai": "भामती (चतुःसूत्री)",
+        "titleEn": "Bhāmatī (Catuḥsūtrī)"
+      },
+      {
+        "position": 3,
+        "id": "nyayakusumanjali",
+        "titleMai": "न्यायकुसुमाञ्जलि",
+        "titleEn": "Nyāyakusumāñjali"
+      },
+      {
+        "position": 4,
+        "id": "tattvacintamani",
+        "titleMai": "तत्त्वचिन्तामणि",
+        "titleEn": "Tattvacintāmaṇi"
+      }
+    ]
+  }
+}

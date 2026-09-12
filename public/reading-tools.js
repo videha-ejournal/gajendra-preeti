@@ -6,9 +6,16 @@
  const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  function mount(){
   const host=document.getElementById('videha-reading-tools');if(!host||host.dataset.mounted)return;host.dataset.mounted='true';host.lang='en';
-  const isMai=!location.pathname.includes('/en/')&&!location.pathname.includes('/criticism/');
-  const englishURL=base+'en/'+(location.pathname.includes('/criticism/')?'#criticism':location.hash);
-  const maiURL=base+(location.pathname.includes('/criticism/')?'#criticism':location.hash);
+  const pathname=location.pathname,hash=location.hash;
+  let isMai=!pathname.includes('/en/'),englishURL=base+'en/'+hash,maiURL=base+hash;
+  const criticismRoot=base+'criticism/',receptionRoot=criticismRoot+'reception/';
+  const pairedStatic=['when-dreams-merge','water-burial-among-the-crocodiles','media-learning'];
+  const staticFamily=pairedStatic.find(id=>pathname.startsWith(base+id+'/'));
+  if(staticFamily){const root=base+staticFamily+'/';if(pathname.startsWith(root+'en/')){const tail=pathname.slice((root+'en/').length);isMai=false;englishURL=pathname+hash;maiURL=root+tail+hash;}else{const tail=pathname.slice(root.length);isMai=true;maiURL=pathname+hash;englishURL=root+'en/'+tail+hash;}}
+  else if(pathname.startsWith(receptionRoot+'en/')){const tail=pathname.slice((receptionRoot+'en/').length);isMai=false;englishURL=pathname+hash;maiURL=receptionRoot+tail+hash;}
+  else if(pathname.startsWith(receptionRoot)){const tail=pathname.slice(receptionRoot.length);isMai=true;maiURL=pathname+hash;englishURL=receptionRoot+'en/'+tail+hash;}
+  else if(pathname.startsWith(criticismRoot+'en/')){const tail=pathname.slice((criticismRoot+'en/').length);isMai=false;englishURL=pathname+hash;maiURL=criticismRoot+tail+hash;}
+  else if(pathname.startsWith(criticismRoot)){const tail=pathname.slice(criticismRoot.length);isMai=true;maiURL=pathname+hash;englishURL=criticismRoot+'en/'+tail+hash;}
   host.innerHTML=`<div class="vt-bar" role="group" aria-label="Videha reading tools"><div class="vt-editions"><a href="${escape(maiURL)}" lang="mai" ${isMai?'aria-current="page"':''}>मैथिली</a><a href="${escape(englishURL)}" ${!isMai&&!location.pathname.includes('/criticism/')?'aria-current="page"':''}>English</a></div><button type="button" data-open="listen"><span aria-hidden="true">◖</span> ${isMai?'सुनू · Listen':'Listen'}</button><button type="button" data-open="translate">${isMai?'अनुवाद':'Translate'} <b>41</b></button><button type="button" data-open="access">${isMai?'सहायक तकनीक':'Reading controls'}</button><button type="button" data-open="cite">${isMai?'उद्धरण · Cite':'Cite'}</button></div>
   <dialog class="vt-dialog" id="vt-dialog" aria-labelledby="vt-title"><div class="vt-dialog-heading"><h2 id="vt-title">Reading tools</h2><button type="button" id="vt-close" aria-label="Close reading tools">×</button></div>
   <section data-panel="listen" hidden><p>Read the visible page or selected text using your browser’s voices.</p><label>Read from<select id="vt-read-from"><option value="page">Current page</option><option value="selection">Selected text</option></select></label><label>Voice<select id="vt-voice"></select></label><p id="vt-voice-note" class="vt-note"></p><label>Speed<select id="vt-speed"><option value="0.75">Slower</option><option value="0.9" selected>Comfortable</option><option value="1">Normal</option><option value="1.2">Faster</option></select></label><div class="vt-buttons"><button type="button" id="vt-start">Read aloud</button><button type="button" id="vt-pause" disabled>Pause</button><button type="button" id="vt-stop" disabled>Stop</button></div><p id="vt-speech-status" role="status" aria-live="polite">Ready.</p><p class="vt-note">Voice quality and language availability depend on your device. Listening reads this page, not a linked PDF or book.</p></section>

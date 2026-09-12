@@ -1,0 +1,44 @@
+{
+  "scope": "Four Sanskrit philosophical works",
+  "count": 4,
+  "translationChain": {
+    "sourceLanguage": "sa",
+    "intermediateLanguage": "mai",
+    "finalLanguage": "en",
+    "intermediateTranslator": {
+      "name": "Gajendra Thakur",
+      "nameMai": "गजेन्द्र ठाकुर"
+    },
+    "finalTranslator": {
+      "name": "Gajendra Thakur",
+      "nameMai": "गजेन्द्र ठाकुर"
+    },
+    "display": "Sanskrit → Maithili (Gajendra Thakur) → English (Gajendra Thakur)"
+  },
+  "works": [
+    {
+      "position": 1,
+      "id": "atmatattvaviveka",
+      "titleMai": "आत्मतत्त्वविवेक",
+      "titleEn": "Ātmatattvaviveka"
+    },
+    {
+      "position": 2,
+      "id": "bhamati",
+      "titleMai": "भामती (चतुःसूत्री)",
+      "titleEn": "Bhāmatī (Catuḥsūtrī)"
+    },
+    {
+      "position": 3,
+      "id": "nyayakusumanjali",
+      "titleMai": "न्यायकुसुमाञ्जलि",
+      "titleEn": "Nyāyakusumāñjali"
+    },
+    {
+      "position": 4,
+      "id": "tattvacintamani",
+      "titleMai": "तत्त्वचिन्तामणि",
+      "titleEn": "Tattvacintāmaṇi"
+    }
+  ]
+}

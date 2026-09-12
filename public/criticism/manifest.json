@@ -6,7 +6,12 @@
     "kind": "Picture stories",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p01.html"
+    "url": "/gajendra-preeti/criticism/p01.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p01.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p03",
@@ -15,7 +20,12 @@
     "kind": "Folklore & picture narrative",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p03.html"
+    "url": "/gajendra-preeti/criticism/p03.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p03.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p05",
@@ -24,7 +34,12 @@
     "kind": "Archive & preservation",
     "basis": "catalogue",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p05.html"
+    "url": "/gajendra-preeti/criticism/p05.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p05.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p07",
@@ -33,7 +48,12 @@
     "kind": "Children's translation",
     "basis": "visual-full",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p07.html"
+    "url": "/gajendra-preeti/criticism/p07.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p07.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p08",
@@ -42,7 +62,12 @@
     "kind": "Children's translation",
     "basis": "visual-full",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p08.html"
+    "url": "/gajendra-preeti/criticism/p08.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p08.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p09",
@@ -51,7 +76,12 @@
     "kind": "Children's translation",
     "basis": "visual-full",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p09.html"
+    "url": "/gajendra-preeti/criticism/p09.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p09.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p10",
@@ -60,7 +90,12 @@
     "kind": "Children's translation",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p10.html"
+    "url": "/gajendra-preeti/criticism/p10.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p10.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p11",
@@ -69,7 +104,12 @@
     "kind": "Children's translation & counting",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p11.html"
+    "url": "/gajendra-preeti/criticism/p11.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p11.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p12",
@@ -78,7 +118,12 @@
     "kind": "Children's translation",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p12.html"
+    "url": "/gajendra-preeti/criticism/p12.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p12.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p13",
@@ -87,7 +132,12 @@
     "kind": "Children's translation",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p13.html"
+    "url": "/gajendra-preeti/criticism/p13.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p13.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p14",
@@ -96,7 +146,12 @@
     "kind": "Children's translation & alphabet",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p14.html"
+    "url": "/gajendra-preeti/criticism/p14.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p14.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p15",
@@ -105,7 +160,12 @@
     "kind": "Children's translation",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p15.html"
+    "url": "/gajendra-preeti/criticism/p15.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p15.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p16",
@@ -114,7 +174,12 @@
     "kind": "Children's translation",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p16.html"
+    "url": "/gajendra-preeti/criticism/p16.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p16.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p17",
@@ -123,7 +188,12 @@
     "kind": "Children's translation",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p17.html"
+    "url": "/gajendra-preeti/criticism/p17.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p17.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p18",
@@ -132,7 +202,12 @@
     "kind": "Children's translation & anthology",
     "basis": "sample",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p18.html"
+    "url": "/gajendra-preeti/criticism/p18.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p18.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p19",
@@ -141,7 +216,12 @@
     "kind": "Picture stories",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p19.html"
+    "url": "/gajendra-preeti/criticism/p19.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p19.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "p20",
@@ -150,7 +230,12 @@
     "kind": "Adaptation & picture narrative",
     "basis": "visual",
     "group": "preeti",
-    "url": "/gajendra-preeti/criticism/p20.html"
+    "url": "/gajendra-preeti/criticism/p20.html",
+    "urlEn": "/gajendra-preeti/criticism/en/p20.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g01",
@@ -159,7 +244,12 @@
     "kind": "Language & reference",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g01.html"
+    "url": "/gajendra-preeti/criticism/g01.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g01.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g02",
@@ -168,7 +258,12 @@
     "kind": "Criticism",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g02.html"
+    "url": "/gajendra-preeti/criticism/g02.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g02.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g03",
@@ -177,7 +272,12 @@
     "kind": "Translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g03.html"
+    "url": "/gajendra-preeti/criticism/g03.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g03.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g04",
@@ -186,7 +286,12 @@
     "kind": "Philosophy & translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g04.html"
+    "url": "/gajendra-preeti/criticism/g04.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g04.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g05",
@@ -195,7 +300,12 @@
     "kind": "Philosophy & translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g05.html"
+    "url": "/gajendra-preeti/criticism/g05.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g05.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g06",
@@ -204,7 +314,12 @@
     "kind": "Philosophy & translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g06.html"
+    "url": "/gajendra-preeti/criticism/g06.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g06.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g07",
@@ -213,7 +328,12 @@
     "kind": "Philosophy & translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g07.html"
+    "url": "/gajendra-preeti/criticism/g07.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g07.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g08",
@@ -222,7 +342,12 @@
     "kind": "Translation & anthology",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g08.html"
+    "url": "/gajendra-preeti/criticism/g08.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g08.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g09",
@@ -231,7 +356,12 @@
     "kind": "Criticism",
     "basis": "visual",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g09.html"
+    "url": "/gajendra-preeti/criticism/g09.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g09.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g10",
@@ -240,7 +370,12 @@
     "kind": "Criticism",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g10.html"
+    "url": "/gajendra-preeti/criticism/g10.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g10.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g11",
@@ -249,7 +384,12 @@
     "kind": "Criticism & river writing",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g11.html"
+    "url": "/gajendra-preeti/criticism/g11.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g11.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g12",
@@ -258,7 +398,12 @@
     "kind": "Criticism",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g12.html"
+    "url": "/gajendra-preeti/criticism/g12.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g12.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g13",
@@ -267,7 +412,12 @@
     "kind": "Drama & translation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g13.html"
+    "url": "/gajendra-preeti/criticism/g13.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g13.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g14",
@@ -276,7 +426,12 @@
     "kind": "Fiction",
     "basis": "visual",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g14.html"
+    "url": "/gajendra-preeti/criticism/g14.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g14.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g15",
@@ -285,7 +440,12 @@
     "kind": "Novel",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g15.html"
+    "url": "/gajendra-preeti/criticism/g15.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g15.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g16",
@@ -294,7 +454,12 @@
     "kind": "Adaptation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g16.html"
+    "url": "/gajendra-preeti/criticism/g16.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g16.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g17",
@@ -303,7 +468,12 @@
     "kind": "Adaptation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g17.html"
+    "url": "/gajendra-preeti/criticism/g17.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g17.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g18",
@@ -312,7 +482,12 @@
     "kind": "Collected fiction",
     "basis": "catalogue",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g18.html"
+    "url": "/gajendra-preeti/criticism/g18.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g18.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g19",
@@ -321,7 +496,12 @@
     "kind": "Teaching & interpretation",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g19.html"
+    "url": "/gajendra-preeti/criticism/g19.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g19.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g20",
@@ -330,7 +510,12 @@
     "kind": "Teaching & interpretation",
     "basis": "catalogue",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g20.html"
+    "url": "/gajendra-preeti/criticism/g20.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g20.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g21",
@@ -339,7 +524,12 @@
     "kind": "Digital companion",
     "basis": "interface",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g21.html"
+    "url": "/gajendra-preeti/criticism/g21.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g21.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g22",
@@ -348,7 +538,12 @@
     "kind": "Digital companion",
     "basis": "interface",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g22.html"
+    "url": "/gajendra-preeti/criticism/g22.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g22.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g23",
@@ -357,7 +552,12 @@
     "kind": "Digital companion",
     "basis": "interface",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g23.html"
+    "url": "/gajendra-preeti/criticism/g23.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g23.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g24",
@@ -366,7 +566,12 @@
     "kind": "Media & learning",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g24.html"
+    "url": "/gajendra-preeti/criticism/g24.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g24.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g25",
@@ -375,7 +580,12 @@
     "kind": "Drama & learning",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g25.html"
+    "url": "/gajendra-preeti/criticism/g25.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g25.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g26",
@@ -384,7 +594,12 @@
     "kind": "Language & reference",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g26.html"
+    "url": "/gajendra-preeti/criticism/g26.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g26.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g27",
@@ -393,7 +608,12 @@
     "kind": "Language & reference",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g27.html"
+    "url": "/gajendra-preeti/criticism/g27.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g27.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g28",
@@ -402,7 +622,12 @@
     "kind": "Criticism & archive",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g28.html"
+    "url": "/gajendra-preeti/criticism/g28.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g28.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g29",
@@ -411,7 +636,12 @@
     "kind": "Learning & archive",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g29.html"
+    "url": "/gajendra-preeti/criticism/g29.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g29.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g30",
@@ -420,7 +650,12 @@
     "kind": "Learning & archive",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g30.html"
+    "url": "/gajendra-preeti/criticism/g30.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g30.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g31",
@@ -429,7 +664,12 @@
     "kind": "Research & archive",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g31.html"
+    "url": "/gajendra-preeti/criticism/g31.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g31.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g32",
@@ -438,7 +678,12 @@
     "kind": "Philosophy",
     "basis": "sample",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g32.html"
+    "url": "/gajendra-preeti/criticism/g32.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g32.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g33",
@@ -447,7 +692,12 @@
     "kind": "History",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g33.html"
+    "url": "/gajendra-preeti/criticism/g33.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g33.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g34",
@@ -456,7 +706,12 @@
     "kind": "Edited anthology",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g34.html"
+    "url": "/gajendra-preeti/criticism/g34.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g34.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g35",
@@ -465,7 +720,12 @@
     "kind": "Translation anthology",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g35.html"
+    "url": "/gajendra-preeti/criticism/g35.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g35.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g36",
@@ -474,7 +734,12 @@
     "kind": "Novel & author translation",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g36.html"
+    "url": "/gajendra-preeti/criticism/g36.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g36.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g37",
@@ -483,7 +748,12 @@
     "kind": "Literature",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g37.html"
+    "url": "/gajendra-preeti/criticism/g37.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g37.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g38",
@@ -492,7 +762,12 @@
     "kind": "Collected fiction & translation",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g38.html"
+    "url": "/gajendra-preeti/criticism/g38.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g38.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g39",
@@ -501,7 +776,12 @@
     "kind": "Social & economic history",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g39.html"
+    "url": "/gajendra-preeti/criticism/g39.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g39.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g40",
@@ -510,7 +790,12 @@
     "kind": "Philosophy",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g40.html"
+    "url": "/gajendra-preeti/criticism/g40.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g40.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g41",
@@ -519,7 +804,12 @@
     "kind": "Literary history",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g41.html"
+    "url": "/gajendra-preeti/criticism/g41.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g41.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   },
   {
     "id": "g42",
@@ -528,6 +818,11 @@
     "kind": "Genealogy & research",
     "basis": "publisher",
     "group": "gajendra",
-    "url": "/gajendra-preeti/criticism/g42.html"
+    "url": "/gajendra-preeti/criticism/g42.html",
+    "urlEn": "/gajendra-preeti/criticism/en/g42.html",
+    "languagePair": [
+      "mai",
+      "en"
+    ]
   }
 ]

@@ -1,0 +1,98 @@
+{
+  "scope": "Thirteen Sanskrit drama/classics works",
+  "count": 13,
+  "translationChain": {
+    "sourceLanguage": "sa",
+    "intermediateLanguage": "mai",
+    "finalLanguage": "en",
+    "intermediateTranslator": {
+      "name": "Gajendra Thakur",
+      "nameMai": "गजेन्द्र ठाकुर"
+    },
+    "finalTranslator": {
+      "name": "Gajendra Thakur",
+      "nameMai": "गजेन्द्र ठाकुर"
+    },
+    "display": "Sanskrit → Maithili (Gajendra Thakur) → English (Gajendra Thakur)"
+  },
+  "works": [
+    {
+      "position": 1,
+      "id": "abhijnanasakuntalam",
+      "titleMai": "अभिज्ञानशाकुन्तलम्",
+      "titleEn": "Abhijñānaśākuntalam"
+    },
+    {
+      "position": 2,
+      "id": "agamadamabara",
+      "titleMai": "आगमडम्बरम्",
+      "titleEn": "Āgamāḍambara"
+    },
+    {
+      "position": 3,
+      "id": "bhagavadajjukam",
+      "titleMai": "भगवदज्जुकम् · साधु आ वेश्या",
+      "titleEn": "THE ASCETIC AND THE COURTESAN · Bhagavadajjukam"
+    },
+    {
+      "position": 4,
+      "id": "bhallata-kshemendra-nilakantha",
+      "titleMai": "भल्लट · क्षेमेन्द्र · नीलकण्ठ — भल्लट-शतक · कलाविलास · कलियुग-विडम्बना",
+      "titleEn": "Bhallata · Kṣemendra · Nīlakaṇṭha — Bhallata-śataka · Kalāvilāsa · Kaliyuga-viḍambanā"
+    },
+    {
+      "position": 5,
+      "id": "chaturbhani",
+      "titleMai": "चतुर्भाणी",
+      "titleEn": "CATURBHĀṆĪ"
+    },
+    {
+      "position": 6,
+      "id": "damaka-prahasanam",
+      "titleMai": "दामक प्रहसनम्",
+      "titleEn": "DĀMAKA PRAHASANAM"
+    },
+    {
+      "position": 7,
+      "id": "hasyarnava",
+      "titleMai": "हास्यक सागर / हास्यार्णवप्रहसनम्",
+      "titleEn": "HĀSYĀRṆAVA PRAHASANAM · The Ocean of Laughter"
+    },
+    {
+      "position": 8,
+      "id": "kadambari",
+      "titleMai": "कादम्बरी",
+      "titleEn": "KADAMBARI"
+    },
+    {
+      "position": 9,
+      "id": "mrcchakatikam",
+      "titleMai": "माटिक खेलौना-गाड़ी / मृच्छकटिकम्",
+      "titleEn": "MṚCCHAKAṬIKAM · The Little Clay Cart"
+    },
+    {
+      "position": 10,
+      "id": "mattavilasa",
+      "titleMai": "मत्तविलास प्रहसनम्",
+      "titleEn": "MATTAVILĀSA PRAHASANAM"
+    },
+    {
+      "position": 11,
+      "id": "mudrarakshasam",
+      "titleMai": "मंत्री राक्षसक राजसी मोहर / मुद्राराक्षसम्",
+      "titleEn": "MUDRĀRĀKṢASAM · The Signet Ring of Minister Rakshasa"
+    },
+    {
+      "position": 12,
+      "id": "palandumandana",
+      "titleMai": "पालाण्डुमण्डन प्रहसनम्",
+      "titleEn": "PALĀṆḌUMAṆḌANA · A Farce"
+    },
+    {
+      "position": 13,
+      "id": "uttararamacaritam",
+      "titleMai": "उत्तररामचरितम्",
+      "titleEn": "UTTARARĀMACARITAM"
+    }
+  ]
+}
