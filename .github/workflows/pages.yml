@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npx tsc --noEmit
       - run: npm run build
-      - run: node scripts/validate-static.mjs && node scripts/validate-drama-classics-structure.mjs
+      - run: node scripts/validate-static.mjs && node scripts/validate-drama-classics-structure.mjs && node scripts/validate-six-books-readings.mjs
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist/client/gajendra-preeti
