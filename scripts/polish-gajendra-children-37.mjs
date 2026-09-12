@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 function patch(file,before,after,label){
   let s=fs.readFileSync(file,'utf8');
-  if(s.includes(after)) return;
+  if(s.includes(after)||s.includes('data-provenance="gajendra-children-37"')) return;
   assert(s.includes(before),`${file}: patch point changed (${label})`);
   s=s.replace(before,after);
   fs.writeFileSync(file,s,'utf8');

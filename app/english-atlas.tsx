@@ -7,6 +7,8 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
+  {id:'six-books',label:"Six more books",en:'GAJENDRA THAKUR · SIX BOOKS',title:"Poetry, fiction and young readers.",text:"Explore six supplied editions with bilingual introductions, selected-passage readings and source references.",ids:[],href:'/gajendra-preeti/six-books/en/',linkTitle:'SIX BOOKS',linkMeta:'6 books · Maithili + English'},
+
   {id:'children',label:'Children’s books',en:'For the curious reader',title:'Pictures, stories, imagination.',text:'Enter children’s literature through Preeti Thakur’s picture stories and translations.',ids:['p0','p1','p13']},
   {id:'literature',label:'Fiction and poetry',en:'For the literary explorer',title:'From short fiction to the novel.',text:'Three starting points in Gajendra Thakur’s fiction and poetry.',ids:['g0','g2','g4']},
   {id:'dreams',label:'When Dreams Merge',en:'COMPLETE BILINGUAL BOOK GUIDE',title:'From dream to language, philosophy and justice.',text:'Explore all 447 source-grounded records, 11 extended readings and the paired Maithili guide for the complete revised volume.',ids:[],href:'/gajendra-preeti/when-dreams-merge/en/',linkTitle:'WHEN DREAMS MERGE',linkMeta:'447 records · 11 extended readings · Maithili + English'},

@@ -15,6 +15,7 @@ function loadRecords(dir, key='records'){
 }
 function preserveEnglish(dir, route){
   const en=path.join(dir,'en');
+  if(/<html[^>]*lang=["']mai["']/.test(fs.readFileSync(path.join(dir,'index.html'),'utf8'))){assert(fs.existsSync(path.join(en,'index.html'))&&/<html[^>]*lang=["']en["']/.test(fs.readFileSync(path.join(en,'index.html'),'utf8')),'Preserved English edition required');return;}
   fs.rmSync(en,{recursive:true,force:true});
   fs.mkdirSync(en,{recursive:true});
   for(const name of fs.readdirSync(dir)){

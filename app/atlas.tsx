@@ -7,6 +7,8 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
+  {id:'six-books',label:"छह नव पोथी",en:'GAJENDRA THAKUR · SIX BOOKS',title:"कविता, कथा आ किशोर साहित्य।",text:"छह स्रोत-संस्करणक द्विभाषिक परिचय, चुनल अंशक पाठ आ सन्दर्भ पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'छह पोथी',linkMeta:'6 पोथी · मैथिली + English'},
+
   {id:'children',label:'बाल साहित्य',en:'For the curious reader',title:'चित्र, कथा आ कल्पना।',text:'प्रीति ठाकुरक चित्रकथा आ अनुवादसँ बाल साहित्यक संसारमे प्रवेश करू।',ids:['p0','p1','p13']},
   {id:'literature',label:'कथा आ पद्य',en:'For the literary explorer',title:'लघु कथासँ उपन्यास धरि।',text:'गजेन्द्र ठाकुरक कथात्मक आ काव्यात्मक लेखनक तीन प्रवेश-द्वार।',ids:['g0','g2','g4']},
   {id:'dreams',label:'स्वप्न मे मिज्झर होइत',en:'WHEN DREAMS MERGE · BILINGUAL BOOK GUIDE',title:'स्वप्नसँ भाषा, दर्शन आ न्याय धरि।',text:'उपयोगकर्ताद्वारा देल 2026 संशोधित मैथिली मूल संस्करणक 447 विषय-सूची प्रविष्टिक स्रोत-आधारित सारांश, 11 विस्तृत पठन आ English समकक्ष।',ids:[],href:'/gajendra-preeti/when-dreams-merge/',linkTitle:'स्वप्न मे मिज्झर होइत · WHEN DREAMS MERGE',linkMeta:'447 सार-रेकर्ड · 11 विस्तृत पठन · मैथिली + English'},

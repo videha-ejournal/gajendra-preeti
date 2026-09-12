@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
 function patch(file,replacements){
-  let s=fs.readFileSync(file,'utf8');
+  let s=fs.readFileSync(file,'utf8').replaceAll('\r\n','\n');
   for(const [before,after,label] of replacements){
     if(s.includes(after)) continue;
     assert(s.includes(before),`${file}: patch point changed (${label})`);

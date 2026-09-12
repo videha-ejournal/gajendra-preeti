@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 
 const root='dist/client/gajendra-preeti';
+const workCount=JSON.parse(fs.readFileSync('app/works.json','utf8')).length;
 const mai=fs.readFileSync(`${root}/index.html`,'utf8');
 const en=fs.readFileSync(`${root}/en/index.html`,'utf8');
 const sourceCatalogue=fs.readFileSync('app/catalogue-view.tsx','utf8');
@@ -15,8 +16,8 @@ assert.deepEqual(timelineYears(mai),expected,'Maithili chronology must keep all 
 assert.deepEqual(timelineYears(en),expected,'English chronology must keep the same 12 sourced stops.');
 
 for(const [lang,html] of [['mai',mai],['en',en]]){
-  assert.equal((html.match(/class="work-card /g)||[]).length,26,`${lang}: all 26 works must render by default.`);
-  assert.equal((html.match(/class="edition-meta"/g)||[]).length,26,`${lang}: every work must carry explicit edition-status metadata.`);
+  assert.equal((html.match(/class="work-card /g)||[]).length,workCount,`${lang}: all catalogue works must render by default.`);
+  assert.equal((html.match(/class="edition-meta"/g)||[]).length,workCount,`${lang}: every work must carry explicit edition-status metadata.`);
   assert.equal((html.match(/class="translation-meta"/g)||[]).length,16,`${lang}: Preeti’s 4 originals + 12 translated picture-books must carry explicit role/language metadata.`);
   assert.equal((html.match(/class="catalogue-verification"/g)||[]).length,1,`${lang}: catalogue verification date should appear once globally.`);
   assert.equal((html.match(/class="verified-note"/g)||[]).length,0,`${lang}: repeated per-card catalogue-check labels must stay removed.`);
