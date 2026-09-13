@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const units=JSON.parse(fs.readFileSync('content/six-books-unit-index.json','utf8'));
 let count=0;
-for(const [id,key] of Object.entries({'akulait-sur':'akulait','bijji':'bijji','diwan-e-videha':'diwan','kut-naam':'kut','nav-pankhi':'nav','saatam-sakshi':'saatam','paatak-bhitar-likhal-naam':'paatak'})){
+for(const [id,key] of Object.entries({'akulait-sur':'akulait','bijji':'bijji','diwan-e-videha':'diwan','diwan-e-videha-khand-2':'diwan2','kut-naam':'kut','nav-pankhi':'nav','saatam-sakshi':'saatam','paatak-bhitar-likhal-naam':'paatak'})){
  const entries=JSON.parse(fs.readFileSync(`content/six-books-${key}-readings.json`,'utf8'));
  assert.deepEqual(entries.map(r=>r.id),units[id].map(r=>r.id),`${id}: every source division must have one discussion`);
  for(const lang of ['mai','en']){
@@ -20,4 +20,4 @@ for(const [id,key] of Object.entries({'akulait-sur':'akulait','bijji':'bijji','d
  }
  count+=entries.length;
 }
-console.log(`Six-book readings PASS: ${count} distinct discussions, paired languages, complete coverage of all seven supplied editions, source ranges and stable cross-language anchors.`);
+console.log(`Six-book readings PASS: ${count} distinct discussions, paired languages, complete coverage of all eight supplied editions, source ranges and stable cross-language anchors.`);

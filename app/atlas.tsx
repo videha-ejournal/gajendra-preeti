@@ -7,7 +7,7 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
-  {id:'six-books',label:"सात नव संस्करण",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"कविता, कथा, गजल आ अभिलेख-स्मृति।",text:"सात स्रोत-संस्करणक परिचय; नव पाँखि, कूट नाम, सातम साक्षी, अकुलाइत सुर, बिज्जी, दीवान-ए-विदेह आ पातक भीतर लिखल नामक द्विभाषिक इकाइ-चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'सात संस्करण',linkMeta:'7 संस्करण · मैथिली + English'},
+  {id:'six-books',label:"आठ नव संस्करण",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"कविता, कथा, गजल आ अभिलेख-स्मृति।",text:"आठ स्रोत-संस्करणक परिचय; नव पाँखि, कूट नाम, सातम साक्षी, अकुलाइत सुर, बिज्जी, दीवान-ए-विदेहक दुनू खण्ड आ पातक भीतर लिखल नामक द्विभाषिक इकाइ-चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'आठ संस्करण',linkMeta:'8 संस्करण · मैथिली + English'},
 
   {id:'children',label:'बाल साहित्य',en:'For the curious reader',title:'चित्र, कथा आ कल्पना।',text:'प्रीति ठाकुरक चित्रकथा आ अनुवादसँ बाल साहित्यक संसारमे प्रवेश करू।',ids:['p0','p1','p13']},
   {id:'literature',label:'कथा आ पद्य',en:'For the literary explorer',title:'लघु कथासँ उपन्यास धरि।',text:'गजेन्द्र ठाकुरक कथात्मक आ काव्यात्मक लेखनक तीन प्रवेश-द्वार।',ids:['g0','g2','g4']},

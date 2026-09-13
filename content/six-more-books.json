@@ -47,18 +47,18 @@
   },
   {
     "id": "diwan-e-videha",
-    "title": "दीवान-ए-विदेह",
-    "titleEn": "Diwan-e-Videha",
+    "title": "दीवान-ए-विदेह खण्ड १",
+    "titleEn": "Diwan-e-Videha Khand 1",
     "kind": "गजल-संग्रह",
     "kindEn": "Ghazals",
     "prefix": "Diwan",
     "year": 2026,
     "en": [
-      "The title material identifies 591 ghazals—458 general and 133 teenage ghazals—alongside one kata and two rubai. These are the source edition’s declared counts. Its alphabetical index offers a second route through a large collection, allowing a reader to approach a title without treating sequence as the only organising principle.",
+      "The first volume of Diwan-e-Videha identifies 591 ghazals, alongside one rubai and two kata forms in the source structure. Its alphabetical index offers a second route through a large collection, allowing a reader to approach a title without treating sequence as the only organising principle.",
       "In a sampled passage, crossing a bridge becomes a moment in which speed, the river and inward pain meet: movement between banks also invites reflection on moving through life. The closing verse asks the reader to examine a claim’s basis, compare sources and resist mistaking repetition for truth. Doubt is paired with reasons rather than indiscriminate rejection. These two samples show how lyric attention and habits of public judgement can share the collection without making every ghazal an illustration of the same theme."
     ],
     "mai": [
-      "शीर्षक-सामग्रीमे 591 गजल—458 सामान्य आ 133 किशोर गजल—संग 1 कता आ 2 रुबाइ दर्ज अछि। ई संख्या स्रोत-संस्करणक घोषणा अछि। वर्णानुक्रमिक अनुक्रम एहि विस्तृत संग्रहमे शीर्षकक सहारे प्रवेशक दोसर बाट दैत अछि।",
+      "दीवान-ए-विदेहक पहिल खण्ड स्रोत-संरचनामे 591 गजल, संगमे एक रुबाइ आ दू कता रूप चिन्हैत अछि। वर्णानुक्रमिक अनुक्रम एहि विस्तृत संग्रहमे शीर्षकक सहारे प्रवेशक दोसर बाट दैत अछि।",
       "पढ़ल एक अंशमे पुल पार करैत गाड़ीक गति, नदी आ भीतरक पीड़ा एक संग अबैत अछि; किनार बदलनाइ जीवनक गति पर विचारक अवसर बनैत अछि। अन्तिम पद्य दाबीक आधार जाँचब, दोसर स्रोत देखब आ दोहरावकेँ सत्य नहि मानबाक आग्रह करैत अछि। सन्देह कारणक संग जुड़ल अछि, अकारण नकारक संग नहि। ई दू नमूना गीतात्मक अनुभव आ सार्वजनिक विवेकक भिन्न स्वर देखबैत अछि।"
     ],
     "pdf": "Diwan-e-Videha_merge.pdf",
@@ -67,6 +67,29 @@
     "sha256": "0ad1d26da1bd8f085ee31c2f0771d77ae1ed2afaa053522520da491af87ce929",
     "paragraphs": 9585,
     "sample": "1–18; 4793–4797; 9578–9585"
+  },
+  {
+    "id": "diwan-e-videha-khand-2",
+    "title": "दीवान-ए-विदेह खण्ड २",
+    "titleEn": "Diwan-e-Videha Khand 2",
+    "kind": "गजल-संग्रह / संगीतमय रूप",
+    "kindEn": "Ghazals with musical forms",
+    "prefix": "Diwan2",
+    "year": 2026,
+    "en": [
+      "The second volume stands beside Khand 1 as a continuation of the Diwan-e-Videha sequence. It opens with three formal essays on ghazal structure, scansion and minimum qualifications, then presents the ghazals with verified metre and a paired musical-form note for each poem.",
+      "Each ghazal unit below is treated as a combined textual and musical entry: title, rhyme/refrain, metre check and the facing musical guidance are read together. The gists preserve that dual structure without reproducing the poems or turning scansion into a substitute for literary reading."
+    ],
+    "mai": [
+      "दीवान-ए-विदेहक दोसर खण्ड पहिल खण्डक संग रखल गजल-क्रमक निरन्तरता अछि। आरम्भमे गजल-संरचना, छन्द-जाँच आ न्यूनतम औपचारिक योग्यतापर तीन लेख अछि; तकर बाद सत्यापित बहर/मात्रा-सूचना सहित गजलसभ आ प्रत्येक गजलक संग संगीतमय रूप देल अछि।",
+      "नीचाँ प्रत्येक गजल-इकाइकेँ पाठ आ संगीतक संयुक्त प्रविष्टि रूपेँ पढ़ल गेल अछि: शीर्षक, काफिया-रदीफ, छन्द-जाँच आ संगीतमय संकेत एक संग देखल गेल अछि। सार एहि दोहरा संरचनाकेँ सुरक्षित रखैत अछि, कविता पुनर्मुद्रित नहि करैत आ छन्दकेँ साहित्यिक पाठक विकल्प नहि बनबैत।"
+    ],
+    "pdf": "Diwan-e-Videha_Khand_2.pdf",
+    "docx": "Diwan-e-Videha_Khand_2_592-1000_Actual_Scansion_Certified_6x9.docx",
+    "pages": 827,
+    "sha256": "45470a19ab0f50ab25d340884fb38348f6067f3a21baccb591cc78e8ffe272ea",
+    "paragraphs": 11633,
+    "sample": "15–36; 99–124; 11605–11633"
   },
   {
     "id": "kut-naam",
