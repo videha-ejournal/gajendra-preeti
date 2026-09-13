@@ -26,6 +26,7 @@ assert.equal(receptionMaiFiles.length,3,'Reception must expose Maithili index + 
 assert.equal(receptionEnFiles.length,3,'Reception must expose English index + two book pages');
 const files=[...criticismMaiFiles,...criticismEnFiles,...receptionMaiFiles,...receptionEnFiles];
 for(const entry of fs.readdirSync(path.join(root,'six-books'),{recursive:true}))if(String(entry).endsWith('.html'))files.push('six-books/'+String(entry).replaceAll('\\','/'));
+for(const dir of ['works','en/works']){if(fs.existsSync(path.join(root,dir)))for(const entry of fs.readdirSync(path.join(root,dir),{recursive:true}))if(String(entry).endsWith('.html'))files.push(dir+'/'+String(entry).replaceAll('\\','/'));}
 const idSets=new Map();
 for(const file of ['index.html','en/index.html',...files]){
   const source=read(file), ids=[...source.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
