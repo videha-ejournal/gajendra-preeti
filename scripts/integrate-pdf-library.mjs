@@ -4,6 +4,8 @@ import path from 'node:path';
 const CATALOG_RAW='https://raw.githubusercontent.com/videha-ejournal/videha-ejournal/main/data/videha-pdf-catalog.json';
 const PDF_BASE='https://videha-ejournal.github.io/videha-ejournal/';
 const PDF_REPO='https://github.com/videha-ejournal/videha-ejournal';
+const ATLAS_BASE='/gajendra-preeti';
+const PDF_MANIFEST_URL=`${ATLAS_BASE}/bibliography/pdf-library-manifest.json`;
 const DATA='public/bibliography/bibliography-data.json';
 const ALIASES='content/samagra-pdf-aliases.json';
 const SNAPSHOT='content/videha-pdf-catalog.snapshot.json';
@@ -33,7 +35,7 @@ async function loadCatalog(){
   }finally{clearTimeout(timer);}
 }
 function copyMeta(item){return {path:item.path,name:item.name,title:item.title,url:item.url,rawUrl:item.rawUrl||null,repositoryUrl:item.repositoryUrl||`${PDF_REPO}/blob/main/${encodeURI(item.path)}`,mediaType:item.mediaType||'application/pdf',bytes:item.bytes??null,sha256:item.sha256||null,largeFileWarning:Boolean(item.largeFileWarning)};}
-function mediaObject(p){return {'@type':'MediaObject',name:p.title||p.name,contentUrl:p.url,encodingFormat:p.mediaType||'application/pdf',...(p.bytes?{contentSize:String(p.bytes)}:{}),identifier:[{ '@type':'PropertyValue',propertyID:'repository-path',value:p.path},...(p.sha256?[{'@type':'PropertyValue',propertyID:'SHA-256',value:p.sha256}]:[])]};}
+function mediaObject(p){return {'@type':'MediaObject',name:p.title||p.name,contentUrl:p.url,encodingFormat:p.mediaType||'application/pdf',...(p.bytes?{contentSize:String(p.bytes)}:{}),identifier:[{'@type':'PropertyValue',propertyID:'repository-path',value:p.path},...(p.sha256?[{'@type':'PropertyValue',propertyID:'SHA-256',value:p.sha256}]:[])]};}
 function patchJsonLd(html,pdfs){
   return html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/,(all,json)=>{
     try{
@@ -50,7 +52,7 @@ function patchWorkPage(file,record,en){
   html=html.replace('</head>',`<meta name="citation_pdf_url" content="${esc(record.pdfLibrary[0].url)}"></head>`);
   html=patchJsonLd(html,record.pdfLibrary);
   const rows=record.pdfLibrary.map(p=>`<li><strong>${esc(p.name)}</strong> · <a href="${esc(p.url)}">${en?'Open verified PDF':'सत्यापित PDF खोलू'} ↗</a>${p.bytes?` · ${esc(mb(p.bytes))}`:''}${p.sha256?`<br><small>SHA-256: <code>${esc(p.sha256)}</code></small>`:''}</li>`).join('');
-  const section=`<section id="pdf-library"><h2>${en?'Verified Videha PDF repository copies':'सत्यापित विदेह PDF रिपॉजिटरी प्रति'}</h2><p>${en?'These files are matched against the synchronized Samagra record and fingerprinted by the Videha PDF catalogue. The permanent scholarly record remains the preferred citation URL; the PDF URL identifies the consulted manifestation.':'ई फाइल सभ समकालित समग्र अभिलेखसँ मिलान कएल गेल अछि आ विदेह PDF सूचीमे फिंगरप्रिन्ट कएल गेल अछि। स्थायी शोध-अभिलेख उद्धरण लेल मुख्य URL अछि; PDF URL देखल गेल संस्करणक पहचान करैत अछि।'}</p><ul class="manifest">${rows}</ul><p><a href="${en?'../../../../bibliography/pdf-library-manifest.json':'../../pdf-library-manifest.json'}">${en?'PDF provenance manifest':'PDF स्रोत-प्रमाण सूची'} →</a></p></section>`;
+  const section=`<section id="pdf-library"><h2>${en?'Verified Videha PDF repository copies':'सत्यापित विदेह PDF रिपॉजिटरी प्रति'}</h2><p>${en?'These files are matched against the synchronized Samagra record and fingerprinted by the Videha PDF catalogue. The permanent scholarly record remains the preferred citation URL; the PDF URL identifies the consulted manifestation.':'ई फाइल सभ समकालित समग्र अभिलेखसँ मिलान कएल गेल अछि आ विदेह PDF सूचीमे फिंगरप्रिन्ट कएल गेल अछि। स्थायी शोध-अभिलेख उद्धरण लेल मुख्य URL अछि; PDF URL देखल गेल संस्करणक पहचान करैत अछि।'}</p><ul class="manifest">${rows}</ul><p><a href="${PDF_MANIFEST_URL}">${en?'PDF provenance manifest':'PDF स्रोत-प्रमाण सूची'} →</a></p></section>`;
   if(!html.includes('id="pdf-library"'))html=html.replace('<section id="cite">',section+'<section id="cite">');
   fs.writeFileSync(file,html);
 }
@@ -73,7 +75,7 @@ function patchCitationFiles(record,en){
 function patchIndex(file,en,report){
   if(!fs.existsSync(file))return;
   let html=fs.readFileSync(file,'utf8');
-  const section=`<section id="pdf-library"><h2>${en?'Verified PDF library':'सत्यापित PDF ग्रन्थागार'}</h2><p>${en?`${report.matchedRecordCount} of ${report.samagraRecordCount} synchronized Samagra records currently have ${report.matchedPdfCount} verified PDF repository manifestations. The repository catalogue currently contains ${report.catalogCount} PDFs; unmatched files remain available without being forced into a bibliographic record.`:`समकालित समग्रक ${report.samagraRecordCount} अभिलेखमे सँ ${report.matchedRecordCount} अभिलेखक ${report.matchedPdfCount} सत्यापित PDF रिपॉजिटरी रूप एखन उपलब्ध अछि। रिपॉजिटरी सूचीमे कुल ${report.catalogCount} PDF अछि; नहि-मिलल फाइलकेँ जबरदस्ती कोनो ग्रन्थ-अभिलेखमे नहि जोड़ल गेल अछि।`}</p><div class="downloads"><a href="${en?'../../bibliography/pdf-library-manifest.json':'pdf-library-manifest.json'}">${en?'PDF provenance manifest':'PDF स्रोत-प्रमाण सूची'}</a><a href="${PDF_REPO}">${en?'PDF repository':'PDF रिपॉजिटरी'} ↗</a></div></section>`;
+  const section=`<section id="pdf-library"><h2>${en?'Verified PDF library':'सत्यापित PDF ग्रन्थागार'}</h2><p>${en?`${report.matchedRecordCount} of ${report.samagraRecordCount} synchronized Samagra records currently have ${report.matchedPdfCount} verified PDF repository manifestations. The repository catalogue currently contains ${report.catalogCount} PDFs; unmatched files remain available without being forced into a bibliographic record.`:`समकालित समग्रक ${report.samagraRecordCount} अभिलेखमे सँ ${report.matchedRecordCount} अभिलेखक ${report.matchedPdfCount} सत्यापित PDF रिपॉजिटरी रूप एखन उपलब्ध अछि। रिपॉजिटरी सूचीमे कुल ${report.catalogCount} PDF अछि; नहि-मिलल फाइलकेँ जबरदस्ती कोनो ग्रन्थ-अभिलेखमे नहि जोड़ल गेल अछि।`}</p><div class="downloads"><a href="${PDF_MANIFEST_URL}">${en?'PDF provenance manifest':'PDF स्रोत-प्रमाण सूची'}</a><a href="${PDF_REPO}">${en?'PDF repository':'PDF रिपॉजिटरी'} ↗</a></div></section>`;
   if(!html.includes('id="pdf-library"'))html=html.replace('</main>',section+'</main>');
   fs.writeFileSync(file,html);
 }
@@ -129,7 +131,7 @@ const cross='public/bibliography/crossref-ready.json';
 if(fs.existsSync(cross)){
   const c=JSON.parse(fs.readFileSync(cross,'utf8')),byId=new Map(data.records.map(r=>[r.id,r]));
   for(const r of c.records||[]){const full=byId.get(r.id);if(full?.pdfLibrary?.length){r.pdfUrl=full.pdfLibrary[0].url;r.pdfRepository=full.pdfLibrary.map(p=>({path:p.path,url:p.url,bytes:p.bytes,sha256:p.sha256}));}}
-  c.pdfRepository=PDF_REPO;c.pdfProvenanceManifest=`https://videha-ejournal.github.io/gajendra-preeti/bibliography/pdf-library-manifest.json`;
+  c.pdfRepository=PDF_REPO;c.pdfProvenanceManifest='https://videha-ejournal.github.io/gajendra-preeti/bibliography/pdf-library-manifest.json';
   fs.writeFileSync(cross,JSON.stringify(c,null,2)+'\n');
 }
 for(const r of data.records){for(const en of [false,true]){patchWorkPage(`public/${en?'en/':''}bibliography/works/${r.slug}/index.html`,r,en);patchCitationFiles(r,en);}}
@@ -137,7 +139,7 @@ patchIndex('public/bibliography/index.html',false,report);
 patchIndex('public/en/bibliography/index.html',true,report);
 for(const [file,en] of [['public/author/gajendra-thakur/index.html',false],['public/en/author/gajendra-thakur/index.html',true]]){
   if(!fs.existsSync(file))continue;let html=fs.readFileSync(file,'utf8');
-  if(!html.includes('pdf-library-manifest.json'))html=html.replace('</main>',`<section><h2>${en?'Verified PDF library':'सत्यापित PDF ग्रन्थागार'}</h2><p><a href="${en?'../../bibliography/pdf-library-manifest.json':'../../bibliography/pdf-library-manifest.json'}">${en?'Open PDF provenance manifest':'PDF स्रोत-प्रमाण सूची खोलू'} →</a></p></section></main>`);
+  if(!html.includes('pdf-library-manifest.json'))html=html.replace('</main>',`<section><h2>${en?'Verified PDF library':'सत्यापित PDF ग्रन्थागार'}</h2><p><a href="${PDF_MANIFEST_URL}">${en?'Open PDF provenance manifest':'PDF स्रोत-प्रमाण सूची खोलू'} →</a></p></section></main>`);
   fs.writeFileSync(file,html);
 }
 console.log(`Integrated Videha PDF library: ${report.matchedRecordCount}/${report.samagraRecordCount} Samagra records; ${report.matchedPdfCount}/${report.catalogCount} catalogue PDFs matched; ${report.missingReferencedPaths.length} Samagra PDF path(s) referenced but not yet present.`);
