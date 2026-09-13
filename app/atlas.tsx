@@ -7,7 +7,7 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
-  {id:'six-books',label:"आठ नव संस्करण",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"कविता, कथा, गजल आ अभिलेख-स्मृति।",text:"आठ स्रोत-संस्करणक परिचय; नव पाँखि, कूट नाम, सातम साक्षी, अकुलाइत सुर, बिज्जी, दीवान-ए-विदेहक दुनू खण्ड आ पातक भीतर लिखल नामक द्विभाषिक इकाइ-चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'आठ संस्करण',linkMeta:'8 संस्करण · मैथिली + English'},
+  {id:'six-books',label:"दस नव संस्करण",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"कविता, कथा, गजल आ अभिलेख-स्मृति।",text:"दस स्रोत-संस्करणक परिचय; नव पाँखि, कूट नाम, सातम साक्षी, अकुलाइत सुर, बिज्जी, दीवान-ए-विदेहक दुनू खण्ड, पातक भीतर लिखल नाम, सहस्रबाढ़नि आ सहस्रशीर्षाक द्विभाषिक इकाइ-चर्चा पढ़ू।",ids:[],href:'/gajendra-preeti/six-books/',linkTitle:'दस संस्करण',linkMeta:'10 संस्करण · मैथिली + English'},
 
   {id:'children',label:'बाल साहित्य',en:'For the curious reader',title:'चित्र, कथा आ कल्पना।',text:'प्रीति ठाकुरक चित्रकथा आ अनुवादसँ बाल साहित्यक संसारमे प्रवेश करू।',ids:['p0','p1','p13']},
   {id:'literature',label:'कथा आ पद्य',en:'For the literary explorer',title:'लघु कथासँ उपन्यास धरि।',text:'गजेन्द्र ठाकुरक कथात्मक आ काव्यात्मक लेखनक तीन प्रवेश-द्वार।',ids:['g0','g2','g4']},
@@ -26,3 +26,4 @@ export function ReadingPaths(){return <Tabs defaultValue="children" className="r
 export function Catalogue(){return <CatalogueView/>;}
 
 export function ReadingProgress(){const[progress,setProgress]=useState(0);useEffect(()=>{let pending=false;const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?Math.min(100,window.scrollY/max*100):0);pending=false};const onScroll=()=>{if(!pending){pending=true;requestAnimationFrame(update)}};update();window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);return()=>{window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',onScroll)}},[]);return <div className="reading-progress" aria-hidden="true" style={{transform:`scaleX(${progress/100})`}}/>}
+

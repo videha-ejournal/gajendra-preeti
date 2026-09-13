@@ -7,7 +7,7 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
-  {id:'six-books',label:"Eight source editions",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"Poetry, fiction, ghazals and archive-memory prose.",text:"Explore eight supplied editions, with bilingual unit discussions for Nav Pankhi, Kut Naam, Saatam Sakshi, Akulait Sur, Bijji, both Diwan-e-Videha volumes and Paatak Bhitar Likhal Naam.",ids:[],href:'/gajendra-preeti/six-books/en/',linkTitle:'EIGHT EDITIONS',linkMeta:'8 editions · Maithili + English'},
+  {id:'six-books',label:"Ten source editions",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"Poetry, fiction, ghazals and archive-memory prose.",text:"Explore ten supplied editions, with bilingual unit discussions for Nav Pankhi, Kut Naam, Saatam Sakshi, Akulait Sur, Bijji, both Diwan-e-Videha volumes, Paatak Bhitar Likhal Naam, Sahasrabadhani and Sahasrashirsha.",ids:[],href:'/gajendra-preeti/six-books/en/',linkTitle:'TEN EDITIONS',linkMeta:'10 editions · Maithili + English'},
 
   {id:'children',label:'Children’s books',en:'For the curious reader',title:'Pictures, stories, imagination.',text:'Enter children’s literature through Preeti Thakur’s picture stories and translations.',ids:['p0','p1','p13']},
   {id:'literature',label:'Fiction and poetry',en:'For the literary explorer',title:'From short fiction to the novel.',text:'Three starting points in Gajendra Thakur’s fiction and poetry.',ids:['g0','g2','g4']},
@@ -26,3 +26,4 @@ export function ReadingPaths(){return <Tabs defaultValue="children" className="r
 export function Catalogue(){return <CatalogueView english/>;}
 
 export function ReadingProgress(){const[progress,setProgress]=useState(0);useEffect(()=>{let pending=false;const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;setProgress(max>0?Math.min(100,window.scrollY/max*100):0);pending=false};const onScroll=()=>{if(!pending){pending=true;requestAnimationFrame(update)}};update();window.addEventListener('scroll',onScroll,{passive:true});window.addEventListener('resize',onScroll);return()=>{window.removeEventListener('scroll',onScroll);window.removeEventListener('resize',onScroll)}},[]);return <div className="reading-progress" aria-hidden="true" style={{transform:`scaleX(${progress/100})`}}/>}
+
