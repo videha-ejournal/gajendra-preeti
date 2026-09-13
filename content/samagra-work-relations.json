@@ -1,18 +1,143 @@
 {
   "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर": {
-    "relationType": "workTranslation",
-    "relatedTitle": "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION",
     "language": "mai",
-    "noteEn": "English translation by Gajendra Thakur.",
-    "noteMai": "गजेन्द्र ठाकुर द्वारा अंग्रेजी अनुवाद।"
+    "relations": [
+      {
+        "relationType": "workTranslation",
+        "relatedTitle": "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION",
+        "relationLabelEn": "English translation",
+        "relationLabelMai": "अंग्रेजी अनुवाद",
+        "noteEn": "English translation by Gajendra Thakur.",
+        "noteMai": "गजेन्द्र ठाकुर द्वारा अंग्रेजी अनुवाद।"
+      }
+    ]
   },
   "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION": {
-    "relationType": "translationOfWork",
-    "relatedTitle": "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर",
     "language": "en",
-    "translationDirection": "Maithili → English",
-    "translator": "Gajendra Thakur",
-    "noteEn": "English translation of the 37 Maithili children's novels; translated by Gajendra Thakur.",
-    "noteMai": "३७ टा मैथिली बाल उपन्यासक अंग्रेजी अनुवाद; अनुवादक गजेन्द्र ठाकुर।"
+    "relations": [
+      {
+        "relationType": "translationOfWork",
+        "relatedTitle": "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर",
+        "relationLabelEn": "Maithili original",
+        "relationLabelMai": "मैथिली मूल",
+        "translationDirection": "Maithili → English",
+        "translator": "Gajendra Thakur",
+        "noteEn": "English translation of the 37 Maithili children's novels; translated by Gajendra Thakur.",
+        "noteMai": "३७ टा मैथिली बाल उपन्यासक अंग्रेजी अनुवाद; अनुवादक गजेन्द्र ठाकुर।"
+      }
+    ]
+  },
+  "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)": {
+    "language": "mai",
+    "relations": [
+      {
+        "relationType": "workExample",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [किशोर संस्करण]",
+        "relationLabelEn": "Kishor edition",
+        "relationLabelMai": "किशोर संस्करण",
+        "noteEn": "Kishor (young-reader) edition of Gohi Sabhak Beech Jalsamadhi, identified in the authoritative Samagra as the largest Maithili novel to date.",
+        "noteMai": "प्रामाणिक समग्रमे ‘गोहि सभक बीच जलसमाधि’ केँ मैथिलीक आइ धरिक सभसँ पैघ उपन्यास कहल गेल अछि; ई ओकर किशोर संस्करण अछि।"
+      },
+      {
+        "relationType": "workExample",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]",
+        "relationLabelEn": "Bal edition",
+        "relationLabelMai": "बाल संस्करण",
+        "noteEn": "Bal (children's) edition of Gohi Sabhak Beech Jalsamadhi, identified in the authoritative Samagra as the largest Maithili novel to date.",
+        "noteMai": "प्रामाणिक समग्रमे ‘गोहि सभक बीच जलसमाधि’ केँ मैथिलीक आइ धरिक सभसँ पैघ उपन्यास कहल गेल अछि; ई ओकर बाल संस्करण अछि।"
+      },
+      {
+        "relationType": "workTranslation",
+        "relatedTitle": "WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]",
+        "relationLabelEn": "English translation",
+        "relationLabelMai": "अंग्रेजी अनुवाद",
+        "translationDirection": "Maithili → English",
+        "translator": "Gajendra Thakur",
+        "noteEn": "English translation of the parent Maithili novel by the author Gajendra Thakur himself.",
+        "noteMai": "मूल मैथिली उपन्यासक अंग्रेजी अनुवाद लेखक गजेन्द्र ठाकुर स्वयं कएने छथि।"
+      },
+      {
+        "relationType": "subjectOf",
+        "relatedTitle": "Water-Burial Among the Crocodiles [English Teaching Companion]",
+        "relationLabelEn": "English teaching companion",
+        "relationLabelMai": "अंग्रेजी शिक्षण-सहचर",
+        "noteEn": "Teaching companion for the English translation of the novel.",
+        "noteMai": "उपन्यासक अंग्रेजी अनुवादक शिक्षण-सहचर।"
+      },
+      {
+        "relationType": "subjectOf",
+        "relatedTitle": "Gohi Sabhak Beech Jalsamadhi Teaching Course PDF",
+        "relationLabelEn": "Teaching course",
+        "relationLabelMai": "शिक्षण पाठ्यक्रम",
+        "noteEn": "Teaching-course resource for Gohi Sabhak Beech Jalsamadhi.",
+        "noteMai": "‘गोहि सभक बीच जलसमाधि’क शिक्षण-पाठ्यक्रम सामग्री।"
+      }
+    ]
+  },
+  "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [किशोर संस्करण]": {
+    "language": "mai",
+    "relations": [
+      {
+        "relationType": "exampleOfWork",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)",
+        "relationLabelEn": "Parent novel",
+        "relationLabelMai": "मूल उपन्यास",
+        "noteEn": "Kishor edition of Gohi Sabhak Beech Jalsamadhi.",
+        "noteMai": "‘गोहि सभक बीच जलसमाधि’क किशोर संस्करण।"
+      }
+    ]
+  },
+  "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]": {
+    "language": "mai",
+    "relations": [
+      {
+        "relationType": "exampleOfWork",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)",
+        "relationLabelEn": "Parent novel",
+        "relationLabelMai": "मूल उपन्यास",
+        "noteEn": "Bal (children's) edition of Gohi Sabhak Beech Jalsamadhi.",
+        "noteMai": "‘गोहि सभक बीच जलसमाधि’क बाल संस्करण।"
+      }
+    ]
+  },
+  "WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]": {
+    "language": "en",
+    "relations": [
+      {
+        "relationType": "translationOfWork",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)",
+        "relationLabelEn": "Maithili original",
+        "relationLabelMai": "मैथिली मूल",
+        "translationDirection": "Maithili → English",
+        "translator": "Gajendra Thakur",
+        "noteEn": "English translation by the author Gajendra Thakur himself of Gohi Sabhak Beech Jalsamadhi.",
+        "noteMai": "‘गोहि सभक बीच जलसमाधि’क अंग्रेजी अनुवाद लेखक गजेन्द्र ठाकुर स्वयं कएने छथि।"
+      }
+    ]
+  },
+  "Water-Burial Among the Crocodiles [English Teaching Companion]": {
+    "language": "en",
+    "relations": [
+      {
+        "relationType": "isBasedOn",
+        "relatedTitle": "WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]",
+        "relationLabelEn": "Teaching companion to English translation",
+        "relationLabelMai": "अंग्रेजी अनुवादक शिक्षण-सहचर",
+        "noteEn": "Teaching companion based on the English translation of the novel.",
+        "noteMai": "उपन्यासक अंग्रेजी अनुवाद पर आधारित शिक्षण-सहचर।"
+      }
+    ]
+  },
+  "Gohi Sabhak Beech Jalsamadhi Teaching Course PDF": {
+    "relations": [
+      {
+        "relationType": "isBasedOn",
+        "relatedTitle": "गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)",
+        "relationLabelEn": "Teaching course for parent novel",
+        "relationLabelMai": "मूल उपन्यासक शिक्षण पाठ्यक्रम",
+        "noteEn": "Teaching-course resource based on Gohi Sabhak Beech Jalsamadhi.",
+        "noteMai": "‘गोहि सभक बीच जलसमाधि’ पर आधारित शिक्षण-पाठ्यक्रम सामग्री।"
+      }
+    ]
   }
 }
