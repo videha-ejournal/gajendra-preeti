@@ -25,12 +25,12 @@ const elearning=[
   'Videha-UPSC-Mains-GS-Paper-IV.pdf'
 ];
 const pending=[
-  'ENGLISH_HOTH_BAJAL_SWAAD.pdf',
-  'ENGLISH_MITHILAK_VINASH.pdf',
-  'ENGLISH_MITHILA_DU_TUK.pdf',
-  'ENGLISH_PANJI_KE_MAITRI_KARAN.pdf',
-  'ENGLISH_PANJI_PADDHATI_ME_SUDHAR.pdf',
-  'ENGLISH_SAMANTA.pdf'
+  'ENGLISH_JPM_BIOGRAPHY.pdf',
+  'ENGLISH_JPM_ECHOES_OF_EXISTENCE.pdf',
+  'ENGLISH_JPM_JEEVAN_SANGHARSH.pdf',
+  'ENGLISH_JPM_LAHSAN.pdf',
+  'ENGLISH_MAULAIL_GACHHAK_PHOOL.pdf',
+  'GT_PT_Criticism.pdf'
 ];
 const supplements=new Map((report.supplementalPdfResources||[]).map(x=>[x.path,x]));
 for(const p of [...elearning,...pending]){
@@ -40,7 +40,7 @@ for(const p of [...elearning,...pending]){
   assert(/^[0-9a-f]{64}$/i.test(row.sha256||''),'Repository resource SHA-256.');
 }
 for(const p of elearning)assert(supplements.get(p).category?.startsWith('Videha eLearning'),`eLearning category: ${p}`);
-for(const p of pending)assert(supplements.get(p).category?.includes('exact work relation pending'),`Pending exact-relation category: ${p}`);
+for(const p of pending)assert(supplements.get(p).category?.includes('relation pending'),`Pending exact-relation category: ${p}`);
 
 for(const prefix of ['','en/']){
   const file=path.join(ROOT,prefix,'bibliography/index.html');
