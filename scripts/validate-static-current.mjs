@@ -27,6 +27,16 @@ for(const dir of chapterDirs){
   }
 }
 
+const gtLanding=path.join(root,'criticism/reception/gt-pt-criticism.html');
+if(fs.existsSync(gtLanding)){
+  let html=fs.readFileSync(gtLanding,'utf8');
+  const disclosure='एहि एटलस-सार पृष्ठक कोनो नामित मानवीय सम्पादकीय समीक्षा दर्ज नहि अछि; एकरा श्रेय-सहित मूल आलोचना-संग्रहक संग पढ़ल जाए।';
+  if(!/कोनो नामित मानवीय सम्पादकीय समीक्षा दर्ज नहि अछि/i.test(html)){
+    html=html.replace('</footer>',`<p class="summary-credit">${disclosure}</p></footer>`);
+    fs.writeFileSync(gtLanding,html);
+  }
+}
+
 let source=fs.readFileSync('scripts/validate-static.mjs','utf8');
 const oldCount="assert.equal(receptionMaiFiles.length,3,'Reception must expose Maithili index + two book pages');";
 const newCount="assert.equal(receptionMaiFiles.length,4,'Reception must expose Maithili index + two paired book pages + GT/PT criticism landing');";
