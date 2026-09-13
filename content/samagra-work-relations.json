@@ -2,12 +2,14 @@
   "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर": {
     "relationType": "workTranslation",
     "relatedTitle": "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION",
+    "language": "mai",
     "noteEn": "English translation by Gajendra Thakur.",
     "noteMai": "गजेन्द्र ठाकुर द्वारा अंग्रेजी अनुवाद।"
   },
   "37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION": {
     "relationType": "translationOfWork",
     "relatedTitle": "३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर",
+    "language": "en",
     "translationDirection": "Maithili → English",
     "translator": "Gajendra Thakur",
     "noteEn": "English translation of the 37 Maithili children's novels; translated by Gajendra Thakur.",
