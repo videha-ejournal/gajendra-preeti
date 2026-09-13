@@ -32,17 +32,6 @@
         "translator": "Gajendra Thakur",
         "relationType": "workTranslation"
       }
-    ],
-    "मैथिलीक एकटा समानान्तर व्याकरण, रचना आ भाषा विज्ञान (ठेठी, अंगिका आ बज्जिकाकेँ संग लऽ कऽ)": [
-      {
-        "path": "ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf",
-        "titleEn": "Maithili Grammar / Ghazal History — English translation resource",
-        "titleMai": "मैथिली व्याकरण / गजल इतिहास — अंग्रेजी अनुवाद-स्रोत",
-        "language": "en",
-        "sourceLanguage": "mai",
-        "translator": "Gajendra Thakur",
-        "relationType": "workTranslation"
-      }
     ]
   },
   "reception": {
@@ -53,9 +42,10 @@
       "translationPdf": "ENGLISH_PREETI_KARAN_SETU_BANHAL.pdf",
       "sourceLanguage": "mai",
       "translationLanguage": "en",
+      "sourceEditor": "Ashish Anchinhar",
       "translator": "Gajendra Thakur",
-      "translatorNoteEn": "English translation by Gajendra Thakur; translator attribution supplied by the translator/site owner.",
-      "translatorNoteMai": "अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा; अनुवादकक श्रेय अनुवादक/साइट-स्वामी द्वारा उपलब्ध कराओल गेल अछि।"
+      "translatorNoteEn": "The Maithili original was edited by Ashish Anchinhar; English translation by Gajendra Thakur.",
+      "translatorNoteMai": "मैथिली मूलक सम्पादन Ashish Anchinhar द्वारा; अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
     },
     "setusham": {
       "titleEn": "Setusham: Vibrant Maithili",
@@ -64,12 +54,28 @@
       "translationPdf": "ENGLISH_SETUSHAM.pdf",
       "sourceLanguage": "mai",
       "translationLanguage": "en",
+      "sourceEditor": "Ashish Anchinhar",
       "translator": "Gajendra Thakur",
-      "translatorNoteEn": "English translation from Maithili by Gajendra Thakur.",
-      "translatorNoteMai": "मैथिली सँ अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
+      "translatorNoteEn": "The Maithili original was edited by Ashish Anchinhar; English translation by Gajendra Thakur.",
+      "translatorNoteMai": "मैथिली मूलक सम्पादन Ashish Anchinhar द्वारा; अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
     }
   },
   "standalone": [
+    {
+      "id": "maithili-grammar-ghazal-history-english",
+      "path": "ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf",
+      "titleEn": "Maithili Grammar / Ghazal History — English translation resource",
+      "titleMai": "मैथिली व्याकरण / गजल इतिहास — अंग्रेजी अनुवाद-स्रोत",
+      "language": "en",
+      "sourceLanguage": "mai",
+      "author": "Ashish Anchinhar",
+      "sourceAuthor": "Ashish Anchinhar",
+      "translator": "Gajendra Thakur",
+      "categoryEn": "Maithili original by Ashish Anchinhar · English translation resource",
+      "categoryMai": "Ashish Anchinhar क मैथिली मूल · अंग्रेजी अनुवाद-स्रोत",
+      "sourceNoteEn": "The original Maithili work is by Ashish Anchinhar; this English translation is by Gajendra Thakur.",
+      "sourceNoteMai": "मूल मैथिली कृति Ashish Anchinhar क अछि; अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
+    },
     {
       "id": "maithili-web-journalism-english",
       "path": "ENGLISH_MAITHILI_WEB_JOURNALISM.pdf",
@@ -77,9 +83,30 @@
       "titleMai": "मैथिली वेब पत्रकारिता — अंग्रेजी अनुवाद",
       "language": "en",
       "sourceLanguage": "mai",
+      "author": "Ashish Anchinhar",
+      "sourceAuthor": "Ashish Anchinhar",
       "translator": "Gajendra Thakur",
-      "categoryEn": "Translated scholarly resource",
-      "categoryMai": "अनूदित शोध-स्रोत"
+      "categoryEn": "Maithili original by Ashish Anchinhar · English translation",
+      "categoryMai": "Ashish Anchinhar क मैथिली मूल · अंग्रेजी अनुवाद",
+      "sourceNoteEn": "The original Maithili work is by Ashish Anchinhar; this English translation is by Gajendra Thakur.",
+      "sourceNoteMai": "मूल मैथिली कृति Ashish Anchinhar क अछि; अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
+    },
+    {
+      "id": "maulail-gachhak-phool-english",
+      "path": "ENGLISH_MAULAIL_GACHHAK_PHOOL.pdf",
+      "titleEn": "Maulail Gachhak Phool — English translation",
+      "titleMai": "Maulail Gachhak Phool — अंग्रेजी अनुवाद",
+      "originalTitle": "Maulail Gachhak Phool",
+      "language": "en",
+      "sourceLanguage": "mai",
+      "author": "Jagdish Prasad Mandal",
+      "authorMai": "जगदीश प्रसाद मण्डल",
+      "sourceAuthor": "Jagdish Prasad Mandal",
+      "translator": "Gajendra Thakur",
+      "categoryEn": "Maithili work by Jagdish Prasad Mandal · English translation",
+      "categoryMai": "जगदीश प्रसाद मण्डलक मैथिली कृति · अंग्रेजी अनुवाद",
+      "sourceNoteEn": "The original Maithili work is by Jagdish Prasad Mandal; this English translation is by Gajendra Thakur.",
+      "sourceNoteMai": "मूल मैथिली कृति जगदीश प्रसाद मण्डलक अछि; अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
     },
     {
       "id": "jagdish-prasad-mandal-biography-english",
