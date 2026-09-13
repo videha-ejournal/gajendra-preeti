@@ -26,8 +26,8 @@ for(const [lang,html] of [['mai',mai],['en',en]]){
   assert.equal((html.match(/data-provenance="gajendra-maithili-translations-46"/g)||[]).length,1,`${lang}: Gajendra’s 46-entry Maithili translation corpus must appear once.`);
   assert(html.includes('catalogue-refine'),`${lang}: genre/year refinement controls must render.`);
   assert(html.includes('reception-teaser'),`${lang}: contributor/reception block must render.`);
-  assert(html.includes('8 September 2026')||html.includes('8 सितम्बर 2026'),`${lang}: source-check date must be visible.`);
-  assert(html.includes('10 September 2026')||html.includes('10 सितम्बर 2026'),`${lang}: site-update date must be visible.`);
+  assert(html.includes('13 September 2026')||html.includes('13 सितम्बर 2026'),`${lang}: source-check date must be visible.`);
+  assert(html.includes('13 September 2026')||html.includes('13 सितम्बर 2026'),`${lang}: site-update date must be visible.`);
   assert(html.includes('Displayed without modification.'),`${lang}: shared Wikimedia wording must match.`);
   assert(!html.includes('Displayed without alteration.'),`${lang}: obsolete Wikimedia wording must be absent.`);
   assert(html.includes('https://www.videha.co.in/videha-rss.xml'),`${lang}: JOURNAL area must expose the Videha RSS route.`);
@@ -111,7 +111,7 @@ for(const html of [mai,en]){
 
 const maiFooter=mai.match(/<footer>[\s\S]*?<\/footer>/)?.[0]||'';
 assert.equal((maiFooter.match(/https:\/\/github\.com\/videha-ejournal\/gajendra-preeti/g)||[]).length,1,'Maithili footer must show the repository link once.');
-assert(/Site updated: 10 September 2026 · Sources checked: 8 September 2026/.test(en),'English footer must carry both maintenance and source-check dates.');
-assert(/साइट अद्यतन: 10 सितम्बर 2026 · स्रोत-जाँच: 8 सितम्बर 2026/.test(mai),'Maithili footer must carry both maintenance and source-check dates.');
+assert(/Site updated: 13 September 2026 · Sources checked: 13 September 2026/.test(en),'English footer must carry both maintenance and source-check dates.');
+assert(/साइट अद्यतन: 13 सितम्बर 2026 · स्रोत-जाँच: 13 सितम्बर 2026/.test(mai),'Maithili footer must carry both maintenance and source-check dates.');
 
 console.log('Scholarly home consistency PASS: Preeti 4 original + 12 English→Maithili children works, Gajendra 37 original-Maithili→English children novels, Gajendra 46 Maithili translations, and all prior parity/accessibility/provenance guards.');

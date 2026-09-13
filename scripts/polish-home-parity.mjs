@@ -25,7 +25,7 @@ patch('app/(english)/en/page.tsx',[
   ],
   [
     '<small className="maintenance-stamp">Site updated: 9 September 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
-    '<small className="maintenance-stamp">Site updated: 10 September 2026 · Sources checked: 8 September 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
+    '<small className="maintenance-stamp">Site updated: 13 September 2026 · Sources checked: 13 September 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
     'English maintenance stamp'
   ],
   [
@@ -35,7 +35,7 @@ patch('app/(english)/en/page.tsx',[
   ],
   [
     '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">Open the Panji archive ↗</a></article>',
-    '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">Open the source Drive copy ↗</a><a href="https://archive.org/download/maithili_202209/11000_PALM_LEAF_PANJI_MERGE.pdf">Combined Archive.org PDF · 840 MB ↗</a><details className="panji-access"><summary>Volume and part structure</summary><p>Videha documents the archive as Volumes I–XXII. Google Play separately describes the digital edition as available in 10 parts. The verified listings do not state an exact volume-to-part mapping, so this atlas does not guess one.</p><a href="https://play.google.com/store/books/details/Preeti_Thakur_11000_PALM_LEAF_PANJI_INSCRIPTIONS_V?id=VfG2EAAAQBAJ">Open a verified Google Play part (6/10) ↗</a></details></article>',
+    '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">Open the source Drive copy ↗</a><a href="https://archive.org/download/maithili_202209/11000_PALM_LEAF_PANJI_MERGE.pdf">Combined Archive.org PDF · 840 MB ↗</a><details className="panji-access"><summary>Volume and part structure</summary><p>Videha documents the archive as Volumes I–XXII. Google Play separately describes the digital edition as available in 10 parts; that is the official/store-based partial digital access. The Archive.org link is a community-available combined 840 MB PDF. The verified listings do not state an exact volume-to-part mapping, so this atlas does not guess one.</p><a href="https://play.google.com/store/books/details/Preeti_Thakur_11000_PALM_LEAF_PANJI_INSCRIPTIONS_V?id=VfG2EAAAQBAJ">Open a verified Google Play part (6/10) ↗</a></details></article>',
     'Panji access structure English'
   ],
   [
@@ -68,7 +68,7 @@ patch('app/(maithili)/page.tsx',[
   ],
   [
     '<small className="maintenance-stamp">साइट अद्यतन: 9 सितम्बर 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
-    '<small className="maintenance-stamp">साइट अद्यतन: 10 सितम्बर 2026 · स्रोत-जाँच: 8 सितम्बर 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
+    '<small className="maintenance-stamp">साइट अद्यतन: 13 सितम्बर 2026 · स्रोत-जाँच: 13 सितम्बर 2026 · <a href="https://github.com/videha-ejournal/gajendra-preeti" lang="en">GitHub ↗</a></small>',
     'Maithili maintenance stamp'
   ],
   [
@@ -78,7 +78,7 @@ patch('app/(maithili)/page.tsx',[
   ],
   [
     '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">पञ्जी-अभिलेख खोलू ↗</a></article>',
-    '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">मूल Drive प्रति खोलू ↗</a><a href="https://archive.org/download/maithili_202209/11000_PALM_LEAF_PANJI_MERGE.pdf">संयुक्त Archive.org PDF · 840 MB ↗</a><details className="panji-access"><summary>खण्ड आ डिजिटल भागक बनावट</summary><p>विदेह पञ्जी-अभिलेखकेँ खण्ड I–XXII रूपमे दर्ज करैत अछि। Google Play अलगसँ डिजिटल संस्करणकेँ 10 भागमे उपलब्ध कहैत अछि। सत्यापित सूचीमे खण्डक संग भागक सटीक मिलान नहि देल अछि, तेँ एहि अटलसमे अनुमान नहि कएल गेल अछि।</p><a href="https://play.google.com/store/books/details/Preeti_Thakur_11000_PALM_LEAF_PANJI_INSCRIPTIONS_V?id=VfG2EAAAQBAJ">सत्यापित Google Play भाग 6/10 खोलू ↗</a></details></article>',
+    '<a href="https://drive.google.com/file/d/13tKREg6BqXkfk3n1jGfrgnQVx-Y5hQMs/view?usp=sharing">मूल Drive प्रति खोलू ↗</a><a href="https://archive.org/download/maithili_202209/11000_PALM_LEAF_PANJI_MERGE.pdf">संयुक्त Archive.org PDF · 840 MB ↗</a><details className="panji-access"><summary>खण्ड आ डिजिटल भागक बनावट</summary><p>विदेह पञ्जी-अभिलेखकेँ खण्ड I–XXII रूपमे दर्ज करैत अछि। Google Play अलगसँ डिजिटल संस्करणकेँ 10 भागमे उपलब्ध कहैत अछि; ओ आधिकारिक/स्टोर-आधारित आंशिक डिजिटल पहुँच अछि। Archive.org कड़ी सामुदायिक रूपेँ उपलब्ध संयुक्त 840 MB PDF अछि। सत्यापित सूचीमे खण्डक संग भागक सटीक मिलान नहि देल अछि, तेँ एहि अटलसमे अनुमान नहि कएल गेल अछि।</p><a href="https://play.google.com/store/books/details/Preeti_Thakur_11000_PALM_LEAF_PANJI_INSCRIPTIONS_V?id=VfG2EAAAQBAJ">सत्यापित Google Play भाग 6/10 खोलू ↗</a></details></article>',
     'Panji access structure Maithili'
   ],
   [
