@@ -2,6 +2,7 @@ import fs from 'node:fs';
 const file='scripts/build-scholarly-bibliography.mjs';
 let s=fs.readFileSync(file,'utf8');
 s=s.replace("const verifiedDisplay=meta.updatedDisplay||'13 September 2026';","const verifiedDisplay=meta.updatedDisplayEn||'13 September 2026';");
+s=s.replace("function slugFor(title){const r=romanize(title);return ascii(r)||'work-'+sha(title).slice(0,10);}","function slugFor(title){const r=romanize(title),raw=ascii(r)||'work';return raw.length<=96?raw:(raw.slice(0,78).replace(/-+$/,'')+'-'+sha(title).slice(0,12));}");
 const replacement=`function parseMain(source){
  const marker='const main=';
  const at=source.indexOf(marker);
@@ -37,4 +38,4 @@ const pattern=/function parseMain\(source\)\{[\s\S]*?\n\}\nfunction chapterRoute
 if(!pattern.test(s))throw Error('Could not locate parseMain function for hardening.');
 s=s.replace(pattern,replacement+'\nfunction chapterRoute');
 fs.writeFileSync(file,s,'utf8');
-console.log('Scholarly bibliography builder now uses balanced-array extraction for authoritative Samagra data.');
+console.log('Scholarly bibliography builder now uses balanced-array extraction and bounded stable slugs for authoritative Samagra data.');
