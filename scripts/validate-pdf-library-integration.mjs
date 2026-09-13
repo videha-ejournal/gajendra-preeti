@@ -12,7 +12,7 @@ const data=JSON.parse(fs.readFileSync(dataPath,'utf8'));
 
 assert.equal(report.schemaVersion,1,'PDF reconciliation schema version');
 assert(report.catalogSchemaVersion>=2,'PDF catalogue must provide provenance schema v2 or newer.');
-assert(report.catalogCount>=54,`Expected at least the 54 PDFs already catalogued; saw ${report.catalogCount}.`);
+assert(report.catalogCount>=57,`Expected at least the 57 PDFs already catalogued; saw ${report.catalogCount}.`);
 assert.equal(report.samagraRecordCount,data.records.length,'Reconciliation must cover every synchronized Samagra record.');
 assert(report.matchedRecordCount>=30,`Expected substantial Samagra PDF coverage; saw only ${report.matchedRecordCount} records.`);
 assert(report.matchedPdfCount>=report.matchedRecordCount,'Matched PDF count cannot be lower than matched record count.');
@@ -66,12 +66,45 @@ const requirements=[
   ['A Parallel History of Mithila & Maithili Literature',1],
   ['स्वप्नमे मिज्झर होइत · WHEN DREAMS MERGE',2],
   ['विदेह शोध-लेख (अंक १ सँ ४४७ धरि)',1],
-  ['३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर',1]
+  ['३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर',1],
+  ['37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION',1],
+  ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)',1],
+  ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]',1]
 ];
 for(const [title,min] of requirements){
   const row=report.records.find(r=>r.title===title);
   assert(row,`Required scholarly PDF mapping: ${title}`);
   assert(row.pdfs.length>=min,`Expected at least ${min} PDF manifestation(s): ${title}`);
+}
+function requireExactPdf(title,pdfPath){
+  const row=report.records.find(r=>r.title===title);
+  assert(row?.pdfs.some(p=>p.path===pdfPath),`Expected ${pdfPath} on ${title}`);
+}
+const originalTitle='३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर';
+const translationTitle='37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION';
+requireExactPdf(originalTitle,'GAJENDRA_THAKUR_SAMAGRA_37_MAITHILI_CHILDREN_NOVELS.pdf');
+requireExactPdf(translationTitle,'37_CHILDREN_NOVELS.pdf');
+requireExactPdf('गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)','Gohi_Sabhak_Beech_Jalsamadhi.pdf');
+requireExactPdf('गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]','Gohi_Jalsamadhi_Bal_Sanskaran.pdf');
+const original=data.records.find(r=>r.title===originalTitle);
+const translation=data.records.find(r=>r.title===translationTitle);
+assert.deepEqual(original?.languages,['mai'],'Maithili original must be explicitly tagged mai.');
+assert.deepEqual(translation?.languages,['en'],'English translation must be explicitly tagged en.');
+assert.equal(original?.translationRelation?.relationType,'workTranslation','Original must point to its English translation.');
+assert.equal(original?.translationRelation?.relatedId,translation?.id,'Original relation target.');
+assert.equal(translation?.translationRelation?.relationType,'translationOfWork','English record must identify the Maithili original.');
+assert.equal(translation?.translationRelation?.relatedId,original?.id,'Translation relation target.');
+assert.equal(translation?.translationRelation?.translationDirection,'Maithili → English','Translation direction.');
+assert.equal(translation?.translationRelation?.translator,'Gajendra Thakur','Translation credit.');
+for(const record of [original,translation]){
+  for(const prefix of ['', 'en/']){
+    const file=path.join(ROOT,prefix,'bibliography/works',record.slug,'index.html');
+    const html=fs.readFileSync(file,'utf8');
+    assert(html.includes('id="translation-relation"'),`Visible original/translation relation: ${file}`);
+    const ld=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    const work=(JSON.parse(ld[1])['@graph']||[]).find(x=>x['@type']==='Book'||x['@type']==='CreativeWork');
+    assert(work?.[record.translationRelation.relationType],`Schema translation relation: ${file}`);
+  }
 }
 
 for(const file of ['bibliography/index.html','en/bibliography/index.html','author/gajendra-thakur/index.html','en/author/gajendra-thakur/index.html']){
@@ -82,5 +115,6 @@ const cross=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/crossref-rea
 assert.equal(cross.pdfRepository,'https://github.com/videha-ejournal/videha-ejournal');
 assert.equal(cross.pdfProvenanceManifest,'https://videha-ejournal.github.io/gajendra-preeti/bibliography/pdf-library-manifest.json');
 assert(cross.records.some(r=>Array.isArray(r.pdfRepository)&&r.pdfRepository.some(p=>sha.test(String(p.sha256||'')))),'DOI-ready export must carry verifiable PDF provenance.');
+assert(cross.records.some(r=>r.id===translation.id&&r.translationRelation?.relationType==='translationOfWork'),'DOI-ready export must preserve translation relationship.');
 
-console.log(`PDF-library integration PASS: ${report.matchedRecordCount}/${report.samagraRecordCount} Samagra records linked to ${report.matchedPdfCount}/${report.catalogCount} catalogued PDFs; ${report.missingReferencedPaths.length} direct Samagra PDF path(s) still pending upload; ${report.unmatchedCatalogPaths.length} supplemental PDF(s) intentionally unmatched.`);
+console.log(`PDF-library integration PASS: ${report.matchedRecordCount}/${report.samagraRecordCount} Samagra records linked to ${report.matchedPdfCount}/${report.catalogCount} catalogued PDFs; Maithili and English 37-novel editions are separately mapped and related; ${report.missingReferencedPaths.length} direct Samagra PDF path(s) pending; ${report.unmatchedCatalogPaths.length} supplemental PDF(s) unmatched.`);
