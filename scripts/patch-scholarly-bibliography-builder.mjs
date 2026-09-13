@@ -38,4 +38,14 @@ const pattern=/function parseMain\(source\)\{[\s\S]*?\n\}\nfunction chapterRoute
 if(!pattern.test(s))throw Error('Could not locate parseMain function for hardening.');
 s=s.replace(pattern,replacement+'\nfunction chapterRoute');
 fs.writeFileSync(file,s,'utf8');
-console.log('Scholarly bibliography builder now uses balanced-array extraction and bounded stable slugs for authoritative Samagra data.');
+
+const validator='scripts/validate-static.mjs';
+let v=fs.readFileSync(validator,'utf8');
+const oldDirs="for(const dir of ['works','en/works']){if(fs.existsSync(path.join(root,dir)))for(const entry of fs.readdirSync(path.join(root,dir),{recursive:true}))if(String(entry).endsWith('.html'))files.push(dir+'/'+String(entry).replaceAll('\\\\','/'));}";
+const newDirs="for(const dir of ['works','en/works','bibliography','en/bibliography','author','en/author']){if(fs.existsSync(path.join(root,dir)))for(const entry of fs.readdirSync(path.join(root,dir),{recursive:true}))if(String(entry).endsWith('.html'))files.push(dir+'/'+String(entry).replaceAll('\\\\','/'));}";
+if(!v.includes(newDirs)){
+ if(!v.includes(oldDirs))throw Error('Could not locate static validator route-directory loop.');
+ v=v.replace(oldDirs,newDirs);
+ fs.writeFileSync(validator,v,'utf8');
+}
+console.log('Scholarly bibliography builder uses balanced extraction, bounded slugs, and static validation covers all scholarly routes.');
