@@ -17,7 +17,7 @@ const replacement=`function parseMain(source){
    if(ch===quote)quote=null;
    continue;
   }
-  if(ch==="'"||ch==='"'||ch==='\\`'){quote=ch;continue;}
+  if(ch==="'"||ch==='"'||ch.charCodeAt(0)===96){quote=ch;continue;}
   if(ch==='['){depth++;continue;}
   if(ch===']'){
    depth--;
