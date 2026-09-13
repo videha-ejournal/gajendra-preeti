@@ -7,7 +7,7 @@ import CatalogueView from './catalogue-view';
 
 type ReadingPath={id:string;label:string;en:string;title:string;text:string;ids:string[];href?:string;linkTitle?:string;linkMeta?:string};
 const selections:ReadingPath[]=[
-  {id:'six-books',label:"Six more books",en:'GAJENDRA THAKUR · SIX BOOKS',title:"Poetry, fiction and young readers.",text:"Explore six supplied editions, with bilingual discussions of all 20 Nav Pankhi stories, all 13 Kut Naam chapters and all 42 Saatam Sakshi chapters.",ids:[],href:'/gajendra-preeti/six-books/en/',linkTitle:'SIX BOOKS',linkMeta:'6 books · Maithili + English'},
+  {id:'six-books',label:"Seven source editions",en:'GAJENDRA THAKUR · SOURCE EDITIONS',title:"Poetry, fiction, ghazals and archive-memory prose.",text:"Explore seven supplied editions, with bilingual unit discussions for Nav Pankhi, Kut Naam, Saatam Sakshi, Akulait Sur, Bijji, Diwan-e-Videha and Paatak Bhitar Likhal Naam.",ids:[],href:'/gajendra-preeti/six-books/en/',linkTitle:'SEVEN EDITIONS',linkMeta:'7 editions · Maithili + English'},
 
   {id:'children',label:'Children’s books',en:'For the curious reader',title:'Pictures, stories, imagination.',text:'Enter children’s literature through Preeti Thakur’s picture stories and translations.',ids:['p0','p1','p13']},
   {id:'literature',label:'Fiction and poetry',en:'For the literary explorer',title:'From short fiction to the novel.',text:'Three starting points in Gajendra Thakur’s fiction and poetry.',ids:['g0','g2','g4']},

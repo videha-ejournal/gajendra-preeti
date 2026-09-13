@@ -136,5 +136,28 @@
     "sha256": "f2086b2417470156cb1d85901c3340036b0484af2c82ad43764ccca6c96822f1",
     "paragraphs": 4519,
     "sample": "1–18; 2260–2264; 4512–4519"
+  },
+  {
+    "id": "paatak-bhitar-likhal-naam",
+    "title": "पातक भीतर लिखल नाम",
+    "titleEn": "Paatak Bhitar Likhal Naam — The Name Written Inside the Leaf",
+    "kind": "उपन्यास",
+    "kindEn": "Fiction / archive-memory novel",
+    "prefix": "Paatak",
+    "year": 2026,
+    "en": [
+      "This supplied novel is arranged in thirty-two chapters and follows the recovery of a name through a house, kitchen memory, manuscript leaves and editorial accountability. Its chapter titles move through domestic spaces, foods, translation, publication, omission and named responsibility, making attribution the central ethical field.",
+      "The chapter-level readings below treat each division as part of an archive-and-memory narrative. They preserve the source ranges and distinguish literary reconstruction from historical proof: the concern is how a name is lost, normalised, restored and made citable again."
+    ],
+    "mai": [
+      "एहि देल उपन्यासमे बत्तीस अध्याय अछि। घर, भानस-स्मृति, पात आ सम्पादकीय उत्तरदायित्वक सहारे एक नामक पुनर्प्राप्ति एकर केन्द्र अछि। अध्याय-शीर्षक घरेलू स्थान, भोजन, अनुवाद, प्रकाशन, चूक आ नामित जिम्मेदारी धरि जाइत अछि; श्रेय नैतिक क्षेत्र बनैत अछि।",
+      "नीचाँक अध्यायवार पाठ प्रत्येक खण्डकेँ अभिलेख-स्मृति आख्यानक अंश मानैत अछि। स्रोत-सीमा सुरक्षित राखल गेल अछि आ साहित्यिक पुनर्निर्माणकेँ ऐतिहासिक प्रमाणसँ अलग राखल गेल अछि: प्रश्न अछि नाम कोना हरायल, सामान्यीकृत भेल, फेर घुरल आ उद्धरणयोग्य बनल।"
+    ],
+    "pdf": "Paatak_Bhitar_Likhal_Naam.pdf",
+    "docx": "Paatak_Bhitar_Likhal_Naam_FULL_BOOK_FINAL_6x9_Hardback.docx",
+    "pages": 368,
+    "sha256": "dddb753057daaa1186e25a4802b41d71fb89c72331e4b4222e0f1802990d502a",
+    "paragraphs": 5876,
+    "sample": "1–18; 2936–2940; 5869–5876"
   }
 ]
