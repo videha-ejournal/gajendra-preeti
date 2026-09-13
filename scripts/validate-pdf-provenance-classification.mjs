@@ -4,9 +4,9 @@ import assert from 'node:assert/strict';
 
 const ROOT='dist/client/gajendra-preeti';
 const report=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/pdf-library-manifest.json'),'utf8'));
-assert.equal(report.catalogCount,76,'Current verified PDF catalogue count.');
+assert.equal(report.catalogCount,79,'Current verified PDF catalogue count.');
 assert.equal(report.matchedPdfCount,54,'Samagra-attached PDF manifestations.');
-assert.equal(report.translatedPdfUniqueFileCount,14,'Explicit translated/reception exact PDF resources.');
+assert.equal(report.translatedPdfUniqueFileCount,17,'Explicit translated/reception exact PDF resources including three newly verified Maithili source PDFs.');
 assert.equal(report.criticismPdfResourceCount,1,'Separately classified multi-author criticism PDF count.');
 assert.equal(report.equivalentRepositoryCopyCount,2,'Byte-identical repository copy count.');
 assert.equal(report.supplementalPdfResourceCount,5,'Supplemental/repository-only PDF count.');
@@ -25,6 +25,17 @@ const elearning=[
   'Videha-UPSC-Mains-GS-Paper-III.pdf',
   'Videha-UPSC-Mains-GS-Paper-IV.pdf'
 ];
+const promoted=[
+  'MAITHILI_GAZALAK_VYAKARAN_O_ITIHAAS.pdf',
+  'MAITHILI_WEB_JOURNALISM.pdf',
+  'MAULAIL_GACHHAK_PHOOL.pdf',
+  'ENGLISH_MAULAIL_GACHHAK_PHOOL.pdf',
+  'GT_PT_Criticism.pdf',
+  'ENGLISH_JPM_BIOGRAPHY.pdf',
+  'ENGLISH_JPM_ECHOES_OF_EXISTENCE.pdf',
+  'ENGLISH_JPM_JEEVAN_SANGHARSH.pdf',
+  'ENGLISH_JPM_LAHSAN.pdf'
+];
 const supplements=new Map((report.supplementalPdfResources||[]).map(x=>[x.path,x]));
 for(const p of elearning){
   const row=supplements.get(p);
@@ -33,7 +44,13 @@ for(const p of elearning){
   assert(/^[0-9a-f]{64}$/i.test(row.sha256||''),'Repository resource SHA-256.');
   assert(row.category?.startsWith('Videha eLearning'),`eLearning category: ${p}`);
 }
-for(const p of ['ENGLISH_MAULAIL_GACHHAK_PHOOL.pdf','GT_PT_Criticism.pdf','ENGLISH_JPM_BIOGRAPHY.pdf','ENGLISH_JPM_ECHOES_OF_EXISTENCE.pdf','ENGLISH_JPM_JEEVAN_SANGHARSH.pdf','ENGLISH_JPM_LAHSAN.pdf'])assert(!supplements.has(p),`${p} must not remain supplemental/pending.`);
+for(const p of promoted)assert(!supplements.has(p),`${p} must not remain supplemental/pending.`);
+
+const pairs=report.verifiedSourcePdfPairs||[];
+assert.equal(pairs.length,3,'Three source-PDF pairs must be verified.');
+assert(pairs.some(x=>x.sourcePdf==='MAITHILI_GAZALAK_VYAKARAN_O_ITIHAAS.pdf'&&x.translationPdf==='ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf'&&x.sourceAuthor==='Ashish Anchinhar'));
+assert(pairs.some(x=>x.sourcePdf==='MAITHILI_WEB_JOURNALISM.pdf'&&x.translationPdf==='ENGLISH_MAITHILI_WEB_JOURNALISM.pdf'&&x.sourceAuthor==='Ashish Anchinhar'));
+assert(pairs.some(x=>x.sourcePdf==='MAULAIL_GACHHAK_PHOOL.pdf'&&x.translationPdf==='ENGLISH_MAULAIL_GACHHAK_PHOOL.pdf'&&x.sourceAuthor==='Jagdish Prasad Mandal'));
 
 const criticism=report.criticismPdfResources||[];
 assert.equal(criticism.length,1,'One criticism collection resource.');
@@ -45,9 +62,10 @@ for(const prefix of ['','en/']){
   const html=fs.readFileSync(file,'utf8');
   assert(html.includes('id="pdf-repository-classification"'),`Visible repository PDF classification: ${file}`);
   for(const p of elearning)assert(html.includes(supplements.get(p).title)||html.includes(p.replace('.pdf','').replaceAll('_',' ')),`Visible supplemental resource: ${p}`);
+  assert(html.includes('17')&&html.includes('79'),`Updated repository accounting totals: ${file}`);
   assert(html.includes('id="jpm-translation-corpus"'),`JPM corpus doorway: ${file}`);
   assert(html.includes('id="criticism-collection-resource"'),`Multi-author criticism doorway: ${file}`);
   assert(html.includes('GAJENDRA_THAKUR_SAMAGRA_Sanskrit_Sahitya_13_Books.pdf'),`Visible equivalent repository copy: ${file}`);
   assert(html.includes('VIDEHA_001_440_QUIZ.pdf'),`Visible equivalent quiz copy: ${file}`);
 }
-console.log('PDF provenance classification validation PASS: all 76 PDFs accounted for as 54 Samagra manifestations, 14 translated/reception resources, 1 multi-author criticism collection, 2 exact duplicate copies, and 5 supplemental eLearning resources.');
+console.log('PDF provenance classification validation PASS: all 79 PDFs accounted for as 54 Samagra manifestations, 17 translated/reception resources, 1 multi-author criticism collection, 2 exact duplicate copies, and 5 supplemental eLearning resources.');
