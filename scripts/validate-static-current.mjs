@@ -15,7 +15,7 @@ for(const dir of chapterDirs){
   if(!fs.existsSync(full)) continue;
   const english=dir.includes('/en/');
   const disclosure=english
-    ? 'No named human editorial review is recorded for this atlas summary page; it should be read alongside the attributed source chapter.'
+    ? 'no named human editorial review is recorded for this atlas summary page; it should be read alongside the attributed source chapter.'
     : 'एहि एटलस-सार पृष्ठक कोनो नामित मानवीय सम्पादकीय समीक्षा दर्ज नहि अछि; एकरा श्रेय-सहित मूल अध्यायक संग पढ़ल जाए।';
   for(const file of fs.readdirSync(full).filter(f=>f.endsWith('.html'))){
     const p=path.join(full,file);
