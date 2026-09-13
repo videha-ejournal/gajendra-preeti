@@ -3,11 +3,12 @@ import {useEffect} from 'react';
 export default function LanguageSwitch(){
  useEffect(()=>{
   const update=()=>{
+   const search=window.location.search||'';
    const hash=window.location.hash||'';
    document.querySelectorAll<HTMLAnchorElement>('a.language-link').forEach(a=>{
     const base=a.dataset.baseHref||a.getAttribute('href')||'';
-    if(!a.dataset.baseHref)a.dataset.baseHref=base.split('#')[0];
-    a.href=(a.dataset.baseHref||base.split('#')[0])+hash;
+    if(!a.dataset.baseHref)a.dataset.baseHref=base.split(/[?#]/)[0];
+    a.href=(a.dataset.baseHref||base.split(/[?#]/)[0])+search+hash;
    });
   };
   update();
