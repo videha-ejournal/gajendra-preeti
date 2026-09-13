@@ -11,10 +11,10 @@ const report=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
 const data=JSON.parse(fs.readFileSync(dataPath,'utf8'));
 
 assert.equal(report.schemaVersion,1,'PDF reconciliation schema version');
-assert(report.catalogSchemaVersion>=2,'PDF catalogue must provide provenance schema v2 or newer.');
-assert(report.catalogCount>=57,`Expected at least the 57 PDFs already catalogued; saw ${report.catalogCount}.`);
+assert(report.catalogSchemaVersion>=3,'PDF catalogue must provide provenance schema v3 or newer.');
+assert(report.catalogCount>=61,`Expected at least the 61 PDFs already catalogued; saw ${report.catalogCount}.`);
 assert.equal(report.samagraRecordCount,data.records.length,'Reconciliation must cover every synchronized Samagra record.');
-assert(report.matchedRecordCount>=30,`Expected substantial Samagra PDF coverage; saw only ${report.matchedRecordCount} records.`);
+assert(report.matchedRecordCount>=44,`Expected substantial Samagra PDF coverage; saw only ${report.matchedRecordCount} records.`);
 assert(report.matchedPdfCount>=report.matchedRecordCount,'Matched PDF count cannot be lower than matched record count.');
 assert(report.matchedPdfCount<=report.catalogCount,'Matched PDF count cannot exceed the repository catalogue.');
 assert.deepEqual(report.pendingAliasPaths,[],'Every explicit scholarly PDF alias must resolve to a real catalogued PDF.');
@@ -24,6 +24,7 @@ assert(Array.isArray(report.unmatchedCatalogPaths),'Unmatched repository PDFs mu
 const sha=/^[0-9a-f]{64}$/i;
 const base='https://videha-ejournal.github.io/videha-ejournal/';
 const byId=new Map(data.records.map(r=>[r.id,r]));
+const byTitle=new Map(data.records.map(r=>[r.title,r]));
 let counted=0;
 for(const mapped of report.records){
   const record=byId.get(mapped.id);
@@ -68,8 +69,14 @@ const requirements=[
   ['विदेह शोध-लेख (अंक १ सँ ४४७ धरि)',1],
   ['३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर',1],
   ['37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION',1],
+  ['GADYA PADYA BHARTI 1 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-१)',1],
+  ['GADYA PADYA BHARTI 2 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-२)',1],
   ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)',1],
-  ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]',1]
+  ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [किशोर संस्करण]',1],
+  ['गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]',1],
+  ['WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]',1],
+  ['Water-Burial Among the Crocodiles [English Teaching Companion]',1],
+  ['Gohi Sabhak Beech Jalsamadhi Teaching Course PDF',1]
 ];
 for(const [title,min] of requirements){
   const row=report.records.find(r=>r.title===title);
@@ -80,32 +87,82 @@ function requireExactPdf(title,pdfPath){
   const row=report.records.find(r=>r.title===title);
   assert(row?.pdfs.some(p=>p.path===pdfPath),`Expected ${pdfPath} on ${title}`);
 }
-const originalTitle='३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर';
-const translationTitle='37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION';
-requireExactPdf(originalTitle,'GAJENDRA_THAKUR_SAMAGRA_37_MAITHILI_CHILDREN_NOVELS.pdf');
-requireExactPdf(translationTitle,'37_CHILDREN_NOVELS.pdf');
-requireExactPdf('गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)','Gohi_Sabhak_Beech_Jalsamadhi.pdf');
-requireExactPdf('गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास) [बाल संस्करण]','Gohi_Jalsamadhi_Bal_Sanskaran.pdf');
-const original=data.records.find(r=>r.title===originalTitle);
-const translation=data.records.find(r=>r.title===translationTitle);
-assert.deepEqual(original?.languages,['mai'],'Maithili original must be explicitly tagged mai.');
-assert.deepEqual(translation?.languages,['en'],'English translation must be explicitly tagged en.');
-assert.equal(original?.translationRelation?.relationType,'workTranslation','Original must point to its English translation.');
-assert.equal(original?.translationRelation?.relatedId,translation?.id,'Original relation target.');
-assert.equal(translation?.translationRelation?.relationType,'translationOfWork','English record must identify the Maithili original.');
-assert.equal(translation?.translationRelation?.relatedId,original?.id,'Translation relation target.');
-assert.equal(translation?.translationRelation?.translationDirection,'Maithili → English','Translation direction.');
-assert.equal(translation?.translationRelation?.translator,'Gajendra Thakur','Translation credit.');
-for(const record of [original,translation]){
+function relation(recordTitle,relationType,targetTitle){
+  const record=byTitle.get(recordTitle);
+  assert(record,`Relation source record: ${recordTitle}`);
+  const rel=(record.scholarlyRelations||[]).find(x=>x.relationType===relationType&&x.relatedTitle===targetTitle);
+  assert(rel,`Expected ${relationType}: ${recordTitle} -> ${targetTitle}`);
+  assert.equal(rel.relatedId,byTitle.get(targetTitle)?.id,`Relation target id: ${recordTitle} -> ${targetTitle}`);
+  return rel;
+}
+function schemaHasTarget(work,property,targetUrl){
+  const values=Array.isArray(work?.[property])?work[property]:work?.[property]?[work[property]]:[];
+  return values.some(x=>x?.url===targetUrl);
+}
+
+const childrenMai='३७ टा मैथिली बाल उपन्यास — गजेन्द्र ठाकुर';
+const childrenEn='37 MAITHILI CHILDREN NOVELS IN ENGLISH TRANSLATION';
+requireExactPdf(childrenMai,'GAJENDRA_THAKUR_SAMAGRA_37_MAITHILI_CHILDREN_NOVELS.pdf');
+requireExactPdf(childrenEn,'37_CHILDREN_NOVELS.pdf');
+assert.deepEqual(byTitle.get(childrenMai)?.languages,['mai'],'Maithili children original must be tagged mai.');
+assert.deepEqual(byTitle.get(childrenEn)?.languages,['en'],'English children translation must be tagged en.');
+relation(childrenMai,'workTranslation',childrenEn);
+const childrenTranslation=relation(childrenEn,'translationOfWork',childrenMai);
+assert.equal(childrenTranslation.translationDirection,'Maithili → English','Children translation direction.');
+assert.equal(childrenTranslation.translator,'Gajendra Thakur','Children translation credit.');
+
+const gohi='गोहि सभक बीच जलसमाधि (मैथिलीक आइ धरिक सभसँ पैघ उपन्यास)';
+const kishor=`${gohi} [किशोर संस्करण]`;
+const bal=`${gohi} [बाल संस्करण]`;
+const water='WATER-BURIAL AMONG THE CROCODILES [ENGLISH TRANSLATION BY THE AUTHOR GAJENDRA THAKUR HIMSELF]';
+const waterTeaching='Water-Burial Among the Crocodiles [English Teaching Companion]';
+const gohiTeaching='Gohi Sabhak Beech Jalsamadhi Teaching Course PDF';
+requireExactPdf(gohi,'Gohi_Sabhak_Beech_Jalsamadhi.pdf');
+requireExactPdf(kishor,'Gohi_Jalsamadhi_Kishor_Sanskaran.pdf');
+requireExactPdf(bal,'Gohi_Jalsamadhi_Bal_Sanskaran.pdf');
+requireExactPdf(water,'Water_Burial_Among_the_Crocodiles.pdf');
+requireExactPdf(waterTeaching,'Videha_Teaching_Gohi_Jalsamadhi.pdf');
+requireExactPdf(gohiTeaching,'Gohi_Jalsamadhi_Teaching_merge.pdf');
+requireExactPdf('GADYA PADYA BHARTI 1 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-१)','GADYA_PADYA_BHARTI_1.pdf');
+requireExactPdf('GADYA PADYA BHARTI 2 — विभिन्न भाषासँ अनूदित गद्य आ पद्य रचना (खण्ड-२)','GAJENDRA_THAKUR_SAMAGRA_ANUVAD_KHAND.pdf');
+assert.deepEqual(byTitle.get(gohi)?.languages,['mai'],'Gohi parent novel must be tagged mai.');
+assert.deepEqual(byTitle.get(kishor)?.languages,['mai'],'Kishor edition must be tagged mai.');
+assert.deepEqual(byTitle.get(bal)?.languages,['mai'],'Bal edition must be tagged mai.');
+assert.deepEqual(byTitle.get(water)?.languages,['en'],'Water-Burial translation must be tagged en.');
+assert.deepEqual(byTitle.get(waterTeaching)?.languages,['en'],'English teaching companion must be tagged en.');
+relation(gohi,'workExample',kishor);
+relation(gohi,'workExample',bal);
+const waterFromParent=relation(gohi,'workTranslation',water);
+assert.equal(waterFromParent.translator,'Gajendra Thakur','Water-Burial translator credit from parent.');
+relation(gohi,'subjectOf',waterTeaching);
+relation(gohi,'subjectOf',gohiTeaching);
+relation(kishor,'exampleOfWork',gohi);
+relation(bal,'exampleOfWork',gohi);
+const waterOriginal=relation(water,'translationOfWork',gohi);
+assert.equal(waterOriginal.translationDirection,'Maithili → English','Water-Burial translation direction.');
+assert.equal(waterOriginal.translator,'Gajendra Thakur','Water-Burial translator credit.');
+relation(waterTeaching,'isBasedOn',water);
+relation(gohiTeaching,'isBasedOn',gohi);
+
+const relatedRecords=[childrenMai,childrenEn,gohi,kishor,bal,water,waterTeaching,gohiTeaching].map(t=>byTitle.get(t));
+for(const record of relatedRecords){
+  assert(record?.scholarlyRelations?.length,`Scholarly relationships: ${record?.title}`);
   for(const prefix of ['', 'en/']){
     const file=path.join(ROOT,prefix,'bibliography/works',record.slug,'index.html');
     const html=fs.readFileSync(file,'utf8');
-    assert(html.includes('id="translation-relation"'),`Visible original/translation relation: ${file}`);
+    assert(html.includes('id="scholarly-relations"'),`Visible scholarly relationships: ${file}`);
     const ld=html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+    assert(ld,`JSON-LD relation block: ${file}`);
     const work=(JSON.parse(ld[1])['@graph']||[]).find(x=>x['@type']==='Book'||x['@type']==='CreativeWork');
-    assert(work?.[record.translationRelation.relationType],`Schema translation relation: ${file}`);
+    for(const rel of record.scholarlyRelations){
+      const target=byTitle.get(rel.relatedTitle);
+      const targetUrl=`https://videha-ejournal.github.io/gajendra-preeti/${prefix}bibliography/works/${target.slug}/`;
+      assert(schemaHasTarget(work,rel.relationType,targetUrl),`Schema ${rel.relationType}: ${file} -> ${rel.relatedTitle}`);
+    }
   }
 }
+const gohiEnPage=fs.readFileSync(path.join(ROOT,'en/bibliography/works',byTitle.get(gohi).slug,'index.html'),'utf8');
+assert(gohiEnPage.includes('largest Maithili novel to date'),'English Gohi page must retain largest-Maithili-novel context.');
 
 for(const file of ['bibliography/index.html','en/bibliography/index.html','author/gajendra-thakur/index.html','en/author/gajendra-thakur/index.html']){
   const html=fs.readFileSync(path.join(ROOT,file),'utf8');
@@ -115,6 +172,7 @@ const cross=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/crossref-rea
 assert.equal(cross.pdfRepository,'https://github.com/videha-ejournal/videha-ejournal');
 assert.equal(cross.pdfProvenanceManifest,'https://videha-ejournal.github.io/gajendra-preeti/bibliography/pdf-library-manifest.json');
 assert(cross.records.some(r=>Array.isArray(r.pdfRepository)&&r.pdfRepository.some(p=>sha.test(String(p.sha256||'')))),'DOI-ready export must carry verifiable PDF provenance.');
-assert(cross.records.some(r=>r.id===translation.id&&r.translationRelation?.relationType==='translationOfWork'),'DOI-ready export must preserve translation relationship.');
+assert(cross.records.some(r=>r.id===byTitle.get(childrenEn).id&&r.translationRelation?.relationType==='translationOfWork'),'DOI-ready export must preserve children translation relationship.');
+assert(cross.records.some(r=>r.id===byTitle.get(gohi).id&&Array.isArray(r.scholarlyRelations)&&r.scholarlyRelations.length===5),'DOI-ready export must preserve complete Gohi relationship family.');
 
-console.log(`PDF-library integration PASS: ${report.matchedRecordCount}/${report.samagraRecordCount} Samagra records linked to ${report.matchedPdfCount}/${report.catalogCount} catalogued PDFs; Maithili and English 37-novel editions are separately mapped and related; ${report.missingReferencedPaths.length} direct Samagra PDF path(s) pending; ${report.unmatchedCatalogPaths.length} supplemental PDF(s) unmatched.`);
+console.log(`PDF-library integration PASS: ${report.matchedRecordCount}/${report.samagraRecordCount} Samagra records linked to ${report.matchedPdfCount}/${report.catalogCount} catalogued PDFs; children translations and complete Gohi edition/translation/teaching relationships verified; ${report.missingReferencedPaths.length} direct Samagra PDF path(s) pending; ${report.unmatchedCatalogPaths.length} supplemental PDF(s) unmatched.`);
