@@ -1,0 +1,41 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import assert from 'node:assert/strict';
+
+const ROOT='dist/client/gajendra-preeti';
+const report=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/pdf-library-manifest.json'),'utf8'));
+const data=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/bibliography-data.json'),'utf8'));
+const exportData=JSON.parse(fs.readFileSync(path.join(ROOT,'bibliography/translated-pdf-resources.json'),'utf8'));
+const sha=/^[0-9a-f]{64}$/i;
+const requested=[
+ 'ENGLISH_PARVAT_OOPAR_BHAMRA_JE_SOOTAL.pdf',
+ 'ENGLISH_PREETI_KARAN_SETU_BANHAL.pdf',
+ 'ENGLISH_SAHASRABADHANI.pdf',
+ 'ENGLISH_SAHASRASHIRSHA.pdf',
+ 'ENGLISH_SETUSHAM.pdf',
+ 'PREETI_KARAN_SETU_BANHAL.pdf',
+ 'SETUSHAM.pdf',
+ 'ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf',
+ 'ENGLISH_MAITHILI_WEB_JOURNALISM.pdf'
+];
+assert.equal(report.translatedPdfUniqueFileCount,9,'Nine exact newly requested PDF files must be integrated.');
+assert.equal(exportData.uniquePdfCount,9,'Translated PDF export unique count.');
+const rows=report.translatedPdfResources||[];
+const byPath=new Map(rows.map(x=>[x.pdf.path,x]));
+for(const p of requested){const x=byPath.get(p);assert(x,`Translated/reception source mapping: ${p}`);assert(x.pdf.url.startsWith('https://videha-ejournal.github.io/videha-ejournal/'),`Stable source URL: ${p}`);assert(Number(x.pdf.bytes)>0,`Positive bytes: ${p}`);assert(sha.test(x.pdf.sha256||''),`SHA-256: ${p}`);}
+for(const p of ['ENGLISH_PARVAT_OOPAR_BHAMRA_JE_SOOTAL.pdf','ENGLISH_PREETI_KARAN_SETU_BANHAL.pdf','ENGLISH_SAHASRABADHANI.pdf','ENGLISH_SAHASRASHIRSHA.pdf','ENGLISH_SETUSHAM.pdf','ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf','ENGLISH_MAITHILI_WEB_JOURNALISM.pdf'])assert.equal(byPath.get(p)?.translator,'Gajendra Thakur',`Translator credit: ${p}`);
+
+const samagraTargets=[
+ ['पर्वत ऊपर भमरा जे सूतल','ENGLISH_PARVAT_OOPAR_BHAMRA_JE_SOOTAL.pdf'],
+ ['सहस्रबाढ़नि','ENGLISH_SAHASRABADHANI.pdf'],
+ ['सहस्रशीर्षा','ENGLISH_SAHASRASHIRSHA.pdf'],
+ ['मैथिलीक एकटा समानान्तर व्याकरण, रचना आ भाषा विज्ञान (ठेठी, अंगिका आ बज्जिकाकेँ संग लऽ कऽ)','ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf']
+];
+const records=new Map(data.records.map(r=>[r.title,r]));
+for(const [title,pdf] of samagraTargets){const r=records.get(title);assert(r,`Samagra target: ${title}`);assert(r.translatedPdfResources?.some(x=>x.pdf.path===pdf&&x.translator==='Gajendra Thakur'),`Exact translated source on ${title}`);for(const prefix of ['','en/']){const file=path.join(ROOT,prefix,'bibliography/works',r.slug,'index.html');const html=fs.readFileSync(file,'utf8');assert(html.includes('id="translated-pdf-resources"'),`Visible translation section: ${file}`);assert(html.includes(pdf),`Exact translation filename: ${file}`);assert(html.includes('Gajendra Thakur'),`Translator visible: ${file}`);assert(html.includes(byPath.get(pdf).pdf.sha256),`Translation fingerprint visible: ${file}`);}}
+
+for(const id of ['preeti-karan','setusham']){const orig=id==='preeti-karan'?'PREETI_KARAN_SETU_BANHAL.pdf':'SETUSHAM.pdf';const trans=id==='preeti-karan'?'ENGLISH_PREETI_KARAN_SETU_BANHAL.pdf':'ENGLISH_SETUSHAM.pdf';for(const prefix of ['','en/']){const file=path.join(ROOT,'criticism/reception',prefix,`${id}.html`);const html=fs.readFileSync(file,'utf8');assert(html.includes('id="verified-repository-editions"'),`Reception provenance section: ${file}`);assert(html.includes(orig),`Reception Maithili source: ${file}`);assert(html.includes(trans),`Reception English translation: ${file}`);assert(html.includes('Gajendra Thakur'),`Reception translator credit: ${file}`);}}
+
+for(const prefix of ['','en/']){const file=path.join(ROOT,prefix,'bibliography/resources/maithili-web-journalism-english/index.html');assert(fs.existsSync(file),`Permanent web-journalism resource page: ${file}`);const html=fs.readFileSync(file,'utf8');assert(html.includes('ENGLISH_MAITHILI_WEB_JOURNALISM.pdf'),`Exact web-journalism PDF: ${file}`);assert(html.includes('Gajendra Thakur'),`Web-journalism translator credit: ${file}`);assert(html.includes(byPath.get('ENGLISH_MAITHILI_WEB_JOURNALISM.pdf').pdf.sha256),`Web-journalism fingerprint: ${file}`);}
+for(const p of requested)assert(!(report.unmatchedCatalogPaths||[]).includes(p),`Requested PDF must not remain unclassified: ${p}`);
+console.log('Translated PDF integration PASS: 9 exact source PDFs mapped across four Samagra records, two Reception original/translation pairs, and one permanent Web Journalism translated-resource record; English translations credited to Gajendra Thakur.');
