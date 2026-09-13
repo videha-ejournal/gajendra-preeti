@@ -1,0 +1,85 @@
+{
+  "samagra": {
+    "पर्वत ऊपर भमरा जे सूतल": [
+      {
+        "path": "ENGLISH_PARVAT_OOPAR_BHAMRA_JE_SOOTAL.pdf",
+        "titleEn": "Parvat Oopar Bhamra Je Sootal — English translation",
+        "titleMai": "पर्वत ऊपर भमरा जे सूतल — अंग्रेजी अनुवाद",
+        "language": "en",
+        "sourceLanguage": "mai",
+        "translator": "Gajendra Thakur",
+        "relationType": "workTranslation"
+      }
+    ],
+    "सहस्रबाढ़नि": [
+      {
+        "path": "ENGLISH_SAHASRABADHANI.pdf",
+        "titleEn": "Sahasrabadhani — English translation",
+        "titleMai": "सहस्रबाढ़नि — अंग्रेजी अनुवाद",
+        "language": "en",
+        "sourceLanguage": "mai",
+        "translator": "Gajendra Thakur",
+        "relationType": "workTranslation"
+      }
+    ],
+    "सहस्रशीर्षा": [
+      {
+        "path": "ENGLISH_SAHASRASHIRSHA.pdf",
+        "titleEn": "Sahasrashirsha — English translation",
+        "titleMai": "सहस्रशीर्षा — अंग्रेजी अनुवाद",
+        "language": "en",
+        "sourceLanguage": "mai",
+        "translator": "Gajendra Thakur",
+        "relationType": "workTranslation"
+      }
+    ],
+    "मैथिलीक एकटा समानान्तर व्याकरण, रचना आ भाषा विज्ञान (ठेठी, अंगिका आ बज्जिकाकेँ संग लऽ कऽ)": [
+      {
+        "path": "ENGLISH_MAITHILI_GRAMMAR_GHAZAL_HISTORY.pdf",
+        "titleEn": "Maithili Grammar / Ghazal History — English translation resource",
+        "titleMai": "मैथिली व्याकरण / गजल इतिहास — अंग्रेजी अनुवाद-स्रोत",
+        "language": "en",
+        "sourceLanguage": "mai",
+        "translator": "Gajendra Thakur",
+        "relationType": "workTranslation"
+      }
+    ]
+  },
+  "reception": {
+    "preeti-karan": {
+      "titleEn": "Preeti Karan Setu Banhal",
+      "titleMai": "प्रीति कारण सेतु बान्हल",
+      "originalPdf": "PREETI_KARAN_SETU_BANHAL.pdf",
+      "translationPdf": "ENGLISH_PREETI_KARAN_SETU_BANHAL.pdf",
+      "sourceLanguage": "mai",
+      "translationLanguage": "en",
+      "translator": "Gajendra Thakur",
+      "translatorNoteEn": "English translation by Gajendra Thakur; translator attribution supplied by the translator/site owner.",
+      "translatorNoteMai": "अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा; अनुवादकक श्रेय अनुवादक/साइट-स्वामी द्वारा उपलब्ध कराओल गेल अछि।"
+    },
+    "setusham": {
+      "titleEn": "Setusham: Vibrant Maithili",
+      "titleMai": "सेतुशम: जीवन्त मैथिली",
+      "originalPdf": "SETUSHAM.pdf",
+      "translationPdf": "ENGLISH_SETUSHAM.pdf",
+      "sourceLanguage": "mai",
+      "translationLanguage": "en",
+      "translator": "Gajendra Thakur",
+      "translatorNoteEn": "English translation from Maithili by Gajendra Thakur.",
+      "translatorNoteMai": "मैथिली सँ अंग्रेजी अनुवाद गजेन्द्र ठाकुर द्वारा।"
+    }
+  },
+  "standalone": [
+    {
+      "id": "maithili-web-journalism-english",
+      "path": "ENGLISH_MAITHILI_WEB_JOURNALISM.pdf",
+      "titleEn": "Maithili Web Journalism — English translation",
+      "titleMai": "मैथिली वेब पत्रकारिता — अंग्रेजी अनुवाद",
+      "language": "en",
+      "sourceLanguage": "mai",
+      "translator": "Gajendra Thakur",
+      "categoryEn": "Translated scholarly resource",
+      "categoryMai": "अनूदित शोध-स्रोत"
+    }
+  ]
+}
