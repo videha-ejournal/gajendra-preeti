@@ -7,7 +7,9 @@ const mai=fs.readFileSync(`${root}/index.html`,'utf8');
 const en=fs.readFileSync(`${root}/en/index.html`,'utf8');
 const sourceCatalogue=fs.readFileSync('app/catalogue-view.tsx','utf8');
 const sourceReferenceCss=fs.readFileSync('app/reference.css','utf8');
+const sourceImprovementsCss=fs.readFileSync('app/improvements.css','utf8');
 const sourceStructured=fs.readFileSync('app/structured-data.tsx','utf8');
+const sourceLayout=fs.readFileSync('app/site-layout.tsx','utf8');
 const readingTools=fs.readFileSync('public/reading-tools.js','utf8');
 
 const timelineYears=html=>[...html.matchAll(/class="timeline-year">([^<]+)</g)].map(m=>m[1]);
@@ -24,16 +26,20 @@ for(const [lang,html] of [['mai',mai],['en',en]]){
   assert.equal((html.match(/data-provenance="gajendra-children-37"/g)||[]).length,1,`${lang}: Gajendra’s 37-book children-series provenance must appear once.`);
   assert.equal((html.match(/data-provenance="preeti-children-16"/g)||[]).length,1,`${lang}: Preeti’s 16-work children corpus provenance must appear once.`);
   assert.equal((html.match(/data-provenance="gajendra-maithili-translations-46"/g)||[]).length,1,`${lang}: Gajendra’s 46-entry Maithili translation corpus must appear once.`);
-  assert(html.includes('catalogue-refine'),`${lang}: genre/year refinement controls must render.`);
+  assert(html.includes('catalogue-refine'),`${lang}: catalogue refinement controls must render.`);
+  assert(html.includes('count-panel'),`${lang}: overlapping catalogue counts must be explained.`);
+  assert(html.includes('atlas-section-nav'),`${lang}: sticky section navigation must render.`);
+  assert(html.includes('research-gateway'),`${lang}: researcher gateway must render.`);
   assert(html.includes('reception-teaser'),`${lang}: contributor/reception block must render.`);
   assert(html.includes('13 September 2026')||html.includes('13 सितम्बर 2026'),`${lang}: source-check date must be visible.`);
-  assert(html.includes('13 September 2026')||html.includes('13 सितम्बर 2026'),`${lang}: site-update date must be visible.`);
+  assert(html.includes('dateTime="2026-09-13"')||html.includes('datetime="2026-09-13"'),`${lang}: at least one visible verification date must be semantic.`);
   assert(html.includes('Displayed without modification.'),`${lang}: shared Wikimedia wording must match.`);
   assert(!html.includes('Displayed without alteration.'),`${lang}: obsolete Wikimedia wording must be absent.`);
   assert(html.includes('https://www.videha.co.in/videha-rss.xml'),`${lang}: JOURNAL area must expose the Videha RSS route.`);
   assert.equal((html.match(/class="timeline-platform"/g)||[]).length,1,`${lang}: exactly one platform/meta milestone must be visually distinguished.`);
   assert(html.includes('class="panji-access"'),`${lang}: Panji access structure must be expandable.`);
   assert(html.includes('840 MB'),`${lang}: combined Panji size must remain explicit.`);
+  assert.equal((html.match(/class="work-actions"/g)||[]).length,workCount,`${lang}: each work card must expose primary work actions.`);
 }
 
 assert(en.includes('37 Maithili children’s novels / graphic novels'),'English home must name the 37-book Gajendra children series.');
@@ -58,14 +64,21 @@ assert(mai.includes('सम्पादकीय विरासत-संग्
 assert(en.includes('available in 10 parts')&&en.includes('does not guess one'),'English Panji note must disclose the verified 10-part edition without inventing a volume mapping.');
 assert(mai.includes('10 भागमे उपलब्ध')&&mai.includes('अनुमान नहि कएल गेल'),'Maithili Panji note must disclose the verified 10-part edition without inventing a volume mapping.');
 
-function p0Target(html){
+function p0ActionTarget(html){
+  const m=html.match(/<article id="work-p0"[\s\S]*?<div class="work-actions"><a href="([^"]+)"/);
+  assert(m,'P0 work card must expose a primary READ action.');
+  return m[1];
+}
+function p0TitleTarget(html){
   const m=html.match(/<article id="work-p0"[\s\S]*?<h3><a href="([^"]+)"/);
-  assert(m,'P0 work card must be present.');
+  assert(m,'P0 work card title must be present.');
   return m[1];
 }
 const p0='https://videha-ejournal.github.io/gajendra-preeti/books/p0.pdf';
-assert.equal(p0Target(mai),p0,'Maithili P0 must use the controlled local mirror.');
-assert.equal(p0Target(en),p0,'English P0 must use the same controlled local mirror.');
+assert.equal(p0ActionTarget(mai),p0,'Maithili P0 READ action must use the controlled local mirror.');
+assert.equal(p0ActionTarget(en),p0,'English P0 READ action must use the same controlled local mirror.');
+assert.equal(p0TitleTarget(mai),'/gajendra-preeti/works/gonu-jha-and-other-maithili-picture-stories/','Maithili P0 title must open its scholarly work landing page.');
+assert.equal(p0TitleTarget(en),'/gajendra-preeti/en/works/gonu-jha-and-other-maithili-picture-stories/','English P0 title must open its English work landing page.');
 
 assert(en.includes('/gajendra-preeti/criticism/reception/en/'),'English home must directly expose Contributors’ Perspectives.');
 assert(mai.includes('/gajendra-preeti/criticism/reception/'),'Maithili home must directly expose योगदानकर्ता access.');
@@ -73,16 +86,24 @@ assert(en.includes('/gajendra-preeti/criticism/en/'),'English criticism links mu
 assert(sourceCatalogue.includes("english?'/gajendra-preeti/criticism/en/'"),'Catalogue-level criticism link must switch editions.');
 assert(sourceCatalogue.includes("english?'/gajendra-preeti/criticism/en/'+review+'.html'"),'Per-work criticism links must switch editions.');
 
-assert(sourceCatalogue.includes("const filtered=works.filter"),'Shared catalogue filtering logic must remain active.');
-assert(sourceCatalogue.includes("onChange={e=>setGenre(e.target.value)}"),'Genre filter must remain interactive.');
-assert(sourceCatalogue.includes("onChange={e=>setYear(e.target.value)}"),'Year filter must remain interactive.');
+assert(sourceCatalogue.includes('const rows=works.filter'),'Shared catalogue filtering logic must remain active.');
+assert(sourceCatalogue.includes("pushFilters({genre:e.target.value})"),'Genre filter must remain interactive and history-aware.');
+assert(sourceCatalogue.includes("pushFilters({year:e.target.value})"),'Year filter must remain interactive and history-aware.');
+assert(sourceCatalogue.includes("pushFilters({destinationFilter:e.target.value})"),'Destination filter must remain interactive.');
+assert(sourceCatalogue.includes("pushFilters({sortMode:e.target.value})"),'Sort control must remain interactive.');
+assert(sourceCatalogue.includes("p.set('destination',next.destinationFilter)"),'Destination filter must be encoded in the URL.');
+assert(sourceCatalogue.includes("p.set('sort',next.sortMode)"),'Sort order must be encoded in the URL.');
+assert(sourceCatalogue.includes("addEventListener('popstate',sync)"),'Catalogue must restore filters on browser Back/Forward.');
 assert(!/Show 20 more works/i.test(en),'English home must not collapse the catalogue behind a 20-more toggle.');
 assert(sourceCatalogue.includes('Original Maithili · Author: Preeti Thakur'),'Preeti original children cards must state authorship.');
 assert(sourceCatalogue.includes('English → Maithili · Translator: Preeti Thakur'),'Preeti translated picture-book cards must state English → Maithili provenance and translator.');
 assert(sourceCatalogue.includes('मूल मैथिली · लेखिका: प्रीति ठाकुर'),'Maithili original cards must state Preeti authorship.');
 assert(sourceCatalogue.includes('English → मैथिली · अनुवादिका: प्रीति ठाकुर'),'Maithili translation cards must state Preeti translator credit.');
 assert(!sourceCatalogue.includes('source language not recorded'),'Confirmed source-language provenance must not be replaced by an uncertainty disclaimer.');
-assert(sourceCatalogue.includes("Cite':'उद्धरण'"),'Per-work cite anchors must remain visible in both editions.');
+assert(sourceCatalogue.includes("'CITE':'उद्धरण'"),'Per-work cite anchors must remain visible in both editions.');
+assert(sourceCatalogue.includes("'READ':'पढ़ू'"),'Primary READ action must remain visible in both editions.');
+assert(sourceCatalogue.includes("'CRITICISM':'समालोचना'"),'Primary CRITICISM action must remain visible when a review exists.');
+assert(sourceCatalogue.includes("'SOURCE':'स्रोत'"),'Primary SOURCE action must remain visible in both editions.');
 assert(readingTools.includes('Cite this page')&&readingTools.includes('Suggested citation'),'Shared Reading Tools must retain the actual citation generator.');
 
 const basisRule=sourceReferenceCss.match(/\.basis-breakdown\s*\{([^}]*)\}/s)?.[1]||'';
@@ -91,6 +112,9 @@ assert(basisRule.includes('line-height:1.9'),'Criticism summary count block must
 assert(sourceReferenceCss.includes('.timeline .timeline-platform'),'Platform milestone must have distinct styling.');
 assert(sourceReferenceCss.includes('.catalogue-verification'),'Global verification note must have deliberate styling.');
 assert(sourceReferenceCss.includes('.writer-series-provenance'),'Author/translator provenance callouts must retain deliberate responsive styling.');
+assert(sourceImprovementsCss.includes('.atlas-section-nav'),'Sticky section navigation must retain deliberate styling.');
+assert(sourceImprovementsCss.includes('.research-gateway'),'Research gateway must retain deliberate styling.');
+assert(sourceImprovementsCss.includes('.work-actions'),'Primary work actions must retain deliberate styling.');
 
 assert(sourceStructured.includes("isBook?'Book':'CreativeWork'"),'Book-like catalogue records must emit schema.org Book JSON-LD.');
 assert(sourceStructured.includes("preetiOriginalIds.has(w.id)?{author:preeti}"),'Preeti original children works must credit Preeti as author in JSON-LD.');
@@ -98,11 +122,19 @@ assert(sourceStructured.includes("preetiTranslationIds.has(w.id)?{translator:pre
 assert(!sourceStructured.includes("roleName:'Adaptation'"),'Vidyapati’s Purusha Pariksha must not retain the obsolete Adaptation role.');
 assert(sourceStructured.includes("'@type':'CreativeWorkSeries'"),'Gajendra 37-book and Preeti children provenance must use structured series nodes.');
 assert(sourceStructured.includes("#gajendra-maithili-translations-46"),'Gajendra 46-entry translation corpus must be represented in JSON-LD.');
+assert(sourceStructured.includes("'@type':'WebSite'"),'Atlas structured data must include a WebSite node.');
+assert(sourceStructured.includes("'@type':'Periodical'")&&sourceStructured.includes("issn:'2229-547X'"),'Structured data must identify Videha and its ISSN.');
+assert(sourceStructured.includes("'@type':'BreadcrumbList'"),'Home editions must expose BreadcrumbList structured data.');
+assert(sourceStructured.includes('mainEntityOfPage:workUrl'),'Work records must resolve to generated work landing pages.');
+assert(sourceLayout.includes("['x-default','https://videha-ejournal.github.io/gajendra-preeti/']"),'Root metadata must expose x-default.');
 for(const html of [mai,en]){
   assert(html.includes('application/ld+json'),'Both home editions must expose JSON-LD.');
   const graph=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
   assert.equal(graph.filter(x=>x['@type']==='Person').length,2,'JSON-LD must contain two Person entities.');
   assert(graph.some(x=>x['@type']==='Book'),'JSON-LD must contain Book entities.');
+  assert(graph.some(x=>x['@type']==='WebSite'),'JSON-LD must contain the atlas WebSite entity.');
+  assert(graph.some(x=>x['@type']==='Periodical'&&x.issn==='2229-547X'),'JSON-LD must contain Videha’s ISSN-bearing Periodical entity.');
+  assert(graph.some(x=>x['@type']==='BreadcrumbList'),'JSON-LD must contain breadcrumb structure.');
   const g37=graph.filter(x=>x['@type']==='CreativeWorkSeries'&&String(x['@id']||'').includes('gajendra-children-37'));
   assert.equal(g37.length,2,'JSON-LD must contain original-Maithili and English-translation Gajendra 37-series nodes.');
   const gTranslations=graph.find(x=>String(x['@id']||'').includes('gajendra-maithili-translations-46'));
@@ -111,7 +143,7 @@ for(const html of [mai,en]){
 
 const maiFooter=mai.match(/<footer>[\s\S]*?<\/footer>/)?.[0]||'';
 assert.equal((maiFooter.match(/https:\/\/github\.com\/videha-ejournal\/gajendra-preeti/g)||[]).length,1,'Maithili footer must show the repository link once.');
-assert(/Site updated: 13 September 2026 · Sources checked: 13 September 2026/.test(en),'English footer must carry both maintenance and source-check dates.');
-assert(/साइट अद्यतन: 13 सितम्बर 2026 · स्रोत-जाँच: 13 सितम्बर 2026/.test(mai),'Maithili footer must carry both maintenance and source-check dates.');
+assert(/Site updated: <time dateTime="2026-09-13">13 September 2026<\/time> · Sources checked: <time dateTime="2026-09-13">13 September 2026<\/time>/.test(en),'English footer must carry semantic maintenance and source-check dates.');
+assert(/साइट अद्यतन: <time dateTime="2026-09-13">13 सितम्बर 2026<\/time> · स्रोत-जाँच: <time dateTime="2026-09-13">13 सितम्बर 2026<\/time>/.test(mai),'Maithili footer must carry semantic maintenance and source-check dates.');
 
-console.log('Scholarly home consistency PASS: Preeti 4 original + 12 English→Maithili children works, Gajendra 37 original-Maithili→English children novels, Gajendra 46 Maithili translations, and all prior parity/accessibility/provenance guards.');
+console.log('Scholarly home consistency PASS: bilingual work pages, shareable catalogue controls, semantic dates, researcher navigation, Preeti 4+12 provenance, Gajendra 37 children works and 46 Maithili translations, and all prior accessibility/provenance guards.');
