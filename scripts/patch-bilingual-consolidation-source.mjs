@@ -41,6 +41,22 @@ patch('app/(maithili)/page.tsx', source => {
   return out;
 });
 
+patch('app/atlas.tsx', source => {
+  let out = source;
+  const replacements = [
+    ["en:'For the curious reader'", "en:'जिज्ञासु पाठक लेल'"],
+    ["en:'For the literary explorer'", "en:'साहित्यक खोजी पाठक लेल'"],
+    ["en:'For the archive explorer'", "en:'अभिलेखक खोजी पाठक लेल'"],
+    ['<p className="eyebrow" lang="en">{s.en}</p>', '<p className="eyebrow" lang={[\'children\',\'literature\',\'memory\'].includes(s.id)?\'mai\':\'en\'}>{s.en}</p>']
+  ];
+  for (const [from, to] of replacements) {
+    if (!out.includes(from) && !out.includes(to)) throw new Error(`Reading Paths localization anchor missing: ${from}`);
+    out = out.replaceAll(from, to);
+  }
+  for (const text of ['For the curious reader','For the literary explorer','For the archive explorer']) if (out.includes(text)) throw new Error(`Maithili Reading Paths still contains English scaffold: ${text}`);
+  return out;
+});
+
 patch('app/site-enhancements.tsx', source => {
   let out = source;
   if (!out.includes("const isbn=en?'/gajendra-preeti/en/isbn/':'/gajendra-preeti/isbn/';")) {
@@ -61,7 +77,7 @@ patch('app/site-enhancements.tsx', source => {
 
 patch('app/improvements.css', source => {
   if (source.includes('/* bilingual-consolidation-mobile-nav */')) return source;
-  return `${source.trimEnd()}\n\n/* bilingual-consolidation-mobile-nav */\n.atlas-section-nav{width:100%;max-width:100%;justify-content:flex-start;scroll-padding-inline:12px;overscroll-behavior-inline:contain}\n@media(max-width:640px){.atlas-section-nav{width:100vw;max-width:100vw;padding-left:12px;padding-right:12px;scroll-snap-type:x proximity}.atlas-section-nav a{flex:0 0 auto;scroll-snap-align:start}.atlas-section-nav a:first-child{margin-left:0}}\n`;
+  return `${source.trimEnd()}\n\n/* bilingual-consolidation-mobile-nav */\n.atlas-section-nav{width:100%;max-width:100%;justify-content:flex-start;overscroll-behavior-inline:contain}\n@media(max-width:640px){.atlas-section-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:100%;padding:6px 12px;gap:4px;overflow-x:visible;scroll-snap-type:none}.atlas-section-nav a{width:100%;min-width:0;justify-content:center;padding:8px 6px;white-space:normal;text-align:center;line-height:1.25}}\n@media(max-width:340px){.atlas-section-nav{grid-template-columns:1fr}}\n`;
 });
 
 patch('scripts/validate-home-parity.mjs', source => {
@@ -77,4 +93,26 @@ patch('scripts/validate-home-parity.mjs', source => {
   return out;
 });
 
-console.log('Bilingual source consolidation PASS: Maithili interface, ISBN navigation, semantic date validation and mobile navigation patched.');
+patch('scripts/validate-bilingual-consolidation.mjs', source => {
+  let out = source;
+  out = out.replace(
+    "const banned=['THE WRITERS',\"A READER'S COMPASS\",'02 / SELECTED WORKS','THE WORK OF PRESERVATION','03 / A LITERARY CHRONOLOGY','04 / BEYOND THIS PAGE','EDITORIAL NOTES','A VIDEHA LITERARY ATLAS · MAITHILI'];",
+    "const banned=['THE WRITERS',\"A READER'S COMPASS\",'02 / SELECTED WORKS','THE WORK OF PRESERVATION','03 / A LITERARY CHRONOLOGY','04 / BEYOND THIS PAGE','EDITORIAL NOTES','A VIDEHA LITERARY ATLAS · MAITHILI','For the curious reader','For the literary explorer','For the archive explorer'];"
+  );
+  out = out.replace(
+    "need(css.includes('scroll-snap-type:x proximity'),'Mobile navigation does not use start-safe horizontal snap');",
+    "need(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile navigation must use a two-column start-safe grid');\nneed(css.includes('overflow-x:visible'),'Mobile section navigation must not retain an internal horizontal scroller');"
+  );
+  return out;
+});
+
+patch('scripts/browser-hardening.mjs', source => {
+  let out = source;
+  const old = "report.routes[report.routes.length-1].mobileOverflow=o;\n        assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow: scrollWidth=${o.s}, clientWidth=${o.c}, offenders=${JSON.stringify(o.offenders)}`);\n        const boxes=await host.locator('.vt-bar button,.vt-editions a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,text:n.textContent?.trim()};}));for(const b of boxes)assert(b.w>=24&&b.h>=24,`${route.lang}: target ${b.text} must be >=24x24 CSS px`);";
+  const next = "report.routes[report.routes.length-1].mobileOverflow=o;\n        assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow: scrollWidth=${o.s}, clientWidth=${o.c}, offenders=${JSON.stringify(o.offenders)}`);\n        const utilityNav=await page.locator('.atlas-section-nav a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {text:n.textContent?.trim(),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};}));\n        report.routes[report.routes.length-1].utilityNav=utilityNav;\n        for(const item of utilityNav)assert(item.left>=-2&&item.right<=viewport.width+2,`${route.lang}: mobile utility navigation link must stay inside viewport: ${JSON.stringify(item)}`);\n        const boxes=await host.locator('.vt-bar button,.vt-editions a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,text:n.textContent?.trim()};}));for(const b of boxes)assert(b.w>=24&&b.h>=24,`${route.lang}: target ${b.text} must be >=24x24 CSS px`);";
+  if (!out.includes(old) && !out.includes(next)) throw new Error('browser-hardening mobile audit anchor missing');
+  out = out.replace(old, next);
+  return out;
+});
+
+console.log('Bilingual source consolidation PASS: Maithili interface, Reading Paths, ISBN navigation, semantic dates and non-scrolling mobile navigation patched.');
