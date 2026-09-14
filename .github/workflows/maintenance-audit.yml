@@ -42,7 +42,7 @@ jobs:
           node scripts/security-audit-policy.mjs artifacts/npm-audit.json
       - name: Upload maintenance reports
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: atlas-weekly-maintenance-report
           path: artifacts
