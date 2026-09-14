@@ -64,4 +64,17 @@ patch('app/improvements.css', source => {
   return `${source.trimEnd()}\n\n/* bilingual-consolidation-mobile-nav */\n.atlas-section-nav{width:100%;max-width:100%;justify-content:flex-start;scroll-padding-inline:12px;overscroll-behavior-inline:contain}\n@media(max-width:640px){.atlas-section-nav{width:100vw;max-width:100vw;padding-left:12px;padding-right:12px;scroll-snap-type:x proximity}.atlas-section-nav a{flex:0 0 auto;scroll-snap-align:start}.atlas-section-nav a:first-child{margin-left:0}}\n`;
 });
 
-console.log('Bilingual source consolidation PASS: Maithili interface, ISBN navigation and mobile navigation patched.');
+patch('scripts/validate-home-parity.mjs', source => {
+  let out = source;
+  out = out.replace(
+    `assert(/Site updated: <time dateTime="2026-09-13">13 September 2026<\\/time> · Sources checked: <time dateTime="2026-09-13">13 September 2026<\\/time>/.test(en),'English footer must carry semantic maintenance and source-check dates.');`,
+    `assert(/Site updated: <time date(?:T|t)ime="2026-09-14">14 September 2026<\\/time> · Sources checked: <time date(?:T|t)ime="2026-09-13">13 September 2026<\\/time>/.test(en),'English footer must separate production maintenance date from scholarly source-check date.');`
+  );
+  out = out.replace(
+    `assert(/साइट अद्यतन: <time dateTime="2026-09-13">13 सितम्बर 2026<\\/time> · स्रोत-जाँच: <time dateTime="2026-09-13">13 सितम्बर 2026<\\/time>/.test(mai),'Maithili footer must carry semantic maintenance and source-check dates.');`,
+    `assert(/साइट अद्यतन: <time date(?:T|t)ime="2026-09-14">14 सितम्बर 2026<\\/time> · स्रोत-जाँच: <time date(?:T|t)ime="2026-09-13">13 सितम्बर 2026<\\/time>/.test(mai),'Maithili footer must separate production maintenance date from scholarly source-check date.');`
+  );
+  return out;
+});
+
+console.log('Bilingual source consolidation PASS: Maithili interface, ISBN navigation, semantic date validation and mobile navigation patched.');
