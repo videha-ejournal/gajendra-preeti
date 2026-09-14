@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "authority": "VIDEHA 293 ISBN LIST",
+  "authorityPolicy": "Authoritative for Videha ISBN metadata. This source supersedes and overrides older ISBN lists and any conflicting ISBN/title metadata.",
+  "retrieved": "2026-09-14",
+  "sourceUrls": [
+    "https://isbn.gov.in/Applicant/ApplyISBNForAuthor",
+    "https://isbn.gov.in/Applicant/ApplicantSummary/Details?t=alb"
+  ],
+  "counts": {
+    "total": 293,
+    "gajendraAdministrator": 182,
+    "kumariPrityAdministrator": 111
+  },
+  "defaults": {
+    "productForm": "Book",
+    "country": "INDIA",
+    "status": "Allotted | Allocation Letter",
+    "earmarked": 1,
+    "available": 0,
+    "used": 1,
+    "totalEarmarked": 1,
+    "booksSubmitted": 0,
+    "booksPending": 0,
+    "booksSurrendered": 0
+  },
+  "actionNoteCodes": {
+    "A1": "Edit | Surrender ISBN | Final Verso Page Uploaded [Verification Pending from RRRNA]",
+    "A2": "(Edit Expired) | Surrender ISBN | Final Verso Page Uploaded [Verification Pending from RRRNA]",
+    "A3": "(Edit Expired) | Surrender ISBN | Upload Final Verso Page"
+  },
+  "columns": [
+    "isbn",
+    "title",
+    "authorEditor",
+    "language",
+    "edition",
+    "year",
+    "publicationDate",
+    "productFormOverride",
+    "publisher",
+    "administrator",
+    "applicationNo",
+    "applicationSubmitted",
+    "actionNoteCode",
+    "applicationSrNo",
+    "bookSrNo"
+  ],
+  "parts": [
+    "isbn-authority-293.part1.json",
+    "isbn-authority-293.part2.json",
+    "isbn-authority-293.part3.json"
+  ],
+  "identityOverrides": [
+    {
+      "canonicalIsbn": "978-93-341-0402-8",
+      "canonicalLabel": "Videha Sadeha 28",
+      "sameWorkAliases": [
+        "Gadya Padya Bharti 1",
+        "गद्य पद्य भारती 1",
+        "विदेह सदेह २८",
+        "Videha Sadeha 28"
+      ]
+    },
+    {
+      "canonicalIsbn": "978-93-5890-150-4",
+      "canonicalLabel": "Videha Sadeha 37",
+      "sameWorkAliases": [
+        "Gadya Padya Bharti 2",
+        "गद्य पद्य भारती 2",
+        "विदेह सदेह ३७",
+        "Videha Sadeha 37",
+        "गद्य पद्य भारती अनुवाद खण्ड 2 विदेह सदेह 37"
+      ]
+    }
+  ]
+}
