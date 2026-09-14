@@ -18,7 +18,15 @@ const viewports=[{name:'desktop',width:1440,height:900},{name:'mobile',width:390
 const report={generatedAt:new Date().toISOString(),routes:[],axe:{},status:'running'};
 let browser;
 
-async function focusStyle(page){const el=page.locator('.masthead nav a').first();await el.focus();return el.evaluate(n=>{const s=getComputedStyle(n);return {outlineStyle:s.outlineStyle,outlineWidth:s.outlineWidth,boxShadow:s.boxShadow};});}
+async function keyboardFocusStyle(page){
+  await page.evaluate(()=>{if(document.activeElement instanceof HTMLElement)document.activeElement.blur();});
+  for(let i=0;i<40;i++){
+    await page.keyboard.press('Tab');
+    const state=await page.evaluate(()=>{const n=document.activeElement;if(!(n instanceof HTMLElement))return null;return {match:n.matches('.masthead nav a'),tag:n.tagName,text:n.textContent?.trim(),outlineStyle:getComputedStyle(n).outlineStyle,outlineWidth:getComputedStyle(n).outlineWidth,outlineColor:getComputedStyle(n).outlineColor,outlineOffset:getComputedStyle(n).outlineOffset,boxShadow:getComputedStyle(n).boxShadow};});
+    if(state?.match)return state;
+  }
+  return null;
+}
 async function closeDialog(host){if(await host.locator('#vt-dialog').evaluate(d=>d.open))await host.locator('#vt-close').click();}
 
 try{
@@ -49,7 +57,7 @@ try{
       await host.locator('[data-open="cite"]').click();assert((await host.locator('#vt-citation').inputValue()).includes('Videha Literary Atlas'),`${route.lang}: citation generator`);await closeDialog(host);
 
       assert.equal(await page.locator('a.skip').first().getAttribute('href'),'#main',`${route.lang}: skip link`);
-      const focus=await focusStyle(page);assert(!(focus.outlineStyle==='none'&&['0px','0'].includes(focus.outlineWidth)&&focus.boxShadow==='none'),`${route.lang}: visible focus indicator`);
+      const focus=await keyboardFocusStyle(page);assert(focus,`${route.lang}: keyboard Tab sequence must reach masthead navigation`);assert(!(focus.outlineStyle==='none'&&['0px','0'].includes(focus.outlineWidth)&&focus.boxShadow==='none'),`${route.lang}: keyboard-focused masthead link needs a visible focus indicator`);assert(parseFloat(focus.outlineWidth)>=2||focus.boxShadow!=='none',`${route.lang}: focus indicator must be visibly substantial`);
       assert(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),`${route.lang}: reduced-motion media query`);
       const sectionIds=await page.locator('main > section').evaluateAll(ns=>ns.map(n=>n.id||`class:${[...n.classList].sort().join('.')}`));
       const workIds=await page.locator('.work-card').evaluateAll(ns=>ns.map(n=>n.id));
@@ -65,5 +73,5 @@ try{
     }
     assert.deepEqual(structures[`${viewport.name}:mai`].sectionIds,structures[`${viewport.name}:en`].sectionIds,`${viewport.name}: mirrored sections`);assert.deepEqual(structures[`${viewport.name}:mai`].workIds,structures[`${viewport.name}:en`].workIds,`${viewport.name}: mirrored work cards`);assert.deepEqual(structures[`${viewport.name}:mai`].timelineYears,structures[`${viewport.name}:en`].timelineYears,`${viewport.name}: mirrored timeline`);
   }
-  report.status='pass';fs.writeFileSync(path.join(artifactDir,'browser-hardening-report.json'),JSON.stringify(report,null,2)+'\n');console.log('Browser hardening PASS: hydration persistence, 41-language translation, Listen/Stop, assistive controls, Cite, bilingual mirror, focus, mobile reflow/targets and axe WCAG checks passed.');
+  report.status='pass';fs.writeFileSync(path.join(artifactDir,'browser-hardening-report.json'),JSON.stringify(report,null,2)+'\n');console.log('Browser hardening PASS: hydration persistence, 41-language translation, Listen/Stop, assistive controls, Cite, true keyboard focus-visible, bilingual mirror, mobile reflow/targets and axe WCAG checks passed.');
 }catch(err){report.status='fail';report.error=String(err?.stack||err);fs.writeFileSync(path.join(artifactDir,'browser-hardening-report.json'),JSON.stringify(report,null,2)+'\n');throw err;}finally{await browser?.close().catch(()=>{});await new Promise(resolve=>server.close(resolve));}
