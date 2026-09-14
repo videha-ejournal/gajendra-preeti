@@ -27,6 +27,7 @@ jobs:
       - name: Live links, sitemap, RSS and PDF provenance health
         run: node scripts/scheduled-health-check.mjs
       - name: Dependency security policy
+        if: always()
         run: |
           mkdir -p artifacts
           npm audit --json > artifacts/npm-audit.json || true
