@@ -5,18 +5,23 @@ const manifestPath='content/isbn-authority-293.json';
 const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
 const rows=manifest.parts.flatMap(file=>JSON.parse(fs.readFileSync(path.join('content',file),'utf8')));
 const columns=manifest.columns;
-const records=rows.map(row=>Object.fromEntries(columns.map((key,index)=>[key,row[index]])));
+const records=rows.map(row=>Object.fromEntries(columns.map((key,index)=>[key,row[index]]).filter(([key])=>!key.startsWith('_'))));
 const byIsbn=new Map(records.map(record=>[record.isbn,record]));
 const digits='०१२३४५६७८९';
 const normalize=value=>String(value??'').normalize('NFKC').toLowerCase().replace(/[०-९]/g,d=>String(digits.indexOf(d))).replace(/[’'“”"`´·•:;,.!?()\[\]{}_/\\|+*=~^<>–—-]+/g,' ').replace(/\s+/g,' ').trim();
-const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
 const isbnOk=value=>{const d=String(value).replace(/-/g,'');if(!/^978\d{10}$/.test(d))return false;const sum=[...d.slice(0,12)].reduce((n,x,i)=>n+Number(x)*(i%2?3:1),0);return (10-(sum%10))%10===Number(d[12]);};
 
 const failures=[];
 if(manifest.schemaVersion!==1)failures.push(`Unsupported ISBN authority schema ${manifest.schemaVersion}`);
 if(records.length!==manifest.counts.total)failures.push(`Expected ${manifest.counts.total} authority rows, found ${records.length}`);
 if(new Set(records.map(r=>r.isbn)).size!==records.length)failures.push('ISBN authority contains duplicate ISBN numbers');
-for(const record of records)if(!isbnOk(record.isbn))failures.push(`Invalid ISBN-13 check digit: ${record.isbn} — ${record.title}`);
+if(columns.includes('publisher'))failures.push('Publisher must not be used by the ISBN authority model');
+if(!manifest.discardedSourceColumns?.includes('Name of Publishing Agency/Publisher'))failures.push('Publisher source column must be explicitly discarded');
+for(const record of records){
+ if('publisher' in record||'_discardedPublishingAgencyPublisher' in record)failures.push(`Publisher data leaked into authority record: ${record.isbn}`);
+ if(!isbnOk(record.isbn))failures.push(`Invalid ISBN-13 check digit: ${record.isbn} — ${record.title}`);
+}
 const gajendra=records.filter(r=>r.administrator==='Gajendra').length;
 const prity=records.filter(r=>r.administrator==='Kumari Prity').length;
 if(gajendra!==manifest.counts.gajendraAdministrator)failures.push(`Gajendra administrator count ${gajendra} != ${manifest.counts.gajendraAdministrator}`);
@@ -75,7 +80,7 @@ const expanded=records.map(record=>({
 }));
 const authorityOut={
  schemaVersion:manifest.schemaVersion,authority:manifest.authority,authorityPolicy:manifest.authorityPolicy,retrieved:manifest.retrieved,
- sourceUrls:manifest.sourceUrls,counts:manifest.counts,identityOverrides:manifest.identityOverrides,records:expanded
+ sourceUrls:manifest.sourceUrls,counts:manifest.counts,discardedSourceColumns:manifest.discardedSourceColumns,identityOverrides:manifest.identityOverrides,records:expanded
 };
 fs.mkdirSync('public/isbn',{recursive:true});
 fs.writeFileSync('public/isbn/isbn-authority-293.json',JSON.stringify(authorityOut,null,2)+'\n');
@@ -94,4 +99,4 @@ if(fs.existsSync(sitemapPath)){
  if(!sitemap.includes(`<loc>${url}</loc>`))sitemap=sitemap.replace('</urlset>',`<url><loc>${url}</loc><lastmod>${manifest.retrieved}</lastmod></url>\n</urlset>`);
  fs.writeFileSync(sitemapPath,sitemap);
 }
-console.log(`VIDEHA ISBN authority PASS: ${records.length} unique ISBNs; administrators ${gajendra}/${prity}; ${mapped} atlas work(s) mapped; ${ambiguous} ambiguous title match(es); ${cleared} stale work ISBN(s) cleared; 2 editor identity rules enforced.`);
+console.log(`VIDEHA ISBN authority PASS: ${records.length} unique ISBNs; administrators ${gajendra}/${prity}; publisher column discarded; ${mapped} atlas work(s) mapped; ${ambiguous} ambiguous title match(es); ${cleared} stale work ISBN(s) cleared; 2 editor identity rules enforced.`);
