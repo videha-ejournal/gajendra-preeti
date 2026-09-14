@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "statusLabel": "verified GitHub mirror available",
+  "resources": [
+    {
+      "primary": "https://www.videha.co.in/",
+      "mirror": "https://videha-ejournal.github.io/videha/",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "index.htm",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/videha-rss.xml",
+      "mirror": "https://videha-ejournal.github.io/videha/videha-rss.xml",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "videha-rss.xml",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/gajendra-thakur-samagra.htm",
+      "mirror": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "gajendra-thakur-samagra.htm",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/kids.htm",
+      "mirror": "https://videha-ejournal.github.io/videha/kids.htm",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "kids.htm",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/pothi.htm",
+      "mirror": "https://videha-ejournal.github.io/videha/pothi.htm",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "pothi.htm",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/ratna.htm",
+      "mirror": "https://videha-ejournal.github.io/videha/ratna.htm",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "ratna.htm",
+      "branch": "main"
+    },
+    {
+      "primary": "https://www.videha.co.in/prity.jpg",
+      "mirror": "https://videha-ejournal.github.io/videha/prity.jpg",
+      "repository": "videha-ejournal/videha",
+      "repositoryPath": "prity.jpg",
+      "branch": "main"
+    }
+  ]
+}

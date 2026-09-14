@@ -6,13 +6,39 @@ import {promisify} from 'node:util';
 const execFileAsync=promisify(execFile);
 const SITE='https://videha-ejournal.github.io/gajendra-preeti/';
 const PDF_CATALOG='https://raw.githubusercontent.com/videha-ejournal/videha-ejournal/main/data/videha-pdf-catalog.json';
+const MIRROR_REGISTRY_PATH='content/maintenance-resource-mirrors.json';
 const ROOT='dist/client/gajendra-preeti';
 const OUT='artifacts/maintenance-health.json';
 const USER_AGENT='Videha-Atlas-Maintenance-Audit/1.0';
+const VERIFIED_MIRROR_LABEL='verified GitHub mirror available';
 fs.mkdirSync(path.dirname(OUT),{recursive:true});
-const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},warnings:[],failures:[],indeterminate:[]};
+const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},verifiedMirrors:[],warnings:[],failures:[],indeterminate:[]};
 
 function isOkStatus(status){return Number.isInteger(status)&&status>=200&&status<300;}
+function normalizeResourceUrl(value){
+  const u=new URL(value);
+  u.hash='';
+  return u.href;
+}
+function rawRepositoryUrl(entry){
+  const branch=entry.branch||'main';
+  const encodedPath=entry.repositoryPath.split('/').map(encodeURIComponent).join('/');
+  return `https://raw.githubusercontent.com/${entry.repository}/${encodeURIComponent(branch)}/${encodedPath}`;
+}
+
+const mirrorRegistry=JSON.parse(fs.readFileSync(MIRROR_REGISTRY_PATH,'utf8'));
+if(mirrorRegistry.schemaVersion!==1)throw new Error(`Unsupported maintenance mirror registry schemaVersion ${mirrorRegistry.schemaVersion}`);
+if(mirrorRegistry.statusLabel!==VERIFIED_MIRROR_LABEL)throw new Error(`Maintenance mirror registry statusLabel must be exactly: ${VERIFIED_MIRROR_LABEL}`);
+if(!Array.isArray(mirrorRegistry.resources))throw new Error('Maintenance mirror registry resources must be an array');
+const mirrorByPrimary=new Map();
+for(const entry of mirrorRegistry.resources){
+  if(!entry?.primary||!entry?.mirror||!entry?.repository||!entry?.repositoryPath)throw new Error('Each maintenance mirror registry entry requires primary, mirror, repository and repositoryPath');
+  const key=normalizeResourceUrl(entry.primary);
+  if(mirrorByPrimary.has(key))throw new Error(`Duplicate maintenance mirror primary mapping: ${key}`);
+  mirrorByPrimary.set(key,{...entry,primary:key});
+}
+const mirrorVerificationCache=new Map();
+const verifiedMirrorKeys=new Set();
 
 async function curlAttempt(url,method){
   const args=['-4','--silent','--show-error','--location','--connect-timeout','10','--max-time',method==='HEAD'?'15':'20','--user-agent',USER_AGENT,'--output','/dev/null','--write-out','%{http_code}\t%{url_effective}'];
@@ -30,7 +56,7 @@ async function curlAttempt(url,method){
   }
 }
 
-async function request(url,{hard=false}={}){
+async function probeUrl(url){
   const errors=[];
   let lastHttp=null;
   const nodeAttempt=async method=>{
@@ -44,7 +70,7 @@ async function request(url,{hard=false}={}){
       const r=await nodeAttempt(method);
       const row={url,status:r.status,ok:r.ok||r.status===206,finalUrl:r.url,transport:`node-${method.toLowerCase()}`};
       lastHttp=row;
-      if(row.ok)return row;
+      if(row.ok)return {...row,attemptErrors:errors};
       errors.push(`${method} HTTP ${r.status}`);
     }catch(err){
       errors.push(`${method} ${err.message}`);
@@ -56,22 +82,87 @@ async function request(url,{hard=false}={}){
     if(c.status!==null){
       const row={url,status:c.status,ok:isOkStatus(c.status)||c.status===206,finalUrl:c.finalUrl,transport:`curl-ipv4-${method.toLowerCase()}`};
       lastHttp=row;
-      if(row.ok)return row;
+      if(row.ok)return {...row,attemptErrors:errors};
       errors.push(`curl ${method} HTTP ${c.status}`);
     }else{
       errors.push(`curl ${method} ${c.error||'request failed'}`);
     }
   }
 
-  if(lastHttp){
-    if([404,410].includes(lastHttp.status)||(hard&&!lastHttp.ok))report.failures.push(`${url} returned HTTP ${lastHttp.status}`);
-    else if(!lastHttp.ok)report.warnings.push(`${url} returned HTTP ${lastHttp.status}`);
-    return {...lastHttp,attemptErrors:errors};
+  const detail=errors.join('; ')||'request failed';
+  if(lastHttp)return {...lastHttp,attemptErrors:errors,error:detail};
+  return {url,status:null,ok:false,transportFailure:true,error:detail,attemptErrors:errors};
+}
+
+async function verifyGitHubMirror(entry){
+  const key=entry.primary;
+  if(mirrorVerificationCache.has(key))return mirrorVerificationCache.get(key);
+  const promise=(async()=>{
+    const mirror=await probeUrl(entry.mirror);
+    const repositorySourceUrl=rawRepositoryUrl(entry);
+    const repositorySource=await probeUrl(repositorySourceUrl);
+    return {entry,mirror,repositorySourceUrl,repositorySource,verified:mirror.ok&&repositorySource.ok};
+  })();
+  mirrorVerificationCache.set(key,promise);
+  return promise;
+}
+
+async function request(url,{hard=false}={}){
+  const primary=await probeUrl(url);
+  if(primary.ok)return primary;
+
+  if(!primary.transportFailure){
+    if([404,410].includes(primary.status)||(hard&&!primary.ok))report.failures.push(`${url} returned HTTP ${primary.status}`);
+    else report.warnings.push(`${url} returned HTTP ${primary.status}`);
+    return primary;
   }
 
-  const detail=errors.join('; ')||'request failed';
+  const normalized=normalizeResourceUrl(url);
+  const mapping=mirrorByPrimary.get(normalized);
+  if(mapping){
+    const fallback=await verifyGitHubMirror(mapping);
+    if(fallback.verified){
+      if(!verifiedMirrorKeys.has(mapping.primary)){
+        verifiedMirrorKeys.add(mapping.primary);
+        report.verifiedMirrors.push({
+          primary:mapping.primary,
+          availability:VERIFIED_MIRROR_LABEL,
+          mirror:mapping.mirror,
+          mirrorStatus:fallback.mirror.status,
+          mirrorTransport:fallback.mirror.transport,
+          repository:mapping.repository,
+          repositoryPath:mapping.repositoryPath,
+          repositorySource:fallback.repositorySourceUrl,
+          repositoryStatus:fallback.repositorySource.status,
+          repositoryTransport:fallback.repositorySource.transport
+        });
+      }
+      return {
+        url,
+        status:null,
+        ok:true,
+        availability:VERIFIED_MIRROR_LABEL,
+        mirror:mapping.mirror,
+        repository:mapping.repository,
+        repositoryPath:mapping.repositoryPath,
+        primaryTransportError:primary.error
+      };
+    }
+
+    const mirrorHttp=fallback.mirror.status!==null;
+    const repoHttp=fallback.repositorySource.status!==null;
+    if(mirrorHttp||repoHttp){
+      const details=[];
+      if(!fallback.mirror.ok)details.push(`mirror ${fallback.mirror.status===null?'no HTTP response':`HTTP ${fallback.mirror.status}`}`);
+      if(!fallback.repositorySource.ok)details.push(`repository source ${fallback.repositorySource.status===null?'no HTTP response':`HTTP ${fallback.repositorySource.status}`}`);
+      report.failures.push(`Configured GitHub mirror verification failed for ${mapping.primary}: ${details.join('; ')}`);
+      return {url,status:null,ok:false,mirrorVerificationFailed:true,mirror:mapping.mirror,repositorySource:fallback.repositorySourceUrl,error:details.join('; ')};
+    }
+  }
+
+  const detail=primary.error||'request failed';
   const msg=`${url}: INDETERMINATE — no HTTP response received after Node HEAD/GET and IPv4 curl HEAD/GET; ${detail}`;
-  report.indeterminate.push({url,hardRequested:hard,error:detail});
+  report.indeterminate.push({url,hardRequested:hard,error:detail,mirrorConfigured:Boolean(mapping)});
   report.warnings.push(msg);
   return {url,status:null,ok:false,indeterminate:true,hardRequested:hard,error:detail};
 }
@@ -128,6 +219,7 @@ try{
 
 report.status=report.failures.length?'fail':report.indeterminate.length?'pass-with-indeterminate':'pass';
 fs.writeFileSync(OUT,JSON.stringify(report,null,2)+'\n');
-console.log(`Scheduled health audit ${report.status.toUpperCase()}: ${report.live.length} key live routes, ${report.external.length} external links, ${report.indeterminate.length} indeterminate transport result(s), ${report.warnings.length} warning(s), ${report.failures.length} failure(s).`);
+console.log(`Scheduled health audit ${report.status.toUpperCase()}: ${report.live.length} key live routes, ${report.external.length} external links, ${report.verifiedMirrors.length} verified GitHub mirror resource(s), ${report.indeterminate.length} indeterminate transport result(s), ${report.warnings.length} warning(s), ${report.failures.length} failure(s).`);
+for(const row of report.verifiedMirrors)console.log(`${VERIFIED_MIRROR_LABEL}: ${row.mirror} | repository source: ${row.repository}/${row.repositoryPath}`);
 if(report.warnings.length)console.warn(report.warnings.join('\n'));
 if(report.failures.length){console.error(report.failures.join('\n'));process.exitCode=1;}

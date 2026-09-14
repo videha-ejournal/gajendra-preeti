@@ -9,6 +9,7 @@ on:
       - '.github/workflows/maintenance-audit.yml'
       - 'scripts/scheduled-health-check.mjs'
       - 'scripts/security-audit-policy.mjs'
+      - 'content/maintenance-resource-mirrors.json'
       - 'content/videha-pdf-catalog.snapshot.json'
 permissions:
   contents: read
