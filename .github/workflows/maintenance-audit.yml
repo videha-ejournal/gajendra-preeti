@@ -3,6 +3,13 @@ on:
   schedule:
     - cron: '17 2 * * 0'
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/maintenance-audit.yml'
+      - 'scripts/scheduled-health-check.mjs'
+      - 'scripts/security-audit-policy.mjs'
+      - 'content/maintenance-resource-mirrors.json'
+      - 'content/videha-pdf-catalog.snapshot.json'
   push:
     branches: [main]
     paths:
@@ -25,7 +32,7 @@ jobs:
       - run: npm ci
       - name: Build current atlas and provenance manifests
         run: npm run build
-      - name: Live links, sitemap, RSS and PDF provenance health
+      - name: Live links, archival integrity, freshness, fallback coverage and PDF provenance
         run: node scripts/scheduled-health-check.mjs
       - name: Dependency security policy
         if: always()
