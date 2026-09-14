@@ -14,8 +14,26 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci
+      - name: Dependency security gate
+        run: |
+          mkdir -p artifacts
+          npm audit --json > artifacts/npm-audit.json || true
+          node scripts/security-audit-policy.mjs artifacts/npm-audit.json
       - run: npx tsc --noEmit
       - run: npm run build
       - run: node scripts/validate-static-current.mjs
       - run: node scripts/validate-drama-classics-structure.mjs
       - run: node scripts/audit-site-bilingual.mjs
+      - name: Install pinned browser-audit tools
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0 axe-core@4.10.2
+          npx playwright install --with-deps chromium
+      - name: Real-browser hydration + WCAG 2.2 audit
+        run: node scripts/browser-hardening.mjs
+      - name: Upload hardening reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-hardening-reports
+          path: artifacts
+          if-no-files-found: warn
