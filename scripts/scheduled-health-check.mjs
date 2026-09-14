@@ -10,22 +10,25 @@ const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[]
 
 async function request(url,{hard=false}={}){
   const attempt=async method=>{
-    const init={method,redirect:'follow',signal:AbortSignal.timeout(15000),headers:{'user-agent':'Videha-Atlas-Maintenance-Audit/1.0'}};
+    const init={method,redirect:'follow',signal:AbortSignal.timeout(method==='GET'?20000:15000),headers:{'user-agent':'Videha-Atlas-Maintenance-Audit/1.0'}};
     if(method==='GET')init.headers.range='bytes=0-4095';
     return fetch(url,init);
   };
-  try{
-    let r=await attempt('HEAD');
-    if([403,405].includes(r.status))r=await attempt('GET');
-    const row={url,status:r.status,ok:r.ok||r.status===206,finalUrl:r.url};
-    if([404,410].includes(r.status)||(hard&&!row.ok))report.failures.push(`${url} returned HTTP ${r.status}`);
-    else if(!row.ok)report.warnings.push(`${url} returned HTTP ${r.status}`);
-    return row;
-  }catch(err){
-    const msg=`${url}: ${err.message}`;
-    (hard?report.failures:report.warnings).push(msg);
-    return {url,status:null,ok:false,error:err.message};
+  const errors=[];
+  let r=null;
+  try{r=await attempt('HEAD');}catch(err){errors.push(`HEAD ${err.message}`);}
+  if(!r||!(r.ok||r.status===206)){
+    try{r=await attempt('GET');}catch(err){errors.push(`GET ${err.message}`);}
   }
+  if(!r){
+    const msg=`${url}: ${errors.join('; ')||'request failed'}`;
+    (hard?report.failures:report.warnings).push(msg);
+    return {url,status:null,ok:false,error:errors.join('; ')||'request failed'};
+  }
+  const row={url,status:r.status,ok:r.ok||r.status===206,finalUrl:r.url};
+  if([404,410].includes(r.status)||(hard&&!row.ok))report.failures.push(`${url} returned HTTP ${r.status}`);
+  else if(!row.ok)report.warnings.push(`${url} returned HTTP ${r.status}`);
+  return row;
 }
 
 try{
