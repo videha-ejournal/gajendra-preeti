@@ -53,6 +53,11 @@ if(!source.includes(marker)) throw new Error('Expected legacy static file-list m
 const expansion=`${marker}\nfor(const dir of ${JSON.stringify(chapterDirs)}){if(fs.existsSync(path.join(root,dir)))for(const entry of fs.readdirSync(path.join(root,dir))){if(String(entry).endsWith('.html'))files.push(dir+'/'+String(entry));}}`;
 source=source.replace(marker,expansion);
 
+const oldSitemapCount="assert.equal(sitemapUrls.length,idSets.size+standalone.length+pairedExtra.length,'Every indexed page and standalone guide belongs in sitemap');";
+if(!source.includes(oldSitemapCount)) throw new Error('Expected legacy sitemap count assertion not found');
+const newSitemapCount=`const isbnAuthorityFile='isbn/index.html', isbnAuthorityUrl=BASE+'isbn/';\nassert(fs.existsSync(path.join(root,isbnAuthorityFile)),'Missing authoritative 293-ISBN route');\nassert(fs.existsSync(path.join(root,'isbn/isbn-authority-293.json')),'Missing machine-readable 293-ISBN authority');\nassert(sitemapUrls.includes(isbnAuthorityUrl),'Missing sitemap ISBN authority route');\nconst isbnAuthorityHtml=read(isbnAuthorityFile);\nassert(isbnAuthorityHtml.includes('VIDEHA 293 ISBN LIST'),'ISBN authority heading missing');\nassert(isbnAuthorityHtml.includes('978-93-341-0402-8')&&isbnAuthorityHtml.includes('978-93-5890-150-4'),'Editor same-work ISBN identities missing');\nassert(!/Publishing Agency|Publisher<\\/th>|Name of Publishing Agency/i.test(isbnAuthorityHtml),'Publisher column must not be rendered');\nconst isbnAuthorityJson=JSON.parse(read('isbn/isbn-authority-293.json'));\nassert.equal(isbnAuthorityJson.records.length,293,'ISBN authority must contain exactly 293 records');\nassert(isbnAuthorityJson.records.every(r=>!('publisher' in r)&&!('_discardedPublishingAgencyPublisher' in r)),'Publisher data must not appear in machine-readable ISBN authority');\nassert.equal(sitemapUrls.length,idSets.size+standalone.length+pairedExtra.length+1,'Every indexed page, standalone guide and ISBN authority route belongs in sitemap');`;
+source=source.replace(oldSitemapCount,newSitemapCount);
+
 const tmp='scripts/.validate-static-current.tmp.mjs';
 fs.writeFileSync(tmp,source);
 try{
