@@ -10,7 +10,7 @@ const ROOT='dist/client/gajendra-preeti';
 const OUT='artifacts/maintenance-health.json';
 const USER_AGENT='Videha-Atlas-Maintenance-Audit/1.0';
 fs.mkdirSync(path.dirname(OUT),{recursive:true});
-const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},warnings:[],failures:[]};
+const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},warnings:[],failures:[],indeterminate:[]};
 
 function isOkStatus(status){return Number.isInteger(status)&&status>=200&&status<300;}
 
@@ -69,9 +69,11 @@ async function request(url,{hard=false}={}){
     return {...lastHttp,attemptErrors:errors};
   }
 
-  const msg=`${url}: ${errors.join('; ')||'request failed'}`;
-  (hard?report.failures:report.warnings).push(msg);
-  return {url,status:null,ok:false,error:errors.join('; ')||'request failed'};
+  const detail=errors.join('; ')||'request failed';
+  const msg=`${url}: INDETERMINATE — no HTTP response received after Node HEAD/GET and IPv4 curl HEAD/GET; ${detail}`;
+  report.indeterminate.push({url,hardRequested:hard,error:detail});
+  report.warnings.push(msg);
+  return {url,status:null,ok:false,indeterminate:true,hardRequested:hard,error:detail};
 }
 
 try{
@@ -124,8 +126,8 @@ try{
   report.provenance={remoteCatalogCount:remoteCatalog.items.length,remoteSchemaVersion:remoteCatalog.schemaVersion,manifestCatalogCount:manifest.catalogCount,matchedPdfCount:manifest.matchedPdfCount,translatedPdfUniqueFileCount:manifest.translatedPdfUniqueFileCount,equivalentRepositoryCopyCount:manifest.equivalentRepositoryCopyCount,supplementalPdfResourceCount:manifest.supplementalPdfResourceCount,unclassifiedCatalogCount:manifest.unclassifiedCatalogCount,changedPaths:changed,badManifestPaths:badManifest};
 }catch(err){report.failures.push(err.stack||String(err));}
 
-report.status=report.failures.length?'fail':'pass';
+report.status=report.failures.length?'fail':report.indeterminate.length?'pass-with-indeterminate':'pass';
 fs.writeFileSync(OUT,JSON.stringify(report,null,2)+'\n');
-console.log(`Scheduled health audit ${report.status.toUpperCase()}: ${report.live.length} key live routes, ${report.external.length} external links, ${report.warnings.length} warning(s), ${report.failures.length} failure(s).`);
+console.log(`Scheduled health audit ${report.status.toUpperCase()}: ${report.live.length} key live routes, ${report.external.length} external links, ${report.indeterminate.length} indeterminate transport result(s), ${report.warnings.length} warning(s), ${report.failures.length} failure(s).`);
 if(report.warnings.length)console.warn(report.warnings.join('\n'));
 if(report.failures.length){console.error(report.failures.join('\n'));process.exitCode=1;}
