@@ -43,6 +43,11 @@ const newCount="assert.equal(receptionMaiFiles.length,4,'Reception must expose M
 if(!source.includes(oldCount)) throw new Error('Expected legacy reception count assertion not found');
 source=source.replace(oldCount,newCount);
 
+const oldEnglishWrapper='assert.match(english,/lang="en" class="english-edition"/);';
+const newEnglishWrapper='assert.doesNotMatch(english,/class="english-edition"/);';
+if(!source.includes(oldEnglishWrapper)) throw new Error('Expected legacy English-edition wrapper assertion not found');
+source=source.replace(oldEnglishWrapper,newEnglishWrapper);
+
 const marker="const files=[...criticismMaiFiles,...criticismEnFiles,...receptionMaiFiles,...receptionEnFiles];";
 if(!source.includes(marker)) throw new Error('Expected legacy static file-list marker not found');
 const expansion=`${marker}\nfor(const dir of ${JSON.stringify(chapterDirs)}){if(fs.existsSync(path.join(root,dir)))for(const entry of fs.readdirSync(path.join(root,dir))){if(String(entry).endsWith('.html'))files.push(dir+'/'+String(entry));}}`;
