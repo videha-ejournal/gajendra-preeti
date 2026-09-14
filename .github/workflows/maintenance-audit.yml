@@ -1,0 +1,33 @@
+name: Weekly atlas maintenance audit
+on:
+  schedule:
+    - cron: '17 2 * * 0'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Build current atlas and provenance manifests
+        run: npm run build
+      - name: Live links, sitemap, RSS and PDF provenance health
+        run: node scripts/scheduled-health-check.mjs
+      - name: Dependency security policy
+        run: |
+          mkdir -p artifacts
+          npm audit --json > artifacts/npm-audit.json || true
+          node scripts/security-audit-policy.mjs artifacts/npm-audit.json
+      - name: Upload maintenance reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-weekly-maintenance-report
+          path: artifacts
+          if-no-files-found: warn
