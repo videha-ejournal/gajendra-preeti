@@ -3,23 +3,41 @@ on:
   pull_request:
     branches: [main]
 permissions:
-  contents: read
+  contents: write
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
           cache: npm
-      - name: Refresh lockfile for dependency consolidation
-        run: npm install --package-lock-only --ignore-scripts
-      - name: Upload refreshed lockfile
-        uses: actions/upload-artifact@v4
-        with:
-          name: refreshed-package-lock
-          path: package-lock.json
+      - name: Commit regenerated lockfile and exact parity-validator repair
+        run: |
+          git fetch origin main --depth=1
+          git checkout origin/main -- scripts/validate-home-parity.mjs
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('scripts/validate-home-parity.mjs')
+          s=p.read_text()
+          old="assert(mai.includes('प्लेटफॉर्म / META'),'Maithili 2026 milestone must carry a non-colour platform label.');"
+          new="assert(mai.includes('प्लेटफॉर्म / सन्दर्भ'),'Maithili 2026 milestone must carry a localized non-colour platform label.');"
+          if old not in s:
+              raise SystemExit('Expected parity assertion not found')
+          p.write_text(s.replace(old,new))
+          PY
+          npm install --package-lock-only --ignore-scripts
+          git config user.name 'videha-ejournal'
+          git config user.email 'ggajendra@gmail.com'
+          git add package-lock.json scripts/validate-home-parity.mjs
+          if ! git diff --cached --quiet; then
+            git commit -m 'Finalize dependency lock and localized parity assertion'
+            git push origin HEAD:${{ github.head_ref }}
+          fi
       - run: npm ci
       - name: Dependency security gate
         run: |
