@@ -38,13 +38,16 @@
     "year",
     "publicationDate",
     "productFormOverride",
-    "publisher",
+    "_discardedPublishingAgencyPublisher",
     "administrator",
     "applicationNo",
     "applicationSubmitted",
     "actionNoteCode",
     "applicationSrNo",
     "bookSrNo"
+  ],
+  "discardedSourceColumns": [
+    "Name of Publishing Agency/Publisher"
   ],
   "parts": [
     "isbn-authority-293.part1.json",
