@@ -64,7 +64,9 @@ try{
       const timelineYears=await page.locator('.timeline-year').allTextContents();structures[`${viewport.name}:${route.lang}`]={sectionIds,workIds,timelineYears};
 
       if(viewport.name==='mobile'){
-        const o=await page.evaluate(()=>({s:document.documentElement.scrollWidth,c:document.documentElement.clientWidth}));assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow`);
+        const o=await page.evaluate(()=>{const root=document.documentElement,c=root.clientWidth,s=root.scrollWidth;const offenders=[...document.querySelectorAll('body *')].map(el=>{const r=el.getBoundingClientRect(),cs=getComputedStyle(el);return {tag:el.tagName.toLowerCase(),id:el.id||'',cls:typeof el.className==='string'?el.className.slice(0,120):'',text:(el.textContent||'').trim().replace(/\s+/g,' ').slice(0,120),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width),overflowX:cs.overflowX};}).filter(x=>x.right>c+2||x.left<-2).slice(0,20);return {s,c,offenders};});
+        report.routes[report.routes.length-1].mobileOverflow=o;
+        assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow: scrollWidth=${o.s}, clientWidth=${o.c}, offenders=${JSON.stringify(o.offenders)}`);
         const boxes=await host.locator('.vt-bar button,.vt-editions a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,text:n.textContent?.trim()};}));for(const b of boxes)assert(b.w>=24&&b.h>=24,`${route.lang}: target ${b.text} must be >=24x24 CSS px`);
       }
 
