@@ -28,6 +28,8 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 axe-core@4.10.2
           npx playwright install --with-deps chromium
+      - name: Diagnose WCAG target-size failures
+        run: node scripts/axe-target-diagnostics.mjs
       - name: Real-browser hydration + WCAG 2.2 audit
         run: node scripts/browser-hardening.mjs
       - name: Upload hardening reports
