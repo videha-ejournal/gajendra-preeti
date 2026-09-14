@@ -1,5 +1,7 @@
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 
@@ -11,192 +13,80 @@ const ROOT='dist/client/gajendra-preeti';
 const OUT='artifacts/maintenance-health.json';
 const USER_AGENT='Videha-Atlas-Maintenance-Audit/1.0';
 const VERIFIED_MIRROR_LABEL='verified GitHub mirror available';
+const GITHUB_OWNER='videha-ejournal';
 fs.mkdirSync(path.dirname(OUT),{recursive:true});
-const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},verifiedMirrors:[],warnings:[],failures:[],indeterminate:[]};
+const report={generatedAt:new Date().toISOString(),site:SITE,live:[],external:[],provenance:{},verifiedMirrors:[],freshness:[],coverage:{},warnings:[],failures:[],indeterminate:[]};
 
 function isOkStatus(status){return Number.isInteger(status)&&status>=200&&status<300;}
-function normalizeResourceUrl(value){
-  const u=new URL(value);
-  u.hash='';
-  return u.href;
-}
-function rawRepositoryUrl(entry){
-  const branch=entry.branch||'main';
-  const encodedPath=entry.repositoryPath.split('/').map(encodeURIComponent).join('/');
-  return `https://raw.githubusercontent.com/${entry.repository}/${encodeURIComponent(branch)}/${encodedPath}`;
-}
+function normalizeResourceUrl(value){const u=new URL(value);u.hash='';return u.href;}
+function rawRepositoryUrl(entry){const branch=entry.branch||'main';const encodedPath=entry.repositoryPath.split('/').map(encodeURIComponent).join('/');return `https://raw.githubusercontent.com/${entry.repository}/${encodeURIComponent(branch)}/${encodedPath}`;}
+function sha256(value){return createHash('sha256').update(value).digest('hex');}
+function stableJson(value){if(Array.isArray(value))return value.map(stableJson);if(value&&typeof value==='object'){const out={};for(const key of Object.keys(value).sort())out[key]=stableJson(value[key]);return out;}return value;}
+function canonicalizeText(buffer,url){let text=buffer.toString('utf8').replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');const pathname=new URL(url).pathname.toLowerCase();if(pathname.endsWith('.json')){const parsed=JSON.parse(text);return Buffer.from(JSON.stringify(stableJson(parsed))+'\n','utf8');}text=text.split('\n').map(line=>line.replace(/[ \t]+$/g,'')).join('\n').trimEnd()+'\n';return Buffer.from(text,'utf8');}
+function integrityMode(entry){if(entry.integrity)return entry.integrity;return /\.(?:html?|xml|json)$/i.test(entry.repositoryPath)?'canonical-text':'sha256';}
+function anchorsIn(text){const out=new Set();for(const match of text.matchAll(/\b(?:id|name)\s*=\s*(["'])(.*?)\1/gi))out.add(match[2]);return out;}
+function decodeXml(value){return String(value||'').replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g,'$1').replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;|&apos;/g,"'").trim();}
+function rssField(xml,tag){const m=xml.match(new RegExp(`<${tag}\\b[^>]*>([\\s\\S]*?)<\\/${tag}>`,'i'));return m?decodeXml(m[1]):null;}
+function parseRssSummary(xml){const channel=xml.match(/<channel\b[^>]*>([\s\S]*?)<\/channel>/i)?.[1]||xml;const item=channel.match(/<item\b[^>]*>([\s\S]*?)<\/item>/i)?.[1]||'';return {lastBuildDate:rssField(channel,'lastBuildDate'),latestTitle:rssField(item,'title'),latestPubDate:rssField(item,'pubDate'),latestLink:rssField(item,'link')};}
+function parseDate(value){if(!value)return null;const ms=Date.parse(value);return Number.isFinite(ms)?ms:null;}
 
 const mirrorRegistry=JSON.parse(fs.readFileSync(MIRROR_REGISTRY_PATH,'utf8'));
-if(mirrorRegistry.schemaVersion!==1)throw new Error(`Unsupported maintenance mirror registry schemaVersion ${mirrorRegistry.schemaVersion}`);
+if(mirrorRegistry.schemaVersion!==2)throw new Error(`Unsupported maintenance mirror registry schemaVersion ${mirrorRegistry.schemaVersion}`);
 if(mirrorRegistry.statusLabel!==VERIFIED_MIRROR_LABEL)throw new Error(`Maintenance mirror registry statusLabel must be exactly: ${VERIFIED_MIRROR_LABEL}`);
 if(!Array.isArray(mirrorRegistry.resources))throw new Error('Maintenance mirror registry resources must be an array');
+const coveragePolicy=mirrorRegistry.coveragePolicy||{};
+const primaryHosts=new Set((coveragePolicy.primaryHosts||['www.videha.co.in','videha.co.in']).map(x=>String(x).toLowerCase()));
+const githubOwner=coveragePolicy.githubOwner||GITHUB_OWNER;
 const mirrorByPrimary=new Map();
-for(const entry of mirrorRegistry.resources){
-  if(!entry?.primary||!entry?.mirror||!entry?.repository||!entry?.repositoryPath)throw new Error('Each maintenance mirror registry entry requires primary, mirror, repository and repositoryPath');
-  const key=normalizeResourceUrl(entry.primary);
-  if(mirrorByPrimary.has(key))throw new Error(`Duplicate maintenance mirror primary mapping: ${key}`);
-  mirrorByPrimary.set(key,{...entry,primary:key});
-}
+for(const entry of mirrorRegistry.resources){if(!entry?.primary||!entry?.mirror||!entry?.repository||!entry?.repositoryPath)throw new Error('Each maintenance mirror registry entry requires primary, mirror, repository and repositoryPath');if(!['canonical-text','sha256'].includes(integrityMode(entry)))throw new Error(`Unsupported integrity mode for ${entry.primary}`);const key=normalizeResourceUrl(entry.primary);if(mirrorByPrimary.has(key))throw new Error(`Duplicate maintenance mirror primary mapping: ${key}`);mirrorByPrimary.set(key,{...entry,primary:key});}
 const mirrorVerificationCache=new Map();
-const verifiedMirrorKeys=new Set();
+const mirrorRecorded=new Set();
+const probeCache=new Map();
 
-async function curlAttempt(url,method){
-  const args=['-4','--silent','--show-error','--location','--connect-timeout','10','--max-time',method==='HEAD'?'15':'20','--user-agent',USER_AGENT,'--output','/dev/null','--write-out','%{http_code}\t%{url_effective}'];
-  if(method==='HEAD')args.push('--head');
-  else args.push('--range','0-4095');
-  args.push(url);
-  try{
-    const {stdout}=await execFileAsync('curl',args,{maxBuffer:65536});
-    const [code,...rest]=stdout.trim().split('\t');
-    const status=Number.parseInt(code,10);
-    return {status:Number.isFinite(status)?status:null,finalUrl:rest.join('\t')||url};
-  }catch(err){
-    const detail=String(err?.stderr||err?.message||err).trim().replace(/\s+/g,' ');
-    return {status:null,finalUrl:url,error:detail};
-  }
-}
+async function curlAttempt(url,method){const args=['-4','--silent','--show-error','--location','--connect-timeout','10','--max-time',method==='HEAD'?'15':'20','--user-agent',USER_AGENT,'--output','/dev/null','--write-out','%{http_code}\t%{url_effective}'];if(method==='HEAD')args.push('--head');else args.push('--range','0-4095');args.push(url);try{const {stdout}=await execFileAsync('curl',args,{maxBuffer:65536});const [code,...rest]=stdout.trim().split('\t');const status=Number.parseInt(code,10);return {status:Number.isFinite(status)?status:null,finalUrl:rest.join('\t')||url};}catch(err){const detail=String(err?.stderr||err?.message||err).trim().replace(/\s+/g,' ');return {status:null,finalUrl:url,error:detail};}}
 
-async function probeUrl(url){
-  const errors=[];
-  let lastHttp=null;
-  const nodeAttempt=async method=>{
-    const init={method,redirect:'follow',signal:AbortSignal.timeout(method==='GET'?20000:15000),headers:{'user-agent':USER_AGENT}};
-    if(method==='GET')init.headers.range='bytes=0-4095';
-    return fetch(url,init);
-  };
+async function probeUrlUncached(url){const errors=[];let lastHttp=null;const nodeAttempt=async method=>{const init={method,redirect:'follow',signal:AbortSignal.timeout(method==='GET'?20000:15000),headers:{'user-agent':USER_AGENT}};if(method==='GET')init.headers.range='bytes=0-4095';return fetch(url,init);};for(const method of ['HEAD','GET']){try{const r=await nodeAttempt(method);const row={url,status:r.status,ok:r.ok||r.status===206,finalUrl:r.url,transport:`node-${method.toLowerCase()}`};lastHttp=row;if(row.ok)return {...row,attemptErrors:errors};errors.push(`${method} HTTP ${r.status}`);}catch(err){errors.push(`${method} ${err.message}`);}}for(const method of ['HEAD','GET']){const c=await curlAttempt(url,method);if(c.status!==null){const row={url,status:c.status,ok:isOkStatus(c.status)||c.status===206,finalUrl:c.finalUrl,transport:`curl-ipv4-${method.toLowerCase()}`};lastHttp=row;if(row.ok)return {...row,attemptErrors:errors};errors.push(`curl ${method} HTTP ${c.status}`);}else errors.push(`curl ${method} ${c.error||'request failed'}`);}const detail=errors.join('; ')||'request failed';if(lastHttp)return {...lastHttp,attemptErrors:errors,error:detail};return {url,status:null,ok:false,transportFailure:true,error:detail,attemptErrors:errors};}
+async function probeUrl(url){const key=normalizeResourceUrl(url);if(!probeCache.has(key))probeCache.set(key,probeUrlUncached(key));return probeCache.get(key);}
 
-  for(const method of ['HEAD','GET']){
-    try{
-      const r=await nodeAttempt(method);
-      const row={url,status:r.status,ok:r.ok||r.status===206,finalUrl:r.url,transport:`node-${method.toLowerCase()}`};
-      lastHttp=row;
-      if(row.ok)return {...row,attemptErrors:errors};
-      errors.push(`${method} HTTP ${r.status}`);
-    }catch(err){
-      errors.push(`${method} ${err.message}`);
-    }
-  }
+async function fetchBuffer(url){const errors=[];try{const response=await fetch(url,{redirect:'follow',signal:AbortSignal.timeout(45000),headers:{'user-agent':USER_AGENT,'accept-encoding':'identity'}});if(!response.ok)throw new Error(`HTTP ${response.status}`);return {buffer:Buffer.from(await response.arrayBuffer()),transport:'node-get',finalUrl:response.url,status:response.status};}catch(err){errors.push(`GET ${err.message}`);}const tmp=path.join(os.tmpdir(),`videha-integrity-${process.pid}-${Date.now()}-${Math.random().toString(16).slice(2)}`);try{await execFileAsync('curl',['-4','--fail','--silent','--show-error','--location','--connect-timeout','10','--max-time','60','--user-agent',USER_AGENT,'--output',tmp,url],{maxBuffer:65536});return {buffer:fs.readFileSync(tmp),transport:'curl-ipv4-get',finalUrl:url,status:200};}catch(err){errors.push(`curl GET ${String(err?.stderr||err?.message||err).trim().replace(/\s+/g,' ')}`);throw new Error(errors.join('; '));}finally{try{fs.unlinkSync(tmp);}catch{}}}
 
-  for(const method of ['HEAD','GET']){
-    const c=await curlAttempt(url,method);
-    if(c.status!==null){
-      const row={url,status:c.status,ok:isOkStatus(c.status)||c.status===206,finalUrl:c.finalUrl,transport:`curl-ipv4-${method.toLowerCase()}`};
-      lastHttp=row;
-      if(row.ok)return {...row,attemptErrors:errors};
-      errors.push(`curl ${method} HTTP ${c.status}`);
-    }else{
-      errors.push(`curl ${method} ${c.error||'request failed'}`);
-    }
-  }
+async function digestResource(url,mode,{captureText=false}={}){const fetched=await fetchBuffer(url);const canonical=mode==='canonical-text'?canonicalizeText(fetched.buffer,url):fetched.buffer;return {sha256:sha256(canonical),bytes:fetched.buffer.length,canonicalBytes:canonical.length,transport:fetched.transport,text:captureText||mode==='canonical-text'?canonical.toString('utf8'):undefined};}
 
-  const detail=errors.join('; ')||'request failed';
-  if(lastHttp)return {...lastHttp,attemptErrors:errors,error:detail};
-  return {url,status:null,ok:false,transportFailure:true,error:detail,attemptErrors:errors};
-}
+async function verifyGitHubMirror(entry){const key=entry.primary;if(mirrorVerificationCache.has(key))return mirrorVerificationCache.get(key);const promise=(async()=>{const mirror=await probeUrl(entry.mirror);const repositorySourceUrl=rawRepositoryUrl(entry);const repositorySource=await probeUrl(repositorySourceUrl);const result={entry,mirror,repositorySourceUrl,repositorySource,verified:false};if(!mirror.ok||!repositorySource.ok)return result;const mode=integrityMode(entry);try{const needsText=mode==='canonical-text'||(entry.requiredAnchors||[]).length>0;const [mirrorDigest,repositoryDigest]=await Promise.all([digestResource(entry.mirror,mode,{captureText:needsText}),digestResource(repositorySourceUrl,mode,{captureText:needsText})]);const integrityMatch=mirrorDigest.sha256===repositoryDigest.sha256;const requiredAnchors=[...new Set(entry.requiredAnchors||[])];let missingMirrorAnchors=[];let missingRepositoryAnchors=[];if(requiredAnchors.length){const mirrorAnchors=anchorsIn(mirrorDigest.text||'');const repoAnchors=anchorsIn(repositoryDigest.text||'');missingMirrorAnchors=requiredAnchors.filter(x=>!mirrorAnchors.has(x));missingRepositoryAnchors=requiredAnchors.filter(x=>!repoAnchors.has(x));}result.integrity={mode,algorithm:'SHA-256',match:integrityMatch,mirrorSha256:mirrorDigest.sha256,repositorySha256:repositoryDigest.sha256,mirrorBytes:mirrorDigest.bytes,repositoryBytes:repositoryDigest.bytes};result.anchors={required:requiredAnchors,missingMirror:missingMirrorAnchors,missingRepository:missingRepositoryAnchors,verified:missingMirrorAnchors.length===0&&missingRepositoryAnchors.length===0};result.mirrorText=mirrorDigest.text;result.verified=integrityMatch&&result.anchors.verified;}catch(err){result.integrityError=err.message;}return result;})();mirrorVerificationCache.set(key,promise);return promise;}
 
-async function verifyGitHubMirror(entry){
-  const key=entry.primary;
-  if(mirrorVerificationCache.has(key))return mirrorVerificationCache.get(key);
-  const promise=(async()=>{
-    const mirror=await probeUrl(entry.mirror);
-    const repositorySourceUrl=rawRepositoryUrl(entry);
-    const repositorySource=await probeUrl(repositorySourceUrl);
-    return {entry,mirror,repositorySourceUrl,repositorySource,verified:mirror.ok&&repositorySource.ok};
-  })();
-  mirrorVerificationCache.set(key,promise);
-  return promise;
-}
+function recordMirrorResult(result){const entry=result.entry;if(mirrorRecorded.has(entry.primary))return;mirrorRecorded.add(entry.primary);if(result.verified){report.verifiedMirrors.push({primary:entry.primary,availability:VERIFIED_MIRROR_LABEL,mirror:entry.mirror,mirrorStatus:result.mirror.status,mirrorTransport:result.mirror.transport,repository:entry.repository,repositoryPath:entry.repositoryPath,repositorySource:result.repositorySourceUrl,repositoryStatus:result.repositorySource.status,repositoryTransport:result.repositorySource.transport,integrity:result.integrity,anchors:result.anchors});return;}const details=[];if(!result.mirror.ok)details.push(`mirror ${result.mirror.status===null?'no HTTP response':`HTTP ${result.mirror.status}`}`);if(!result.repositorySource.ok)details.push(`repository source ${result.repositorySource.status===null?'no HTTP response':`HTTP ${result.repositorySource.status}`}`);if(result.integrityError)details.push(`integrity check error: ${result.integrityError}`);if(result.integrity&&!result.integrity.match)details.push(`content integrity mismatch (${result.integrity.mirrorSha256} != ${result.integrity.repositorySha256})`);if(result.anchors&&!result.anchors.verified){if(result.anchors.missingMirror.length)details.push(`mirror missing anchor(s): ${result.anchors.missingMirror.join(', ')}`);if(result.anchors.missingRepository.length)details.push(`repository source missing anchor(s): ${result.anchors.missingRepository.join(', ')}`);}report.failures.push(`Configured GitHub mirror verification failed for ${entry.primary}: ${details.join('; ')||'unknown verification failure'}`);}
 
-async function request(url,{hard=false}={}){
-  const primary=await probeUrl(url);
-  if(primary.ok)return primary;
+async function verifyRequestedAnchor(url,result){let requested;try{requested=decodeURIComponent(new URL(url).hash.slice(1));}catch{return true;}if(!requested||!result?.verified||integrityMode(result.entry)!=='canonical-text')return true;const mirrorText=result.mirrorText||'';if(anchorsIn(mirrorText).has(requested))return true;report.failures.push(`Configured GitHub mirror anchor verification failed for ${url}: mirror does not contain id/name "${requested}"`);return false;}
 
-  if(!primary.transportFailure){
-    if([404,410].includes(primary.status)||(hard&&!primary.ok))report.failures.push(`${url} returned HTTP ${primary.status}`);
-    else report.warnings.push(`${url} returned HTTP ${primary.status}`);
-    return primary;
-  }
+async function request(url,{hard=false}={}){const primary=await probeUrl(url);if(primary.ok)return primary;if(!primary.transportFailure){if([404,410].includes(primary.status)||(hard&&!primary.ok))report.failures.push(`${url} returned HTTP ${primary.status}`);else report.warnings.push(`${url} returned HTTP ${primary.status}`);return primary;}const normalized=normalizeResourceUrl(url);const mapping=mirrorByPrimary.get(normalized);if(mapping){const fallback=await verifyGitHubMirror(mapping);recordMirrorResult(fallback);if(fallback.verified&&await verifyRequestedAnchor(url,fallback))return {url,status:null,ok:true,availability:VERIFIED_MIRROR_LABEL,mirror:mapping.mirror,repository:mapping.repository,repositoryPath:mapping.repositoryPath,primaryTransportError:primary.error};if(fallback.mirror.status!==null||fallback.repositorySource.status!==null)return {url,status:null,ok:false,mirrorVerificationFailed:true,mirror:mapping.mirror,repositorySource:fallback.repositorySourceUrl,error:'Configured GitHub mirror did not pass archival integrity verification'};}const detail=primary.error||'request failed';const msg=`${url}: INDETERMINATE — no HTTP response received after Node HEAD/GET and IPv4 curl HEAD/GET; ${detail}`;report.indeterminate.push({url,hardRequested:hard,error:detail,mirrorConfigured:Boolean(mapping)});report.warnings.push(msg);return {url,status:null,ok:false,indeterminate:true,hardRequested:hard,error:detail};}
 
-  const normalized=normalizeResourceUrl(url);
-  const mapping=mirrorByPrimary.get(normalized);
-  if(mapping){
-    const fallback=await verifyGitHubMirror(mapping);
-    if(fallback.verified){
-      if(!verifiedMirrorKeys.has(mapping.primary)){
-        verifiedMirrorKeys.add(mapping.primary);
-        report.verifiedMirrors.push({
-          primary:mapping.primary,
-          availability:VERIFIED_MIRROR_LABEL,
-          mirror:mapping.mirror,
-          mirrorStatus:fallback.mirror.status,
-          mirrorTransport:fallback.mirror.transport,
-          repository:mapping.repository,
-          repositoryPath:mapping.repositoryPath,
-          repositorySource:fallback.repositorySourceUrl,
-          repositoryStatus:fallback.repositorySource.status,
-          repositoryTransport:fallback.repositorySource.transport
-        });
-      }
-      return {
-        url,
-        status:null,
-        ok:true,
-        availability:VERIFIED_MIRROR_LABEL,
-        mirror:mapping.mirror,
-        repository:mapping.repository,
-        repositoryPath:mapping.repositoryPath,
-        primaryTransportError:primary.error
-      };
-    }
+async function auditConfiguredMirrors(){for(const entry of mirrorByPrimary.values()){const result=await verifyGitHubMirror(entry);recordMirrorResult(result);if(entry.freshness?.mode==='rss')await auditRssFreshness(entry,result);}}
+async function auditRssFreshness(entry,result){const row={primary:entry.primary,mirror:entry.mirror,mode:'rss'};if(!result.verified){row.status='mirror-unverified';report.freshness.push(row);return;}const primaryProbe=await probeUrl(entry.primary);if(!primaryProbe.ok){row.status='primary-unreachable';row.primaryTransportError=primaryProbe.error||null;report.freshness.push(row);return;}try{const [primaryBody,mirrorBody]=await Promise.all([fetchBuffer(entry.primary),fetchBuffer(entry.mirror)]);const primary=parseRssSummary(primaryBody.buffer.toString('utf8'));const mirror=parseRssSummary(mirrorBody.buffer.toString('utf8'));row.primarySummary=primary;row.mirrorSummary=mirror;const skew=(entry.freshness.maxClockSkewSeconds??300)*1000;const pBuild=parseDate(primary.lastBuildDate);const mBuild=parseDate(mirror.lastBuildDate);const pPub=parseDate(primary.latestPubDate);const mPub=parseDate(mirror.latestPubDate);const mismatches=[];if(primary.latestTitle&&mirror.latestTitle&&primary.latestTitle!==mirror.latestTitle)mismatches.push('latest item title differs');if(primary.latestLink&&mirror.latestLink&&primary.latestLink!==mirror.latestLink)mismatches.push('latest item link differs');if(pPub!==null&&mPub!==null&&pPub>mPub+skew)mismatches.push('mirror latest item pubDate is older than primary');if(pBuild!==null&&mBuild!==null&&pBuild>mBuild+skew)mismatches.push('mirror lastBuildDate is older than primary');row.status=mismatches.length?'stale-or-divergent':'parity';row.mismatches=mismatches;report.freshness.push(row);if(mismatches.length)report.failures.push(`RSS freshness parity failed for ${entry.primary}: ${mismatches.join('; ')}`);}catch(err){row.status='indeterminate';row.error=err.message;report.freshness.push(row);report.warnings.push(`RSS freshness parity indeterminate for ${entry.primary}: ${err.message}`);}}
 
-    const mirrorHttp=fallback.mirror.status!==null;
-    const repoHttp=fallback.repositorySource.status!==null;
-    if(mirrorHttp||repoHttp){
-      const details=[];
-      if(!fallback.mirror.ok)details.push(`mirror ${fallback.mirror.status===null?'no HTTP response':`HTTP ${fallback.mirror.status}`}`);
-      if(!fallback.repositorySource.ok)details.push(`repository source ${fallback.repositorySource.status===null?'no HTTP response':`HTTP ${fallback.repositorySource.status}`}`);
-      report.failures.push(`Configured GitHub mirror verification failed for ${mapping.primary}: ${details.join('; ')}`);
-      return {url,status:null,ok:false,mirrorVerificationFailed:true,mirror:mapping.mirror,repositorySource:fallback.repositorySourceUrl,error:details.join('; ')};
-    }
-  }
-
-  const detail=primary.error||'request failed';
-  const msg=`${url}: INDETERMINATE — no HTTP response received after Node HEAD/GET and IPv4 curl HEAD/GET; ${detail}`;
-  report.indeterminate.push({url,hardRequested:hard,error:detail,mirrorConfigured:Boolean(mapping)});
-  report.warnings.push(msg);
-  return {url,status:null,ok:false,indeterminate:true,hardRequested:hard,error:detail};
-}
+function walkFiles(root,extension){const out=[];const stack=[root];while(stack.length){const current=stack.pop();if(!fs.existsSync(current))continue;for(const entry of fs.readdirSync(current,{withFileTypes:true})){const full=path.join(current,entry.name);if(entry.isDirectory())stack.push(full);else if(!extension||entry.name.toLowerCase().endsWith(extension))out.push(full);}}return out;}
+function extractHttpUrls(html){const urls=[];for(const m of html.matchAll(/(?:href|src)\s*=\s*["'](https?:\/\/[^"']+)["']/gi)){const raw=m[1].replaceAll('&amp;','&');try{urls.push(new URL(raw).href);}catch{}}return urls;}
+function classifyCoverage(url){const u=new URL(url);const host=u.hostname.toLowerCase();const normalized=normalizeResourceUrl(url);const mapped=mirrorByPrimary.get(normalized);if(primaryHosts.has(host)){if(mapped)return {classification:'primary + GitHub mirror + repository source',critical:Boolean(mapped.critical),mapped:true};return {classification:'primary without registered durable fallback',critical:true,mapped:false};}if(host==='videha-ejournal.github.io'){const first=u.pathname.split('/').filter(Boolean)[0]||'videha-ejournal.github.io';return {classification:'repository-only',critical:false,mapped:false,repository:`${githubOwner}/${first}`};}if(host==='github.com'||host==='raw.githubusercontent.com'){const parts=u.pathname.split('/').filter(Boolean);if(parts[0]===githubOwner&&parts[1])return {classification:'repository-only',critical:false,mapped:false,repository:`${parts[0]}/${parts[1]}`};}return {classification:'external third-party',critical:false,mapped:false};}
+function auditFallbackCoverage(){const rows=new Map();const htmlFiles=walkFiles(ROOT,'.html');for(const file of htmlFiles){const html=fs.readFileSync(file,'utf8');for(const url of extractHttpUrls(html)){const normalized=normalizeResourceUrl(url);if(!rows.has(normalized))rows.set(normalized,{url:normalized,...classifyCoverage(url)});}}const values=[...rows.values()].sort((a,b)=>a.url.localeCompare(b.url));const counts={};for(const row of values)counts[row.classification]=(counts[row.classification]||0)+1;const uncoveredCritical=values.filter(x=>x.critical&&!x.mapped);report.coverage={scannedHtmlFiles:htmlFiles.length,uniqueExternalResources:values.length,counts,uncoveredCriticalCount:uncoveredCritical.length,uncoveredCritical:uncoveredCritical.map(x=>x.url)};if(uncoveredCritical.length)report.warnings.push(`Fallback coverage audit found ${uncoveredCritical.length} critical Videha resource(s) without a registered durable GitHub fallback`);}
 
 try{
   const keyRoutes=['','en/','bibliography/','en/bibliography/','criticism/reception/','criticism/reception/gt-pt-criticism.html','criticism/reception/preeti-karan/p01.html','criticism/reception/en/preeti-karan/p01.html','criticism/reception/gt-pt-criticism/g01.html'];
   for(const rel of keyRoutes)report.live.push(await request(new URL(rel,SITE).href,{hard:true}));
   report.live.push(await request('https://www.videha.co.in/videha-rss.xml',{hard:true}));
 
+  await auditConfiguredMirrors();
+  auditFallbackCoverage();
+
   const localSitemap=fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
   const localLocs=[...localSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();
   const liveMapResp=await fetch(new URL('sitemap.xml',SITE),{signal:AbortSignal.timeout(15000),headers:{'user-agent':USER_AGENT}});
   if(!liveMapResp.ok)report.failures.push(`Live sitemap returned HTTP ${liveMapResp.status}`);
-  else{
-    const liveLocs=[...(await liveMapResp.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();
-    report.sitemap={localCount:localLocs.length,liveCount:liveLocs.length};
-    if(JSON.stringify(localLocs)!==JSON.stringify(liveLocs))report.failures.push(`Live sitemap differs from current built sitemap (${liveLocs.length} vs ${localLocs.length} URLs)`);
-  }
+  else{const liveLocs=[...(await liveMapResp.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();report.sitemap={localCount:localLocs.length,liveCount:liveLocs.length};if(JSON.stringify(localLocs)!==JSON.stringify(liveLocs))report.failures.push(`Live sitemap differs from current built sitemap (${liveLocs.length} vs ${localLocs.length} URLs)`);}
 
   const sourceFiles=['index.html','en/index.html','bibliography/index.html','en/bibliography/index.html','criticism/reception/index.html','criticism/reception/preeti-karan.html','criticism/reception/en/preeti-karan.html','criticism/reception/setusham.html','criticism/reception/en/setusham.html','criticism/reception/gt-pt-criticism.html'];
   const external=new Set();
-  for(const rel of sourceFiles){
-    const file=path.join(ROOT,rel);if(!fs.existsSync(file))continue;
-    const html=fs.readFileSync(file,'utf8');
-    for(const m of html.matchAll(/(?:href|src)="(https?:\/\/[^"#]+[^\"]*)"/g)){
-      const raw=m[1].replaceAll('&amp;','&');
-      try{const u=new URL(raw);if(!u.hostname.endsWith('videha-ejournal.github.io'))external.add(u.href);}catch{}
-    }
-  }
+  for(const rel of sourceFiles){const file=path.join(ROOT,rel);if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');for(const raw of extractHttpUrls(html)){try{const u=new URL(raw);if(!u.hostname.endsWith('videha-ejournal.github.io'))external.add(u.href);}catch{}}}
   const urls=[...external].filter(u=>!u.includes('translate.google.com')).sort();
-  for(let i=0;i<urls.length;i+=6){
-    const rows=await Promise.all(urls.slice(i,i+6).map(u=>request(u)));
-    report.external.push(...rows);
-  }
+  for(let i=0;i<urls.length;i+=6){const rows=await Promise.all(urls.slice(i,i+6).map(u=>request(u)));report.external.push(...rows);}
 
   const localCatalog=JSON.parse(fs.readFileSync('content/videha-pdf-catalog.snapshot.json','utf8'));
   const remoteResp=await fetch(PDF_CATALOG,{signal:AbortSignal.timeout(20000),headers:{'user-agent':USER_AGENT}});
@@ -220,6 +110,7 @@ try{
 report.status=report.failures.length?'fail':report.indeterminate.length?'pass-with-indeterminate':'pass';
 fs.writeFileSync(OUT,JSON.stringify(report,null,2)+'\n');
 console.log(`Scheduled health audit ${report.status.toUpperCase()}: ${report.live.length} key live routes, ${report.external.length} external links, ${report.verifiedMirrors.length} verified GitHub mirror resource(s), ${report.indeterminate.length} indeterminate transport result(s), ${report.warnings.length} warning(s), ${report.failures.length} failure(s).`);
-for(const row of report.verifiedMirrors)console.log(`${VERIFIED_MIRROR_LABEL}: ${row.mirror} | repository source: ${row.repository}/${row.repositoryPath}`);
+for(const row of report.verifiedMirrors)console.log(`${VERIFIED_MIRROR_LABEL}: ${row.mirror} | repository source: ${row.repository}/${row.repositoryPath} | ${row.integrity.algorithm} ${row.integrity.mirrorSha256}`);
+if(report.coverage?.counts)console.log(`Fallback coverage: ${JSON.stringify(report.coverage.counts)}; ${report.coverage.uncoveredCriticalCount||0} uncovered critical resource(s).`);
 if(report.warnings.length)console.warn(report.warnings.join('\n'));
 if(report.failures.length){console.error(report.failures.join('\n'));process.exitCode=1;}
