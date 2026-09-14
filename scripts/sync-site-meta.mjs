@@ -1,13 +1,20 @@
 import fs from 'node:fs';
 const meta=JSON.parse(fs.readFileSync('content/site-meta.json','utf8'));
 
+const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));
+const buildDate=`${parts.year}-${parts.month}-${parts.day}`;
+const monthEn=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const monthMai=['जनवरी','फरवरी','मार्च','अप्रैल','मई','जून','जुलाई','अगस्त','सितम्बर','अक्टूबर','नवम्बर','दिसम्बर'];
+const buildDisplayEn=`${Number(parts.day)} ${monthEn[Number(parts.month)-1]} ${parts.year}`;
+const buildDisplayMai=`${Number(parts.day)} ${monthMai[Number(parts.month)-1]} ${parts.year}`;
+
 function writeIfChanged(file,transform){
  const before=fs.readFileSync(file,'utf8');
  const after=transform(before);
  if(after!==before)fs.writeFileSync(file,after);
 }
 
-writeIfChanged('scripts/build-work-pages.mjs',source=>source.replace(/const updated='[^']+';/,`const updated='${meta.updated}';`));
+writeIfChanged('scripts/build-work-pages.mjs',source=>source.replace(/const updated='[^']+';/,`const updated='${buildDate}';`));
 
 writeIfChanged('app/(english)/en/page.tsx',source=>{
  let out=source;
@@ -16,7 +23,7 @@ writeIfChanged('app/(english)/en/page.tsx',source=>{
  out=out.replace(/<p className="verified-banner">Sources checked: [^<]+ · <a/,`<p className="verified-banner">Sources checked: <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time> · <a`);
  out=out.replace(/<p className="verified-banner">Timeline sources checked: [^<]+<\/p>/,`<p className="verified-banner">Timeline sources checked: <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time></p>`);
  out=out.replace(/<p>Sources checked [^.]+\. This selection/,`<p>Sources checked <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time>. This selection`);
- out=out.replace(/<small className="maintenance-stamp">Site updated: [^·]+ · Sources checked: [^·]+ · <a/,`<small className="maintenance-stamp">Site updated: <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time> · Sources checked: <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time> · <a`);
+ out=out.replace(/<small className="maintenance-stamp">Site updated: [^·]+ · Sources checked: [^·]+ · <a/,`<small className="maintenance-stamp">Site updated: <time dateTime="${buildDate}">${buildDisplayEn}</time> · Sources checked: <time dateTime="${meta.updated}">${meta.updatedDisplayEn}</time> · <a`);
  return out;
 });
 
@@ -25,8 +32,8 @@ writeIfChanged('app/(maithili)/page.tsx',source=>{
  out=out.replace(/<p className="verified-banner">स्रोत-जाँच: [^<]+ · <a/,`<p className="verified-banner">स्रोत-जाँच: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time> · <a`);
  out=out.replace(/<p className="verified-banner">समय-यात्राक स्रोत-जाँच: [^<]+<\/p>/,`<p className="verified-banner">समय-यात्राक स्रोत-जाँच: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time></p>`);
  out=out.replace(/<p>स्रोत-जाँच: [^।]+। ई चयन/,`<p>स्रोत-जाँच: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time>। ई चयन`);
- out=out.replace(/<small className="maintenance-stamp">साइट अद्यतन: [^·]+ · स्रोत-जाँच: [^·]+ · <a/,`<small className="maintenance-stamp">साइट अद्यतन: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time> · स्रोत-जाँच: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time> · <a`);
+ out=out.replace(/<small className="maintenance-stamp">साइट अद्यतन: [^·]+ · स्रोत-जाँच: [^·]+ · <a/,`<small className="maintenance-stamp">साइट अद्यतन: <time dateTime="${buildDate}">${buildDisplayMai}</time> · स्रोत-जाँच: <time dateTime="${meta.updated}">${meta.updatedDisplayMai}</time> · <a`);
  return out;
 });
 
-console.log(`Synchronized visible and generated metadata to ${meta.updated}.`);
+console.log(`Synchronized production date to ${buildDate}; scholarly source-check date remains ${meta.updated}.`);

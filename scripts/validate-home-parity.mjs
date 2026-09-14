@@ -58,7 +58,7 @@ assert(!mai.includes('Use browser zoom to enlarge text.'),'Maithili accessibilit
 assert(!mai.includes('Search accepts Maithili text, English author names and either Devanagari or Latin year numerals.'),'Maithili accessibility note must be fully localized.');
 assert(mai.includes('पूरा अन्तरफलक पैघ करबाक लेल ब्राउजरक जूम उपयोग करू।'),'Maithili zoom guidance must be localized.');
 assert(en.includes('PLATFORM / META'),'English 2026 milestone must carry a non-colour platform label.');
-assert(mai.includes('प्लेटफॉर्म / META'),'Maithili 2026 milestone must carry a non-colour platform label.');
+assert(mai.includes('प्लेटफॉर्म / सन्दर्भ'),'Maithili 2026 milestone must carry a localized non-colour platform label.');
 assert(en.includes('editorial heritage gallery'),'English Mithila Ratna link must explain that it is an editorial heritage gallery, not imply an external state honour.');
 assert(mai.includes('सम्पादकीय विरासत-संग्रह'),'Maithili Mithila Ratna link must carry the same restrained gloss.');
 assert(en.includes('available in 10 parts')&&en.includes('does not guess one'),'English Panji note must disclose the verified 10-part edition without inventing a volume mapping.');
