@@ -1,0 +1,6 @@
+{
+  "recorded": "2026-09-14",
+  "policy": "Block any critical vulnerability and any increase above the currently observed high-severity baseline. Moderate and low findings remain reportable but non-blocking until their upstream fixes can be adopted without destabilizing the pinned atlas stack.",
+  "maxCritical": 0,
+  "maxHigh": 4
+}
