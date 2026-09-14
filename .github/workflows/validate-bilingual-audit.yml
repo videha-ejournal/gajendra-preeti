@@ -13,6 +13,13 @@ jobs:
         with:
           node-version: '22'
           cache: npm
+      - name: Refresh lockfile for dependency consolidation
+        run: npm install --package-lock-only --ignore-scripts
+      - name: Upload refreshed lockfile
+        uses: actions/upload-artifact@v4
+        with:
+          name: refreshed-package-lock
+          path: package-lock.json
       - run: npm ci
       - name: Dependency security gate
         run: |
