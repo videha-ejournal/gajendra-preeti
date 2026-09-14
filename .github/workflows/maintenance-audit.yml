@@ -3,6 +3,13 @@ on:
   schedule:
     - cron: '17 2 * * 0'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/maintenance-audit.yml'
+      - 'scripts/scheduled-health-check.mjs'
+      - 'scripts/security-audit-policy.mjs'
+      - 'content/videha-pdf-catalog.snapshot.json'
 permissions:
   contents: read
 jobs:
