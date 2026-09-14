@@ -24,12 +24,13 @@ jobs:
       - run: node scripts/validate-static-current.mjs
       - run: node scripts/validate-drama-classics-structure.mjs
       - run: node scripts/audit-site-bilingual.mjs
+      - run: node scripts/validate-sitewide-publishing-integrity.mjs
       - name: Install pinned browser-audit tools
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0 axe-core@4.10.2
           npx playwright install --with-deps chromium
       - name: Real-browser hydration + WCAG 2.2 audit
-        run: node scripts/browser-hardening.mjs
+        run: node scripts/browser-hardening.mjs && node scripts/browser-representative-pages.mjs
       - name: Upload hardening reports
         if: always()
         uses: actions/upload-artifact@v4
