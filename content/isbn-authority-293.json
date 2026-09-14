@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authority": "VIDEHA 293 ISBN LIST",
-  "authorityPolicy": "Authoritative for Videha ISBN metadata. This source supersedes and overrides older ISBN lists and any conflicting ISBN/title metadata.",
+  "authorityPolicy": "Authoritative for Videha ISBN metadata. This source supersedes and overrides older ISBN lists and any conflicting ISBN/title metadata. Explicit editor corrections recorded here have higher authority than the imported source row.",
   "retrieved": "2026-09-14",
   "sourceUrls": [
     "https://isbn.gov.in/Applicant/ApplyISBNForAuthor",
@@ -53,6 +53,18 @@
     "isbn-authority-293.part1.json",
     "isbn-authority-293.part2.json",
     "isbn-authority-293.part3.json"
+  ],
+  "recordOverrides": [
+    {
+      "isbn": "978-93-5943-857-3",
+      "canonicalTitle": "आत्मतत्त्वविवेक",
+      "aliases": [
+        "आत्मतत्त्वविवेक",
+        "Ātmatattvaviveka",
+        "Atmatattvaviveka"
+      ],
+      "editorialBasis": "Editor correction supplied 2026-09-14: आत्मतत्त्वविवेक ISBN is 978-93-5943-857-3."
+    }
   ],
   "identityOverrides": [
     {
