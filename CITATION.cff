@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this archived dataset, cite the Zenodo release DOI below and the relevant work-level record when applicable."
-title: "gajendra-preeti"
+title: "Videha Literary Atlas: Preeti Thakur & Gajendra Thakur"
 type: dataset
 authors:
   - family-names: "Thakur"
@@ -14,8 +14,8 @@ repository-code: "https://github.com/videha-ejournal/gajendra-preeti"
 license: "CC-BY-4.0"
 abstract: >-
   Archived digital-humanities research release of the Gajendra Thakur and
-  Kumari Preeti bilingual literary atlas and scholarly archive, part of
-  Videha — First Maithili Fortnightly eJournal, ISSN 2229-547X.
+  Preeti Thakur bilingual literary atlas and scholarly archive, a research
+  venture of Videha — First Maithili Fortnightly eJournal, ISSN 2229-547X.
 identifiers:
   - type: doi
     value: "10.5281/zenodo.22754971"
@@ -28,4 +28,4 @@ identifiers:
     description: "Primary Videha publication site"
   - type: url
     value: "https://github.com/videha-ejournal/gajendra-preeti"
-    description: "Source repository"
+    description: "Source repository for this Videha eJournal research venture"
