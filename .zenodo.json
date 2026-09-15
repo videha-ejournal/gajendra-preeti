@@ -1,7 +1,7 @@
 {
-  "title": "gajendra-preeti",
+  "title": "Videha Literary Atlas: Preeti Thakur & Gajendra Thakur",
   "upload_type": "dataset",
-  "description": "Archived digital-humanities research release of the Gajendra Thakur and Kumari Preeti bilingual literary atlas and scholarly archive, part of Videha — First Maithili Fortnightly eJournal, ISSN 2229-547X.",
+  "description": "Archived digital-humanities research release of the Gajendra Thakur and Preeti Thakur bilingual literary atlas and scholarly archive, a research venture of Videha — First Maithili Fortnightly eJournal, ISSN 2229-547X.",
   "creators": [
     {
       "name": "Thakur, Gajendra",
@@ -11,5 +11,5 @@
   "access_right": "open",
   "license": "cc-by-4.0",
   "keywords": ["Videha", "Maithili", "digital humanities", "literary archive", "bilingual research"],
-  "notes": "Parent publication: Videha — First Maithili Fortnightly eJournal · ISSN 2229-547X · https://www.videha.co.in/ · GitHub mirror https://videha-ejournal.github.io/videha/. CC BY 4.0 applies to repository-original and curatorial metadata/dataset content; item-level rights notices prevail where applicable."
+  "notes": "Videha eJournal research venture. Primary publication site: https://www.videha.co.in/ · GitHub mirror of the main publication: https://videha-ejournal.github.io/videha/. CC BY 4.0 applies to repository-original and curatorial metadata/dataset content; item-level authorship and rights notices prevail where applicable."
 }
