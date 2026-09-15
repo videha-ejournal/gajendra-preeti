@@ -45,4 +45,11 @@ writeIfChanged('scripts/validate-home-parity.mjs',source=>source
  .replaceAll('14 September 2026',buildDisplayEn)
  .replaceAll('14 सितम्बर 2026',buildDisplayMai));
 
+// The authoritative Samagra title for Volume I gained the bracketed series subtitle.
+// Keep the strict PDF-mapping validator pointed at that canonical source title rather
+// than weakening the required-PDF assertion or retaining a stale shortened title.
+const historyVolumeIOld='HISTORY OF MITHILA, VAJJI & ANGA in India & Nepal: From Prehistory to the Contemporary Period VOLUME I';
+const historyVolumeICanonical='HISTORY OF MITHILA, VAJJI & ANGA IN INDIA & NEPAL: FROM PREHISTORY TO THE CONTEMPORARY PERIOD [A PARALLEL HISTORY OF MITHILA & MAITHILI LITERATURE] VOLUME I';
+writeIfChanged('scripts/validate-pdf-library-integration.mjs',source=>source.replaceAll(historyVolumeIOld,historyVolumeICanonical));
+
 console.log(`Synchronized production date to ${buildDate}; scholarly source-check date remains ${meta.updated}.`);
