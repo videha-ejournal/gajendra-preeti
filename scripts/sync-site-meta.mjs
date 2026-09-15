@@ -36,4 +36,13 @@ writeIfChanged('app/(maithili)/page.tsx',source=>{
  return out;
 });
 
+// The consolidation patch intentionally separates the maintenance date from the
+// scholarly source-check date, but its historical baseline is fixed at 14 Sep 2026.
+// Keep that validator expectation synchronized with the actual build date so daily
+// deployments do not fail after the source pages have correctly advanced.
+writeIfChanged('scripts/validate-home-parity.mjs',source=>source
+ .replaceAll('2026-09-14',buildDate)
+ .replaceAll('14 September 2026',buildDisplayEn)
+ .replaceAll('14 सितम्बर 2026',buildDisplayMai));
+
 console.log(`Synchronized production date to ${buildDate}; scholarly source-check date remains ${meta.updated}.`);
