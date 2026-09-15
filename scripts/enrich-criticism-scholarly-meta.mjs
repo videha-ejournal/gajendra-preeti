@@ -4,9 +4,12 @@ import assert from 'node:assert/strict';
 
 const root='public/criticism';
 const base='https://videha-ejournal.github.io/gajendra-preeti';
-const publication='Videha — First Maithili Fortnightly eJournal';
-const creator='Gajendra Thakur';
-const publicationDate='2026/09/13';
+
+// Reading Room item pages are editorial/critical records about works. Do not
+// flatten the featured work creator into the author of the critical record,
+// and do not treat a source-check date as a publication date. Likewise, do
+// not label these project pages as journal articles merely because Videha is
+// the parent publication. Add only metadata supported by the page itself.
 const citationNames=[
   'citation_title',
   'citation_author',
@@ -14,7 +17,8 @@ const citationNames=[
   'citation_journal_title',
   'citation_issn',
   'citation_public_url',
-  'citation_language'
+  'citation_language',
+  'citation_pdf_url'
 ];
 
 const escapeAttr=value=>String(value).replace(/[&<>"']/g,c=>({
@@ -38,6 +42,17 @@ function removeCitationTags(html){
   return html;
 }
 
+function explicitMeta(html,name){
+  const rx=new RegExp(`<meta\\s+name=["']${name}["']\\s+content=["']([^"']+)["']\\s*/?>`,'i');
+  return html.match(rx)?.[1]?.trim()||null;
+}
+
+function pdfUrl(html){
+  const links=[...html.matchAll(/href=["']([^"']+\.pdf(?:#[^"']*)?)["']/gi)].map(m=>m[1]);
+  const url=links.find(Boolean)||null;
+  return url ? url.replace(/#.*$/,'') : null;
+}
+
 function enrich(file,language){
   let html=fs.readFileSync(file,'utf8');
   const h1=html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)?.[1];
@@ -47,23 +62,40 @@ function enrich(file,language){
   assert(canonical.startsWith(`${base}/criticism/`),`${file}: unexpected canonical ${canonical}`);
 
   const title=text(h1);
+  // Only propagate an author/date/journal identity when the source page has an
+  // explicit, dedicated metadata field for the critical record itself.
+  const author=explicitMeta(html,'author');
+  const publicationDate=explicitMeta(html,'date');
+  const journalTitle=explicitMeta(html,'journal-title');
+  const issn=explicitMeta(html,'issn');
+  const pdf=pdfUrl(html);
+
   html=removeCitationTags(html);
-  const tags=[
+  const supported=[
     ['citation_title',title],
-    ['citation_author',creator],
-    ['citation_publication_date',publicationDate],
-    ['citation_journal_title',publication],
-    ['citation_issn','2229-547X'],
     ['citation_public_url',canonical],
-    ['citation_language',language]
-  ].map(([name,value])=>`<meta name="${name}" content="${escapeAttr(value)}">`).join('');
+    ['citation_language',language],
+    ...(author ? [['citation_author',author]] : []),
+    ...(publicationDate ? [['citation_publication_date',publicationDate]] : []),
+    ...(journalTitle ? [['citation_journal_title',journalTitle]] : []),
+    ...(journalTitle && issn ? [['citation_issn',issn]] : []),
+    ...(pdf ? [['citation_pdf_url',pdf]] : [])
+  ];
+  const tags=supported.map(([name,value])=>`<meta name="${name}" content="${escapeAttr(value)}">`).join('');
   html=html.replace('</head>',`${tags}</head>`);
   fs.writeFileSync(file,html,'utf8');
 
-  for(const name of citationNames){
+  for(const name of ['citation_title','citation_public_url','citation_language']){
     assert(new RegExp(`<meta\\s+name=["']${name}["']`,'i').test(html),`${file}: ${name} missing after enrichment`);
   }
   assert(html.includes(`name="citation_public_url" content="${escapeAttr(canonical)}"`),`${file}: citation_public_url must match canonical`);
+  if(pdf) assert(html.includes(`name="citation_pdf_url" content="${escapeAttr(pdf)}"`),`${file}: citation_pdf_url must name a real linked PDF`);
+  if(!author) assert(!/name=["']citation_author["']/i.test(html),`${file}: citation_author must not be inferred from the featured work creator`);
+  if(!publicationDate) assert(!/name=["']citation_publication_date["']/i.test(html),`${file}: source-check date must not be relabelled as publication date`);
+  if(!journalTitle){
+    assert(!/name=["']citation_journal_title["']/i.test(html),`${file}: non-journal Reading Room page must not be labelled as a journal article`);
+    assert(!/name=["']citation_issn["']/i.test(html),`${file}: ISSN requires an explicit journal identity`);
+  }
 }
 
 const enDir=path.join(root,'en');
@@ -79,4 +111,4 @@ for(const name of english){
   enrich(en,'en');
 }
 
-console.log(`Scholar metadata enrichment PASS: ${english.length*2} bilingual Reading Room item pages.`);
+console.log(`Scholar metadata enrichment PASS: ${english.length*2} bilingual Reading Room item pages; attribution-safe fields only.`);
