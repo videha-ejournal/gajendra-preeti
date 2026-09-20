@@ -12,6 +12,8 @@
 .writers article, .section-heading > *, .path-panel > *, .work-card { min-width: 0; }
 .writers article { padding: clamp(1.5rem, 3vw, 2.5rem); }
 .writers h3 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); }
+.path-tabs[data-slot=tabs-list] { flex-wrap: wrap; height: auto; }
+.path-tabs [data-slot=tabs-trigger] { height: auto; }
 .catalogue-tools { gap: 1.25rem; padding-block: 1.5rem; }
 .catalogue-tools label { min-width: 0; }
 .catalogue-tools input { width: 100%; }
