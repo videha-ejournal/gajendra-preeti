@@ -76,4 +76,4 @@ async function init(){
     bind();render();
   }catch(err){console.error(err);$('#status').textContent='The chapter guide could not be loaded. Please refresh the page.'}
 }
-init();
+void init();

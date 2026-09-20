@@ -7,7 +7,6 @@ const base=document.body.dataset.base||'';
 
 function chapterLabel(c){return lang==='en'?`Book ${c.book} · Chapter ${c.n}`:`पोथी ${c.book} · अध्याय ${c.n}`;}
 function secTitle(sec){return lang==='en'?sec.en:sec.mai;}
-function bookName(id){const b=manifest.books.find(x=>x.id===id);return lang==='en'?b.en:b.mai;}
 
 function renderHero(){
   $('#count').textContent=manifest.chapterCount;

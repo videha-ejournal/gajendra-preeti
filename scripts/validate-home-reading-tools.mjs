@@ -13,8 +13,7 @@ const css=fs.readFileSync('public/reading-tools.css','utf8');
 
 for(const [label,html] of pages){
   assert(html.includes('id="videha-reading-tools"'),`${label} home must render the reading-tools host.`);
-  assert(html.includes('/gajendra-preeti/reading-tools.js'),`${label} home must server-emit the reading-tools script instead of relying only on hydration.`);
-  assert(html.includes('/gajendra-preeti/reading-tools-resilience.js'),`${label} home must server-emit the hydration-resilience guard.`);
+  assert(!/<script[^>]+src=["'][^"']*\/reading-tools(?:-resilience)?\.js["']/i.test(html),`${label} home must not mutate the toolbar before hydration.`);
 }
 
 const languages=js.match(/const languages=\[(.*?)\];/s)?.[1]||'';
@@ -29,7 +28,9 @@ assert(css.includes('.vt-bar{position:fixed')&&css.includes('.vt-dialog'),'Readi
 
 assert(component.includes("'use client'"),'ReadingTools must run a post-hydration recovery effect.');
 assert(component.includes("window.dispatchEvent(new Event('videha-tools-mount'))"),'ReadingTools must explicitly remount after hydration.');
-assert(component.includes('suppressHydrationWarning'),'Toolbar host must tolerate pre-hydration enhancement without a hydration warning.');
+assert(component.includes('useEffect('),'Reading tools must initialize after hydration.');
+assert(component.includes("loadScript('/gajendra-preeti/reading-tools.js')"),'Reading tools must load the protected script.');
+assert(component.includes(".then(()=>loadScript('/gajendra-preeti/reading-tools-resilience.js'))") || component.includes(".then(() => loadScript('/gajendra-preeti/reading-tools-resilience.js'))"),'The recovery guard must load after the reading tools.');
 assert(resilience.includes('MutationObserver'),'Reading-tools resilience guard must watch for hydration DOM replacement.');
 assert(resilience.includes('delete host.dataset.mounted'),'Resilience guard must clear the stale mounted flag before remounting.');
 assert(resilience.includes("window.dispatchEvent(new Event('videha-tools-mount'))"),'Resilience guard must remount the toolbar when React clears it.');

@@ -8,7 +8,7 @@ assert.equal(data.count,28,'Expected all 28 source-supplied links.');
 assert.equal(all.length,28,'Expected all 28 source-supplied links.');
 assert.equal(new Set(all.map(x=>x.id)).size,28,'Media ids must be unique.');
 assert.equal(new Set(all.map(x=>x.url)).size,28,'Media URLs must be unique.');
-assert(all.every(x=>/^https:\/\//.test(x.url)),'Every media resource must use an absolute HTTPS URL.');
+assert(all.every(x=>x.url.startsWith('https://')),'Every media resource must use an absolute HTTPS URL.');
 
 const out='public/media-learning';
 fs.rmSync(out,{recursive:true,force:true});

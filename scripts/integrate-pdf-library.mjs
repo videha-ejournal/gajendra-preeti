@@ -116,9 +116,9 @@ const report={
   samagraRecordCount:data.records.length,
   matchedRecordCount:matched.length,
   matchedPdfCount:used.size,
-  missingReferencedPaths:[...missingReferenced].sort(),
-  pendingAliasPaths:[...pendingAlias].sort(),
-  unmatchedCatalogPaths:catalog.items.map(x=>x.path).filter(p=>!used.has(p)).sort(),
+  missingReferencedPaths:[...missingReferenced].sort((a,b)=>a < b ? -1 : a > b ? 1 : 0),
+  pendingAliasPaths:[...pendingAlias].sort((a,b)=>a < b ? -1 : a > b ? 1 : 0),
+  unmatchedCatalogPaths:catalog.items.map(x=>x.path).filter(p=>!used.has(p)).sort((a,b)=>a < b ? -1 : a > b ? 1 : 0),
   records:matched.map(r=>({id:r.id,sourcePosition:r.sourcePosition,title:r.title,slug:r.slug,pdfs:r.pdfLibrary}))
 };
 fs.writeFileSync(DATA,JSON.stringify(data,null,2)+'\n');

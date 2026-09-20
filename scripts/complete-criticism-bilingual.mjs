@@ -66,7 +66,6 @@ function toMai(html,file){
   const t=maiById[b.id],src=sourceById[b.id];
   if(src?.title)html=html.replaceAll(e(b.titleEn),e(src.title));
   html=html.replaceAll(e(t.id===b.id?b.titleEn:''),e(src?.title||b.titleEn));
-  const reading=fs.readFileSync('content/readings.txt','utf8');
  }
  // Replace source English criticism text with its paired Maithili text.
  const blocks=fs.readFileSync('content/readings.txt','utf8').trim().split(/\r?\n\s*\r?\n/);

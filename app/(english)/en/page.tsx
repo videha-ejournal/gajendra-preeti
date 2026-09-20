@@ -1,3 +1,4 @@
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element -- Static GitHub Pages routes need full document navigation; images use the preserved local assets. */
 import works from '../../works.json';
 import StructuredData from '../../structured-data';
 import {Catalogue,ReadingPaths,ReadingProgress} from '../../english-atlas';

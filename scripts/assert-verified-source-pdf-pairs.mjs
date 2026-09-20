@@ -1,10 +1,8 @@
 import fs from 'node:fs';
-import path from 'node:path';
 
 const SNAP='content/videha-pdf-catalog.snapshot.json';
 const REPORTS=['public/bibliography/pdf-library-manifest.json','public/en/bibliography/pdf-library-manifest.json','content/pdf-library-reconciliation.json'];
 const EXPORTS=['public/bibliography/translated-pdf-resources.json','public/en/bibliography/translated-pdf-resources.json'];
-const BASE='/gajendra-preeti';
 const catalog=JSON.parse(fs.readFileSync(SNAP,'utf8'));
 const byPath=new Map(catalog.items.map(x=>[x.path,x]));
 const pairs=[

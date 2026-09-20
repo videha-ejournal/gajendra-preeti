@@ -1,3 +1,4 @@
+/* oxlint-disable next/no-html-link-for-pages, next/no-img-element -- Static GitHub Pages routes need full document navigation; images use the preserved local assets. */
 import {SITE_UPDATED,SITE_UPDATED_DISPLAY,SITE_UPDATED_DISPLAY_MAI} from './site-meta';
 
 export default function SiteEnhancements({lang}:{lang:'mai'|'en'}){

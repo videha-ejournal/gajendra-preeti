@@ -19,9 +19,9 @@ const records=rawRecords.map(record=>{
 });
 const byIsbn=new Map(records.map(record=>[record.isbn,record]));
 const digits='०१२३४५६७८९';
-const normalize=value=>String(value??'').normalize('NFKC').toLowerCase().replace(/[०-९]/g,d=>String(digits.indexOf(d))).replace(/[’'“”"`´·•:;,.!?()\[\]{}_/\\|+*=~^<>–—-]+/g,' ').replace(/\s+/g,' ').trim();
+const normalize=value=>String(value??'').normalize('NFKC').toLowerCase().replace(/[०-९]/g,d=>String(digits.indexOf(d))).replace(/[’'“”"`´·•:;,.!?()[\]{}_/\\|+*=~^<>–—-]+/g,' ').replace(/\s+/g,' ').trim();
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const isbnOk=value=>{const d=String(value).replace(/-/g,'');if(!/^978\d{10}$/.test(d))return false;const sum=[...d.slice(0,12)].reduce((n,x,i)=>n+Number(x)*(i%2?3:1),0);return (10-(sum%10))%10===Number(d[12]);};
+const isbnOk=value=>{const d=String(value).replace(/-/g,'');if(!/^978\d{10}$/.test(d))return false;const sum=d.slice(0,12).reduce((n,x,i)=>n+Number(x)*(i%2?3:1),0);return (10-(sum%10))%10===Number(d[12]);};
 
 const failures=[];
 if(manifest.schemaVersion!==1)failures.push(`Unsupported ISBN authority schema ${manifest.schemaVersion}`);

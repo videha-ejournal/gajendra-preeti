@@ -1,5 +1,4 @@
 import fs from 'node:fs';
-import path from 'node:path';
 
 const base='https://videha-ejournal.github.io/gajendra-preeti';
 const dataPath='public/isbn/isbn-authority-293.json';

@@ -21,7 +21,7 @@ function isOkStatus(status){return Number.isInteger(status)&&status>=200&&status
 function normalizeResourceUrl(value){const u=new URL(value);u.hash='';return u.href;}
 function rawRepositoryUrl(entry){const branch=entry.branch||'main';const encodedPath=entry.repositoryPath.split('/').map(encodeURIComponent).join('/');return `https://raw.githubusercontent.com/${entry.repository}/${encodeURIComponent(branch)}/${encodedPath}`;}
 function sha256(value){return createHash('sha256').update(value).digest('hex');}
-function stableJson(value){if(Array.isArray(value))return value.map(stableJson);if(value&&typeof value==='object'){const out={};for(const key of Object.keys(value).sort())out[key]=stableJson(value[key]);return out;}return value;}
+function stableJson(value){if(Array.isArray(value))return value.map(stableJson);if(value&&typeof value==='object'){const out={};for(const key of Object.keys(value).sort((a,b)=>a < b ? -1 : a > b ? 1 : 0))out[key]=stableJson(value[key]);return out;}return value;}
 function canonicalizeText(buffer,url){let text=buffer.toString('utf8').replace(/^\uFEFF/,'').replace(/\r\n?/g,'\n');const pathname=new URL(url).pathname.toLowerCase();if(pathname.endsWith('.json')){const parsed=JSON.parse(text);return Buffer.from(JSON.stringify(stableJson(parsed))+'\n','utf8');}text=text.split('\n').map(line=>line.replace(/[ \t]+$/g,'')).join('\n').trimEnd()+'\n';return Buffer.from(text,'utf8');}
 function integrityMode(entry){if(entry.integrity)return entry.integrity;return /\.(?:html?|xml|json)$/i.test(entry.repositoryPath)?'canonical-text':'sha256';}
 function anchorsIn(text){const out=new Set();for(const match of text.matchAll(/\b(?:id|name)\s*=\s*(["'])(.*?)\1/gi))out.add(match[2]);return out;}
@@ -77,15 +77,15 @@ try{
   auditFallbackCoverage();
 
   const localSitemap=fs.readFileSync(path.join(ROOT,'sitemap.xml'),'utf8');
-  const localLocs=[...localSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();
+  const localLocs=[...localSitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort((a,b)=>a < b ? -1 : a > b ? 1 : 0);
   const liveMapResp=await fetch(new URL('sitemap.xml',SITE),{signal:AbortSignal.timeout(15000),headers:{'user-agent':USER_AGENT}});
   if(!liveMapResp.ok)report.failures.push(`Live sitemap returned HTTP ${liveMapResp.status}`);
-  else{const liveLocs=[...(await liveMapResp.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort();report.sitemap={localCount:localLocs.length,liveCount:liveLocs.length};if(JSON.stringify(localLocs)!==JSON.stringify(liveLocs))report.failures.push(`Live sitemap differs from current built sitemap (${liveLocs.length} vs ${localLocs.length} URLs)`);}
+  else{const liveLocs=[...(await liveMapResp.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>m[1]).sort((a,b)=>a < b ? -1 : a > b ? 1 : 0);report.sitemap={localCount:localLocs.length,liveCount:liveLocs.length};if(JSON.stringify(localLocs)!==JSON.stringify(liveLocs))report.failures.push(`Live sitemap differs from current built sitemap (${liveLocs.length} vs ${localLocs.length} URLs)`);}
 
   const sourceFiles=['index.html','en/index.html','bibliography/index.html','en/bibliography/index.html','criticism/reception/index.html','criticism/reception/preeti-karan.html','criticism/reception/en/preeti-karan.html','criticism/reception/setusham.html','criticism/reception/en/setusham.html','criticism/reception/gt-pt-criticism.html'];
   const external=new Set();
   for(const rel of sourceFiles){const file=path.join(ROOT,rel);if(!fs.existsSync(file))continue;const html=fs.readFileSync(file,'utf8');for(const raw of extractHttpUrls(html)){try{const u=new URL(raw);if(!u.hostname.endsWith('videha-ejournal.github.io'))external.add(u.href);}catch{}}}
-  const urls=[...external].filter(u=>!u.includes('translate.google.com')).sort();
+  const urls=[...external].filter(u=>!u.includes('translate.google.com')).sort((a,b)=>a < b ? -1 : a > b ? 1 : 0);
   for(let i=0;i<urls.length;i+=6){const rows=await Promise.all(urls.slice(i,i+6).map(u=>request(u)));report.external.push(...rows);}
 
   const localCatalog=JSON.parse(fs.readFileSync('content/videha-pdf-catalog.snapshot.json','utf8'));

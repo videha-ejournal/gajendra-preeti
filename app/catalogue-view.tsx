@@ -71,7 +71,7 @@ export default function CatalogueView({english=false}:{english?:boolean}){
  const pushFilters=(change:Partial<FilterState>)=>{const next={...state,...change};history.pushState(null,'',urlFor(next));applyState(next);};
  const clear=()=>pushFilters(defaults);
  useEffect(()=>{const sync=()=>{applyState(readUrl());setUrlReady(true);};sync();addEventListener('popstate',sync);return()=>removeEventListener('popstate',sync);},[]);
- useEffect(()=>{if(!urlReady)return;history.replaceState(null,'',urlFor(state));},[query,author,genre,year,destinationFilter,sortMode,urlReady]);
+ useEffect(()=>{if(!urlReady)return;history.replaceState(null,'',urlFor({query,author,genre,year,destinationFilter,sortMode}));},[query,author,genre,year,destinationFilter,sortMode,urlReady]);
  useEffect(()=>{const reveal=()=>{if(location.hash.startsWith('#work-')){applyState(defaults);setTimeout(()=>document.getElementById(decodeURIComponent(location.hash.slice(1)))?.scrollIntoView({block:'start'}),100);}};reveal();addEventListener('hashchange',reveal);return()=>removeEventListener('hashchange',reveal);},[]);
  const selectedGenre=genreGroups.find(g=>g.id===genre);
  const curatedIndex=useMemo(()=>new Map(works.map((w,i)=>[w.id,i])),[]);

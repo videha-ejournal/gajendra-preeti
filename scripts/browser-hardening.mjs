@@ -10,7 +10,7 @@ const root=path.resolve('dist/client');
 const artifactDir=path.resolve('artifacts');
 fs.mkdirSync(artifactDir,{recursive:true});
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg','.woff2':'font/woff2','.xml':'application/xml; charset=utf-8','.pdf':'application/pdf'};
-const server=http.createServer((req,res)=>{try{const u=new URL(req.url||'/','http://127.0.0.1');let rel=decodeURIComponent(u.pathname).replace(/^\/+/,''),file=path.join(root,rel);if(file.endsWith(path.sep)||(fs.existsSync(file)&&fs.statSync(file).isDirectory()))file=path.join(file,'index.html');if(!fs.existsSync(file)){res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'content-type':mime[path.extname(file).toLowerCase()]||'application/octet-stream','cache-control':'no-store'});if(req.method==='HEAD'){res.end();return;}fs.createReadStream(file).pipe(res);}catch(err){res.writeHead(500);res.end(String(err));}});
+const server=http.createServer((req,res)=>{try{const u=new URL(req.url||'/','http://127.0.0.1');const rel=decodeURIComponent(u.pathname).replace(/^\/+/,'');let file=path.join(root,rel);if(file.endsWith(path.sep)||(fs.existsSync(file)&&fs.statSync(file).isDirectory()))file=path.join(file,'index.html');if(!fs.existsSync(file)){res.writeHead(404);res.end('Not found');return;}res.writeHead(200,{'content-type':mime[path.extname(file).toLowerCase()]||'application/octet-stream','cache-control':'no-store'});if(req.method==='HEAD'){res.end();return;}fs.createReadStream(file).pipe(res);}catch(err){res.writeHead(500);res.end(String(err));}});
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const origin=`http://127.0.0.1:${server.address().port}`;
 const routes=[{lang:'mai',url:`${origin}/gajendra-preeti/`,counterpart:'/gajendra-preeti/en/'},{lang:'en',url:`${origin}/gajendra-preeti/en/`,counterpart:'/gajendra-preeti/'}];
@@ -59,7 +59,7 @@ try{
       assert.equal(await page.locator('a.skip').first().getAttribute('href'),'#main',`${route.lang}: skip link`);
       const focus=await keyboardFocusStyle(page);assert(focus,`${route.lang}: keyboard Tab sequence must reach masthead navigation`);assert(!(focus.outlineStyle==='none'&&['0px','0'].includes(focus.outlineWidth)&&focus.boxShadow==='none'),`${route.lang}: keyboard-focused masthead link needs a visible focus indicator`);assert(parseFloat(focus.outlineWidth)>=2||focus.boxShadow!=='none',`${route.lang}: focus indicator must be visibly substantial`);
       assert(await page.evaluate(()=>matchMedia('(prefers-reduced-motion: reduce)').matches),`${route.lang}: reduced-motion media query`);
-      const sectionIds=await page.locator('main > section').evaluateAll(ns=>ns.map(n=>n.id||`class:${[...n.classList].sort().join('.')}`));
+      const sectionIds=await page.locator('main > section').evaluateAll(ns=>ns.map(n=>n.id||`class:${[...n.classList].sort((a,b)=>a < b ? -1 : a > b ? 1 : 0).join('.')}`));
       const workIds=await page.locator('.work-card').evaluateAll(ns=>ns.map(n=>n.id));
       const timelineYears=await page.locator('.timeline-year').allTextContents();structures[`${viewport.name}:${route.lang}`]={sectionIds,workIds,timelineYears};
 

@@ -62,7 +62,7 @@ const meta=JSON.parse(fs.readFileSync('content/site-meta.json','utf8'));
 const parts=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Kolkata',year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date()).filter(p=>p.type!=='literal').map(p=>[p.type,p.value]));
 const buildDate=`${parts.year}-${parts.month}-${parts.day}`;
 for(const [html,label] of [[maiHome,'Maithili'],[enHome,'English']]){
- need(html.includes(`dateTime=\"${buildDate}\"`)||html.includes(`datetime="${buildDate}"`),`${label} home does not expose current build date ${buildDate}`);
+ need(html.includes(`dateTime="${buildDate}"`)||html.includes(`datetime="${buildDate}"`),`${label} home does not expose current build date ${buildDate}`);
  need(html.includes(meta.updated),`${label} home does not preserve scholarly source-check date ${meta.updated}`);
 }
 
