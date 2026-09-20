@@ -39,7 +39,7 @@ jobs:
           name: atlas-hardening-reports
           path: artifacts
           if-no-files-found: warn
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist/client/gajendra-preeti
   deploy:
