@@ -5,6 +5,7 @@ import './edition.css';
 import './reference.css';
 import './reading-tools.css';
 import './improvements.css';
+import './ui-polish.css';
 import ReadingTools from './reading-tools';
 import LanguageSwitch from './language-switch';
 import SiteEnhancements from './site-enhancements';

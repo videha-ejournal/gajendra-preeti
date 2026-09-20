@@ -1,0 +1,59 @@
+/* Content layout only: Listen, AI Translator and Assistive Tech keep their existing CSS. */
+.masthead { flex-wrap: wrap; gap: 1.25rem 2rem; }
+.masthead nav { flex-wrap: wrap; align-items: center; gap: .5rem 1.5rem; }
+.masthead nav a { display: inline-flex; flex-direction: column; justify-content: center; align-items: flex-start; min-height: 44px; }
+.hero h1 { font-size: clamp(2.5rem, 7.4vw, 7.5rem); letter-spacing: -.025em; line-height: 1.55; }
+.hero-kicker { margin-top: clamp(2rem, 4vw, 3.5rem); }
+.hero-bottom { margin-bottom: 2.5rem; }
+.hero .eyebrow { flex-wrap: wrap; gap: .75rem; }
+.section { padding-block: clamp(3rem, 6vw, 5.5rem); }
+.section-heading { align-items: start; gap: 1.5rem 2.5rem; margin-bottom: 2rem; }
+.section-heading h2 { text-wrap: balance; overflow-wrap: anywhere; letter-spacing: -.015em; }
+.writers article, .section-heading > *, .path-panel > *, .work-card { min-width: 0; }
+.writers article { padding: clamp(1.5rem, 3vw, 2.5rem); }
+.writers h3 { font-size: clamp(1.65rem, 2.8vw, 2.35rem); }
+.catalogue-tools { gap: 1.25rem; padding-block: 1.5rem; }
+.catalogue-tools label { min-width: 0; }
+.catalogue-tools input { width: 100%; }
+.catalogue-refine { gap: 1rem; }
+.catalogue-refine label, .catalogue-refine select { min-width: 0; }
+.results-line { flex-wrap: wrap; gap: .5rem 1rem; line-height: 1.6; font-size: .875rem; }
+.work-grid { gap: 1.25rem; align-items: stretch; }
+.work-card { padding: 1.5rem; gap: 1rem; }
+.work-card h3 { font-size: 1.4rem; line-height: 1.65; padding-right: 0; }
+.work-card h3 .work-arrow { position: static; display: inline; margin-left: .4em; }
+.work-top { flex-wrap: wrap; }
+.work-bottom { flex-wrap: wrap; align-items: start; }
+.work-bottom p { max-width: 100%; }
+.work-bottom a { white-space: normal; }
+.work-actions { margin-top: auto; gap: .5rem; }
+.work-actions a { min-height: 44px; padding: .55rem .75rem; font-size: .8rem; letter-spacing: .02em; }
+.work-reference-links a { min-height: 44px; display: inline-flex; align-items: center; overflow-wrap: anywhere; }
+.source-columns a { overflow-wrap: anywhere; }
+.edition-breadcrumb { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; }
+.edition-breadcrumb a { min-height: 44px; display: inline-flex; align-items: center; }
+footer { align-items: start; padding-bottom: 8rem; }
+footer > div:last-child { flex-wrap: wrap; gap: .75rem 1.5rem; }
+footer > div:last-child a { min-height: 44px; align-items: center; }
+@media (max-width: 900px) {
+  .atlas-utility-shell { position: relative; }
+  .atlas-section-nav { flex-wrap: wrap; overflow: visible; padding-block: .5rem; }
+  .hero-bottom { grid-template-columns: minmax(0, 1fr) auto; }
+  .hero-bottom .english { display: block; grid-column: 1 / -1; text-align: left; }
+}
+@media (max-width: 700px) {
+  .masthead nav { max-width: 100%; }
+  .english-edition .masthead nav { max-width: 100%; }
+  .hero h1 { font-size: clamp(2rem, 8.5vw, 3.75rem); }
+  .hero h1 span:last-child { text-align: left; }
+  .eyebrow { letter-spacing: .035em; }
+  .work-grid { grid-template-columns: minmax(0, 1fr); }
+  .author-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; }
+  .author-filters button { width: 100%; min-width: 0; }
+  .writer-intro { flex-wrap: wrap; min-height: 0; }
+  .writers dl div { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
+  .ecosystem-grid { grid-template-columns: minmax(0, 1fr); }
+  .ecosystem-grid > a + a { border-left: 0; border-top: 1px solid #aaa; }
+  .path-tabs [data-slot=tabs-trigger] { line-height: 1.65; }
+  footer { padding-bottom: 12rem; }
+}
