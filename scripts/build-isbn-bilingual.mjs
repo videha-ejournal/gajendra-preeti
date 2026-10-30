@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {withIsbnPageShell} from './isbn-page-shell.mjs';
 
 const base='https://videha-ejournal.github.io/gajendra-preeti';
 const dataPath='public/isbn/isbn-authority-293.json';
@@ -37,8 +38,8 @@ function makeHtml(s){
 
 fs.mkdirSync('public/isbn',{recursive:true});
 fs.mkdirSync('public/en/isbn',{recursive:true});
-fs.writeFileSync('public/isbn/index.html',makeHtml(strings.mai));
-fs.writeFileSync('public/en/isbn/index.html',makeHtml(strings.en));
+fs.writeFileSync('public/isbn/index.html',withIsbnPageShell(makeHtml(strings.mai)));
+fs.writeFileSync('public/en/isbn/index.html',withIsbnPageShell(makeHtml(strings.en)));
 const json=fs.readFileSync(dataPath,'utf8');
 fs.writeFileSync('public/en/isbn/isbn-authority-293.json',json);
 
