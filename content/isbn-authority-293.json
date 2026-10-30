@@ -11,8 +11,8 @@
     "total": 311,
     "gajendraAdministrator": 200,
     "kumariPrityAdministrator": 111,
-    "allotted": 310,
-    "awaitingAllocation": 1
+    "allotted": 311,
+    "awaitingAllocation": 0
   },
   "defaults": {
     "productForm": "Book",
@@ -93,7 +93,7 @@
     }
   ],
   "updated": "2026-10-30",
-  "updateScope": "First 18 Gajendra records added from the ISBN portal on 30 October 2026; original 293 records retained from the 14 September 2026 snapshot.",
+  "updateScope": "First 18 Gajendra records added from the ISBN portal on 30 October 2026; the first ISBN was subsequently supplied by the editor. Original 293 records retained from the 14 September 2026 snapshot.",
   "pendingDefaults": {
     "status": "Submitted",
     "earmarked": 1,

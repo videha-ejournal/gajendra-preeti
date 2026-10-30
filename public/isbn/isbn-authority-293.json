@@ -4,7 +4,7 @@
   "authorityPolicy": "Authoritative for Videha ISBN metadata. This source supersedes and overrides older ISBN lists and any conflicting ISBN/title metadata. Explicit editor corrections recorded here have higher authority than the imported source row.",
   "retrieved": "2026-09-14",
   "updated": "2026-10-30",
-  "updateScope": "First 18 Gajendra records added from the ISBN portal on 30 October 2026; original 293 records retained from the 14 September 2026 snapshot.",
+  "updateScope": "First 18 Gajendra records added from the ISBN portal on 30 October 2026; the first ISBN was subsequently supplied by the editor. Original 293 records retained from the 14 September 2026 snapshot.",
   "sourceUrls": [
     "https://isbn.gov.in/Applicant/ApplyISBNForAuthor",
     "https://isbn.gov.in/Applicant/ApplicantSummary/Details?t=alb"
@@ -13,8 +13,8 @@
     "total": 311,
     "gajendraAdministrator": 200,
     "kumariPrityAdministrator": 111,
-    "allotted": 310,
-    "awaitingAllocation": 1
+    "allotted": 311,
+    "awaitingAllocation": 0
   },
   "discardedSourceColumns": [
     "Name of Publishing Agency/Publisher"
@@ -56,7 +56,7 @@
   ],
   "records": [
     {
-      "isbn": null,
+      "isbn": "978-93-345-7849-2",
       "title": "कुरुक्षेत्रम् अन्तर्मनक: मैथिली कादम्बरी",
       "authorEditor": "Gajendra Thakur",
       "language": "Maithili",
@@ -72,14 +72,14 @@
       "bookSrNo": 1,
       "productForm": "Book",
       "country": "INDIA",
-      "status": "Submitted",
+      "status": "Allotted",
       "verificationNotes": "",
       "allocation": {
         "earmarked": 1,
-        "available": 1,
-        "used": 0,
+        "available": 0,
+        "used": 1,
         "totalEarmarked": 1,
-        "booksSubmitted": 1,
+        "booksSubmitted": 0,
         "booksPending": 0,
         "booksSurrendered": 0
       }
