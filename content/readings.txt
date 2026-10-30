@@ -351,3 +351,183 @@ An inherited text enters a different reading form
 The inspected edition identifies Preeti Thakur's children's presentation and uses sequential images to stage encounters, including courtly exchanges and journey scenes. That form changes how a reader meets an inherited work: situations become visible before their significance has to be extracted from continuous prose. The source title and the adapter's contribution should both remain in view.
 The critical question is what adaptation does with inherited judgements. A children's presentation can make a scene intelligible without requiring the reader to accept every social assumption carried by its source. Pictures, captions and omitted explanation all participate in that decision. Because parts of the digital edition have unreliable text extraction, this note confines itself to visually inspected pages and format. It does not certify fidelity to a Sanskrit source, endorse introductory historical hypotheses, or claim a complete analysis of every story.
 Where can a modern reader understand a character's judgement while still questioning the values behind it?
+
+gs01|अकुलाइत सुर — किशोर गजल, कविता and गीत|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs02|कूट नाम तरहड़िमे गोहि|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs03|पातक भीतर लिखल नाँव|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs04|गोहि सभक बीच जलसमाधि|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs05|कुरुक्षेत्रम् अन्तर्मनक|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs06|जल-पाँजि|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs07|स्मृतिक दोसर दिस|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs08|इजोत — ४९ लघुकथा|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs09|कथा-शतत्रयी — Volume १|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs10|कथा-शतत्रयी — Volume २|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs11|कथा-शतत्रयी — Volume ३|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs12|कथा-त्रिधारा — Volume १|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs13|कथा-त्रिधारा — Volume २|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs14|कथा-त्रिधारा — Volume ३|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs15|रंग-संगम — Volume २|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs16|अनुवादक|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs17|नव्य न्याय and अपतटीय जुand-जाल|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs18|गजेन्द्र ठाकुरक समानान्तर दर्शन|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs19|भामती — वाचस्पति|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs20|andत्मतत्त्वविवेक — उदयन|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs21|न्यायकुसुमाञ्जलि — उदयन|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs22|तत्त्वचिन्तामणि — गंगेश|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs23|संस्कृत साहित्य — १३ पुस्तक|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs24|रंग-संगम — ९ नाटक and अंग्रेजी रंगमंचीय रूपान्तर|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs25|मैथिली रेडियो नाटक — स्वयं सीखू मार्गदर्शिका|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs26|गजेन्द्र ठाकुर समग्र — ३७ मैथिली बाल उपन्यास|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs27|गजेन्द्र ठाकुर समग्र — अनुवाद Volume|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs28|English–Maithili Thesaurus|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs29|Maithili–English Thesaurus|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
+
+gs30|Parallel History of Mithila & Maithili Literature|Samagra book, volume or research edition|catalogue|
+Catalogue-based source note.
+This entry records the book as part of the 00 Main Samagra corpus and identifies the questions its title, form and archival placement invite. It is a catalogue-based introduction, not a claim of complete reading.
+The repository PDF is the cited source for this record; interpretation should remain proportionate to the available bibliographic evidence.
+What would a full reading add beyond the catalogue record?
