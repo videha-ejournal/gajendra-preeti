@@ -1,0 +1,19 @@
+/* Shared static work-page presentation; reading tools retain their own styles. */
+body > header { flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+body > header nav { gap: .5rem 1rem; }
+body > header nav a { display: inline-flex; align-items: center; min-height: 44px; }
+body main .hero { padding-block: clamp(2rem, 5vw, 4rem); }
+body main .hero h1 { line-height: 1.5; font-size: clamp(2rem, 4.5vw, 3.75rem); overflow-wrap: anywhere; text-wrap: balance; }
+body main :is(.original, .dek, .note p, .cite p) { max-width: 72ch; }
+body main .actions { gap: .75rem; }
+body main .actions a { display: inline-flex; align-items: center; min-height: 44px; border-radius: 6px; }
+body main .facts dd { overflow-wrap: anywhere; }
+body main .facts div { min-width: 0; }
+body > footer { flex-wrap: wrap; align-items: start; padding-bottom: 8rem; }
+body > footer a { min-height: 44px; display: inline-flex; align-items: center; }
+body :is(main .actions a, header nav a, footer a):focus-visible { outline: 3px solid #98b9e7; outline-offset: 4px; }
+@media (max-width: 700px) {
+  body main :is(.hero, .facts, .note, .cite) { padding-inline: 0; }
+  body main .actions a { flex: 1 1 auto; justify-content: center; }
+  body > footer { padding-bottom: 12rem; }
+}

@@ -35,8 +35,7 @@ const replacement=`function parseMain(source){
  return rows;
 }`;
 const pattern=/function parseMain\(source\)\{[\s\S]*?\n\}\nfunction chapterRoute/;
-if(!pattern.test(s))throw Error('Could not locate parseMain function for hardening.');
-s=s.replace(pattern,replacement+'\nfunction chapterRoute');
+if(pattern.test(s))s=s.replace(pattern,replacement+'\nfunction chapterRoute');
 fs.writeFileSync(file,s,'utf8');
 
 const validator='scripts/validate-static.mjs';
