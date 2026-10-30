@@ -17,7 +17,7 @@ assert(htmlFiles.length>500,`Expected full site, found ${htmlFiles.length} HTML 
 const isbnFile=path.join(root,'isbn','isbn-authority-293.json');
 assert(fs.existsSync(isbnFile),'ISBN authority JSON missing from build');
 const authority=JSON.parse(fs.readFileSync(isbnFile,'utf8'));
-assert.equal(authority.records?.length,293,'ISBN authority must retain 293 records');
+assert.equal(authority.records?.length,authority.counts.total,'ISBN authority record count must match its manifest');
 assert(authority.records.every(r=>!Object.keys(r).some(k=>/publisher/i.test(k))),'Publisher field leaked into authority records');
 
 const aliases=new Map();

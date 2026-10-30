@@ -36,7 +36,7 @@ if(exists('isbn/index.html')&&exists('en/isbn/index.html')){
  }
 }
 const authority=JSON.parse(read('isbn/isbn-authority-293.json'));
-need(authority.records?.length===293,`ISBN JSON expected 293 records; found ${authority.records?.length}`);
+need(authority.records?.length===authority.counts.total,`ISBN JSON expected ${authority.counts.total} records; found ${authority.records?.length}`);
 for(const r of authority.records||[])need(!('publisher' in r)&&!('_discardedPublishingAgencyPublisher' in r),`ISBN record leaks discarded field: ${r.isbn}`);
 const atma=authority.records?.find(r=>r.isbn==='978-93-5943-857-3');
 need(atma?.title==='आत्मतत्त्वविवेक','ISBN JSON lost canonical आत्मतत्त्वविवेक editor override');

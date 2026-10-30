@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "authority": "VIDEHA 293 ISBN LIST",
+  "authority": "VIDEHA ISBN LIST — 311 records",
   "authorityPolicy": "Authoritative for Videha ISBN metadata. This source supersedes and overrides older ISBN lists and any conflicting ISBN/title metadata. Explicit editor corrections recorded here have higher authority than the imported source row.",
   "retrieved": "2026-09-14",
   "sourceUrls": [
@@ -8,9 +8,11 @@
     "https://isbn.gov.in/Applicant/ApplicantSummary/Details?t=alb"
   ],
   "counts": {
-    "total": 293,
-    "gajendraAdministrator": 182,
-    "kumariPrityAdministrator": 111
+    "total": 311,
+    "gajendraAdministrator": 200,
+    "kumariPrityAdministrator": 111,
+    "allotted": 310,
+    "awaitingAllocation": 1
   },
   "defaults": {
     "productForm": "Book",
@@ -27,7 +29,8 @@
   "actionNoteCodes": {
     "A1": "Edit | Surrender ISBN | Final Verso Page Uploaded [Verification Pending from RRRNA]",
     "A2": "(Edit Expired) | Surrender ISBN | Final Verso Page Uploaded [Verification Pending from RRRNA]",
-    "A3": "(Edit Expired) | Surrender ISBN | Upload Final Verso Page"
+    "A3": "(Edit Expired) | Surrender ISBN | Upload Final Verso Page",
+    "A0": ""
   },
   "columns": [
     "isbn",
@@ -88,5 +91,17 @@
         "गद्य पद्य भारती अनुवाद खण्ड 2 विदेह सदेह 37"
       ]
     }
-  ]
+  ],
+  "updated": "2026-10-30",
+  "updateScope": "First 18 Gajendra records added from the ISBN portal on 30 October 2026; original 293 records retained from the 14 September 2026 snapshot.",
+  "pendingDefaults": {
+    "status": "Submitted",
+    "earmarked": 1,
+    "available": 1,
+    "used": 0,
+    "totalEarmarked": 1,
+    "booksSubmitted": 1,
+    "booksPending": 0,
+    "booksSurrendered": 0
+  }
 }
