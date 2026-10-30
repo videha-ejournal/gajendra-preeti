@@ -11,7 +11,7 @@ const SOURCE_LABEL='00 मुख्य समग्र / Core collected works & 
 const meta=JSON.parse(fs.readFileSync('content/site-meta.json','utf8'));
 const curated=JSON.parse(fs.readFileSync('app/works.json','utf8'));
 const verified=meta.updated;
-const verifiedDisplay=meta.updatedDisplay||'13 September 2026';
+const verifiedDisplay=meta.updatedDisplayEn||'13 September 2026';
 const verifiedMai=meta.updatedDisplayMai||'13 सितम्बर 2026';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const text=s=>String(s??'').replace(/\s+/g,' ').trim();
@@ -34,7 +34,7 @@ function romanize(input){
  }
  return text(out).replace(/\s+([,.;:!?])/g,'$1');
 }
-function slugFor(title){const r=romanize(title);return ascii(r)||'work-'+sha(title).slice(0,10);}
+function slugFor(title){const r=romanize(title),raw=ascii(r)||'work';return raw.length<=96?raw:(raw.slice(0,78).replace(/-+$/,'')+'-'+sha(title).slice(0,12));}
 function titleLooksEnglish(s){const letters=String(s).replace(/[^A-Za-z\u0900-\u097F]/g,'');if(!letters)return false;const latin=(letters.match(/[A-Za-z]/g)||[]).length,deva=(letters.match(/[\u0900-\u097F]/g)||[]).length;return latin>deva*2;}
 function inferLanguage(title,author){const s=`${title} ${author}`;if(/bilingual|maithili[-– ]english|मैथिली[-– ]english/i.test(s))return ['mai','en'];if(/english translation|english teaching|water-burial|when dreams merge|history of mithila|parallel philosophy|37 maithili children novels in english/i.test(s)||titleLooksEnglish(title))return ['en'];return ['mai'];}
 function inferKind(title){const s=String(title).toLowerCase();if(/thesaurus|dictionary|शब्दकोश|कोश/.test(s))return 'Reference work';if(/quiz|प्रश्न/.test(s))return 'Study guide';if(/नाटक|drama|rang-sangam/.test(s))return 'Drama';if(/उपन्यास|novel|water-burial|when dreams/.test(s))return 'Novel';if(/history|इतिहास/.test(s))return 'History';if(/philosophy|दर्शन|bhamati|nyayakusumanjali|atmatattvaviveka|tattvachintamani/.test(s))return 'Philosophy';if(/व्याकरण|grammar|भाषा विज्ञान|linguistic/.test(s))return 'Language study';if(/समालोचना|criticism|research|शोध/.test(s))return 'Research / criticism';if(/बाल|children/.test(s))return 'Children’s literature';if(/गजल|ghazal|poetry|कविता|पद्य/.test(s))return 'Poetry';return 'Book / scholarly resource';}
@@ -42,6 +42,34 @@ function inferRole(author){const s=String(author);if(/सम्पादक|edit
 function manifestation(label,url){const l=String(label),u=String(url);let format='Web';if(/pdf/i.test(l)||/\.pdf(?:$|[?#])/i.test(u))format='PDF';else if(/hardback/i.test(l))format='Hardback';else if(/paperback/i.test(l))format='Paperback';else if(/kindle/i.test(l)||/amazon\./i.test(u))format='Kindle';else if(/audiobook|audio/i.test(l))format='Audiobook';else if(/google playbook|books\/details/i.test(u))format='E-book';else if(/documentary/i.test(l))format='Documentary';else if(/ppt/i.test(l))format='Presentation';return {label:text(l),url:u,format};}
 function yearFrom(rec,match){if(match?.year)return Number(match.year);const m=`${rec.title} ${rec.links.map(x=>x[0]).join(' ')}`.match(/\b(19|20)\d{2}\b/);return m?Number(m[0]):null;}
 function isbnFrom(rec){const all=[rec.title,...rec.links.flat()].join(' ');const m=all.match(/97[89][-\d ]{10,20}/);return m?m[0].replace(/[^\dXx]/g,''):null;}
+const isbnAuthority=JSON.parse(fs.readFileSync('public/isbn/isbn-authority-293.json','utf8'));
+const authoritativeExact=new Map();
+const authoritativeStrongAliases=[];
+function addExact(value,isbn){
+ const key=norm(value);if(!key)return;
+ const prior=authoritativeExact.get(key);
+ if(prior&&prior!==isbn)authoritativeExact.set(key,null);else if(prior!==null)authoritativeExact.set(key,isbn);
+}
+function addStrongAlias(value,isbn){const key=norm(value);if(key.length>=8)authoritativeStrongAliases.push({key,isbn});}
+for(const record of isbnAuthority.records||[]){
+ addExact(record.title,record.isbn);
+ addExact(record.sourceTitle,record.isbn);
+ for(const alias of record.editorOverride?.aliases||[])addStrongAlias(alias,record.isbn);
+}
+for(const rule of isbnAuthority.identityOverrides||[]){
+ addStrongAlias(rule.canonicalLabel,rule.canonicalIsbn);
+ for(const alias of rule.sameWorkAliases||[])addStrongAlias(alias,rule.canonicalIsbn);
+}
+for(const rule of isbnAuthority.recordOverrides||[]){
+ addStrongAlias(rule.canonicalTitle,rule.isbn);
+ for(const alias of rule.aliases||[])addStrongAlias(alias,rule.isbn);
+}
+function authoritativeIsbnFor(title){
+ const key=norm(title);
+ const exact=authoritativeExact.get(key);if(exact)return exact;
+ const hits=new Set(authoritativeStrongAliases.filter(x=>key.includes(x.key)).map(x=>x.isbn));
+ return hits.size===1?[...hits][0]:null;
+}
 const curatedByTitle=new Map();for(const w of curated){for(const k of [w.title,w.titleEn])if(k)curatedByTitle.set(norm(k),w);}
 function curatedMatch(title){const n=norm(title);if(curatedByTitle.has(n))return curatedByTitle.get(n);for(const [k,w] of curatedByTitle){if(n.length>7&&k.length>7&&(n.includes(k)||k.includes(n)))return w;}return null;}
 
@@ -64,7 +92,7 @@ function parseMain(source){
 }
 function chapterRoute(title){const s=String(title).toLowerCase();if(/parallel philosophy/.test(s))return `${BASE}/parallel-philosophy/`;if(/water-burial|गोहि सभक बीच जलसमाधि/.test(s))return `${BASE}/water-burial-among-the-crocodiles/`;if(/when dreams merge|स्वप्नमे मिज्झर/.test(s))return `${BASE}/when-dreams-merge/`;if(/parallel history of mithila/.test(s))return `${BASE}/parallel-history/`;if(/history of mithila, vajji/.test(s))return 'https://videha-ejournal.github.io/mithila-vajji-anga/';if(/decoding the panji/.test(s))return `${SOURCE_PAGE}#decoding-panji`;return null;}
 function standardCreator(author,role){if(!/gajendra thakur|गजेन्द्र ठाकुर/i.test(author))return author;if(role==='editor')return 'Gajendra Thakur, editor';if(role==='translator')return 'Gajendra Thakur, translator';return 'Gajendra Thakur';}
-function buildRecords(rows){const used=new Map();return rows.map((raw,index)=>{const match=curatedMatch(raw.title),roman=romanize(raw.title),knownEnglish=match?.titleEn||(titleLooksEnglish(raw.title)?raw.title:null),baseSlug=slugFor(knownEnglish||roman||raw.title);let slug=baseSlug;if(used.has(slug)){slug=`${baseSlug}-${sha(raw.title+raw.links?.[0]?.[1]).slice(0,6)}`;}used.set(slug,true);const role=inferRole(raw.author);const links=(raw.links||[]).map(([label,url])=>manifestation(label,url));const year=yearFrom(raw,match),isbn=isbnFrom(raw),languages=inferLanguage(raw.title,raw.author);return {id:'samagra-'+sha(raw.title+'|'+(raw.links?.[0]?.[1]||index)).slice(0,12),sourcePosition:index+1,slug,title:text(raw.title),titleRoman:roman,titleEn:knownEnglish,creator:text(raw.author||'गजेन्द्र ठाकुर'),creatorStandard:standardCreator(raw.author||'गजेन्द्र ठाकुर',role),role,kind:match?.kindEn||inferKind(raw.title),languages,year,isbn,doi:null,links,primaryUrl:links[0]?.url||SOURCE_PAGE,pdfUrl:links.find(x=>x.format==='PDF')?.url||null,curatedId:match?.id||null,curatedUrl:match?`${ROOT}/${match.author==='preeti'?'':'works/'+slugFor(match.titleEn||match.title)+'/'}`:null,chapterRoute:chapterRoute(raw.title),sourcePage:SOURCE_PAGE,sourceSection:SOURCE_LABEL,verified};});}
+function buildRecords(rows){const used=new Map();return rows.map((raw,index)=>{const match=curatedMatch(raw.title),roman=romanize(raw.title),knownEnglish=match?.titleEn||(titleLooksEnglish(raw.title)?raw.title:null),baseSlug=slugFor(knownEnglish||roman||raw.title);let slug=baseSlug;if(used.has(slug)){slug=`${baseSlug}-${sha(raw.title+raw.links?.[0]?.[1]).slice(0,6)}`;}used.set(slug,true);const role=inferRole(raw.author);const links=(raw.links||[]).map(([label,url])=>manifestation(label,url));const year=yearFrom(raw,match),isbn=authoritativeIsbnFor(raw.title)||match?.isbn||isbnFrom(raw),languages=inferLanguage(raw.title,raw.author);return {id:'samagra-'+sha(raw.title+'|'+(raw.links?.[0]?.[1]||index)).slice(0,12),sourcePosition:index+1,slug,title:text(raw.title),titleRoman:roman,titleEn:knownEnglish,creator:text(raw.author||'गजेन्द्र ठाकुर'),creatorStandard:standardCreator(raw.author||'गजेन्द्र ठाकुर',role),role,kind:match?.kindEn||inferKind(raw.title),languages,year,isbn,doi:null,links,primaryUrl:links[0]?.url||SOURCE_PAGE,pdfUrl:links.find(x=>x.format==='PDF')?.url||null,curatedId:match?.id||null,curatedUrl:match?`${ROOT}/${match.author==='preeti'?'':'works/'+slugFor(match.titleEn||match.title)+'/'}`:null,chapterRoute:chapterRoute(raw.title),sourcePage:SOURCE_PAGE,sourceSection:SOURCE_LABEL,verified};});}
 function langText(r){return r.languages.join(', ');}
 function citationBase(r){const who=r.creatorStandard||'Gajendra Thakur',yr=r.year||'n.d.',url=`${ROOT}/bibliography/works/${r.slug}/`;return {who,yr,url};}
 function citations(r){const {who,yr,url}=citationBase(r);const title=r.title;return {chicago:`${who}. ${title}. ${yr}. Scholarly record in The Videha Literary Atlas. Accessed ${verifiedDisplay}. ${url}`,mla:`${who}. “${title}.” The Videha Literary Atlas, Videha — First Maithili Fortnightly eJournal, ${r.year||'n.d.'}, ${url}. Accessed ${verifiedDisplay}.`,apa:`${who}. (${r.year||'n.d.'}). ${title}. The Videha Literary Atlas. ${url}`};}
