@@ -1445,7 +1445,8 @@
     "titleEn": "Jagdish Prasad Mandal: A Biography — Samagra GS50",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5943-043-0"
   },
   {
     "id": "gs51",
@@ -1477,7 +1478,8 @@
     "titleEn": "Struggles of Life — Samagra GS52",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5717-665-1"
   },
   {
     "id": "gs53",
@@ -1509,7 +1511,8 @@
     "titleEn": "The Grammar and History of Maithili Ghazal — Samagra GS54",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5987-425-8"
   },
   {
     "id": "gs55",
@@ -1525,7 +1528,8 @@
     "titleEn": "Flowers Blooming on a Withered Tree — Samagra GS55",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5469-476-9"
   },
   {
     "id": "gs56",
@@ -1541,7 +1545,8 @@
     "titleEn": "The Black Bee is Sleeping Atop the Mountain — Samagra GS56",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5782-026-4"
   },
   {
     "id": "gs57",
@@ -1557,7 +1562,8 @@
     "titleEn": "A Bridge Built for the Sake of Love — Samagra GS57",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5810-458-5"
   },
   {
     "id": "gs58",
@@ -1573,7 +1579,8 @@
     "titleEn": "The Coconut Fortress — Samagra GS58",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-5810-064-8"
   },
   {
     "id": "gs59",
@@ -1592,7 +1599,7 @@
     "noteEn": "Repository PDF · 12 अनुवाद"
   },
   {
-    "id": "gs60",
+    "id": "gs100",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "Gohi Sabhak Beech Jalsamadhi — Maithili Teaching Companion",
@@ -1602,13 +1609,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra Gohi Sabhak Beech Jalsamadhi — Maithili Teaching Companion",
     "note": "गजेन्द्र ठाकुर · अध्याय-अनुसार शिक्षण-सहचर · Samagra PDF corpus",
-    "titleEn": "Gohi Sabhak Beech Jalsamadhi — Maithili Teaching Companion — Samagra GS60",
+    "titleEn": "Gohi Sabhak Beech Jalsamadhi — Maithili Teaching Companion — Samagra GS100",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 11 स्वयं सीखू"
   },
   {
-    "id": "gs61",
+    "id": "gs101",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "गजेन्द्र ठाकुर आ प्रीति ठाकुर (समालोचना)",
@@ -1618,13 +1625,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra गजेन्द्र ठाकुर आ प्रीति ठाकुर (समालोचना)",
     "note": "गजेन्द्र ठाकुर · विदेह पेटार · Samagra PDF corpus",
-    "titleEn": "गजेन्द्र ठाकुर आ प्रीति ठाकुर (समालोचना) — Samagra GS61",
+    "titleEn": "गजेन्द्र ठाकुर आ प्रीति ठाकुर (समालोचना) — Samagra GS101",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 05 समालोचना"
   },
   {
-    "id": "gs62",
+    "id": "gs102",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "KURUKSHETRAM OF THE INNER MIND [A MAITHILI NOVEL]",
@@ -1634,13 +1641,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra KURUKSHETRAM OF THE INNER MIND [A MAITHILI NOVEL]",
     "note": "Gajendra Thakur · English translation from Maithili by the author · Samagra PDF corpus",
-    "titleEn": "KURUKSHETRAM OF THE INNER MIND [A MAITHILI NOVEL] — Samagra GS62",
+    "titleEn": "KURUKSHETRAM OF THE INNER MIND [A MAITHILI NOVEL] — Samagra GS102",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 12 अनुवाद"
   },
   {
-    "id": "gs63",
+    "id": "gs103",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "स्वप्नमे मिज्झर होइत",
@@ -1650,13 +1657,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra स्वप्नमे मिज्झर होइत",
     "note": "गजेन्द्र ठाकुर · मूल आ अनूदित मैथिली पद्य · Samagra PDF corpus",
-    "titleEn": "स्वप्नमे मिज्झर होइत — Samagra GS63",
+    "titleEn": "स्वप्नमे मिज्झर होइत — Samagra GS103",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 04 पद्य"
   },
   {
-    "id": "gs64",
+    "id": "gs104",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "VIDEHA QUIZ MASTER — विदेह १–४४० विस्तृत अध्ययन — 10,135 प्रश्न",
@@ -1666,13 +1673,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra VIDEHA QUIZ MASTER — विदेह १–४४० विस्तृत अध्ययन — 10,135 प्रश्न",
     "note": "गजेन्द्र ठाकुर · सम्पादक, विदेह · Samagra PDF corpus",
-    "titleEn": "VIDEHA QUIZ MASTER — विदेह १–४४० विस्तृत अध्ययन — 10,135 प्रश्न — Samagra GS64",
+    "titleEn": "VIDEHA QUIZ MASTER — विदेह १–४४० विस्तृत अध्ययन — 10,135 प्रश्न — Samagra GS104",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 05 समालोचना"
   },
   {
-    "id": "gs65",
+    "id": "gs105",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "Water-Burial Among the Crocodiles [English Teaching Companion]",
@@ -1682,13 +1689,13 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra Water-Burial Among the Crocodiles [English Teaching Companion]",
     "note": "Gajendra Thakur · chapter-by-chapter English study companion · Samagra PDF corpus",
-    "titleEn": "Water-Burial Among the Crocodiles [English Teaching Companion] — Samagra GS65",
+    "titleEn": "Water-Burial Among the Crocodiles [English Teaching Companion] — Samagra GS105",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 11 स्वयं सीखू"
   },
   {
-    "id": "gs66",
+    "id": "gs106",
     "author": "gajendra",
     "name": "गजेन्द्र ठाकुर",
     "title": "विदेह शोध-लेख (अंक १ सँ ४४७ धरि)",
@@ -1698,7 +1705,7 @@
     "source": "https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm#gt-pdf-corpus",
     "keywords": "gajendra thakur samagra विदेह शोध-लेख (अंक १ सँ ४४७ धरि)",
     "note": "गजेन्द्र ठाकुर · लेखक आ सम्पादक · Samagra PDF corpus",
-    "titleEn": "विदेह शोध-लेख (अंक १ सँ ४४७ धरि) — Samagra GS66",
+    "titleEn": "विदेह शोध-लेख (अंक १ सँ ४४७ धरि) — Samagra GS106",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
     "noteEn": "Repository PDF · 05 समालोचना"
@@ -1733,6 +1740,7 @@
     "titleEn": "WHEN DREAMS MERGE — Samagra GS68",
     "kindEn": "Samagra book, translation or research edition",
     "nameEn": "Gajendra Thakur",
-    "noteEn": "Repository PDF · 12 अनुवाद"
+    "noteEn": "Repository PDF · 12 अनुवाद",
+    "isbn": "978-93-345-0331-9"
   }
 ]
