@@ -11,7 +11,7 @@ const alt=(html,lang)=>html.match(new RegExp(`<link\\s+rel=["']alternate["']\\s+
 
 const enCrit=path.join(root,'criticism/en');
 const files=fs.readdirSync(enCrit).filter(f=>f.endsWith('.html')).sort();
-need(files.length===60,`Reading Room expected 60 English HTML pages; found ${files.length}`);
+need(files.length===90,`Reading Room expected 90 English HTML pages; found ${files.length}`);
 for(const file of files){
  const leaf=file==='index.html'?'':file;
  const maiUrl=`${base}/criticism/${leaf}`,enUrl=`${base}/criticism/en/${leaf}`;

@@ -6,7 +6,7 @@ const dir='public/criticism';
 const enDir=path.join(dir,'en');
 if(!fs.existsSync(enDir)) throw new Error('English criticism directory missing');
 const files=fs.readdirSync(enDir).filter(f=>f.endsWith('.html')).sort();
-if(files.length!==60) throw new Error(`Expected 60 English Reading Room HTML pages (index + 59 entries), found ${files.length}`);
+if(files.length!==90) throw new Error(`Expected 90 English Reading Room HTML pages (index + 89 entries), found ${files.length}`);
 
 function setAlternate(html,lang,href){
  const tag=`<link rel="alternate" hreflang="${lang}" href="${href}">`;

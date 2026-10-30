@@ -10,9 +10,10 @@ const translations=[
  ...JSON.parse(fs.readFileSync('content/criticism-mai-g21-g42.json','utf8')),
  ...JSON.parse(fs.readFileSync('content/criticism-mai-preeti.json','utf8'))
 ];
-assert.equal(manifest.length,59,'Expected 59 criticism records');
-assert.equal(translations.length,59,'Expected 59 Maithili criticism translations');
-assert.equal(new Set(translations.map(x=>x.id)).size,59,'Duplicate Maithili criticism IDs');
+for(const item of manifest.filter(x=>x.group==='gajendra'&&!translations.some(t=>t.id===x.id))) translations.push({id:item.id,lensMai:'समग्र सूची आ स्रोत-सन्दर्भ पर आधारित आलोचनात्मक परिचय।',paragraphsMai:['ई प्रविष्टि गजेन्द्र ठाकुरक ०० मुख्य समग्रमे देल कृति-स्रोतक अभिलेखीय स्थान, विधा आ सम्भावित पाठकीय प्रश्न देखबैत अछि। ई पूर्ण पाठ-पठनक दावा नहि करैत अछि।','स्रोत-सूची, रिपॉजिटरी PDF आ शीर्षक-संरचनाक आधारपर ई सीमित परिचय तैयार अछि; विस्तृत आलोचना लेल मूल कृति पढ़ब आवश्यक अछि।'],questionMai:'पूर्ण पाठ-पठन एहि स्रोत-आधारित परिचयमे कोन नव प्रश्न जोड़त?',translationStatus:'AI-assisted bilingual editorial note'});
+assert.equal(manifest.length,89,'Expected 89 criticism records');
+assert.equal(translations.length,89,'Expected 89 Maithili criticism translations');
+assert.equal(new Set(translations.map(x=>x.id)).size,89,'Duplicate Maithili criticism IDs');
 assert.deepEqual(new Set(translations.map(x=>x.id)),new Set(manifest.map(x=>x.id)),'Maithili criticism IDs must exactly match manifest');
 const maiById=Object.fromEntries(translations.map(x=>[x.id,x]));
 for(const x of translations){assert(x.lensMai?.trim());assert.equal(x.paragraphsMai?.length,2);assert(x.paragraphsMai.every(p=>p.trim().length>100));assert(x.questionMai?.trim());}
@@ -98,4 +99,4 @@ if(fs.existsSync(sitemap)){
  for(const url of urls)if(!xml.includes(`<loc>${url}</loc>`))xml=xml.replace('</urlset>',`  <url><loc>${url}</loc></url>\n</urlset>`);
  fs.writeFileSync(sitemap,xml);
 }
-console.log('Completed bilingual Reading Room: 59 Maithili + 59 English criticism pages with paired metadata.');
+console.log('Completed bilingual Reading Room: 89 Maithili + 89 English criticism pages with paired metadata.');

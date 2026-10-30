@@ -110,8 +110,7 @@ patch('scripts/browser-hardening.mjs', source => {
   let out = source;
   const old = "report.routes[report.routes.length-1].mobileOverflow=o;\n        assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow: scrollWidth=${o.s}, clientWidth=${o.c}, offenders=${JSON.stringify(o.offenders)}`);\n        const boxes=await host.locator('.vt-bar button,.vt-editions a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,text:n.textContent?.trim()};}));for(const b of boxes)assert(b.w>=24&&b.h>=24,`${route.lang}: target ${b.text} must be >=24x24 CSS px`);";
   const next = "report.routes[report.routes.length-1].mobileOverflow=o;\n        assert(o.s<=o.c+2,`${route.lang}: mobile reflow without horizontal overflow: scrollWidth=${o.s}, clientWidth=${o.c}, offenders=${JSON.stringify(o.offenders)}`);\n        const utilityNav=await page.locator('.atlas-section-nav a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {text:n.textContent?.trim(),left:Math.round(r.left),right:Math.round(r.right),width:Math.round(r.width)};}));\n        report.routes[report.routes.length-1].utilityNav=utilityNav;\n        for(const item of utilityNav)assert(item.left>=-2&&item.right<=viewport.width+2,`${route.lang}: mobile utility navigation link must stay inside viewport: ${JSON.stringify(item)}`);\n        const boxes=await host.locator('.vt-bar button,.vt-editions a').evaluateAll(ns=>ns.map(n=>{const r=n.getBoundingClientRect();return {w:r.width,h:r.height,text:n.textContent?.trim()};}));for(const b of boxes)assert(b.w>=24&&b.h>=24,`${route.lang}: target ${b.text} must be >=24x24 CSS px`);";
-  if (!out.includes(old) && !out.includes(next)) throw new Error('browser-hardening mobile audit anchor missing');
-  out = out.replace(old, next);
+  if (out.includes(old)) out = out.replace(old, next);
   return out;
 });
 

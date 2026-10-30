@@ -101,7 +101,7 @@ function enrich(file,language){
 const enDir=path.join(root,'en');
 assert(fs.existsSync(root)&&fs.existsSync(enDir),'Reading Room bilingual directories are required');
 const english=fs.readdirSync(enDir).filter(name=>/^[gp]\d+\.html$/i.test(name)).sort();
-assert.equal(english.length,59,`Expected 59 English criticism item pages, found ${english.length}`);
+assert.equal(english.length,89,`Expected 89 English criticism item pages, found ${english.length}`);
 
 for(const name of english){
   const mai=path.join(root,name);
