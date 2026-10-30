@@ -55,7 +55,7 @@ for(const u of [`${base}/changelog/`,`${base}/isbn/`,`${base}/en/isbn/`])need(si
 const maiHome=read('index.html'),enHome=read('en/index.html');
 need(maiHome.includes('/gajendra-preeti/isbn/'),'Maithili home lacks ISBN route');
 need(enHome.includes('/gajendra-preeti/en/isbn/'),'English home lacks ISBN route');
-const banned=['THE WRITERS',"A READER'S COMPASS",'02 / SELECTED WORKS','THE WORK OF PRESERVATION','03 / A LITERARY CHRONOLOGY','04 / BEYOND THIS PAGE','EDITORIAL NOTES','A VIDEHA LITERARY ATLAS · MAITHILI'];
+const banned=['THE WRITERS',"A READER'S COMPASS",'02 / SELECTED WORKS','THE WORK OF PRESERVATION','03 / A LITERARY CHRONOLOGY','04 / BEYOND THIS PAGE','EDITORIAL NOTES','A VIDEHA LITERARY ATLAS · MAITHILI','For the curious reader','For the literary explorer','For the archive explorer'];
 for(const text of banned)need(!maiHome.includes(text),`Maithili interface still contains English scaffold: ${text}`);
 
 const meta=JSON.parse(fs.readFileSync('content/site-meta.json','utf8'));
@@ -68,7 +68,8 @@ for(const [html,label] of [[maiHome,'Maithili'],[enHome,'English']]){
 
 const css=fs.readFileSync('app/improvements.css','utf8');
 need(css.includes('bilingual-consolidation-mobile-nav'),'Mobile navigation consolidation marker missing');
-need(css.includes('scroll-snap-type:x proximity'),'Mobile navigation does not use start-safe horizontal snap');
+need(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'),'Mobile navigation must use a two-column start-safe grid');
+need(css.includes('overflow-x:visible'),'Mobile section navigation must not retain an internal horizontal scroller');
 
 if(failures.length){console.error(`Bilingual consolidation FAIL (${failures.length})\n- ${failures.join('\n- ')}`);process.exit(1);}
 console.log(`Bilingual consolidation PASS: ${files.length} reciprocal Reading Room pairs; bilingual ISBN authority; bibliography ISBN propagation; sitemap/freshness; Maithili UI; mobile navigation.`);

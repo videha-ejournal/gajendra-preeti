@@ -6,12 +6,14 @@ export default function SiteEnhancements({lang}:{lang:'mai'|'en'}){
  const criticism=en?'/gajendra-preeti/criticism/en/':'/gajendra-preeti/criticism/';
  const reception=en?'/gajendra-preeti/criticism/reception/en/':'/gajendra-preeti/criticism/reception/';
  const bibliography=en?'/gajendra-preeti/en/bibliography/':'/gajendra-preeti/bibliography/';
+ const isbn=en?'/gajendra-preeti/en/isbn/':'/gajendra-preeti/isbn/';
  const authority=en?'/gajendra-preeti/en/author/gajendra-thakur/':'/gajendra-preeti/author/gajendra-thakur/';
  return <div className="atlas-utility-shell">
   <nav className="atlas-section-nav" aria-label={en?'Quick section navigation':'त्वरित खण्ड नेविगेशन'}>
    <a href="#writers">{en?'Writers':'रचनाकार'}</a>
    <a href="#archive">{en?'Selected works':'चुनल रचना'}</a>
    <a href={bibliography}>{en?'Complete bibliography':'पूर्ण ग्रन्थ-सूची'}</a>
+   <a href={isbn}>{en?'ISBN registry':'ISBN सूची'}</a>
    <a href="#journey">{en?'Timeline':'समय-यात्रा'}</a>
    <a href={criticism}>{en?'Criticism':'समालोचना'}</a>
    <a href="#sources">{en?'Sources':'स्रोत'}</a>
@@ -23,6 +25,7 @@ export default function SiteEnhancements({lang}:{lang:'mai'|'en'}){
     <p>{en?'Direct routes into the complete synchronized bibliography, criticism, contributors, authority record, manuscript sources and citation exports.':'पूर्ण समकालित ग्रन्थ-सूची, समालोचना, योगदानकर्ता, लेखक-प्रामाणिकता, पाण्डुलिपि-स्रोत आ उद्धरण-निर्यातक सीधा बाट।'}</p>
     <nav aria-label={en?'Research resources':'शोध संसाधन'}>
      <a href={bibliography}>{en?'Complete bibliography':'पूर्ण ग्रन्थ-सूची'}</a>
+     <a href={isbn}>{en?'Authoritative ISBN registry':'प्रामाणिक ISBN सूची'}</a>
      <a href={`${bibliography}#cite`}>{en?'Preferred citation':'अनुशंसित उद्धरण'}</a>
      <a href="/gajendra-preeti/bibliography/export.bib">BibTeX</a>
      <a href="/gajendra-preeti/bibliography/export.ris">RIS</a>
