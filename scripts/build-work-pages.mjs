@@ -7,7 +7,7 @@ const preeti=JSON.parse(fs.readFileSync('content/preeti-children-provenance.json
 const preetiOriginal=new Set(preeti.originalMaithili.map(w=>w.id));
 const preetiTranslation=new Set(preeti.englishToMaithiliTranslations.map(w=>w.id));
 const base='/gajendra-preeti', origin='https://videha-ejournal.github.io';
-const updated='2026-09-13';
+const updated='2026-10-30';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const slug=w=>(w.titleEn||w.title).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||w.id;
 const destination=url=>{const host=new URL(url).hostname;return host.includes('drive.google')?'Google Drive':host.includes('archive.org')?'Archive.org PDF':host.includes('store.pothi')?'Pothi print listing':host.includes('play.google')?'Google Play Books':host.includes('github.io')?'Videha digital edition':'External publication';};

@@ -143,7 +143,7 @@ for(const html of [mai,en]){
 
 const maiFooter=mai.match(/<footer>[\s\S]*?<\/footer>/)?.[0]||'';
 assert.equal((maiFooter.match(/https:\/\/github\.com\/videha-ejournal\/gajendra-preeti/g)||[]).length,1,'Maithili footer must show the repository link once.');
-assert(/Site updated: <time date(?:T|t)ime="2026-09-14">14 September 2026<\/time> · Sources checked: <time date(?:T|t)ime="2026-09-13">13 September 2026<\/time>/.test(en),'English footer must separate production maintenance date from scholarly source-check date.');
-assert(/साइट अद्यतन: <time date(?:T|t)ime="2026-09-14">14 सितम्बर 2026<\/time> · स्रोत-जाँच: <time date(?:T|t)ime="2026-09-13">13 सितम्बर 2026<\/time>/.test(mai),'Maithili footer must separate production maintenance date from scholarly source-check date.');
+assert(/Site updated: <time date(?:T|t)ime="2026-10-30">30 October 2026<\/time> · Sources checked: <time date(?:T|t)ime="2026-09-13">13 September 2026<\/time>/.test(en),'English footer must separate production maintenance date from scholarly source-check date.');
+assert(/साइट अद्यतन: <time date(?:T|t)ime="2026-10-30">30 अक्टूबर 2026<\/time> · स्रोत-जाँच: <time date(?:T|t)ime="2026-09-13">13 सितम्बर 2026<\/time>/.test(mai),'Maithili footer must separate production maintenance date from scholarly source-check date.');
 
 console.log('Scholarly home consistency PASS: bilingual work pages, shareable catalogue controls, semantic dates, researcher navigation, Preeti 4+12 provenance, Gajendra 37 children works and 46 Maithili translations, and all prior accessibility/provenance guards.');
