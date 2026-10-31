@@ -52,12 +52,12 @@ for(const file of ['reading-tools.css','reading-tools-resilience.js']){
 // The existing representative-page check also requires the bibliography indexes.
 // Restore these missing artifacts with the existing renderer and a fixed source
 // revision, without running the legacy full-site pipeline or rewriting other routes.
-if(!fs.existsSync(path.join(destination,'bibliography/index.html'))||!fs.existsSync(path.join(destination,'en/bibliography/index.html'))){
+if(!fs.existsSync(path.join(destination,'bibliography/bibliography-data.json'))){
  const source=fs.readFileSync('scripts/build-scholarly-bibliography.mjs','utf8');
  const boundary=source.indexOf('const source=await loadSource();');
  assert(boundary>0,'Bibliography renderer boundary was not found');
  const renderer=source.slice(0,boundary).replace(/^import .*;\r?\n/gm,'');
- const functions=vm.runInNewContext(renderer+'\n;({bibliographyPage,style,buildRecords,parseMain});',{fs,path,vm,crypto,console});
+ const functions=vm.runInNewContext(renderer+'\n;({bibliographyPage,style,buildRecords,workPage,authorityPage,bibtex,ris,csl});',{fs,path,vm,crypto,console});
  let snapshot;
  if(fs.existsSync('content/samagra-main.snapshot.json'))snapshot=JSON.parse(fs.readFileSync('content/samagra-main.snapshot.json','utf8'));
  else{
@@ -78,6 +78,25 @@ if(!fs.existsSync(path.join(destination,'bibliography/index.html'))||!fs.existsS
   fs.writeFileSync(path.join(destination,route,'index.html'),html);
  }
  fs.writeFileSync(path.join(destination,'bibliography/style.css'),functions.style());
+ fs.writeFileSync(path.join(destination,'bibliography/bibliography-data.json'),JSON.stringify(snapshot,null,2)+'\n');
+ fs.writeFileSync(path.join(destination,'bibliography/export.bib'),snapshot.records.map(functions.bibtex).join('\n'));
+ fs.writeFileSync(path.join(destination,'bibliography/export.ris'),snapshot.records.map(functions.ris).join('\n'));
+ fs.writeFileSync(path.join(destination,'bibliography/export.json'),JSON.stringify(snapshot.records.map(functions.csl),null,2)+'\n');
+ for(const record of snapshot.records){
+  for(const en of [false,true]){
+   const directory=path.join(destination,en?'en/bibliography/works':'bibliography/works',record.slug);
+   fs.mkdirSync(directory,{recursive:true});
+   if(!fs.existsSync(path.join(directory,'index.html')))fs.writeFileSync(path.join(directory,'index.html'),functions.workPage(record,en));
+   fs.writeFileSync(path.join(directory,'citation.bib'),functions.bibtex(record));
+   fs.writeFileSync(path.join(directory,'citation.ris'),functions.ris(record));
+   fs.writeFileSync(path.join(directory,'citation.json'),JSON.stringify(functions.csl(record),null,2)+'\n');
+  }
+ }
+ for(const en of [false,true]){
+  const directory=path.join(destination,en?'en/author/gajendra-thakur':'author/gajendra-thakur');
+  fs.mkdirSync(directory,{recursive:true});
+  if(!fs.existsSync(path.join(directory,'index.html')))fs.writeFileSync(path.join(directory,'index.html'),functions.authorityPage(snapshot.records,en));
+ }
 }
 
 for(const route of ['isbn','en/isbn']){
@@ -89,7 +108,8 @@ for(const route of ['isbn','en/isbn']){
  assert(html.includes('id="videha-reading-tools"'));
 }
 const committed=execFileSync('git',['ls-files','--','dist/client/gajendra-preeti'],{encoding:'utf8'}).trim().split(/\r?\n/).filter(file=>file.endsWith('.html'));
-const required=[...new Set([...committed,...['isbn','en/isbn','bibliography','en/bibliography'].map(route=>`dist/client/gajendra-preeti/${route}/index.html`)])];
+const htmlPages=directory=>fs.readdirSync(directory,{withFileTypes:true}).flatMap(entry=>entry.isDirectory()?htmlPages(path.join(directory,entry.name)):entry.name.endsWith('.html')?[path.join(directory,entry.name).split(path.sep).join('/')]:[]);
+const required=[...new Set([...committed,...htmlPages('dist/client/gajendra-preeti')])];
 assert(required.length>0&&required.every(file=>fs.existsSync(file)),'A committed or required publishing page is missing');
 fs.mkdirSync('artifacts',{recursive:true});
 fs.writeFileSync('artifacts/publishing-page-manifest.json',JSON.stringify({mode:'committed-artifact',pages:required},null,2)+'\n');
