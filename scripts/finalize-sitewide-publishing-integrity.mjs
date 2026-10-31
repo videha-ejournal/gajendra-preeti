@@ -13,7 +13,12 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const norm=s=>strip(s).normalize('NFKC').toLocaleLowerCase('en').replace(/[[\](){}:;,.!?“”‘’'"–—\-_/|·•]/g,' ').replace(/\s+/g,' ').trim();
 const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
 const htmlFiles=walk(root).filter(f=>f.endsWith('.html'));
-assert(htmlFiles.length>500,`Expected full site, found ${htmlFiles.length} HTML files`);
+if(process.argv.includes('--committed-artifact')){
+ const manifest=JSON.parse(fs.readFileSync('artifacts/publishing-page-manifest.json','utf8'));
+ assert(manifest.mode==='committed-artifact'&&manifest.pages?.length>0,'Publishing page manifest is missing');
+ assert(manifest.pages.every(file=>fs.existsSync(file)),'A committed or required page is missing from the artifact');
+ assert(htmlFiles.length>=manifest.pages.length,'Publishing artifact lost HTML pages');
+}else assert(htmlFiles.length>500,`Expected full site, found ${htmlFiles.length} HTML files`);
 const isbnFile=path.join(root,'isbn','isbn-authority-293.json');
 assert(fs.existsSync(isbnFile),'ISBN authority JSON missing from build');
 const authority=JSON.parse(fs.readFileSync(isbnFile,'utf8'));

@@ -3,7 +3,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import crypto from 'node:crypto';
 import assert from 'node:assert/strict';
-import {spawnSync} from 'node:child_process';
+import {spawnSync,execFileSync} from 'node:child_process';
 
 const destination=path.resolve('dist/client/gajendra-preeti');
 function archiveRows(source){
@@ -88,4 +88,9 @@ for(const route of ['isbn','en/isbn']){
  assert(html.includes('data-videha-isbn-footer="true"'));
  assert(html.includes('id="videha-reading-tools"'));
 }
+const committed=execFileSync('git',['ls-files','--','dist/client/gajendra-preeti'],{encoding:'utf8'}).trim().split(/\r?\n/).filter(file=>file.endsWith('.html'));
+const required=[...new Set([...committed,...['isbn','en/isbn','bibliography','en/bibliography'].map(route=>`dist/client/gajendra-preeti/${route}/index.html`)])];
+assert(required.length>0&&required.every(file=>fs.existsSync(file)),'A committed or required publishing page is missing');
+fs.mkdirSync('artifacts',{recursive:true});
+fs.writeFileSync('artifacts/publishing-page-manifest.json',JSON.stringify({mode:'committed-artifact',pages:required},null,2)+'\n');
 console.log('Publishing artifact prepared: 311-row bilingual ISBN pages, home reading tools, and missing bibliography indexes.');
