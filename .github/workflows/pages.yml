@@ -28,6 +28,8 @@ jobs:
       - run: echo "Using committed static artifact; legacy prebuild is non-blocking"
       - name: Prepare current ISBN pages and required static routes
         run: node scripts/prepare-isbn-publishing.mjs
+      - name: Apply existing publication metadata finalizer
+        run: node scripts/finalize-sitewide-publishing-integrity.mjs
       - run: node scripts/validate-static-current.mjs && node scripts/validate-drama-classics-structure.mjs && node scripts/validate-six-books-readings.mjs && node scripts/validate-sitewide-publishing-integrity.mjs
         continue-on-error: true
       - name: Install pinned browser-audit tools
