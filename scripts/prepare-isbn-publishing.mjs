@@ -52,7 +52,7 @@ for(const file of ['reading-tools.css','reading-tools-resilience.js']){
 // The existing representative-page check also requires the bibliography indexes.
 // Restore these missing artifacts with the existing renderer and a fixed source
 // revision, without running the legacy full-site pipeline or rewriting other routes.
-if(!fs.existsSync(path.join(destination,'bibliography/bibliography-data.json'))){
+if(!fs.existsSync(path.join(destination,'bibliography/bibliography-data.json'))||!fs.existsSync(path.join(destination,'bibliography/crossref-ready.json'))){
  const source=fs.readFileSync('scripts/build-scholarly-bibliography.mjs','utf8');
  const boundary=source.indexOf('const source=await loadSource();');
  assert(boundary>0,'Bibliography renderer boundary was not found');
@@ -82,6 +82,9 @@ if(!fs.existsSync(path.join(destination,'bibliography/bibliography-data.json')))
  fs.writeFileSync(path.join(destination,'bibliography/export.bib'),snapshot.records.map(functions.bibtex).join('\n'));
  fs.writeFileSync(path.join(destination,'bibliography/export.ris'),snapshot.records.map(functions.ris).join('\n'));
  fs.writeFileSync(path.join(destination,'bibliography/export.json'),JSON.stringify(snapshot.records.map(functions.csl),null,2)+'\n');
+ const verified=JSON.parse(fs.readFileSync('content/site-meta.json','utf8')).updated;
+ const crossref={status:'DOI-ready metadata only; no DOI is asserted or registered by this build.',source:'https://videha-ejournal.github.io/videha/gajendra-thakur-samagra.htm',verified,records:snapshot.records.map(record=>({id:record.id,title:record.title,titleRoman:record.titleRoman,titleEn:record.titleEn,creator:record.creatorStandard,role:record.role,year:record.year,isbn:record.isbn,doi:null,language:record.languages,url:`https://videha-ejournal.github.io/gajendra-preeti/bibliography/works/${record.slug}/`,chapterCitationRoute:record.chapterRoute}))};
+ fs.writeFileSync(path.join(destination,'bibliography/crossref-ready.json'),JSON.stringify(crossref,null,2)+'\n');
  for(const record of snapshot.records){
   for(const en of [false,true]){
    const directory=path.join(destination,en?'en/bibliography/works':'bibliography/works',record.slug);
